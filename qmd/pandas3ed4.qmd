@@ -1,0 +1,1014 @@
+---
+title: "NumPy Basics: Arrays and Vectorized Computation"
+author: "Your Name"
+---
+
+## Introduction to NumPy
+
+::: {style="font-size: 0.9em;"}
+NumPy, short for Numerical Python, is a foundational package for numerical computing in Python. 
+
+-   **Why is it important?** 🧐 Many scientific computing packages rely on NumPy's array objects for data exchange. Think of it as the *lingua franca* (common language) of data analysis in Python.
+
+-  It is designed for efficiency on large arrays of data.
+
+-   **What will we learn?** We'll cover the basics, focusing on how NumPy enables fast, array-oriented operations, which are crucial for data analysis with libraries like pandas.
+:::
+
+## Key Features of NumPy
+
+::: {style="font-size: 0.85em;"}
+Here's a glimpse of what NumPy offers:
+
+-   **ndarray:**  The heart of NumPy. A highly efficient multidimensional array. Imagine a container holding data of the same type (e.g., all numbers). It allows for fast operations and *broadcasting* (we'll cover this later!).
+-   **Mathematical Functions:**  A rich set of functions that operate on entire arrays *without* explicit loops. This is called *vectorization*, and it's *much* faster than writing loops in Python.
+-   **Data I/O:** Tools to read and write array data to disk.
+-   **Linear Algebra:**  Capabilities for linear algebra, random number generation, and Fourier transforms. Essential tools for many scientific and engineering tasks.
+-   **C API:**  Allows seamless integration with libraries written in C, C++, or FORTRAN. This is key for leveraging high-performance legacy code.
+:::
+
+## Why NumPy is Efficient?
+
+::: {style="font-size: 0.9em;"}
+NumPy's efficiency stems from several design choices:
+
+-   **Contiguous Memory:**  Unlike Python lists, NumPy arrays store data in a single, contiguous block of memory. This makes accessing and manipulating data much faster.
+
+-   **C-Based Algorithms:**  Many NumPy operations are implemented in C, avoiding the overhead of Python's interpreter.
+
+-   **Less Memory Usage:** NumPy arrays generally consume less memory than Python lists, especially for numerical data.
+
+:::
+
+## NumPy vs. Python Lists: A Performance Showdown 🏃‍♂️
+
+::: {style="font-size: 0.8em;"}
+Let's see NumPy's speed advantage in action. We'll compare multiplying a million integers by 2 using both a NumPy array and a Python list:
+
+```{python}
+#| echo: true
+import numpy as np
+my_arr = np.arange(1_000_000)  # NumPy array
+my_list = list(range(1_000_000)) # Python list
+```
+
+Now, the timed operations:
+
+```{python}
+#| echo: true
+# NumPy array operation
+# %timeit my_arr2 = my_arr * 2
+```
+
+```{python}
+#| echo: true
+# Python list operation (using a list comprehension)
+# %timeit my_list2 = [x * 2 for x in my_list]
+```
+:::
+::: {.callout-note appearance="simple"}
+NumPy-based algorithms are generally 10 to 100 times faster (or more) than their pure Python counterparts and use significantly less memory.
+:::
+
+## The NumPy ndarray: A Closer Look
+
+::: {style="font-size: 0.9em;"}
+The `ndarray` (N-dimensional array) is the core data structure in NumPy.
+
+-   **Homogeneous Data:**  All elements in an ndarray must be of the same data type (e.g., all integers, all floats).
+
+-   **Key Attributes:**
+    -   `shape`: A tuple indicating the size of each dimension.  For a 2x3 array, the shape would be `(2, 3)`.
+    -   `dtype`:  An object describing the data type of the elements (e.g., `int64`, `float32`).
+
+- **Creating ndarray**
+The easiest way to create an array is to use the array function. This accepts any sequence-like object (including other arrays) and produces a new NumPy array containing the passed data.
+
+:::
+
+## Creating ndarrays: Examples
+
+::: {style="font-size: 0.85em;"}
+Let's create some arrays:
+
+```{python}
+#| echo: true
+import numpy as np
+
+# From a list
+data1 = [6, 7.5, 8, 0, 1]
+arr1 = np.array(data1)
+print(arr1)
+print(arr1.dtype)
+```
+
+```{python}
+#| echo: true
+# From a nested list (creates a 2D array)
+data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
+arr2 = np.array(data2)
+print(arr2)
+print(arr2.ndim)  # Number of dimensions
+print(arr2.shape)
+print(arr2.dtype)
+```
+:::
+
+##  Array Creation Functions
+
+::: {style="font-size: 0.85em;"}
+NumPy provides several convenient functions to create arrays:
+
+```{python}
+#| echo: true
+# Array of zeros
+zeros_arr = np.zeros(10)  # 1D array
+print(zeros_arr)
+
+zeros_arr_2d = np.zeros((3, 6)) # 2D array (3x6)
+print(zeros_arr_2d)
+```
+
+```{python}
+#| echo: true
+# Array of ones
+ones_arr = np.ones((2, 3)) # 2D array (2x3)
+print(ones_arr)
+```
+```{python}
+#| echo: true
+# Uninitialized array (may contain garbage values)
+empty_arr = np.empty((2, 3, 2)) # 3D array
+print(empty_arr)
+```
+
+```{python}
+#| echo: true
+#  'arange': Similar to Python's 'range', but returns an ndarray
+range_arr = np.arange(15)
+print(range_arr)
+```
+:::
+
+## Summary of Array Creation Functions
+
+::: {style="font-size: 0.7em;"}
+A handy table summarizing common array creation functions:
+
+| Function         | Description                                                                                                                                                                              |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `array`          | Converts input data (list, tuple, array, etc.) to an ndarray.                                                                                                                            |
+| `asarray`        | Similar to `array`, but does not copy if the input is already an ndarray.                                                                                                               |
+| `arange`         | Like Python's `range`, but returns an ndarray.                                                                                                                                           |
+| `ones`, `ones_like` | Creates an array filled with 1s. `ones_like` takes another array and creates a ones array of the same shape and dtype.                                                                     |
+| `zeros`, `zeros_like` |  Similar to `ones` and `ones_like`, but creates arrays filled with 0s. |
+| `empty`, `empty_like` | Creates an array without initializing its values.  Use with caution!                                                                                                                  |
+| `full`, `full_like` | Creates an array filled with a specified value. `full_like` takes another array and uses its shape and dtype.                                                                        |
+| `eye`, `identity`  | Creates a square identity matrix (1s on the diagonal, 0s elsewhere).                                                                                                                  |
+:::
+
+## Data Types (dtypes)
+
+::: {style="font-size: 0.8em;"}
+-   **What is a dtype?**  A special object that contains information about the data type held by an ndarray (e.g., `float64`, `int32`, `bool`).
+
+-   **Why are dtypes important?**  They give you fine-grained control over how data is stored in memory. This is crucial for performance, especially with large datasets.  They also allow NumPy to interface with data from other systems (like databases or files written in C/C++).
+
+- **Specifying dtypes:**
+
+```{python}
+#| echo: true
+arr1 = np.array([1, 2, 3], dtype=np.float64)  # Explicitly set dtype
+arr2 = np.array([1, 2, 3], dtype=np.int32)
+print(arr1.dtype)
+print(arr2.dtype)
+```
+:::
+
+## Common NumPy Data Types
+
+::: {style="font-size: 0.68em;"}
+| Type             | Type Code      | Description                                                                         |
+|-------------------|----------------|-------------------------------------------------------------------------------------|
+| `int8`, `uint8`   | `i1`, `u1`     | Signed and unsigned 8-bit (1 byte) integer types                                    |
+| `int16`, `uint16` | `i2`, `u2`     | Signed and unsigned 16-bit integer types                                           |
+| `int32`, `uint32` | `i4`, `u4`     | Signed and unsigned 32-bit integer types                                           |
+| `int64`, `uint64` | `i8`, `u8`     | Signed and unsigned 64-bit integer types                                           |
+| `float16`        | `f2`           | Half-precision floating point                                                       |
+| `float32`        | `f4` or `f`    | Standard single-precision floating point; compatible with C `float`                 |
+| `float64`        | `f8` or `d`    | Standard double-precision floating point; compatible with C `double` and Python `float` |
+| `float128`       | `f16` or `g`   | Extended-precision floating point                                                  |
+| `complex64`, `complex128`, `complex256` | `c8`, `c16`, `c32` | Complex numbers represented by two 32, 64, or 128 floats, respectively               |
+| `bool`           | `?`            | Boolean type storing `True` and `False` values                                       |
+| `object`         | `O`            | Python object type; a value can be any Python object                                 |
+| `string_`        | `S`            | Fixed-length ASCII string type (1 byte per character).  Use `S10` for a string of length 10. |
+| `unicode_`       | `U`            | Fixed-length Unicode type (number of bytes platform-specific)                        |
+:::
+::: {.callout-note appearance="simple"}
+There are both *signed* and *unsigned* integer types. A *signed* integer can represent both positive and negative integers, while an *unsigned* integer can only represent non-zero integers.
+:::
+
+## Casting with `astype`
+
+::: {style="font-size: 0.85em;"}
+-   **What is casting?**  Converting an array from one dtype to another.
+
+-   **How to cast:** Use the `astype` method.  `astype` *always* creates a new array (a copy of the data), even if the new dtype is the same as the old dtype.
+
+```{python}
+#| echo: true
+arr = np.array([1, 2, 3, 4, 5])
+print(arr.dtype)
+float_arr = arr.astype(np.float64) # Integer to float
+print(float_arr.dtype)
+```
+
+```{python}
+#| echo: true
+numeric_strings = np.array(['1.25', '-9.6', '42'], dtype=np.string_)
+float_arr = numeric_strings.astype(float) # String to float
+print(float_arr)
+```
+
+::: {.callout-caution appearance="simple"}
+Be cautious when using the `numpy.string_` type, as string data in NumPy is fixed size and may truncate input without warning. `pandas` has more intuitive out-of-the-box behavior on non-numeric data.
+:::
+:::
+
+## Arithmetic with NumPy Arrays: Vectorization
+
+::: {style="font-size: 0.8em;"}
+- **Vectorization:**  A core concept in NumPy.  It means performing operations on entire arrays *without* writing explicit `for` loops. This is *much* faster and more concise.
+
+- **Element-wise Operations:**  Arithmetic operations between equal-sized arrays are applied element-wise:
+
+```{python}
+#| echo: true
+arr = np.array([[1., 2., 3.], [4., 5., 6.]])
+print(arr * arr) # Element-wise multiplication
+print(arr - arr) # Element-wise subtraction
+```
+
+-   **Operations with Scalars:**  Arithmetic operations with scalars *propagate* the scalar value to each element in the array:
+
+```{python}
+#| echo: true
+print(1 / arr)   # Divide each element by 1
+print(arr ** 2) # Square each element
+```
+:::
+
+## Broadcasting (Brief Introduction)
+
+::: {style="font-size: 0.8em;"}
+-   **What is broadcasting?** A powerful mechanism that allows NumPy to perform arithmetic operations on arrays of *different* shapes, under certain conditions.
+
+-   **Example:**  You can add a scalar to an array of any shape.  The scalar is effectively "stretched" to match the array's shape.
+
+-   We'll cover broadcasting in more detail later. For now, just be aware that it exists and is a key reason why NumPy is so flexible.
+:::
+
+## Basic Indexing and Slicing
+
+::: {style="font-size: 0.85em;"}
+-   **Similar to Python Lists:**  One-dimensional NumPy arrays can be indexed and sliced much like Python lists:
+
+```{python}
+#| echo: true
+arr = np.arange(10)
+print(arr[5])      # Access element at index 5
+print(arr[5:8])    # Slice elements from index 5 up to (but not including) 8
+arr[5:8] = 12     # Assign a value to a slice
+print(arr)
+```
+
+-   **Views vs. Copies:**  *Array slices are views on the original array*. This means that modifying a slice *will* modify the original array. This is different from Python lists, where slices create copies.
+
+```{python}
+#| echo: true
+arr_slice = arr[5:8]
+arr_slice[1] = 12345  # Modify the slice
+print(arr)          # Original array is also modified!
+```
+:::
+::: {.callout-warning appearance="simple"}
+If you want a copy of a slice of an ndarray instead of a view, you will need to explicitly copy the array—for example, `arr[5:8].copy()`.
+:::
+
+## Indexing and Slicing: Higher Dimensions
+
+::: {style="font-size: 0.85em;"}
+-   **Two-Dimensional Arrays:**  You can access elements using comma-separated indices:
+
+```{python}
+#| echo: true
+arr2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(arr2d[2])     # Access the third row (index 2)
+print(arr2d[0][2])  # Access element at row 0, column 2 (two ways)
+print(arr2d[0, 2])   # Access element at row 0, column 2
+```
+
+-   **Thinking about Axes:**
+    -   Axis 0: Rows
+    -   Axis 1: Columns
+
+:::
+
+## Indexing elements in a NumPy array.
+
+::: {style="font-size: 0.85em;"}
+
+```{mermaid}
+graph LR
+    subgraph "Axis 0 (Rows)"
+        0 --> 1
+        1 --> 2
+    end
+    subgraph "Axis 1 (Columns)"
+        0 --> 0[0,0]
+        0 --> 1[0,1]
+        0 --> 2[0,2]
+        1 --> 3[1,0]
+        1 --> 4[1,1]
+        1 --> 5[1,2]
+    	2 --> 6[2,0]
+    	2 --> 7[2,1]
+    	2 --> 8[2,2]
+    end
+```
+
+:::
+
+## Indexing and Slicing: Higher Dimensions (Continued)
+
+::: {style="font-size: 0.8em;"}
+-   **Slicing in Multiple Dimensions:**
+
+```{python}
+#| echo: true
+print(arr2d[:2])      # Select the first two rows
+print(arr2d[:2, 1:])   # Select first two rows, columns from index 1 onwards
+```
+
+-   **Mixing Integer Indexing and Slicing:**
+
+```{python}
+#| echo: true
+print(arr2d[1, :2])   # Select second row, first two columns (lower dimensional slice)
+print(arr2d[:2, 2])    # Select first two rows, third column
+```
+
+- **Colon for Entire Axis:**
+
+```{python}
+#| echo: true
+print(arr2d[:, :1])   # Select all rows, but only the first column
+```
+:::
+
+## Two-dimensional array slicing
+
+::: {style="font-size: 0.85em;"}
+| Expression         | Shape     |  Visualization                                                                              |
+|-------------------|-----------|--------------------------------------------------------------------------------------------|
+| `arr[:2,1:]`      |   (2,2)       |  ```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+import numpy as np
+
+arr = np.zeros((3,3))
+arr[:2,1:] = 1
+plt.imshow(arr, cmap='gray_r')
+plt.xticks([])
+plt.yticks([])
+plt.show()
+
+```    |
+| `arr[2]`          |    (3,)      |  ```{python}
+#| echo: false
+arr = np.zeros((3,3))
+arr[2,:] = 1
+plt.imshow(arr, cmap='gray_r')
+plt.xticks([])
+plt.yticks([])
+plt.show()
+```    |
+| `arr[2,:]`          |    (3,)      |   ```{python}
+#| echo: false
+arr = np.zeros((3,3))
+arr[2,:] = 1
+plt.imshow(arr, cmap='gray_r')
+plt.xticks([])
+plt.yticks([])
+plt.show()
+```   |
+| `arr[2:,:]`          |     (1,3)     |   ```{python}
+#| echo: false
+arr = np.zeros((3,3))
+arr[2:,:] = 1
+plt.imshow(arr, cmap='gray_r')
+plt.xticks([])
+plt.yticks([])
+plt.show()
+```   |
+| `arr[:, :2]`          |   (3,2)       |   ```{python}
+#| echo: false
+arr = np.zeros((3,3))
+arr[:,:2] = 1
+plt.imshow(arr, cmap='gray_r')
+plt.xticks([])
+plt.yticks([])
+plt.show()
+```   |
+| `arr[1, :2]`          |     (2,)     |   ```{python}
+#| echo: false
+arr = np.zeros((3,3))
+arr[1,:2] = 1
+plt.imshow(arr, cmap='gray_r')
+plt.xticks([])
+plt.yticks([])
+plt.show()
+```   |
+| `arr[1:2, :2]`          |  (1,2)        |  ```{python}
+#| echo: false
+arr = np.zeros((3,3))
+arr[1:2,:2] = 1
+plt.imshow(arr, cmap='gray_r')
+plt.xticks([])
+plt.yticks([])
+plt.show()
+```    |
+:::
+
+## Boolean Indexing
+
+::: {style="font-size: 0.8em;"}
+- **Concept:**  Select data based on a Boolean array (an array of `True`/`False` values).  The Boolean array typically has the same shape as the array you're indexing.
+
+```{python}
+#| echo: true
+names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'])
+data = np.array([[4, 7], [0, 2], [-5, 6], [0, 0], [1, 2],
+                 [-12, -4], [3, 4]])
+
+print(names == 'Bob')  # Create a Boolean array
+print(data[names == 'Bob'])  # Select rows where names == 'Bob'
+```
+
+-   **Combining with Slicing/Indexing:**
+
+```{python}
+#| echo: true
+print(data[names == 'Bob', 1:])  # Select rows where names == 'Bob', and columns from index 1
+print(data[names != 'Bob'])     # Select rows where names is NOT 'Bob'
+```
+
+-   **Logical Operators:**
+    -   `~`: Negates a Boolean array (like `not`)
+    -   `&`:  Combines conditions (like `and`)
+    -   `|`:  Combines conditions (like `or`)
+
+```{python}
+#| echo: true
+mask = (names == 'Bob') | (names == 'Will')
+print(data[mask])
+```
+
+::: {.callout-note appearance="simple"}
+The Python keywords and and or do not work with Boolean arrays. Use & (and) and | (or) instead.
+:::
+
+## Fancy Indexing
+
+
+-   **Concept:** Indexing using integer arrays.  Allows you to select specific rows or columns, and even reorder them.
+
+```{python}
+#| echo: true
+arr = np.zeros((8, 4))
+for i in range(8):
+    arr[i] = i
+print(arr)
+print(arr[[4, 3, 0, 6]])  # Select rows 4, 3, 0, and 6, in that order
+```
+
+```{python}
+#| echo: true
+arr = np.arange(32).reshape((8, 4))
+print(arr[[1, 5, 7, 2], [0, 3, 1, 2]]) # Select elements (1, 0), (5, 3), (7, 1), (2, 2)
+```
+
+-   **Selecting a Rectangular Region:**
+
+```{python}
+#| echo: true
+print(arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]])  # Select rows 1, 5, 7, 2, and reorder columns
+```
+
+-   **Important:**  *Fancy indexing, unlike slicing, always copies the data into a new array*.
+
+
+
+## Transposing Arrays and Swapping Axes
+
+::: {style="font-size: 0.85em;"}
+-   **Transposing:**  Rearranging data by switching rows and columns.  Use the `.T` attribute or the `transpose` method.
+
+```{python}
+#| echo: true
+arr = np.arange(15).reshape((3, 5))
+print(arr)
+print(arr.T)  # Transpose the array
+```
+
+-   **Matrix Multiplication:**  Use `np.dot` or the `@` operator for matrix multiplication.
+
+```{python}
+#| echo: true
+arr = np.array([[0, 1, 0], [1, 2, -2], [6, 3, 2], [-1, 0, -1], [1, 0, 1]])
+print(np.dot(arr.T, arr))  # Matrix multiplication
+print(arr.T @ arr)
+```
+
+-   **Swapping Axes:**  The `swapaxes` method takes a pair of axis numbers and switches the indicated axes.
+
+```{python}
+#| echo: true
+print(arr.swapaxes(0, 1)) # swap axis 0 and axis 1
+```
+:::
+::: {.callout-note appearance="simple"}
+Transposing and `swapaxes` return *views* on the underlying data without making a copy.
+:::
+
+## Pseudorandom Number Generation
+
+::: {style="font-size: 0.85em;"}
+-   **`numpy.random` Module:**  Provides functions to generate arrays of random numbers from various distributions.
+
+-   **`default_rng`:**  The recommended way to create a random number generator.
+
+```{python}
+#| echo: true
+rng = np.random.default_rng(seed=12345)  # Create a generator with a seed
+data = rng.standard_normal((2, 3))       # Generate a 2x3 array of standard normal values
+print(data)
+```
+
+-   **Why use a seed?**  Setting a seed ensures reproducibility.  You'll get the same random numbers each time you run the code with the same seed.
+
+-   **Generator Isolation:** The generator object `rng` is isolated from other code that might also use the `numpy.random` module.
+
+-   **Performance:** `numpy.random` is *much* faster than Python's built-in `random` module for generating large arrays.
+:::
+
+## Common `numpy.random` Functions
+
+::: {style="font-size: 0.75em;"}
+| Method             | Description                                                                  |
+|----------------------|------------------------------------------------------------------------------|
+| `permutation`      | Returns a random permutation of a sequence, or a permuted range.               |
+| `shuffle`          | Randomly permutes a sequence in place.                                         |
+| `uniform`          | Draws samples from a uniform distribution.                                   |
+| `integers`       | Draws random integers from a given low-to-high range.                      |
+| `standard_normal`  | Draws samples from a standard normal distribution (mean 0, standard deviation 1). |
+| `binomial`         | Draws samples from a binomial distribution.                                  |
+| `normal`           | Draws samples from a normal (Gaussian) distribution.                           |
+| `beta`             | Draws samples from a Beta distribution.                                        |
+| `chisquare`        | Draws samples from a chi-square distribution.                                 |
+| `gamma`            | Draws samples from a gamma distribution.                                      |
+| `uniform`          | Draws samples from a uniform [0, 1) distribution.                              |
+:::
+
+## Universal Functions (ufuncs)
+
+::: {style="font-size: 0.85em;"}
+- **What are ufuncs?**  Functions that perform element-wise operations on ndarrays. They are *fast* vectorized wrappers for simple functions.
+
+- **Unary ufuncs:**  Take a single array as input.
+
+```{python}
+#| echo: true
+arr = np.arange(10)
+print(np.sqrt(arr))    # Square root of each element
+print(np.exp(arr))     # Exponential of each element
+```
+
+- **Binary ufuncs:** Take two arrays as input.
+
+```{python}
+#| echo: true
+x = rng.standard_normal(8)
+y = rng.standard_normal(8)
+print(np.maximum(x, y))  # Element-wise maximum
+```
+
+- **ufuncs that return multiple arrays:**
+
+```{python}
+#| echo: true
+arr = rng.standard_normal(7) * 5
+remainder, whole_part = np.modf(arr)  # Returns fractional and integral parts
+print(remainder)
+print(whole_part)
+```
+:::
+
+## Some Unary Universal Functions
+
+::: {style="font-size: 0.7em;"}
+| Function        | Description                                                                                   |
+|-----------------|-----------------------------------------------------------------------------------------------|
+| `abs`, `fabs`   | Computes the absolute value element-wise.  `fabs` is faster for non-complex data.             |
+| `sqrt`          | Computes the square root of each element (equivalent to `arr ** 0.5`).                        |
+| `square`        | Computes the square of each element (equivalent to `arr ** 2`).                              |
+| `exp`           | Computes the exponent *e*x of each element.                                                   |
+| `log`, `log10`, `log2`, `log1p` | Natural logarithm (base *e*), log base 10, log base 2, and log(1 + x), respectively.        |
+| `sign`          | Computes the sign of each element: 1 (positive), 0 (zero), or -1 (negative).                   |
+| `ceil`          | Computes the ceiling of each element (smallest integer greater than or equal to that number). |
+| `floor`         | Computes the floor of each element (largest integer less than or equal to each element).    |
+| `rint`          | Rounds elements to the nearest integer, preserving the dtype.                                 |
+| `modf`          | Returns fractional and integral parts of array as separate arrays.                           |
+| `isnan`         | Returns a Boolean array indicating whether each value is NaN (Not a Number).                  |
+| `isfinite`, `isinf` | Returns a Boolean array indicating whether each element is finite or infinite, respectively.  |
+| `cos`, `cosh`, `sin`, `sinh`, `tan`, `tanh` | Regular and hyperbolic trigonometric functions.                                         |
+| `arccos`, `arccosh`, `arcsin`, `arcsinh`, `arctan`, `arctanh` | Inverse trigonometric functions.                     |
+| `logical_not`   | Computes the truth value of `not x` element-wise (equivalent to `~arr`).                      |
+:::
+
+## Some Binary Universal Functions
+
+::: {style="font-size: 0.7em;"}
+| Function            | Description                                                                                                |
+|----------------------|------------------------------------------------------------------------------------------------------------|
+| `add`                | Adds corresponding elements in arrays.                                                                        |
+| `subtract`           | Subtracts elements in second array from first array.                                                           |
+| `multiply`           | Multiplies array elements.                                                                                  |
+| `divide`, `floor_divide` | Divides or floor divides (truncating the remainder).                                                  |
+| `power`              | Raises elements in first array to powers indicated in second array.                                           |
+| `maximum`, `fmax`     | Element-wise maximum. `fmax` ignores NaN.                                                                  |
+| `minimum`, `fmin`     | Element-wise minimum. `fmin` ignores NaN.                                                                  |
+| `mod`                | Element-wise modulus (remainder of division).                                                                |
+| `copysign`           | Copies the sign of values in second argument to values in first argument.                                  |
+| `greater`, `greater_equal`, `less`, `less_equal`, `equal`, `not_equal` | Performs element-wise comparison, yielding a Boolean array.  |
+| `logical_and`, `logical_or`, `logical_xor` | Computes element-wise truth value of logical operations.                                                  |
+:::
+
+## Array-Oriented Programming: Example
+
+::: {style="font-size: 0.8em;"}
+Let's compute the function √(x^2 + y^2) across a grid of values:
+
+```{python}
+#| echo: true
+points = np.arange(-5, 5, 0.01)  # 1000 equally spaced points
+xs, ys = np.meshgrid(points, points)  # Create coordinate matrices
+z = np.sqrt(xs ** 2 + ys ** 2)      # Compute the function
+```
+
+Now, let's visualize the result using Matplotlib:
+
+```{python}
+#| echo: true
+#| output-location: slide
+import matplotlib.pyplot as plt
+plt.imshow(z, cmap=plt.cm.gray, extent=[-5, 5, -5, 5])
+plt.colorbar()
+plt.title("Image plot of $\sqrt{x^2 + y^2}$ for a grid of values")
+# plt.close('all')
+plt.show()
+```
+This example demonstrates how concise and efficient array-oriented programming can be.
+:::
+
+## Expressing Conditional Logic: `np.where`
+
+::: {style="font-size: 0.85em;"}
+-   **`np.where`:** A vectorized version of the ternary expression `x if condition else y`.
+
+```{python}
+#| echo: true
+xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
+yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
+cond = np.array([True, False, True, True, False])
+
+result = np.where(cond, xarr, yarr)  # Select from xarr if cond is True, otherwise yarr
+print(result)
+```
+
+-   **Example:**  Replace positive values in an array with 2, and negative values with -2:
+
+```{python}
+#| echo: true
+arr = rng.standard_normal((4, 4))
+result = np.where(arr > 0, 2, -2)
+print(result)
+```
+:::
+
+## Mathematical and Statistical Methods
+
+::: {style="font-size: 0.85em;"}
+NumPy provides a set of methods for computing statistics on arrays:
+
+```{python}
+#| echo: true
+arr = rng.standard_normal((5, 4))
+print(arr.mean())       # Mean of all elements
+print(np.mean(arr))    # Equivalent to arr.mean()
+print(arr.sum())        # Sum of all elements
+```
+
+-   **Axis Argument:**  Many methods take an optional `axis` argument to compute the statistic along a specific axis:
+
+```{python}
+#| echo: true
+print(arr.mean(axis=1))  # Mean across columns (for each row)
+print(arr.sum(axis=0))   # Sum down rows (for each column)
+```
+
+-   **`cumsum` and `cumprod`:**  Compute cumulative sums and products:
+
+```{python}
+#| echo: true
+arr = np.array([0, 1, 2, 3, 4, 5, 6, 7])
+print(arr.cumsum())  # Cumulative sum
+```
+:::
+
+## Basic Array Statistical Methods
+
+::: {style="font-size: 0.8em;"}
+| Method             | Description                                                                               |
+|----------------------|-------------------------------------------------------------------------------------------|
+| `sum`                | Sum of all the elements in the array or along an axis; zero-length arrays have sum 0.    |
+| `mean`               | Arithmetic mean; invalid (returns NaN) on zero-length arrays.                           |
+| `std`, `var`         | Standard deviation and variance, respectively.                                            |
+| `min`,`max`          | Minimum and maximum.                                                                      |
+| `argmin`, `argmax` | Indices of minimum and maximum elements, respectively.                                   |
+| `cumsum`             | Cumulative sum of elements starting from 0.                                               |
+| `cumprod`            | Cumulative product of elements starting from 1.                                             |
+:::
+
+## Methods for Boolean Arrays
+
+::: {style="font-size: 0.9em;"}
+-   **`sum` with Booleans:**  `True` values are treated as 1, `False` as 0.  Useful for counting `True` values.
+
+```{python}
+#| echo: true
+arr = rng.standard_normal(100)
+print((arr > 0).sum())  # Count positive values
+```
+
+-   **`any` and `all`:**
+    -   `any`:  Checks if *at least one* value in a Boolean array is `True`.
+    -   `all`:  Checks if *all* values in a Boolean array are `True`.
+
+```{python}
+#| echo: true
+bools = np.array([False, False, True, False])
+print(bools.any())  # Is there at least one True?
+print(bools.all())  # Are all values True?
+```
+:::
+
+## Sorting
+
+::: {style="font-size: 0.9em;"}
+-   **`sort` Method:**  Sorts an array *in place*.
+
+```{python}
+#| echo: true
+arr = rng.standard_normal(6)
+arr.sort()  # Sort the array in place
+print(arr)
+```
+
+-   **Sorting Along an Axis:**
+
+```{python}
+#| echo: true
+arr = rng.standard_normal((5, 3))
+arr.sort(axis=0)  # Sort within each column
+print(arr)
+arr.sort(axis=1) # Sort within each row
+print(arr)
+```
+
+- **`np.sort` Function:** Returns a *sorted copy* of an array (does not modify the original).
+:::
+
+## Unique and Other Set Logic
+
+::: {style="font-size: 0.9em;"}
+
+-   **`np.unique`:**  Returns the sorted unique values in an array.
+
+```{python}
+#| echo: true
+names = np.array(['Bob', 'Will', 'Joe', 'Bob', 'Will', 'Joe', 'Joe'])
+print(np.unique(names)) # Get unique names
+```
+
+-   **`np.in1d`:**  Tests membership of values in one array within another.
+
+```{python}
+#| echo: true
+values = np.array([6, 0, 0, 3, 2, 5, 6])
+print(np.in1d(values, [2, 3, 6]))  # Check if each value in 'values' is in [2, 3, 6]
+```
+:::
+
+## Array Set Operations
+
+::: {style="font-size: 0.85em;"}
+| Method         | Description                                                                     |
+|-----------------|---------------------------------------------------------------------------------|
+| `unique(x)`     | Computes the sorted, unique elements in x.                                     |
+| `intersect1d(x, y)` | Computes the sorted, common elements in x and y.                            |
+| `union1d(x, y)`    | Computes the sorted union of elements.                                         |
+| `in1d(x, y)`       | Computes a Boolean array indicating whether each element of x is in y.        |
+| `setdiff1d(x, y)`  | Set difference: elements in x that are not in y.                             |
+| `setxor1d(x, y)`   | Set symmetric differences; elements that are in either of the arrays, but not both. |
+:::
+
+## File Input and Output with Arrays
+
+::: {style="font-size: 0.85em;"}
+
+-   **`np.save` and `np.load`:**  Functions for saving and loading arrays in NumPy's binary format (`.npy`).
+
+```{python}
+#| echo: true
+arr = np.arange(10)
+np.save('some_array', arr)  # Save to 'some_array.npy'
+loaded_arr = np.load('some_array.npy')  # Load from 'some_array.npy'
+print(loaded_arr)
+```
+
+-   **`np.savez`:** Saves multiple arrays into an uncompressed archive (`.npz`).
+
+```{python}
+#| echo: true
+np.savez('array_archive.npz', a=arr, b=arr)  # Save multiple arrays
+arch = np.load('array_archive.npz')        # Load the archive
+print(arch['b'])  # Access arrays by name
+```
+
+-   **`np.savez_compressed`:** Saves multiple arrays into a *compressed* archive.
+:::
+
+## Linear Algebra
+
+::: {style="font-size: 0.9em;"}
+-   **`numpy.linalg` Module:**  Provides functions for linear algebra operations.
+-   **Matrix Multiplication:**
+
+```{python}
+#| echo: true
+x = np.array([[1., 2., 3.], [4., 5., 6.]])
+y = np.array([[6., 23.], [-1, 7], [8, 9]])
+print(x.dot(y))        # Matrix multiplication (method)
+print(np.dot(x, y))    # Matrix multiplication (function)
+print( x @ np.ones(3)) # Matrix multiplication using the @ operator
+```
+
+-   **Inverse and Determinant:**
+
+```{python}
+#| echo: true
+from numpy.linalg import inv, qr
+X = rng.standard_normal((5, 5))
+mat = X.T @ X
+print(inv(mat))   # Inverse of a matrix
+```
+:::
+
+## Commonly Used `numpy.linalg` Functions
+
+::: {style="font-size: 0.7em;"}
+| Function     | Description                                                                                           |
+|--------------|-------------------------------------------------------------------------------------------------------|
+| `diag`       | Returns the diagonal (or off-diagonal) elements of a square matrix as a 1D array, or converts a 1D array to a square matrix. |
+| `dot`        | Matrix multiplication.                                                                              |
+| `trace`      | Computes the sum of the diagonal elements.                                                           |
+| `det`        | Computes the matrix determinant.                                                                     |
+| `eig`        | Computes the eigenvalues and eigenvectors of a square matrix.                                         |
+| `inv`        | Computes the inverse of a square matrix.                                                             |
+| `pinv`       | Computes the Moore-Penrose pseudoinverse of a matrix.                                                |
+| `qr`         | Computes the QR decomposition.                                                                     |
+| `svd`        | Computes the singular value decomposition (SVD).                                                     |
+| `solve`      | Solves the linear system Ax = b for x, where A is a square matrix.                                 |
+| `lstsq`      | Computes the least-squares solution to Ax = b.                                                      |
+:::
+
+## Example: Random Walks
+
+::: {style="font-size: 0.9em;"}
+Let's simulate a simple random walk using NumPy:
+
+```{python}
+#| echo: true
+nsteps = 1000
+rng = np.random.default_rng(seed=12345)
+draws = rng.integers(0, 2, size=nsteps)  # Generate 0s and 1s (coin flips)
+steps = np.where(draws == 0, 1, -1)      # Convert to 1 and -1
+walk = steps.cumsum()                    # Cumulative sum (the walk)
+```
+First 100 steps of a simple random walk:
+```{python}
+#| echo: true
+#| output-location: slide
+import matplotlib.pyplot as plt
+plt.plot(walk[:100])
+plt.show()
+```
+
+:::
+
+## Random Walks: Analysis
+
+::: {style="font-size: 0.85em;"}
+
+We can analyze the random walk:
+
+```{python}
+#| echo: true
+print(walk.min())  # Minimum value
+print(walk.max())  # Maximum value
+```
+
+- **First Crossing Time:**  The step at which the walk reaches a particular value.
+
+```{python}
+#| echo: true
+print((np.abs(walk) >= 10).argmax())  # Find the first step where the absolute value is >= 10
+```
+:::
+::: {.callout-note appearance="simple"}
+using `argmax` here is not always efficient because it always makes a full scan of the array. In this special case, once a `True` is observed we know it to be the maximum value.
+:::
+
+## Simulating Many Random Walks at Once
+
+::: {style="font-size: 0.85em;"}
+
+We can efficiently simulate many random walks simultaneously:
+
+```{python}
+#| echo: true
+nwalks = 5000
+nsteps = 1000
+draws = rng.integers(0, 2, size=(nwalks, nsteps))  # Generate draws for all walks
+steps = np.where(draws > 0, 1, -1)
+walks = steps.cumsum(axis=1)                     # Cumulative sum for each walk
+```
+Then, for example, calculate the average minimum crossing time:
+```{python}
+#| echo: true
+hits30 = (np.abs(walks) >= 30).any(axis=1)
+crossing_times = (np.abs(walks[hits30]) >= 30).argmax(axis=1)
+print(crossing_times.mean())
+```
+:::
+::: {.callout-note appearance="simple"}
+this vectorized approach requires creating an array with nwalks * nsteps elements, which may use a large amount of memory for large simulations. If memory is more constrained, then a different approach will be required.
+:::
+
+## Summary
+
+::: {style="font-size: 0.85em;"}
+-   **NumPy's Power:** NumPy provides a powerful foundation for numerical computing in Python, thanks to its efficient `ndarray` and vectorized operations.
+
+-   **Key Concepts:**
+    -   `ndarray`:  Multidimensional array with homogeneous data.
+    -   `dtype`:  Data type of array elements.
+    -   Vectorization:  Performing operations on entire arrays without loops.
+    -   Broadcasting:  Arithmetic operations on arrays of different shapes.
+    -   Indexing and Slicing:  Accessing and modifying array elements and subarrays.
+    -   Fancy Indexing:  Indexing with integer arrays.
+    -   Transposing: Rearranging data.
+    -   ufuncs:  Fast element-wise functions.
+    -   `numpy.random`:  Generating arrays of random numbers.
+    -  Linear Algebra
+
+-   **Efficiency:** NumPy is designed for performance, especially with large datasets.
+:::
+
+## Thoughts and Discussion 🤔
+
+::: {style="font-size: 0.85em;"}
+-   How does the concept of vectorization in NumPy compare to how you might perform similar operations in other programming languages you know?
+
+-   Can you think of specific data analysis tasks where NumPy's array-oriented approach would be significantly more efficient than using Python lists and loops?
+
+-   What are the advantages and potential disadvantages of NumPy array slices being *views* rather than copies? When might you need to explicitly create a copy?
+
+-   Consider the `np.where` function.  How could you use it to implement more complex conditional logic than the simple examples we saw?
+
+-   Why is it important to understand NumPy's data types (`dtypes`)?  How can they impact performance and memory usage?
+
+-   Discuss scenarios where you might use NumPy's linear algebra functions (e.g., `dot`, `inv`, `eig`).
+:::
+

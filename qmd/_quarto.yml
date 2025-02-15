@@ -1,0 +1,27 @@
+lang: zh
+subtitle: "教材补充解释与说明"
+title-slide-attributes:
+    data-background-image: world_cn.png
+    data-background-size: contain
+    data-background-opacity: "0.5"
+author: "邱飞"
+
+format:
+  revealjs:
+    slide-level: 3
+    slide-number: true
+    show-slide-number: all
+    fig-align: center
+    #smaller: true
+    theme: serif
+    logo: zwu_logo.png
+    embed-resources: true
+    footer: "邱飞 💌 hfutqiufei@163.com"
+    scrollable: true
+    css: my.css
+
+
+execute: 
+  eval: true
+  echo: false
+  warning: false 
