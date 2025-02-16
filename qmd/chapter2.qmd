@@ -1,0 +1,611 @@
+---
+title: "数据分析理论与Python实战 🧐"
+subtitle: "第二章：Python —— 从了解 Python 开始 🚀"
+---
+
+
+
+## 本章概述 📚
+
+::: {layout-ncol=2}
+- 为什么要学习Python？🤔
+- Python 的基本概念和应用 💡
+- 如何安装和配置 Python 环境 ⚙️
+- 重要的 Python 库介绍 📦
+- Jupyter Notebook 的使用 📝
+
+![数据分析理论与Python实战](images/image1.png){width=80%}
+:::
+
+## 为什么选择 Python？🐍
+
+::: {layout-ncol=2}
+- **易学易用** 👍: 语法简洁清晰，就像读英语一样自然，非常适合编程初学者入门。
+
+- **应用广泛** 🌍:
+    -   **数据分析** 📊: 处理、清洗、分析各种数据，挖掘有价值的信息。
+    -   **机器学习** 🤖: 构建智能模型，预测未来趋势，实现自动化决策。
+    -   **Web 开发** 🌐: 搭建网站、开发 Web 应用，提供在线服务。
+    -   **自动化脚本** ⚙️: 自动执行重复性任务，提高工作效率。
+    -   **科学计算** 🔬: 进行复杂的数学运算、模拟实验等。
+    -   **更多领域...**
+
+- **社区强大** 💪:
+    -   拥有庞大而活跃的开发者社区，提供丰富的库、工具和技术支持。
+    -   遇到问题时，可以方便地找到解决方案或寻求帮助。
+
+- **需求量大** 💼:
+    -   Python 是目前最热门的编程语言之一，在各行各业都有广泛的应用。
+    -   掌握 Python 可以为你带来更多的职业发展机会。
+
+::: {.callout-note}
+Python 是一种**解释型**、**面向对象**、**动态数据类型**的高级程序设计语言。
+
+- **解释型语言**：代码在运行时由解释器逐行翻译执行，无需事先编译。
+- **面向对象**：支持面向对象编程范式，可以将数据和操作封装成对象，提高代码复用性和可维护性。
+- **动态数据类型**：变量的类型在运行时确定，无需显式声明。
+:::
+
+![image](images/image1.png)
+:::
+
+## Python 发展史 📜
+
+::: {layout-ncol=2}
+![Python 发展史](images/image3.png)
+
+-   **1989 年圣诞节** 🎄: 荷兰数学家、计算机学家 Guido van Rossum 为了打发时间，开始开发 Python。
+    -   Python 的名字来源于他喜欢的一个马戏团 Monty Python's Flying Circus。
+-   **1991 年** 🎉: Python 第一个公开发行版问世，标志着 Python 正式诞生。
+-   **2000 年 10 月** 2️⃣: Python 2.0 版本发行。
+    -   添加了许多重要的新特性，例如**垃圾回收机制**，解决了内存管理问题。
+    -   支持 **Unicode**，可以更好地处理多语言文本。
+-   **2008 年 12 月** 3️⃣: Python 3.0 版本发行。
+    -   对语言进行了重大改进，去除了一些冗余和过时的特性，使 Python 更加简洁、规范。
+    -   **注意**：Python 3 与 Python 2 不完全兼容，一些旧的 Python 2 代码可能无法在 Python 3 中运行。
+
+::: {.callout-tip}
+#### 💡 什么是 Unicode？
+
+Unicode 是一种字符编码标准，它为世界上几乎所有的字符和符号分配了一个唯一的数字代码（码点），以便计算机能够统一处理和显示不同语言的文本。
+
+**举例**：
+
+-   字母 "A" 的 Unicode 码点是 U+0041。
+-   汉字 "中" 的 Unicode 码点是 U+4E2D。
+-   笑脸符号 "😊" 的 Unicode 码点是 U+1F60A。
+:::
+:::
+
+## Python 版本进化 🔄
+
+![Python版本进化过程](images/image4.png)
+
+::: {.callout-tip}
+#### 💡 垃圾回收机制
+
+垃圾回收 (Garbage Collection, GC) 是一种自动内存管理机制。当程序不再需要某些内存块（对象）时，垃圾回收器会自动检测并释放这些内存，避免内存泄漏，提高程序运行效率。
+
+**工作原理**：
+
+1.  **标记**：垃圾回收器会定期扫描内存中的所有对象，标记哪些对象仍然被程序使用（可达对象），哪些对象不再被使用（垃圾对象）。
+2.  **清除**：垃圾回收器会释放所有被标记为垃圾对象的内存空间，将这些空间重新用于分配新的对象。
+
+**好处**：
+
+-   简化了程序员的内存管理工作，无需手动释放内存。
+-   减少了内存泄漏的风险，提高了程序的稳定性。
+:::
+
+## Python 及相关包的安装 🛠️
+
+::: {layout-ncol=2}
+- Python 的安装
+    -   **Windows 环境** 💻
+        -   访问 Python 官网：[https://www.python.org/](https://www.python.org/)
+        -   下载适用于 Windows 的 Python 安装程序（通常是 `.exe` 文件）。
+        -   运行安装程序，按照提示进行安装。
+            -   **注意**：在安装过程中，务必勾选 "Add Python to PATH" 选项，这样可以在命令行中直接运行 Python。
+        -   安装完成后，打开命令提示符（CMD）或 PowerShell，输入 `python --version`，如果看到 Python 版本号，说明安装成功。
+
+    -   **Mac 环境** 🍎
+        -   方法一：与 Windows 类似，从 Python 官网下载安装程序进行安装。
+        -   方法二：使用 Homebrew（macOS 上的软件包管理器）安装。
+            -   **Homebrew 简介**：Homebrew 可以让你方便地在 macOS 上安装、更新和管理各种软件。
+
+::: {.callout-tip}
+#### 💡 如何使用 Homebrew？🍺
+
+1.  **安装 Homebrew**：
+    -   打开终端（Terminal）应用程序。
+    -   复制并粘贴以下命令到终端，然后按回车键执行：
+
+    ```{bash}
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+    -   按照屏幕上的提示完成安装过程。
+
+2.  **使用 Homebrew 安装 Python**：
+    -   安装完 Homebrew 后，在终端中输入以下命令：
+
+    ```{bash}
+    brew install python
+    ```
+
+    -   Homebrew 会自动下载并安装最新版本的 Python。
+
+3.  **验证安装**：
+    -   安装完成后，输入 `python3 --version` 或 `python --version`，如果看到 Python 版本号，说明安装成功。
+:::
+
+![image](images/image5.png)
+:::
+
+## 相关包的安装 📦
+
+-   **使用 `pip` 进行安装**
+    -   `pip` 是 Python 的包管理工具，它就像一个应用商店，可以让你轻松地安装、卸载和管理各种 Python 包（库）。
+    -   **常用命令**：
+        -   `pip install <package_name>`: 安装指定的包。例如：`pip install pandas`。
+        -   `pip install <package_name>==<version>`: 安装指定版本的包。例如：`pip install pandas==1.5.0`
+        -   `pip uninstall <package_name>`: 卸载指定的包。
+        -   `pip list`: 列出已安装的所有包。
+        -   `pip show <package_name>`: 显示指定包的详细信息。
+        -   `pip install --upgrade <package_name>`: 升级包到最新的版本。
+    -   **更换 pip 源（可选）**：
+        -   由于网络原因，有时从默认的 PyPI 源下载包可能会很慢。
+        -   可以更换为国内的镜像源，提高下载速度。
+        -   常用的国内镜像源：
+            -   清华大学：`https://pypi.tuna.tsinghua.edu.cn/simple`
+            -   阿里云：`https://mirrors.aliyun.com/pypi/simple/`
+            -   豆瓣：`https://pypi.douban.com/simple/`
+        -   **临时更换**：在 `pip install` 命令后加上 `-i <镜像源地址>`。例如：`pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple`
+        -   **永久更换**：
+            -   **Windows**: 在 `%APPDATA%` 目录下创建 `pip` 文件夹，然后在 `pip` 文件夹中创建 `pip.ini` 文件，写入以下内容：
+            ```ini
+            [global]
+            index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+            ```
+            -   **Linux/macOS**: 在 `~/.pip/` 目录下创建 `pip.conf` 文件（如果目录不存在，则创建），写入与上面相同的内容。
+
+-   **常用数据分析包** 
+    -   Pandas: 用于数据处理和分析的强大工具。
+    -   Scikit-learn: 包含各种机器学习算法和模型的库。
+    -   Matplotlib: 用于绘制各种图表的库。
+
+::: {.callout-tip}
+#### 💡如何安装Pandas，Scikit-learn，Matplotlib
+
+打开CMD或者Powershell这样的终端，在终端中输入：
+
+```{bash}
+pip install pandas scikit-learn matplotlib -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+等待安装完毕即可。这里使用了清华的镜像源加速下载。
+:::
+
+## 使用科学计算发行版 🧪
+
+-   **科学计算发行版 Python**
+    -   通常包含一个标准版本的 Python，以及预装的多个科学计算、数据分析相关的包。
+    -   可以省去手动安装各个包的麻烦，一次安装，即可拥有完整的科学计算环境。
+    -   非常适合初学者和需要快速搭建环境的用户。
+
+-   **流行的科学计算发行版 Python**
+    -   **Anaconda** 🐍
+        -   [Anaconda官网](https://www.anaconda.com/)
+        -   功能强大，包含 Python 和数百个常用的科学计算、数据分析库。
+        -   提供 Conda 包管理工具。
+            -   **Conda 简介**：Conda 不仅可以管理 Python 包，还可以创建和管理多个独立的 Python 环境。
+            -   **虚拟环境**：虚拟环境可以隔离不同项目的依赖，避免包之间的冲突。例如，项目 A 可能需要旧版本的 Pandas，而项目 B 需要新版本，使用虚拟环境可以将它们隔离开来。
+        -   Anaconda Navigator：图形化界面，方便管理环境和包。
+    -   **WinPython** 🪟
+        -   [WinPython官网](https://winpython.github.io/)
+        -   专门为 Windows 系统设计的发行版。
+        -   便携性好，可以放在 U 盘中随身携带。
+
+## Python 基础知识：求斐波那契数列 🔢
+
+::: {layout-nrow=2}
+
+```{python}
+#| code-line-numbers: "true"
+# Fibonacci sequence
+
+"""
+斐波那契数列
+输入：项数n
+输出：前n项
+"""
+
+import os  # 导入 os 模块
+
+def fibo(num):                    # 定义名为 fibo 的函数，参数为 num
+    numbers = [1, 1]             # 初始化列表，包含前两项
+    for i in range(num - 2):     # 循环计算剩余的项
+        numbers.append(numbers[i] + numbers[i + 1])  # 计算新项并添加到列表
+    return numbers                # 返回计算结果
+
+answer = fibo(10)              # 调用 fibo 函数，计算前 10 项
+print(answer)                   # 打印结果
+
+if not os.path.exists('result'):  # 检查名为 'result' 的目录是否存在
+    os.mkdir('result')            # 如果不存在，则创建该目录
+
+file = open('result/fibo.txt', 'w')  # 以写入模式打开文件 'result/fibo.txt'
+for num in answer:                # 遍历计算结果
+    file.write(str(num) + ' ')     # 将每个数字转换为字符串并写入文件，用空格分隔
+file.close()                      # 关闭文件
+```
+
+![image](images/image8.png)
+:::
+
+::: {.callout-tip}
+#### 💡 代码详细解释
+
+1.  **注释**:
+    -   `#` 开头的是单行注释，用于解释单行代码的作用。
+    -   `"""` 包围的是多行注释（文档字符串），用于描述函数的功能、输入和输出。
+
+2.  **引入包**:
+    -   `import os` 引入了 `os` 模块，该模块提供了与操作系统交互的功能，如文件和目录操作。
+
+3.  **函数定义**:
+    -   `def fibo(num):` 定义了一个名为 `fibo` 的函数。
+    -   `def` 是定义函数的关键字。
+    -   `fibo` 是函数名。
+    -   `(num)` 表示函数接受一个参数 `num`，代表要计算的斐波那契数列的项数。
+
+4.  **函数体**:
+    -   缩进的代码块是函数体，执行具体的操作。
+    -   `numbers = [1, 1]`：初始化一个列表 `numbers`，包含斐波那契数列的前两项 1 和 1。
+    -   `for i in range(num - 2):`：循环 `num - 2` 次，因为前两项已经有了。
+        -   `range(num - 2)` 生成一个从 0 到 `num - 3` 的整数序列。
+        -   `for` 循环用于遍历这个序列，每次迭代将当前的整数赋值给变量 `i`。
+    -   `numbers.append(numbers[i] + numbers[i + 1])`：计算新的斐波那契数，并将其添加到 `numbers` 列表的末尾。
+        -   `numbers[i]` 表示列表 `numbers` 中索引为 `i` 的元素（第 `i+1` 个元素）。
+        -   `numbers[i] + numbers[i + 1]` 计算当前项和下一项的和。
+        -   `append()` 是列表的方法，用于在列表末尾添加元素。
+    -   `return numbers`：返回计算好的斐波那契数列列表。
+
+5.  **函数调用**:
+    -   `answer = fibo(10)` 调用了 `fibo` 函数，传入参数 `10`，表示计算前 10 项斐波那契数。
+    -   `fibo(10)` 的返回值（一个列表）被赋值给变量 `answer`。
+
+6.  **打印结果**:
+    -   `print(answer)` 将变量 `answer` 的值（斐波那契数列列表）打印到控制台。
+
+7.  **条件语句**:
+    -   `if not os.path.exists('result'):`：判断名为 `result` 的目录是否存在。
+        -   `os.path.exists()` 是 `os` 模块中的函数，用于检查文件或目录是否存在。
+        -   `not` 表示取反，如果目录不存在，则条件为真。
+    -   `os.mkdir('result')`：如果 `result` 目录不存在，则创建该目录。
+
+8.  **文件操作**:
+    -   `file = open('result/fibo.txt', 'w')`：以写入模式打开文件 `'result/fibo.txt'`。
+        -   `open()` 函数用于打开文件。
+        -   第一个参数是文件路径。
+        -   第二个参数是打开模式，`'w'` 表示写入模式（如果文件已存在，会覆盖原有内容）。
+        -   `open()` 函数返回一个文件对象，赋值给变量 `file`。
+    -   `for num in answer:`：遍历 `answer` 列表中的每个数字。
+    -   `file.write(str(num) + ' ')`：将当前数字转换为字符串，并在末尾添加一个空格，然后写入文件。
+        -   `str(num)` 将数字 `num` 转换为字符串。
+        -   `+` 用于连接字符串。
+        -   `file.write()` 是文件对象的方法，用于向文件中写入内容。
+    -   `file.close()`：关闭文件。关闭文件可以释放资源，并确保写入的内容被保存到磁盘。
+:::
+
+## Python 基础知识：缩进 📏
+
+-   **缩进的重要性**
+    -   在 Python 中，缩进不仅仅是为了美观，它决定了代码的**结构**和**逻辑**。
+    -   Python 使用缩进来区分代码块（例如函数体、循环体、条件语句的分支等），而不是像 C++、Java 等语言那样使用花括号 `{}`。
+    -   同一级别的代码块必须有相同的缩进量。
+    -   通常使用 **4 个空格**作为标准缩进（强烈建议）。
+
+-   **不同类型的语句块**
+    -   **分支结构**（`if`, `elif`, `else`）：
+        -   `if` 语句后面的代码块需要缩进。
+        -   `elif` 和 `else` 语句后面的代码块也需要缩进，并且与对应的 `if` 语句对齐。
+
+    ```{python}
+    #| eval: false
+    if condition1:
+        # 如果 condition1 为真，执行这里的代码
+        statement1
+    elif condition2:
+        # 如果 condition2 为真，执行这里的代码
+        statement2
+    else:
+        # 如果以上条件都不为真，执行这里的代码
+        statement3
+    ```
+
+    -   **循环结构** (`for`, `while`):
+        -   循环体内的代码需要缩进。
+
+    ```{python}
+    #| eval: false
+    for item in iterable:
+        # 对于 iterable 中的每个元素，执行这里的代码
+        statement1
+    
+    while condition:
+        # 当 condition 为真时，重复执行这里的代码
+        statement2
+    ```
+
+    -   **函数体** (`def`):
+        -   函数体内的代码需要缩进。
+
+    ```{python}
+    #| eval: false
+    def function_name(parameters):
+        # 函数体，执行函数的具体操作
+        statement1
+        statement2
+        return value  # 可选的返回值
+    ```
+
+![image](images/image9.png)
+
+## Python 基础知识：模块化 🧩
+
+-   **模块化的系统**
+    -   Python 是一种高度模块化的语言。
+    -   可以将代码组织成多个模块（`.py` 文件），每个模块包含相关的函数、类和变量。
+    -   **模块化的好处**：
+        -   **代码复用**：可以将常用的功能封装成模块，在不同的程序中重复使用。
+        -   **可维护性**：将代码分解成 ছোট ছোট অংশ, 易于理解、修改和调试。
+        -   **命名空间**：不同的模块可以有相同的变量名或函数名，避免命名冲突。
+    -   Python 拥有庞大而丰富的**标准库**和**第三方库**，提供了各种各样的功能，无需从头编写所有代码。
+
+-   **标准库** (Standard Library)
+    -   Python 自带的一组模块，提供了各种常用的功能。
+    -   无需额外安装，可以直接使用。
+    -   **常用标准库模块**：
+        -   `os`：提供与操作系统交互的功能，如文件和目录操作、进程管理等。
+        -   `time`：提供与时间相关的函数，如获取当前时间、时间格式化、计时等。
+        -   `datetime`：提供更高级的日期和时间处理功能。
+        -   `sys`：提供对 Python 解释器相关功能的访问，如命令行参数、退出程序等。
+        -   `math`：提供数学函数，如三角函数、指数函数、对数函数、常数 π 和 e 等。
+        -   `random`：提供生成随机数的函数。
+        -   `re`：提供正则表达式操作，用于文本匹配和搜索。
+        -   `json`：提供 JSON 数据的编码和解码功能。
+        -   `urllib`：提供用于访问 Web 资源的函数。
+
+-   **第三方库** (Third-party Libraries)
+    -   由 Python 社区开发的各种库，提供了标准库之外的更丰富的功能。
+    -   通常需要使用 `pip` 安装后才能使用。
+    -   **常用第三方库**：
+        -   `scipy`：科学计算库，包含许多数学、科学和工程计算的函数。
+        -   `scikit-learn`：机器学习库，提供各种机器学习算法和工具。
+
+## 重要的 Python 库：Pandas 🐼
+
+-   **Pandas**
+    -   构建在 NumPy 之上的高性能数据分析库。
+    -   提供了两种主要的数据结构：
+        -   **Series**：一维带标签数组，类似于带索引的列表。
+        -   **DataFrame**：二维表格型数据结构，类似于 Excel 表格或 SQL 表。
+    -   可以方便地进行数据清洗、转换、分析和可视化。
+    -   支持各种数据操作，如：
+        -   **数据读取和写入**：可以读取和写入各种格式的数据，如 CSV、Excel、JSON、SQL 数据库等。
+        -   **数据清洗**：处理缺失值、重复值、异常值等。
+        -   **数据转换**：修改数据类型、重塑数据结构、数据透视等。
+        -   **数据选择和过滤**：根据条件选择数据、筛选数据。
+        -   **数据分组和聚合**：按列分组，计算分组统计量。
+        -   **数据合并和连接**：将多个数据集按指定条件合并。
+        -   **排序、分组、归并**
+        -   **统计计算**：求和、求均值、求中位数、求标准差、协方差矩阵计算等。
+
+![Pandas Logo](images/pandas_logo.png){width=50%}
+
+## 重要的 Python 库：Scikit-learn 🤖
+
+-   **Scikit-learn**
+    -   构建在 NumPy、SciPy 和 Matplotlib 上的机器学习库。
+    -   提供了各种经典和常用的机器学习算法和模型，涵盖了监督学习、无监督学习、模型选择、数据预处理等方面。
+    -   **主要功能**：
+        -   **分类** (Classification)：预测数据的类别标签。常用算法有：
+            -   支持向量机 (SVM)
+            -   最近邻 (k-NN)
+            -   朴素贝叶斯 (Naive Bayes)
+            -   决策树 (Decision Tree)
+            -   随机森林 (Random Forest)
+            -   逻辑回归 (Logistic Regression)
+        -   **回归** (Regression)：预测连续值的目标变量。常用算法有：
+            -   线性回归 (Linear Regression)
+            -   岭回归 (Ridge Regression)
+            -   Lasso 回归 (Lasso Regression)
+            -   支持向量回归 (SVR)
+        -   **聚类** (Clustering)：将数据划分为不同的簇，使得同一簇内的数据相似度高，不同簇之间的数据相似度低。常用算法有：
+            -   K 均值聚类 (k-means)
+            -   层次聚类 (Hierarchical Clustering)
+            -   DBSCAN
+        -   **降维** (Dimensionality Reduction)：减少数据的特征数量，同时保留重要信息。常用算法有：
+            -   主成分分析 (PCA)
+            -   线性判别分析 (LDA)
+            -   t-SNE
+        -   **模型选择** (Model Selection)：选择最佳的模型和参数。常用方法有：
+            -   交叉验证 (Cross-validation)
+            -   网格搜索 (Grid Search)
+            -   随机搜索 (Randomized Search)
+        -   **预处理** (Preprocessing)：对数据进行预处理，提高模型性能。常用方法有：
+            -   特征缩放 (Feature Scaling)
+            -   特征编码 (Feature Encoding)
+            -   特征选择 (Feature Selection)
+            -   缺失值处理 (Missing Value Imputation)
+    -   Scikit-learn 简单易用，文档齐全，非常适合快速构建和评估机器学习模型。
+
+![Scikit-learn Logo](https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png){width=50%}
+
+## 重要的 Python 库：Matplotlib 📊
+
+-   **Matplotlib**
+    -   Python 中最常用的绘图库，用于创建各种静态、动态、交互式的图表。
+    -   可以绘制各种图形，如：
+        -   **折线图** (Line Plot)：显示数据随时间或其他连续变量的变化趋势。
+        -   **散点图** (Scatter Plot)：显示两个变量之间的关系。
+        -   **直方图** (Histogram)：显示数据分布的频率。
+        -   **条形图** (Bar Chart)：比较不同类别的数据。
+        -   **饼图** (Pie Chart)：显示各部分占总体的比例。
+        -   **箱线图** (Box Plot)：显示数据的分布情况和异常值。
+        -   **等高线图** (Contour Plot)：显示三维数据的等值线。
+        -   **3D 图形**：绘制三维散点图、曲面图等。
+        -   **图像** (Image)：显示图像数据。
+        -   **甚至是动画**
+    -   可以自定义图表的各种属性，如颜色、线型、标记、标题、坐标轴标签、图例等。
+    -   Matplotlib 提供了两种主要的绘图接口：
+        -   **基于 MATLAB 风格的接口**：使用全局函数来创建和修改图表。
+        -   **面向对象的接口**：使用 Figure 和 Axes 对象来创建和控制图表。
+
+![Matplotlib Logo](https://matplotlib.org/_static/logo2_compressed.svg){width=50%}
+
+## 其他重要的 Python 库
+
+-   **NumPy** (Numerical Python):
+    -   Python 科学计算的基础库。
+    -   提供了高性能的多维数组对象 (ndarray)。
+    -   提供了各种数组操作和数学函数，如矩阵运算、线性代数、傅里叶变换等。
+    -   是许多其他科学计算库（如 Pandas、SciPy、Scikit-learn）的基础。
+-   **SciPy** (Scientific Python):
+    -   构建在 NumPy 之上，提供了更多高级的科学计算功能。
+    -   包含许多数学、科学和工程计算中常用的模块，如：
+        -   积分、插值、优化、信号处理、图像处理、统计分析等。
+-   **Scrapy**:
+    -   强大的网络爬虫框架，用于快速构建网络爬虫应用。
+    -   可以自动抓取网页数据、提取结构化信息、存储数据等。
+-   **Beautiful Soup**:
+    -   网页解析库，可以从 HTML 或 XML 文件中提取数据。
+    -   可以方便地解析网页结构、查找特定标签、提取文本内容等。
+    -   常与 Requests 库一起使用，用于爬取网页数据。
+-   **NLTK** (Natural Language Toolkit):
+    -   自然语言处理库，用于文本分析、处理和理解。
+    -   提供了各种自然语言处理工具，如分词、词性标注、句法分析、语义分析、情感分析等。
+-   **Statsmodels**:
+    -   统计学计算库，提供各种统计模型和方法。
+    -   可以进行各种统计分析，如回归分析、时间序列分析、假设检验等。
+-   **Requests**:
+    -   简洁易用的 HTTP 库，用于发送 HTTP 请求，与 Web 服务交互。
+    -   可以方便地发送各种类型的 HTTP 请求（如 GET、POST、PUT、DELETE 等），获取响应数据。
+
+## Jupyter Notebook 📝
+
+-   **Jupyter Notebook**
+    -   交互式的数据科学与科学计算开发环境。
+    -   基于 Web 的 Python 编辑器。
+    -   支持 **Python**、**R**、**Julia**、**Scala** 等在内的超过 40 多种编程语言。
+    -   可以将代码、运行结果、文本、图像、公式、视频等内容整合到一个文档中 (.ipynb 文件)。
+    -   非常适合数据分析、机器学习、科学计算等需要交互式探索和展示结果的场景。
+    -   **主要特点**：
+        -   **交互式编程**：可以逐个单元格执行代码，并立即查看结果。
+        -   **富文本支持**：可以使用 Markdown 语法编写格式丰富的文本，插入标题、列表、链接、图片等。
+        -   **代码和结果并存**：代码和运行结果都保存在同一个文档中，方便查看和分享。
+        -   **可视化支持**：可以直接在 Notebook 中显示图表、图像等可视化内容。
+        -   **可扩展性**：支持各种插件和扩展，可以增强 Notebook 的功能。
+        -   **导出功能**: 可以将notebook导出为多种格式，如python脚本，html，pdf等。
+- **JupyterLab**
+    - Jupyter Notebook的下一代产品，提供更强大的功能和更灵活的界面。
+
+::: {.callout-tip}
+#### 💡 如何启动Jupyter Notebook？
+
+1.  **打开命令行或终端** (Windows: CMD 或 PowerShell; macOS/Linux: Terminal)。
+2.  **导航到你想要保存 Notebook 文件的目录** (可选，但建议这样做)。
+    -   使用 `cd` 命令切换目录。例如：`cd Documents/MyNotebooks`。
+3.  **输入以下命令并按回车键**：
+
+```{bash}
+jupyter notebook
+```
+
+4.  稍等片刻，Jupyter Notebook 会自动在你的默认浏览器中打开。
+5.  在 Jupyter Notebook 界面中，你可以创建新的 Notebook 文件，或者打开已有的文件。
+:::
+
+## Jupyter Notebook 使用示例 📈
+
+::: {layout-ncol=2}
+![Jupyter 使用样例](images/image14.png)
+
+- 这是一个绘制双纽线的例子，展示了如何在 Jupyter Notebook 中结合代码、解释文本和图形来清晰地展示数据分析过程。
+
+::: {.callout-tip}
+#### 💡 代码详细解释
+
+这段代码使用了 `matplotlib` 库在极坐标系中绘制双纽线。
+
+1.  **导入库**：
+    -   `import matplotlib.pyplot as plt`：导入 `matplotlib.pyplot` 模块，并将其重命名为 `plt`。`pyplot` 提供了类似于 MATLAB 的绘图接口。
+    -   `import numpy as np`：导入 `numpy` 库，并将其重命名为 `np`。`numpy` 用于数值计算。
+
+2.  **生成数据**：
+    -   `theta_list = np.arange(0, 2*np.pi, 0.01)`：生成一组角度值，从 0 到 2π（一个完整的圆），步长为 0.01。
+        -   `np.arange()` 是 `numpy` 中的函数，用于生成等差数列。
+        -   `np.pi` 是 `numpy` 中的常量，表示圆周率 π。
+    -   `r = [2*np.cos(2*theta) for theta in theta_list]`：根据双纽线的极坐标方程 $r = a\sqrt{\cos(2\theta)}$ 计算对应的半径值。这里假设 $a = \sqrt{2}$。
+        -   这是一个列表推导式，用于根据 `theta_list` 中的每个角度值计算对应的半径值。
+        -   `np.cos()` 是 `numpy` 中的函数，用于计算余弦值。
+
+3.  **创建图表**：
+    -   `axe = plt.subplot(projection='polar')`：创建一个极坐标子图。
+        -   `plt.subplot()` 用于创建子图。
+        -   `projection='polar'` 指定子图的类型为极坐标。
+        -   返回的 `axe` 对象代表这个子图，后续的绘图操作都在 `axe` 上进行。
+
+4.  **绘制曲线**：
+    -   `axe.plot(theta_list, r)`：在极坐标子图中绘制双纽线。
+        -   `axe.plot()` 是 `Axes` 对象的方法，用于绘制曲线。
+        -   第一个参数是角度值列表，第二个参数是对应的半径值列表。
+
+5.  **设置图表属性**：
+    -   `axe.set_rticks([])`：隐藏半径刻度。
+
+6.  **显示图表**：
+    -   `plt.show()`：显示绘制好的图表。
+:::
+:::
+
+## 总结 🎉
+
+-   Python 是一种功能强大、应用广泛的编程语言，非常适合数据分析和机器学习。
+    - 易学易用、社区强大、库丰富。
+-   掌握 Python 的基本语法、常用库和工具，是进行数据分析的基础。
+    - 缩进、模块化、数据类型、控制流等。
+    - Pandas、NumPy、Matplotlib、Scikit-learn 等。
+-   Jupyter Notebook 是一个强大的交互式开发环境，可以帮助你更好地探索和展示数据分析结果。
+    - 交互式编程、富文本、可视化、代码和结果并存。
+-   不断学习和实践，才能更好地掌握 Python 数据分析技能。💪
+
+## 思考与讨论 🤔
+
+-   Python 还有哪些其他的应用领域？
+    -   游戏开发 (Pygame)
+    -   网络编程 (Socket, Twisted)
+    -   图形用户界面 (GUI) 开发 (Tkinter, PyQt, wxPython)
+    -   系统管理
+    -   ...
+-   除了本章介绍的库，你还了解哪些常用的 Python 库？它们有什么作用？
+    -   TensorFlow, PyTorch: 深度学习框架
+    -   Seaborn: 基于 Matplotlib 的高级绘图库
+    -   Bokeh, Plotly: 交互式可视化库
+    -   SQLAlchemy: 数据库 ORM (Object-Relational Mapper)
+    -   Flask, Django: Web 开发框架
+-   如何利用 Jupyter Notebook 提高你的数据分析效率？
+    -   交互式探索数据
+    -   快速原型验证
+    -   编写可重复的分析流程
+    -   制作数据分析报告
+    -   分享和协作
+-   如何进一步学习和提升 Python 数据分析能力？
+    -   阅读官方文档
+    -   学习在线教程 (DataCamp, Coursera, Udemy, edX 等)
+    -   参与开源项目
+    -   参加数据分析竞赛 (Kaggle)
+    -   阅读相关书籍
+    -   多做项目，多实践
+
