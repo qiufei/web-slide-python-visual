@@ -25,9 +25,7 @@ title: "统计学习导论"
 
 ## 教材
 
-教材采用著名的ISL(Introduction to Statistical Learning)
 
-https://www.statlearning.com/
 
 
 
@@ -37,29 +35,19 @@ https://www.statlearning.com/
 
 
 
-<a href="./html/pandas3ed1.html"> 第一章 </a>
+<a href="./html/chapter1.html"> 第一章 </a>
 
-<a href="./html/pandas3ed2.html"> 第二章 </a>
+<a href="./html/chapter2.html"> 第二章 </a>
 
-<a href="./html/pandas3ed3.html"> 第三章 </a>
+<a href="./html/chapter3.html"> 第三章 </a>
 
-<a href="./html/pandas3ed4.html"> 第四章 </a>
+<a href="./html/chapter4.html"> 第四章 </a>
 
-<a href="./html/pandas3ed5.html"> 第五章 </a>
+<a href="./html/chapter5.html"> 第五章 </a>
 
-<a href="./html/pandas3ed6.html"> 第六章 </a>
+<a href="./html/chapter6.html"> 第六章 </a>
 
-<a href="./html/pandas3ed7.html"> 第七章 </a>
+<a href="./html/chapter7.html"> 第七章 </a>
 
-<a href="./html/pandas3ed8.html"> 第八章 </a>
-
-<a href="./html/pandas3ed9.html"> 第九章 </a>
-
-<a href="./html/pandas3ed10.html"> 第十章 </a>
-
-<a href="./html/pandas3ed11.html"> 第十一章 </a>
-
-<a href="./html/pandas3ed12.html"> 第十二章 </a>
-
-<a href="./html/pandas3ed13.html"> 第十三章 </a>
+<a href="./html/chapter8.html"> 第八章 </a>
 

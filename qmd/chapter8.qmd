@@ -1,6 +1,6 @@
 ---
-title: "数据分析理论与Python实战 🚀"
-subtitle: "第八章 Matplotlib——打造交互式图表 ✨"
+title: "信息技术基础 🚀"
+subtitle: "第八章 Matplotlib——绘制图形 ✨"
 ---
 
 ## Matplotlib 简介 🎉
@@ -21,7 +21,7 @@ Matplotlib 是 Python 数据科学生态中一颗璀璨的明星 🌟，它是�
 
 :::
 
-## 为什么要拥抱 Matplotlib？ 🤗
+## 为什么要拥抱 Matplotlib？ 🤗 {.smaller}
 
 ::: columns
 ::: {.column width="50%"}
@@ -32,25 +32,20 @@ Matplotlib 是 Python 数据科学生态中一颗璀璨的明星 🌟，它是�
 
 ::: {.column width="50%"}
 ::: callout-note
-## 数据可视化：化繁为简的艺术 🎨
-
 数据可视化是将抽象的数据以图形或图像的形式呈现出来，让数据更易于理解、分析和沟通。它就像一座桥梁，连接着冰冷的数据和人类的认知，让数据变得生动有趣。
 :::
 
 ::: callout-note
-## Python 数据科学生态系统：群星闪耀 🌟
-
-Python 数据科学生态系统是由一系列用于数据科学的 Python 库和工具组成的大家庭。这些成员各有所长，相互协作，为数据处理、分析、可视化和机器学习提供了强大的支持。
+Python 数据科学生态系统是由一系列用于数据科学的 Python 库和工具组成的大家庭。这些成员各有所长，相互协作，为数据处理、分析、可视化和机器学习提供了强大的支持。其中，Numpy和Pandas是重要的组成部分。
 :::
 :::
 :::
 
 ## Matplotlib vs. MATLAB：一场绘图库的较量 ⚔️
 
-::: {layout-ncol="2"}
 Matplotlib 的绘图接口与 MATLAB 有着异曲同工之妙，这使得 MATLAB 用户可以轻松过渡到 Matplotlib。不过，它们之间也存在一些关键差异：
 
-<br>
+::: {layout-ncol=2}
 
 | 特性       | Matplotlib                                                         | MATLAB                                                      |
 | :--------- | :----------------------------------------------------------------- | :---------------------------------------------------------- |
@@ -61,6 +56,7 @@ Matplotlib 的绘图接口与 MATLAB 有着异曲同工之妙，这使得 MATLAB
 | 应用领域   | 数据科学、机器学习、科学计算、Web 开发等，无所不能 🚀             | 工程、科学计算、控制系统等                                   |
 
 ![](images/page2.png){fig-align="center"}
+
 :::
 
 ## 目录：探索 Matplotlib 的奇妙世界 🗺️
@@ -68,6 +64,9 @@ Matplotlib 的绘图接口与 MATLAB 有着异曲同工之妙，这使得 MATLAB
 1.  **基本布局对象**：揭开 Matplotlib 图表结构的神秘面纱，认识 Figure、Axes 和 Subplot 这三位核心成员。
 2.  **图表样式修改与装饰项接口**：学习如何为图表穿上华丽的 পোশাক (孟加拉语：服装)，定制线条样式、颜色、标记、坐标轴、图例等，让你的图表独一无二。
 3.  **基础图表绘制**：掌握绘制各种常见图表类型的独门秘籍，包括直方图、散点图、饼图、柱状图、折线图和表格，让你的数据跃然纸上。
+
+## 目录：探索 Matplotlib 的奇妙世界 🗺️ （续）
+
 4.  **Matplotlib 3D**：开启三维可视化之旅，探索如何使用 Matplotlib 创建令人惊叹的立体图表，让你的数据更具立体感。
 5.  **Matplotlib 与 Jupyter 结合**：解锁 Matplotlib 与 Jupyter Notebook 的协同魔法，打造交互式数据可视化文档，让你的数据分析更上一层楼。
 
@@ -81,6 +80,38 @@ Matplotlib 图表由多个基本组件构成，它们共同支撑起整个可视
     -   使用 `matplotlib.figure.Figure.add_axes()` 创建。
 -   **Subplot (子图):** 🧩 将 Figure 划分为多个子区域，每个子区域可以包含一个 Axes。这就像在画布上划分出多个小格子，每个格子都可以绘制不同的图表。
     -   使用 `matplotlib.figure.Figure.add_subplot()` 或 `plt.subplots()` 创建。
+
+## 基本布局对象：图解
+
+![](images/page4.png){fig-align="center"}
+
+## 基本布局对象：图解 - Figure
+
+::: callout-note
+**Figure (图形):** 🖼️ 整个绘图区域，就像一块画布，你可以在上面尽情挥洒创意。它可以包含一个或多个 Axes。
+
+-   使用 `matplotlib.pyplot.figure()` 创建。
+:::
+
+![](images/page4.png){fig-align="center"}
+
+## 基本布局对象：图解 - Axes
+
+::: callout-note
+**Axes (轴域):** 📈 具有数据空间的图像区域，通常包含两个（二维）或三个（三维）坐标轴，它们定义了数据的范围和刻度。一个 Figure 可以包含多个 Axes，但一个 Axes 只能属于一个 Figure。
+
+-   使用 `matplotlib.figure.Figure.add_axes()` 创建。
+:::
+
+![](images/page4.png){fig-align="center"}
+
+## 基本布局对象：图解 - Subplot
+
+::: callout-note
+**Subplot (子图):** 🧩 将 Figure 划分为多个子区域，每个子区域可以包含一个 Axes。这就像在画布上划分出多个小格子，每个格子都可以绘制不同的图表。
+
+-   使用 `matplotlib.figure.Figure.add_subplot()` 或 `plt.subplots()` 创建。
+:::
 
 ![](images/page4.png){fig-align="center"}
 
@@ -99,6 +130,8 @@ plt.show()
 
 - `import matplotlib.pyplot as plt`：导入 `matplotlib.pyplot` 模块，并将其简称为 `plt`。这是使用 Matplotlib 的标准做法。
 - `fig, axes = plt.subplots(2, 2)`：创建一个包含 2x2 个子图的 Figure，并将 Figure 对象赋值给 `fig`，将 Axes 对象数组赋值给 `axes`。`axes` 数组的形状是 (2, 2)，可以通过 `axes[0, 0]`、`axes[0, 1]`、`axes[1, 0]`、`axes[1, 1]` 分别访问每个子图。
+
+## 基本布局对象：实战演练 ⚔️ - 结果
 
 ![](images/page5.png){fig-align="center" width="80%"}
 
@@ -121,16 +154,55 @@ t = np.arange(0.0, 2.0, 0.01)
 s = 1 + np.sin(2 * np.pi * t)
 axes[0, 0].plot(t, s)
 axes[0, 0].set_title('Simple Plot') # 添加标题
+plt.show()
+```
+
+## 基本布局对象：进阶实战 🚀 （续）
+
+```{python}
+#| echo: true
+#| output-location: slide
+#| fig-align: "center"
+#| eval: false
 
 # 绘制直方图
 np.random.seed(20180201)
 s = np.random.randn(2, 50)
 axes[0, 1].hist(s[0], bins = 10, color='skyblue', edgecolor='black') # 10个柱子的直方图，并设置颜色
 axes[0, 1].set_title('Histogram')
+plt.show()
+```
+
+::: callout-note
+## NumPy：Python 数值计算的基石 🧱
+
+NumPy（Numerical Python）是 Python 科学计算的基础库，它提供了强大的 N 维数组对象 `ndarray`，以及用于对数组进行高效操作的各种函数。NumPy 是数据分析、机器学习等领域不可或缺的工具。
+
+`np.random.randn(2, 50)` 用于生成一个形状为 (2, 50) 的数组，其中的元素服从标准正态分布（均值为 0，标准差为 1）。
+:::
+
+## 基本布局对象：进阶实战 🚀 （续）
+
+```{python}
+#| echo: true
+#| output-location: slide
+#| fig-align: "center"
+#| eval: false
 
 # 绘制散点图
 axes[1, 0].scatter(s[0], s[1], color='coral', marker='o') # 绘制散点图，设置颜色，标记
 axes[1, 0].set_title('Scatter Plot')
+plt.show()
+
+```
+
+## 基本布局对象：进阶实战 🚀 （续）
+
+```{python}
+#| echo: true
+#| output-location: slide
+#| fig-align: "center"
+#| eval: false
 
 # 绘制饼图
 labels = 'Taxi', 'Metro', 'Walk', 'Bus', 'Bicycle', 'Drive'
@@ -145,12 +217,6 @@ plt.show()
 
 ```
 
-::: callout-note
-## NumPy：Python 数值计算的基石 🧱
-
-NumPy（Numerical Python）是 Python 科学计算的基础库，它提供了强大的 N 维数组对象 `ndarray`，以及用于对数组进行高效操作的各种函数。NumPy 是数据分析、机器学习等领域不可或缺的工具。
-:::
-
 ## `Subplot` 与 `Axes`：兄弟情深 🤝
 
 -   `Subplot` 是 `Axes` 的子类，它们之间有着密切的关系。
@@ -158,6 +224,12 @@ NumPy（Numerical Python）是 Python 科学计算的基础库，它提供了强
 -   `Axes` 提供了更丰富的方法来定制图表，例如设置坐标轴范围、添加标题、添加图例等。
 
 ![](images/page7.png){fig-align="center"}
+
+## `Subplot` 与 `Axes`：兄弟情深 🤝 - 代码解释
+
+::: callout-note
+从上图可以看出，`add_subplot()` 方法返回的是 `AxesSubplot` 对象，它是 `Axes` 的子类。
+:::
 
 ## 直接创建并选中 `Subplot`：一步到位 🎯
 
@@ -173,6 +245,17 @@ fig = plt.figure()
 axe = plt.subplot(2, 2, 1)  # 创建一个 2x2 的子图网格，并选中第一个子图
 # 在第一个子图中绘制一些内容...
 axe.plot([1,2,3,4,5], [2,4,1,5,2])
+plt.show()
+
+```
+
+## 直接创建并选中 `Subplot`：一步到位 🎯 （续）
+
+```{python}
+#| echo: true
+#| fig-align: "center"
+#| output-location: slide
+#| eval: false
 
 axe = plt.subplot(2, 2, 3)  # 选中第三个子图
 # 在第三个子图中绘制一些内容...
@@ -183,7 +266,7 @@ plt.show()
 ```
 
 ::: callout-tip
-## 激活状态的图表：谁是主角？ 🎬
+激活状态的图表：谁是主角？ 🎬
 
 在 Matplotlib 中，可以同时存在多个 Figure 和 Axes 对象。处于激活状态的 Figure 或 Axes 是指当前正在进行绘图操作的对象。可以使用 `plt.gcf()` 获取当前活动的 Figure，使用 `plt.gca()` 获取当前活动的 Axes。
 :::
@@ -226,6 +309,16 @@ fig, axe = plt.subplots()
 t = np.arange(0.0, 2.0, 0.01)
 s = np.sin(2 * np.pi * t)
 axe.plot(t, s, color='black', linestyle='-', linewidth=2)  # 黑色实线，线宽为2
+plt.show()
+```
+
+## 修改图表样式：线条的舞步 💃（续）
+
+```{python}
+#| echo: true
+#| fig-align: "center"
+#| output-location: slide
+#| eval: false
 
 # 绘制第二条曲线
 s = np.sin(2 * np.pi * (t + 0.5))
@@ -270,6 +363,16 @@ axe.plot(t, s, color='c', linestyle='--', label='Line 2')
 # 设置坐标轴刻度
 axe.set_xticks(np.arange(0.0, 2.5, 0.5))  # 设置 x 轴刻度
 axe.set_yticks([-1, 0, 1])  # 设置 y 轴刻度
+plt.show()
+```
+
+## 修改装饰项：坐标轴的刻度与标签 📏 （续）
+
+```{python}
+#| echo: true
+#| fig-align: "center"
+#| output-location: slide
+#| eval: false
 axe.minorticks_on()  # 显示 minor ticks
 
 # 修改x轴刻度标签
@@ -320,6 +423,16 @@ axe.set_xticks(np.arange(0, 24, 2))
 axe.annotate('最高温度出现在 16:00', xy=(16, 27), xytext=(16, 22),
              arrowprops=dict(facecolor='black', shrink=0.05, connectionstyle="arc3,rad=.2"), #箭头弯曲
              horizontalalignment='center', verticalalignment='center')
+plt.show()
+```
+
+## 添加注释：实战演练 ⚔️ （续）
+
+```{python}
+#| echo: true
+#| fig-align: "center"
+#| output-location: slide
+#| eval: false
 
 # 添加文本注释
 axe.text(12, 10, '日期: 2018年3月26日', bbox={'facecolor': 'cyan', 'alpha': 0.3, 'pad': 6})
@@ -383,6 +496,17 @@ number_of_bins = 50
 # 绘制直方图
 fig, ax = plt.subplots()
 n, bins, patch = ax.hist(data, number_of_bins, density=True, color='skyblue', edgecolor='black') # density=True 表示绘制频率直方图
+plt.show()
+
+```
+
+## 绘制带有正态分布密度曲线的直方图：更上一层楼 📈（续）
+
+```{python}
+#| echo: true
+#| fig-align: "center"
+#| output-location: slide
+#| eval: false
 
 # 计算正态分布密度曲线
 standard_data = ((1 / (np.sqrt(2 * np.pi) * 1)) * np.exp(-0.5 * (1 / 1 * (bins - 0))**2))
@@ -393,7 +517,22 @@ ax.plot(bins, standard_data, 'orange', '-', linewidth=2) # 设置曲线颜色和
 plt.show()
 ```
 
-在上面的例子中，我们首先使用 `hist()` 函数绘制了一个频率直方图，`density=True` 表示将频数转换为频率。然后，我们计算了正态分布密度曲线，并使用 `plot()` 函数将其绘制在直方图上。
+::: callout-note
+这里补充说明一下正态分布的概率密度函数公式：
+
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
+$$
+
+其中：
+
+-   $\mu$ 是正态分布的均值。
+-   $\sigma$ 是正态分布的标准差。
+-   $e$ 是自然对数的底数。
+-   $\pi$ 是圆周率。
+
+`standard_data = ((1 / (np.sqrt(2 * np.pi) * 1)) * np.exp(-0.5 * (1 / 1 * (bins - 0))**2))` 这行代码就是根据上述公式计算标准正态分布（均值为 0，标准差为 1）在 `bins` 中每个点处的概率密度。
+:::
 
 ## 绘制散点图：探索数据“星座”的奥秘 🌌
 
@@ -451,6 +590,18 @@ opacity = 0.7
 # 绘制散点图
 fig, axe = plt.subplots()
 sc = axe.scatter(x, y, s, c, alpha=opacity, cmap='viridis') # 使用 cmap 参数指定颜色映射
+plt.show()
+
+```
+
+## 自定义 Marker：实战演练 ⚔️（续）
+
+```{python}
+#| echo: true
+#| fig-align: "center"
+#| output-location: slide
+#| eval: false
+
 fig.colorbar(sc) #添加颜色条
 
 plt.show()
@@ -506,6 +657,16 @@ labels = ('Taxi', 'Metro', 'Walk', 'Bus', 'Bicycle', 'Driving')
 # 绘制柱状图
 fig, axe = plt.subplots()
 rects1 = axe.bar(index, data_m, width, color='skyblue', label='Men') # 男性柱子
+plt.show()
+```
+
+## 绘制柱状图：数据的“身高”比拼 📏（续）
+
+```{python}
+#| echo: true
+#| fig-align: "center"
+#| output-location: slide
+#| eval: false
 rects2 = axe.bar(index + width, data_f, width, color='coral', label='Women') # 女性柱子
 axe.set_xticks(index + width / 2)
 axe.set_xticklabels(labels)
@@ -528,7 +689,8 @@ autolabel(rects2)
 plt.show()
 ```
 
-在上面的例子中，我们使用了 `bar()` 函数绘制了一个柱状图。`index` 参数指定了柱子的横坐标，`data_m` 和 `data_f` 参数分别指定了男性和女性柱子的高度，`width` 参数指定了柱子的宽度，`color` 参数指定了柱子的颜色，`label` 参数指定了柱子的标签。我们还使用了 `set_xticks()` 和 `set_xticklabels()` 方法来设置 x 轴的刻度和标签，并使用 `legend()` 方法显示图例。最后使用自定义函数`autolabel`在柱子的顶部加上了数据标签。
+在上面的例子中，我们使用了 `bar()` 函数绘制了一个柱状图。`index` 参数指定了柱子的横坐标，`data_m` 和 `data_f` 参数分别指定了男性和女性柱子的高度，`width` 参数指定了柱子的宽度，`color` 参数指定了柱子的颜色，`label` 参数指定了柱子的标签。
+
 
 ## 绘制堆叠柱状图：更上一层楼 🏢
 
@@ -614,6 +776,16 @@ labels = ('Taxi', 'Metro', 'Walk', 'Bus', 'Bicycle', 'Driving')
 # 绘制水平柱状图
 fig, axe = plt.subplots()
 axe.barh(index, data_m, width, color='skyblue', align='center', alpha=opacity, label='Men')  # 使用 barh() 绘制水平柱状图
+plt.show()
+```
+## 绘制水平柱状图并添加透明度：换个角度看世界 🔄（续）
+
+```{python}
+#| echo: true
+#| fig-align: "center"
+#| output-location: slide
+#| eval: false
+
 axe.barh(index + width, data_f, width, color='coral', align='center', alpha=opacity, label='Women')
 axe.set_yticks(index +width / 2)
 axe.set_yticklabels(labels)
@@ -756,7 +928,8 @@ z = np.random.rand(N)
 
 # 创建 3D 坐标系
 fig = plt.figure()
-axe = Axes3D(fig)  # 使用 Axes3D 创建 3D 坐标系
+axe = Axes3D(fig, auto_add_to_figure=False)  # 使用 Axes3D 创建 3D 坐标系
+fig.add_axes(axe)
 
 # 绘制 3D 散点图
 axe.scatter(x, y, z, c='skyblue', marker='o')
@@ -770,6 +943,7 @@ plt.show()
 ```
 
 在上面的例子中，我们首先导入了 `mpl_toolkits.mplot3d` 中的 `Axes3D` 类。然后，我们使用 `Axes3D(fig)` 创建了一个三维坐标系，并使用 `scatter()` 函数绘制了三维散点图。最后，我们使用 `set_xlabel()`、`set_ylabel()` 和 `set_zlabel()` 方法设置了坐标轴标签。
+> 注意：在较新的matplotlib版本中，创建Axes3D对象时，需要设置`auto_add_to_figure=False`参数，并手动将Axes3D对象添加到figure中。
 
 ## 绘制 3D 散点图 (使用 `pyplot`)：殊途同归 🎯
 
@@ -811,21 +985,10 @@ plt.show()
 -   **LaTeX 数学公式支持:** 可以在 Jupyter Notebook 中使用 LaTeX 语法编写数学公式，让你的文档更加专业。
 -   **Markdown 文本支持:** 可以使用 Markdown 语法编写文本内容，让你的文档更加易读。
 
-## 示例：介绍双纽线的文档 📝
-
-::: {layout-ncol="2"}
-<br>
-
-以下是一个在 Jupyter Notebook 中介绍双纽线的示例：
-
-![](images/page44.png){fig-align="center"}
-<br>
-
 ::: {.callout-tip}
-## 文档组成部分
+文档组成部分
 -   **Markdown Cell:** 用于编写文本内容、介绍双纽线的概念、公式和绘图方法。
 -   **Code Cell:** 用于编写 Python 代码，生成双纽线的图像。
-:::
 :::
 
 ## 总结：Matplotlib，数据可视化的魔法师 🧙‍
@@ -843,6 +1006,4 @@ plt.show()
 -   除了课件中提到的，还有哪些方法可以修改图表的默认样式？ 🎨
 -   如何将 Matplotlib 绘制的图表保存为图片文件？ 💾
 -   如何调整图表的大小和分辨率？ 📐
-
-
 

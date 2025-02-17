@@ -1,0 +1,33 @@
+/*-- scss:defaults --*/
+
+:root {
+  font-size: 16px; /* 基础字体大小 */
+}
+
+// fonts
+$presentation-font-size-root: 1.5625rem; // 25px (相对于根元素的 16px)
+
+.reveal {
+    font-size: $presentation-font-size-root;
+
+    h1 {
+      font-size: 2.5rem;  /* 40px */
+    }
+    p {
+      font-size: 1rem;   /* 16px */
+    }
+    li{
+      font-size: 1rem;  /* 16px */
+    }
+
+    /* 如果确实需要垂直滚动 */
+    /* .slide {
+        height: 750px; //或者用vh单位
+        overflow-y: auto;
+    } */
+
+    img {
+        display: block;
+        margin: 0 auto; /* 图片水平居中 */
+    }
+}

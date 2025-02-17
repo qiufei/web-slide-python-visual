@@ -1,8 +1,10 @@
-好的，下面是根据您的要求进一步完善的 Quarto Reveal.js 幻灯片文档（.qmd 格式），其中包含了更详细的内容、示例和 emoji 表情：
+好的，我来帮你准备这门课的幻灯片。由于内容较多，我将分批输出，每次输出一部分幻灯片。
+
+首先是幻灯片的开头部分，包括标题、副标题、格式设置和目录：
 
 ```qmd
 ---
-title: "数据分析理论与Python实战 📊"
+title: "信息技术基础 📊"
 subtitle: "第五章 Pandas——处理结构化数据 🐼"
 format:
   revealjs:
@@ -14,31 +16,50 @@ format:
 
 ## 目录
 
+::: {layout-ncol=2}
 - Pandas介绍 🐼
 - 基础数据结构 🧱
-- 基于Pandas的Index对象的访问操作 🔍
-- 数学统计和计算工具 🧮
-- 数学聚合和分组运算 ➕➖
+- Index对象访问 🔍
+- 数学统计计算 🧮
+- 聚合分组运算 ➕➖
+:::
+```
 
+这里我对目录进行了一些改进：
+
+1.  使用 `layout-ncol=2` 将目录分为两列，使页面更紧凑。
+2.  简化了目录标题，使其更简洁明了。
+
+接下来是 Pandas 介绍部分：
+
+```qmd
 ## Pandas介绍 🐼
 
 ::: {.callout-note}
-Pandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能**、**简单易用**的数据结构和数据分析工具。 就像一个超级工具箱🧰，让数据处理变得轻松又高效！
+Pandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能**、**简单易用**的数据结构和数据分析工具。就像一个超级工具箱🧰，让数据处理变得轻松又高效！
 :::
 
-- **类表格统计操作**：Pandas 提供了方便的类似于 Excel 表格 📊 的统计操作，可以轻松进行求和、平均、计数等。
-- **类SQL操作**：可以像操作 SQL 数据库 🗄️ 一样操作数据，进行数据查询、筛选、连接等，非常适合数据预处理。
-- **缺失值处理**：Pandas 提供了强大的缺失值处理功能，可以帮你轻松搞定数据中的“洞”🕳️，使数据预处理更便捷。
+- Pandas 得名于 **pan**el **da**ta **s**ystem，即面板数据系统。
+- Pandas 基于 NumPy 构建，但提供了更高级、更方便的数据操作接口。
+- Pandas 擅长处理**结构化数据**，如表格、数据库、CSV 文件等。
 
 ## Pandas介绍 🐼
 
-### Pandas可以完成什么事情？
+### Pandas可以完成什么事情？ {.smaller}
 
 - **索引对象**：包括简单的索引和多层次的索引，就像给数据贴上标签🏷️，方便查找和管理。
+    -  **索引 (Index)**：Pandas 中用于标记和定位数据的重要组成部分，类似于数据的“地址簿”。
+    -  **简单索引**：最基本的索引形式，通常是一个整数或字符串序列。
+    -  **多层次索引 (MultiIndex)**：一种更复杂的索引形式，允许在一个轴上有多个层级的索引，类似于“多级目录”，可以更精细地组织和访问数据。
 - **引擎集成组合**：用于汇总和转换数据集合，可以将多个数据源整合在一起，进行统一处理。
+    -   **汇总 (Aggregation)**：将多个数据值合并为一个值，例如求和、平均值、最大值等。
+    -   **转换 (Transformation)**：对数据进行某种形式的修改，例如标准化、填充缺失值等。
 - **日期范围生成器**：可以生成日期范围 📅，并支持自定义日期偏移（实现自定义频率），时间序列分析必备！
+    -   **日期范围 (Date Range)**：表示一段连续的日期，例如 "2023-01-01" 到 "2023-01-10"。
+    -   **日期偏移 (Date Offset)**：表示一个时间间隔，例如 "2天"、"1个月"、"3小时" 等。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 # 生成日期范围
@@ -50,11 +71,32 @@ custom_dates = pd.date_range(start='2023-01-01', periods=5, freq='2D') # 每两�
 print(custom_dates)
 ```
 
+## Pandas介绍 🐼 (续)
+
 - **输入/输出工具**：从各种格式的文件（如 CSV、Excel）中加载表格数据，以及从 PyTables/HDF5 格式中保存和加载 Pandas 对象。数据导入导出，畅通无阻！
     -   **CSV (Comma Separated Values)**：逗号分隔值，一种常见的文本文件格式，用于存储表格数据。可以理解为用逗号`,`分隔字段（列），用换行符分隔每条记录（行）的纯文本。
+        - 示例:
+        ```
+        Name,Age,City
+        Alice,25,New York
+        Bob,30,London
+        Charlie,22,Paris
+        ```
     -   **Delimited Files**: 使用特定分隔符（如制表符`\t`、空格` `等）分隔数据的文件。
+        - 示例 (使用制表符分隔):
+        ```
+        Name    Age    City
+        Alice    25    New York
+        Bob    30    London
+        ```
     -   **Excel 2003**: 指的是 Microsoft Excel 2003 版本的文件格式（.xls）。现在更常用的是.xlsx格式。
-    -   **PyTables/HDF5**: PyTables 是一个用于管理分层数据集的 Python 包，设计用于高效处理大量数据。HDF5 (Hierarchical Data Format version 5) 是一种用于存储和管理数据的文件格式。特点是支持存储非常大的、异构的、复杂的数据对象。
+        -  Excel 文件是二进制文件，包含多个工作表（Sheet），每个工作表包含行和列组成的表格数据。
+    -   **PyTables/HDF5**:
+        -   **PyTables** 是一个用于管理分层数据集的 Python 包，设计用于高效处理大量数据。
+        -   **HDF5 (Hierarchical Data Format version 5)** 是一种用于存储和管理数据的文件格式。特点是支持存储非常大的、异构的、复杂的数据对象。
+            -   **分层数据**：数据以类似文件系统的目录结构组织，可以包含多个组（Group）和数据集（Dataset）。
+            -   **高效**：HDF5 使用了各种优化技术，例如压缩、分块等，可以快速读写大量数据。
+            -   **异构数据**：HDF5 可以存储不同类型的数据，例如整数、浮点数、字符串、数组等。
 
 ```{python}
 #| eval: false
@@ -66,8 +108,19 @@ df = pd.read_csv('data.csv')
 df.to_excel('data.xlsx', index=False)
 ```
 
+## Pandas介绍 🐼 (续)
+
 - **标准数据结构**：支持存储大量缺失或一致的数据，就像一个大仓库 🏭，可以容纳各种类型的数据。
+    - **缺失数据 (Missing Data)**：数据集中某些值不存在或未知的情况，通常用 NaN (Not a Number) 表示。
+    - **一致的数据 (Homogeneous Data)**：数据集中所有值都是相同类型的情况。
+    - Pandas 可以同时处理缺失数据和一致的数据，并提供了灵活的工具来处理这些情况。
+
 - **移动窗口统计**：如滚动平均值、滚动标准偏差等，非常适合处理时间序列数据，就像一个滑动窗口 🪟，可以观察数据的变化趋势。
+    -   **移动窗口 (Moving Window)**：在数据序列上按一定大小滑动的窗口，用于计算窗口内数据的统计量。
+    -   **滚动平均值 (Rolling Mean)**：移动窗口内数据的平均值。
+    -   **滚动标准偏差 (Rolling Standard Deviation)**：移动窗口内数据的标准偏差。
+    -   **时间序列数据 (Time Series Data)**：按时间顺序排列的数据，例如股票价格、气温变化等。
+
 
 ## 基础数据结构——Series 🧱
 
@@ -76,19 +129,27 @@ df.to_excel('data.xlsx', index=False)
 :::
 
 - **定长有序字典**：Series 可以理解为一个定长、有序的“字典”结构，键值对一一对应。
+    -   **定长 (Fixed-length)**：Series 一旦创建，其长度（元素个数）通常是固定的。
+    -   **有序 (Ordered)**：Series 中的元素按照一定的顺序排列。
+    -   **字典 (Dictionary)**：Python 中的一种数据结构，由键值对 (key-value pairs) 组成。
 - **有标签的一维数组**：Series 是一个有标签的一维数组，标签在 Pandas 中对应的数据类型是 `index`。
+    -   **一维数组 (1D Array)**：只有一个维度的数据集合，类似于一个列表。
+    -   **标签 (Label)**：Series 中每个元素对应的名称或标识符，用于访问和操作数据。
+    -   **Index**：Pandas 中用于表示 Series 或 DataFrame 的标签的数据类型。
 
 ### Series的创建
 
 - 通过 `list` 创建：
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = [1, 2, 3, 4, 5]  # 创建一个列表
 series_from_list = pd.Series(data)  # 用列表创建 Series
 print(series_from_list) # 打印 Series, 包含索引和值
 ```
+
 ::: {.callout-note}
 创建Series时可以指定index，如果没指定index，则自动使用整数索引，从0开始。
 :::
@@ -96,6 +157,7 @@ print(series_from_list) # 打印 Series, 包含索引和值
 - 通过 `NumPy` 的 `ndarray` 创建：
 
 ```{python}
+#| eval: false
 import pandas as pd
 import numpy as np
 
@@ -107,6 +169,7 @@ print(series_from_ndarray)
 - 通过 `dict` 创建：
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'a': 1, 'b': 2, 'c': 3} # 创建一个字典
@@ -117,6 +180,7 @@ print(series_from_dict)  # 字典的键会成为 Series 的索引
 - 通过标量创建：
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 series_from_scalar = pd.Series(5, index=['a', 'b', 'c'])  # 创建一个所有值都为 5 的 Series
@@ -129,43 +193,50 @@ print(series_from_scalar)
 
 - 使用 `iloc` 和 `loc` 函数：
     - `iloc`：通过**位置**访问，就像数组一样，使用整数索引。
+        - **位置 (Position)**：元素在 Series 中的顺序编号，从 0 开始。
     - `loc`：通过**标签**访问，就像字典一样，使用索引值。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 s = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
 
 # 通过位置访问
-print(s.iloc[0])  # 输出: 10
+print("通过位置访问(s.iloc[0]):", s.iloc[0])  # 输出: 10
 
 # 通过标签访问
-print(s.loc['b']) # 输出: 20
+print("通过标签访问(s.loc['b']):", s.loc['b']) # 输出: 20
 ```
 
 - 类似数组和属性的访问：
 
 ```{python}
+#| eval: false
 # 类似数组
-print(s[0])  # 输出: 10
+print("类似数组访问(s[0]):", s[0])  # 输出: 10
 
 # 类似属性(如果索引是有效的Python变量名)
-print(s.a) # 输出: 10
+print("类似属性访问(s.a):", s.a) # 输出: 10
 ```
 
 ### Series的操作
 
 - **向量化操作**：像数组一样对 Series 进行操作，无需循环，Pandas 会自动处理。
+    -   **向量化 (Vectorized)**：对整个 Series 或数组进行操作，而不是逐个元素进行操作。
+    -   Pandas 的向量化操作通常比 Python 循环快得多。
 - **NumPy兼容性**：NumPy 中对 `ndarray` 的操作也适用于 Series，例如加减乘除、求和、平均等。
 - **数据对齐**：由于索引的存在，Series 在操作时会自动对齐数据，不同索引的数据会进行匹配，找不到匹配的会用 `NaN` 填充。
+    -   **数据对齐 (Data Alignment)**：Pandas 在进行运算时，会根据索引自动匹配 Series 或 DataFrame 中的数据。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 s1 = pd.Series([1, 2, 3], index=['a', 'b', 'c'])
 s2 = pd.Series([4, 5, 6], index=['b', 'c', 'd'])
 
-print(s1 + s2)  # 索引对齐，'a' 和 'd' 对应的值为 NaN
+print("s1 + s2:\n", s1 + s2)  # 索引对齐，'a' 和 'd' 对应的值为 NaN
 ```
 
 ## 基础数据结构——DataFrame 🧱
@@ -175,47 +246,52 @@ print(s1 + s2)  # 索引对齐，'a' 和 'd' 对应的值为 NaN
 :::
 
 - **行索引 (index)** 和 **列索引 (columns)**：DataFrame 同时具有行索引和列索引，就像一个表格有行标题和列标题。
+    -   **行索引 (Row Index)**：用于标识 DataFrame 中每一行的标签。
+    -   **列索引 (Column Index)**：用于标识 DataFrame 中每一列的标签。
 
 ### DataFrame的创建
 
 - **输入**：
-    - 一维 `ndarray`、`list`、`dict` 或 `Series` 的 `dict`。
-    - 二维 `ndarray`。
-    - 一个 `Series`。
-    - 其他 `DataFrame`。
+  - 一维 `ndarray`、`list`、`dict` 或 `Series` 的 `dict`。
+  - 二维 `ndarray`。
+  - 一个 `Series`。
+  - 其他 `DataFrame`。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 # 用字典创建 DataFrame
 data = {'col1': [1, 2], 'col2': [3, 4]}
-df = pd.DataFrame(data)
-print(df)
+df1 = pd.DataFrame(data)
+print("用字典创建 DataFrame:\n", df1)
 
 # 用二维数组创建 DataFrame
 data = [[1, 2], [3, 4]]
-df = pd.DataFrame(data, columns=['col1', 'col2'])
-print(df)
+df2 = pd.DataFrame(data, columns=['col1', 'col2'])
+print("用二维数组创建 DataFrame:\n", df2)
 ```
 
 - **索引**：
-    - 创建 DataFrame 时，可以通过 `index` 和 `columns` 参数指定行索引和列索引。
-    - 如果没有明确指定，会自动生成从 0 开始的整数索引。
+  - 创建 DataFrame 时，可以通过 `index` 和 `columns` 参数指定行索引和列索引。
+  - 如果没有明确指定，会自动生成从 0 开始的整数索引。
 
 - **Series的dict创建DataFrame**：
-    - 若指定 `index`，会丢弃所有未和指定 `index` 匹配的数据。
+  - 若指定 `index`，会丢弃所有未和指定 `index` 匹配的数据。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'col1': pd.Series([1, 2, 3], index=['a', 'b', 'c']),
         'col2': pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])}
-df = pd.DataFrame(data)  # 字典的键会成为 DataFrame 的列名
-print(df) # index自动取并集
+df3 = pd.DataFrame(data)  # 字典的键会成为 DataFrame 的列名
+print("用Series的dict创建DataFrame:\n", df3) # index自动取并集
 
-df = pd.DataFrame(data, index=['a','b'])
-print(df) # index参数为['a','b']，df只有'a','b'两行，抛弃了'c'和'd'行的数据
+df4 = pd.DataFrame(data, index=['a','b'])
+print("指定index创建DataFrame:\n", df4) # index参数为['a','b']，df只有'a','b'两行，抛弃了'c'和'd'行的数据
 ```
+
 ::: {.callout-note}
 用Series的字典创建DataFrame时，index如果不指定，会自动取并集。
 :::
@@ -226,40 +302,42 @@ print(df) # index参数为['a','b']，df只有'a','b'两行，抛弃了'c'和'd'
 
 - 多种访问方式:
   - 通过**列索引**访问：
-  ```{python}
-    #| eval: false
-    df['column_label']
-  ```
+```{python}
+#| eval: false
+
+df['column_label']
+```
   - 通过**行索引**访问：
-  ```{python}
-    #| eval: false
-    df.loc['row_label']
-  ```
+```{python}
+#| eval: false
+df.loc['row_label']
+```
   - `loc`: 通过**行标签**访问
-    ```{python}
-    #| eval: false
-    print(df.loc['row_label'])
-    ```
-  -  `iloc`：通过**行位置**访问。
-     ```{python}
-     #| eval: false
-     print(df.iloc[row_position])
-     ```
+```{python}
+#| eval: false
+print(df.loc['row_label'])
+```
+  - `iloc`：通过**行位置**访问。
+```{python}
+#| eval: false
+print(df.iloc[row_position])
+```
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
 df = pd.DataFrame(data, index=['A', 'B', 'C'])
 
 # 通过列索引访问
-print(df['col1'])  # 选择 'col1' 列
+print("通过列索引访问:\n", df['col1'])  # 选择 'col1' 列
 
 # 通过 loc 访问
-print(df.loc['A'])  # 选择 'A' 行
+print("通过 loc 访问:\n", df.loc['A'])  # 选择 'A' 行
 
 # 通过 iloc 访问
-print(df.iloc[0])  # 选择第一行
+print("通过 iloc 访问:\n", df.iloc[0])  # 选择第一行
 ```
 
 ### DataFrame的操作
@@ -270,6 +348,7 @@ print(df.iloc[0])  # 选择第一行
 - **增删改查**：可以对 DataFrame 进行增、删、改、查操作。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
@@ -277,16 +356,18 @@ df = pd.DataFrame(data)
 
 # 添加一列
 df['col3'] = [7, 8, 9]
+print("添加一列后:\n", df)
 
 # 删除一列
 df = df.drop('col2', axis=1)
+print("删除一列后:\n", df)
 
 # 修改数据
 df.loc[0, 'col1'] = 10
+print("修改数据后:\n", df)
 
 # 查询数据
-print(df[df['col1'] > 1])
-print(df)
+print("查询数据(col1 > 1):\n", df[df['col1'] > 1])
 ```
 
 ## 基于Pandas的Index对象的访问操作 🔍
@@ -295,7 +376,7 @@ print(df)
 
 - `Series` 中的 `index` 属性。
 - `DataFrame` 中的 `index` 属性和 `columns` 属性。
-  
+
 ::: {.callout-note}
 `Series` 和 `DataFrame` 的索引都是 `Index` 对象，用于标识和访问数据。
 :::
@@ -303,16 +384,21 @@ print(df)
 ### Index对象的特征
 
 - **不可修改** (Immutable)：Index 对象一旦创建，就不能修改，保证了数据的安全性。
+    -   **不可修改性**：这是为了防止意外修改索引导致数据混乱或错误。
 - **有序**：Index 对象中的元素是有序的，可以按照顺序访问。
 - **可切片**：可以像列表或数组一样对 Index 对象进行切片操作，方便获取部分数据。
+    -   **切片 (Slicing)**：从序列中提取一部分的操作，例如 `index[1:3]`。
 
 ### Index对象的类型
 
 - **Index**：最泛化的 Index 类型，将轴标签表示为一个由 Python 对象组成的 NumPy 数组。
 - **Int64Index**：针对整数的 Index 类型，用于整数索引。
 - **MultiIndex**：针对多层索引的 Index 类型，用于创建复杂的层次化索引。
+    - **层次化索引 (Hierarchical Indexing)**：在一个轴上有多个层级的索引。
 - **DatetimeIndex**：存储时间戳的 Index 类型，用于时间序列数据。
+    -   **时间戳 (Timestamp)**：表示一个特定时间点的数据，例如 "2023-10-27 10:00:00"。
 - **PeriodIndex**：针对时间间隔数据的 Index 类型，用于表示一段时间。
+    -   **时间间隔 (Period)**：表示一段持续时间的数据，例如 "2023年10月"、"2023年第3季度"。
 
 ## Index对象的基本操作 🧮
 
@@ -338,17 +424,21 @@ import pandas as pd
 index = pd.Index(['a', 'b', 'c', 'd'])
 
 # 删除索引为 1 的元素
-new_index = index.delete(1)  # new_index: Index(['a', 'c', 'd'], dtype='object')
+new_index = index.delete(1)
+print("删除索引为 1 的元素:", new_index)  # new_index: Index(['a', 'c', 'd'], dtype='object')
 
 # 删除元素 'c'
-new_index = index.drop('c')  # new_index: Index(['a', 'b', 'd'], dtype='object')
+new_index = index.drop('c')
+print("删除元素 'c':", new_index)  # new_index: Index(['a', 'b', 'd'], dtype='object')
 
 # 插入元素 'e' 到索引 2
-new_index = index.insert(2, 'e')  # new_index: Index(['a', 'b', 'e', 'c', 'd'], dtype='object')
+new_index = index.insert(2, 'e')
+print("插入元素 'e' 到索引 2:", new_index)  # new_index: Index(['a', 'b', 'e', 'c', 'd'], dtype='object')
 
 # 连接另一个 Index 对象
 other_index = pd.Index(['e', 'f'])
-new_index = index.append(other_index)  # new_index: Index(['a', 'b', 'c', 'd', 'e', 'f'], dtype='object')
+new_index = index.append(other_index)
+print("连接另一个 Index 对象:", new_index)  # new_index: Index(['a', 'b', 'c', 'd', 'e', 'f'], dtype='object')
 ```
 
 ## 索引的不同访问方式
@@ -365,25 +455,26 @@ new_index = index.append(other_index)  # new_index: Index(['a', 'b', 'c', 'd', '
   - 回调函数（参数为调用 `loc` 函数的对象，即 `Series` 或 `DataFrame`）。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
 df = pd.DataFrame(data, index=['A', 'B', 'C'])
 
 # 单个 label
-print(df.loc['A'])
+print("单个 label:\n", df.loc['A'])
 
 # label 数组
-print(df.loc[['A', 'C']])
+print("label 数组:\n", df.loc[['A', 'C']])
 
 # label 分片
-print(df.loc['A':'B'])
+print("label 分片:\n", df.loc['A':'B'])
 
 # 布尔数组
-print(df.loc[df['col1'] > 1])
+print("布尔数组:\n", df.loc[df['col1'] > 1])
 
 # 回调函数
-print(df.loc[lambda df: df['col2'] > 4])
+print("回调函数:\n", df.loc[lambda df: df['col2'] > 4])
 ```
 
 ### iloc 方式
@@ -398,25 +489,26 @@ print(df.loc[lambda df: df['col2'] > 4])
     - 回调函数（参数为调用 `iloc` 函数的对象，即 `Series` 或 `DataFrame`）。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
 df = pd.DataFrame(data, index=['A', 'B', 'C'])
 
 # 单个整数
-print(df.iloc[0])
+print("单个整数:\n", df.iloc[0])
 
 # position 数组
-print(df.iloc[[0, 2]])
+print("position 数组:\n", df.iloc[[0, 2]])
 
 # position 分片
-print(df.iloc[0:2])
+print("position 分片:\n", df.iloc[0:2])
 
 # 布尔数组
-print(df.iloc[(df['col1'] > 1).values])
+print("布尔数组:\n", df.iloc[(df['col1'] > 1).values])
 
 # 回调函数
-print(df.iloc[lambda df: [0, 2]])  # 注意：这里的回调函数返回的是位置列表
+print("回调函数:\n", df.iloc[lambda df: [0, 2]])  # 注意：这里的回调函数返回的是位置列表
 ```
 
 ### 类似dict方式的访问
@@ -426,17 +518,18 @@ print(df.iloc[lambda df: [0, 2]])  # 注意：这里的回调函数返回的是�
 - 可以用类似 `dict` 访问的方式来访问 `Series` 和 `DataFrame`。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
 df = pd.DataFrame(data)
 
 # 访问 'col1' 列
-print(df['col1'])  # 类似于访问字典的键
+print("访问 'col1' 列:\n", df['col1'])  # 类似于访问字典的键
 
 # 对于 Series，可以直接通过索引访问
 s = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
-print(s['b'])
+print("Series 通过索引访问:\n", s['b'])
 ```
 
 ### 类似属性方式的访问
@@ -448,22 +541,23 @@ print(s['b'])
   - 回调函数。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
 df = pd.DataFrame(data, index=['A', 'B', 'C'])
 
 # 单个变量
-print(df.col1)  # 访问 'col1' 列，类似于访问对象的属性
+print("单个变量:\n", df.col1)  # 访问 'col1' 列，类似于访问对象的属性
 
 # 数组形式
-print(df[['col1', 'col2']])
+print("数组形式:\n", df[['col1', 'col2']])
 
 # 布尔数组
-print(df[df.col1 > 1])  # 使用布尔数组筛选数据
+print("布尔数组:\n", df[df.col1 > 1])  # 使用布尔数组筛选数据
 
 # 回调函数
-print(df[lambda df: df.col2 > 4])
+print("回调函数:\n", df[lambda df: df.col2 > 4])
 ```
 
 ## 调用方式间的区别
@@ -494,15 +588,16 @@ print(df[lambda df: df.col2 > 4])
 - **注意**：要使用圆括号 `()` 来组合条件。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
 
 # 选取 col1 大于 1 且 col2 小于 6 的行
-print(df[(df['col1'] > 1) & (df['col2'] < 6)])
+print("选取 col1 大于 1 且 col2 小于 6 的行:\n", df[(df['col1'] > 1) & (df['col2'] < 6)])
 
 # 选取 col1 等于 1 或 col2 大于 5 的行
-print(df[(df['col1'] == 1) | (df['col2'] > 5)])
+print("选取 col1 等于 1 或 col2 大于 5 的行:\n", df[(df['col1'] == 1) | (df['col2'] > 5)])
 ```
 
 ### 输入为回调函数
@@ -511,18 +606,19 @@ print(df[(df['col1'] == 1) | (df['col2'] > 5)])
 - 回调函数必须以被访问的 `Series` 或者 `DataFrame` 作为参数。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
 
 # 使用回调函数选取 col2 大于 4 的行
-print(df[lambda df: df['col2'] > 4])
+print("使用回调函数选取 col2 大于 4 的行:\n", df[lambda df: df['col2'] > 4])
 
 # 使用 loc 和回调函数选取 col1 大于 1 的行
-print(df.loc[lambda df: df['col1'] > 1])
+print("使用 loc 和回调函数选取 col1 大于 1 的行:\n", df.loc[lambda df: df['col1'] > 1])
 
 # 使用 iloc 和回调函数选取第 0 行和第 2 行
-print(df.iloc[lambda df: [0, 2]])
+print("使用 iloc 和回调函数选取第 0 行和第 2 行:\n", df.iloc[lambda df: [0, 2]])
 ```
 
 ## 数学统计和计算工具 🧮
@@ -532,7 +628,19 @@ print(df.iloc[lambda df: [0, 2]])
 - Pandas 提供了一系列统计函数接口，方便用户直接进行统计运算。
 - 包括：
   - **协方差:** 用于衡量两个变量的总体误差。当两个变量的变化趋势一致时，协方差为正；当变化趋势相反时，协方差为负；如果两个变量相互独立，则协方差为0。
+      -  **协方差 (Covariance)**:
+          -   公式：
+          $$
+          Cov(X, Y) = \frac{\sum_{i=1}^{n}(X_i - \bar{X})(Y_i - \bar{Y})}{n-1}
+          $$
+          其中，$X$ 和 $Y$ 是两个变量，$\bar{X}$ 和 $\bar{Y}$ 分别是它们的平均值，$n$ 是样本数量。
   - **相关系数:** 用于研究变量之间线性相关程度的量。相关系数的取值范围在-1到1之间，绝对值越大，说明变量之间的线性相关性越强。
+      - **相关系数 (Correlation Coefficient)**:
+        - 公式：
+        $$
+        Corr(X, Y) = \frac{Cov(X, Y)}{\sigma_X \sigma_Y}
+        $$
+        其中，$Cov(X, Y)$ 是 $X$ 和 $Y$ 的协方差，$\sigma_X$ 和 $\sigma_Y$ 分别是 $X$ 和 $Y$ 的标准差。
   - **排序:** 对数据进行排序。
 
 - Pandas 提供了：
@@ -540,6 +648,7 @@ print(df.iloc[lambda df: [0, 2]])
   - 一个 `DataFrame` 的协方差矩阵的计算接口。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 s1 = pd.Series([1, 2, 3, 4, 5])
@@ -599,6 +708,7 @@ print(f"相关系数矩阵:\n{corr_matrix}")
       - 直接定义 `alpha`。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 # 创建一个时间序列
@@ -645,8 +755,11 @@ print(f"指数加权移动平均:\n{ewm_mean}")
 
 - `groupby` 包括三个阶段：
   1. **split**：根据一定原则将数据分组。
+      - **分组 (Grouping)**：将数据按照某个或某些特征划分为不同的组。
   2. **apply**：每个组分别执行一个函数，产生一个新值。
+      -   **应用函数 (Apply Function)**：对每个分组应用一个函数，例如求和、平均值等。
   3. **combine**：将各组的结果合并到最终对象中。
+      -   **合并 (Combine)**：将每个分组的结果合并成一个最终的结果。
 
 - **拆分操作**：
   - Pandas 对象（`Series` 或 `DataFrame`）根据提供的键在特定的轴上进行拆分。
@@ -666,6 +779,7 @@ print(f"指数加权移动平均:\n{ewm_mean}")
 | 组1、2、3、4的 `list` 或者              | `df.groupby(['a','b'])`                                               |
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'col1': ['A', 'A', 'B', 'B', 'A'],
@@ -676,11 +790,11 @@ df = pd.DataFrame(data)
 
 # 按 'col1' 分组，计算每组的平均值
 grouped = df.groupby('col1')
-print(grouped.mean())
+print("按 'col1' 分组，计算每组的平均值:\n", grouped.mean())
 
 # 按 'col1' 和 'col2' 分组，计算每组的总和
 grouped = df.groupby(['col1', 'col2'])
-print(grouped.sum())
+print("按 'col1' 和 'col2' 分组，计算每组的总和:\n", grouped.sum())
 
 # 使用自定义函数分组
 def custom_group(index):
@@ -690,17 +804,21 @@ def custom_group(index):
     return 'group2'
 
 grouped = df.groupby(custom_group)
-print(grouped.mean())
+print("使用自定义函数分组:\n", grouped.mean())
 ```
 
 ## 应用部分
 
 - 主要实现以下三类操作：
   1. **聚合操作**：对于每个组经过计算得到一个概要性质的统计值，例如求和、求平均等。
+      -   **聚合 (Aggregation)**：将多个数据值合并为一个值。
   2. **转换操作**：对于每个组经过计算得到和组的长度相同的一系列的值，例如对数据的标准化、填充 `NA` 值等。
+      -   **转换 (Transformation)**：对数据进行某种形式的修改。
   3. **过滤操作**：通过对每个组的计算得到一个布尔类型的值完成对组的筛选，例如通过求得组的平均值来筛选组，或者每个组内通过一定的条件进行筛选。
+      - **过滤 (Filtering)**：根据某些条件筛选数据。
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 data = {'group': ['A', 'A', 'B', 'B', 'A'],
@@ -723,10 +841,18 @@ print(f"过滤 - 平均值大于 2 的组:\n{filtered}")
 ## 总结 📝
 
 - Pandas 是 Python 数据分析的重要工具，提供了 `Series` 和 `DataFrame` 两种核心数据结构。
+  - **Series**: 类似于带标签的一维数组。
+  - **DataFrame**: 类似于带标签的二维数组，或多个 Series 共享同一索引。
 - Pandas 具有强大的数据访问、操作、统计和分组功能。
 - 理解 `loc`、`iloc` 和 `[]` 的区别对于高效使用 Pandas 至关重要。
+  - **loc**: 通过标签访问数据。
+  - **iloc**: 通过位置访问数据。
+  - **[]**:  `DataFrame` 中用于访问列，`Series` 中类似于 `loc`。
 - 窗口函数是处理时序数据的有力工具。
 - `groupby` 功能可以实现类似于 SQL 的分组聚合操作。
+  - **split**:  按规则分组。
+  - **apply**:  应用函数。
+  - **combine**: 合并结果。
 
 ## 思考与讨论 🤔
 
@@ -736,51 +862,101 @@ print(f"过滤 - 平均值大于 2 的组:\n{filtered}")
 - `loc` 和 `iloc` 在使用场景上有哪些区别？
   - 当需要通过标签访问数据时，使用 `loc`。
   - 当需要通过位置访问数据时，使用 `iloc`。
-- 如何利用 Pandas 的窗口函数分析股票数据？
-  - 可以使用 `rolling` 函数计算移动平均线、移动标准差等指标。
+
+## 思考与讨论 🤔 (续)
+
+- 如何利用 Pandas 的窗口函数分析股票数据？ (续)
   - 可以使用 `ewm` 函数计算指数加权移动平均线。
+    - **指数加权移动平均线 (Exponentially Weighted Moving Average, EWMA)**：对近期数据赋予更高的权重，更能反映最近的价格变化。
 - `groupby` 功能在实际数据分析中有哪些应用？
   - 可以按类别分组，计算每个类别的统计量。
   - 可以按时间分组，计算每个时间段的统计量。
   - 可以自定义分组规则，进行更灵活的数据分析。
 - 结合一个具体案例，如分析某个商场不同部门的销售数据，来设计到到目前课件为止的pandas操作？
-  -   1.  **数据读取**：
-      ```{python}
-      import pandas as pd
-      sales_data = pd.read_csv('商场销售数据.csv')
-      ```
-      
-  -   2.  **数据概览**：
-      ```{python}
-      print(sales_data.head())  # 查看前几行数据
-      print(sales_data.info())  # 查看数据类型和缺失值
-      print(sales_data.describe())  # 查看数据的统计信息
-      ```
 
-  -   3.  **数据清洗**：
-      ```{python}
-      # 处理缺失值（假设用平均值填充）
-      sales_data.fillna(sales_data.mean(), inplace=True)
-      # 重命名列名
-      sales_data = sales_data.rename(columns={'部门': 'department', '销售额': 'sales'})
-      ```
+## 案例分析：商场销售数据分析 🛒
 
-  -   4.  **数据访问和筛选**：
+我们将使用 Pandas 分析某个商场不同部门的销售数据。
+
+### 1. 数据读取 📂
+
 ```{python}
-      # 访问特定列
-      departments = sales_data['department']
-      # 访问特定行
-      first_row = sales_data.loc[0]
-      # 条件筛选 筛选出销售额大于10000的记录
-      high_sales = sales_data[sales_data['sales'] > 10000]
-      # 使用 loc 筛选出特定部门和销售额的记录
+#| eval: false
+import pandas as pd
 
+# 假设数据文件名为 '商场销售数据.csv'
+sales_data = pd.read_csv('商场销售数据.csv')
+```
+
+-   **`pd.read_csv()`**:  Pandas 函数，用于从 CSV 文件读取数据，返回一个 DataFrame。
+-   **`sales_data`**:  DataFrame 变量，用于存储读取的数据。
+
+### 2. 数据概览 👀
+
+```{python}
+#| eval: false
+print(sales_data.head())  # 查看前几行数据
+print(sales_data.info())  # 查看数据类型和缺失值
+print(sales_data.describe())  # 查看数据的统计信息
+```
+
+-   **`sales_data.head()`**:  查看 DataFrame 的前几行（默认为 5 行），用于快速了解数据的结构。
+-   **`sales_data.info()`**:  查看 DataFrame 的详细信息，包括：
+    -   每列的名称和数据类型。
+    -   非空值的数量。
+    -   内存使用情况。
+-   **`sales_data.describe()`**:  查看 DataFrame 的统计摘要，包括：
+    -   计数 (count)
+    -   平均值 (mean)
+    -   标准差 (std)
+    -   最小值 (min)
+    -   25% 分位数
+    -   中位数 (50% 分位数)
+    -   75% 分位数
+    -   最大值 (max)
+
+### 3. 数据清洗 🧹
+
+```{python}
+#| eval: false
+# 处理缺失值（假设用平均值填充）
+sales_data.fillna(sales_data.mean(), inplace=True)
+
+# 重命名列名
+sales_data = sales_data.rename(columns={'部门': 'department', '销售额': 'sales'})
+```
+
+-   **`sales_data.fillna()`**:  填充 DataFrame 中的缺失值 (NaN)。
+    -   `sales_data.mean()`:  计算每列的平均值。
+    -   `inplace=True`:  直接修改原 DataFrame，不返回新的 DataFrame。
+-   **`sales_data.rename()`**:  重命名 DataFrame 的列名。
+    -   `columns={'部门': 'department', '销售额': 'sales'}`:  将 "部门" 列重命名为 "department"，将 "销售额" 列重命名为 "sales"。
+
+### 4. 数据访问和筛选 🎯
+
+```{python}
+#| eval: false
+# 访问特定列
+departments = sales_data['department']
+
+# 访问特定行
+first_row = sales_data.loc[0]
+
+# 条件筛选 筛选出销售额大于10000的记录
+high_sales = sales_data[sales_data['sales'] > 10000]
+
+# 使用 loc 筛选出特定部门和销售额的记录
 clothing_sales = sales_data.loc[(sales_data['department'] == '服装') & (sales_data['sales'] > 5000)]
 ```
 
--   5.  **数据统计**：
+-   **`sales_data['department']`**:  访问 "department" 列，返回一个 Series。
+-   **`sales_data.loc[0]`**:  使用 `loc` 访问第一行（标签为 0 的行），返回一个 Series。
+-   **`sales_data[sales_data['sales'] > 10000]`**:  使用布尔索引筛选出 "sales" 列大于 10000 的行。
+-   **`sales_data.loc[(sales_data['department'] == '服装') & (sales_data['sales'] > 5000)]`**:  使用 `loc` 和布尔索引筛选出 "department" 列为 "服装" 且 "sales" 列大于 5000 的行。
 
-```python
+### 5. 数据统计 📈
+
+```{python}
 #| eval: false
 # 计算总销售额
 total_sales = sales_data['sales'].sum()
@@ -792,17 +968,28 @@ avg_sales_by_department = sales_data.groupby('department')['sales'].mean()
 std_sales_by_department = sales_data.groupby('department')['sales'].std()
 ```
 
--   6.  **数据排序**：
+-   **`sales_data['sales'].sum()`**:  计算 "sales" 列的总和。
+-   **`sales_data.groupby('department')['sales'].mean()`**:
+    -   `sales_data.groupby('department')`:  按 "department" 列分组。
+    -   `['sales']`:  选择分组后的 "sales" 列。
+    -   `.mean()`:  计算每组的平均值。
+-   **`sales_data.groupby('department')['sales'].std()`**:  计算每个部门销售额的标准差。
 
-```python
+### 6. 数据排序 ⬇️⬆️
+
+```{python}
 #| eval: false
 # 按销售额降序排列
 sales_data_sorted = sales_data.sort_values(by='sales', ascending=False)
 ```
 
--   7. **窗口函数应用 (假设有日期数据)**：
+- **`sales_data.sort_values()`**: 对 DataFrame 进行排序。
+    - `by='sales'`:  按 "sales" 列排序。
+    - `ascending=False`:  降序排列 (从大到小)。
 
-```python
+### 7. 窗口函数应用 (假设有日期数据) ⏱️
+
+```{python}
 #| eval: false
 # 假设数据中有 'date' 列，表示销售日期
 sales_data['date'] = pd.to_datetime(sales_data['date'])
@@ -815,8 +1002,16 @@ rolling_avg_sales = sales_data['sales'].rolling(window=7).mean()
 monthly_sales = sales_data['sales'].resample('M').sum()
 ```
 
--   8. **分组聚合**
-```python
+-   **`sales_data['date'] = pd.to_datetime(sales_data['date'])`**:  将 "date" 列转换为日期时间类型。
+-   **`sales_data.set_index('date', inplace=True)`**:  将 "date" 列设置为 DataFrame 的索引。
+-   **`sales_data['sales'].rolling(window=7).mean()`**:  计算 "sales" 列的 7 天滚动平均值。
+-   **`sales_data['sales'].resample('M').sum()`**:
+    -   `.resample('M')`:  按月对数据进行重采样。
+    -   `.sum()`:  计算每个月的销售总额。
+
+### 8. 分组聚合 ➕➖
+
+```{python}
 #| eval: false
 # 计算每个部门的销售总额、平均销售额、最大销售额
 department_stats = sales_data.groupby('department')['sales'].agg(['sum', 'mean', 'max'])
@@ -825,745 +1020,11 @@ department_stats = sales_data.groupby('department')['sales'].agg(['sum', 'mean',
 high_performing_departments = department_stats[department_stats['sum'] > 50000]
 ```
 
-以上是用 Pandas 进行数据分析的常见操作。通过这些操作，可以从原始数据中提取有价值的信息，为业务决策提供支持。
+-   **`sales_data.groupby('department')['sales'].agg(['sum', 'mean', 'max'])`**:
+    -   `sales_data.groupby('department')`:  按 "department" 列分组。
+    -   `['sales']`:  选择分组后的 "sales" 列。
+    -   `.agg(['sum', 'mean', 'max'])`:  对每组应用多个聚合函数 (求和、平均值、最大值)。
+-   **`department_stats[department_stats['sum'] > 50000]`**:  筛选出 "sum" 列大于 50000 的行。
 
-现在，我们把这部分内容整合到幻灯片文档中：
+以上就是 Pandas 数据分析的基本流程和常用操作。通过这些操作，我们可以从原始数据中提取有用的信息，为业务决策提供支持。
 
-```qmd
----
-title: "数据分析理论与Python实战 📊"
-subtitle: "第五章 Pandas——处理结构化数据 🐼"
-format:
-  revealjs:
-    theme: [sky]
-    slide-number: true
-    show-slide-number: all
-    preview-links: auto
----
-
-## 目录
-
-- Pandas介绍 🐼
-- 基础数据结构 🧱
-- 基于Pandas的Index对象的访问操作 🔍
-- 数学统计和计算工具 🧮
-- 数学聚合和分组运算 ➕➖
-
-## Pandas介绍 🐼
-
-::: {.callout-note}
-Pandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能**、**简单易用**的数据结构和数据分析工具。 就像一个超级工具箱🧰，让数据处理变得轻松又高效！
-:::
-
-- **类表格统计操作**：Pandas 提供了方便的类似于 Excel 表格 📊 的统计操作，可以轻松进行求和、平均、计数等。
-- **类SQL操作**：可以像操作 SQL 数据库 🗄️ 一样操作数据，进行数据查询、筛选、连接等，非常适合数据预处理。
-- **缺失值处理**：Pandas 提供了强大的缺失值处理功能，可以帮你轻松搞定数据中的“洞”🕳️，使数据预处理更便捷。
-
-## Pandas介绍 🐼
-
-### Pandas可以完成什么事情？
-
-- **索引对象**：包括简单的索引和多层次的索引，就像给数据贴上标签🏷️，方便查找和管理。
-- **引擎集成组合**：用于汇总和转换数据集合，可以将多个数据源整合在一起，进行统一处理。
-- **日期范围生成器**：可以生成日期范围 📅，并支持自定义日期偏移（实现自定义频率），时间序列分析必备！
-
-```{python}
-import pandas as pd
-
-# 生成日期范围
-date_range = pd.date_range(start='2023-01-01', end='2023-01-10')
-print(date_range)
-
-# 自定义日期偏移
-custom_dates = pd.date_range(start='2023-01-01', periods=5, freq='2D') # 每两天
-print(custom_dates)
-```
-
-- **输入/输出工具**：从各种格式的文件（如 CSV、Excel）中加载表格数据，以及从 PyTables/HDF5 格式中保存和加载 Pandas 对象。数据导入导出，畅通无阻！
-    -   **CSV (Comma Separated Values)**：逗号分隔值，一种常见的文本文件格式，用于存储表格数据。可以理解为用逗号`,`分隔字段（列），用换行符分隔每条记录（行）的纯文本。
-    -   **Delimited Files**: 使用特定分隔符（如制表符`\t`、空格` `等）分隔数据的文件。
-    -   **Excel 2003**: 指的是 Microsoft Excel 2003 版本的文件格式（.xls）。现在更常用的是.xlsx格式。
-    -   **PyTables/HDF5**: PyTables 是一个用于管理分层数据集的 Python 包，设计用于高效处理大量数据。HDF5 (Hierarchical Data Format version 5) 是一种用于存储和管理数据的文件格式。特点是支持存储非常大的、异构的、复杂的数据对象。
-
-```{python}
-#| eval: false
-
-# 从 CSV 文件读取数据
-df = pd.read_csv('data.csv')
-
-# 将数据保存为 Excel 文件
-df.to_excel('data.xlsx', index=False)
-```
-
-- **标准数据结构**：支持存储大量缺失或一致的数据，就像一个大仓库 🏭，可以容纳各种类型的数据。
-- **移动窗口统计**：如滚动平均值、滚动标准偏差等，非常适合处理时间序列数据，就像一个滑动窗口 🪟，可以观察数据的变化趋势。
-
-## 基础数据结构——Series 🧱
-
-::: {.callout-tip}
-**Series** 是 Pandas 中一种重要的数据结构，类似于**一维数组**与**字典**的结合。可以看作是带标签的数组，每个元素都有一个对应的标签（索引）。
-:::
-
-- **定长有序字典**：Series 可以理解为一个定长、有序的“字典”结构，键值对一一对应。
-- **有标签的一维数组**：Series 是一个有标签的一维数组，标签在 Pandas 中对应的数据类型是 `index`。
-
-### Series的创建
-
-- 通过 `list` 创建：
-
-```{python}
-import pandas as pd
-
-data = [1, 2, 3, 4, 5]  # 创建一个列表
-series_from_list = pd.Series(data)  # 用列表创建 Series
-print(series_from_list) # 打印 Series, 包含索引和值
-```
-
-::: {.callout-note}
-创建Series时可以指定index，如果没指定index，则自动使用整数索引，从0开始。
-:::
-
-- 通过 `NumPy` 的 `ndarray` 创建：
-
-```{python}
-import pandas as pd
-import numpy as np
-
-data = np.array([1, 2, 3, 4, 5]) # 创建一个 NumPy 数组
-series_from_ndarray = pd.Series(data)  # 用 NumPy 数组创建 Series
-print(series_from_ndarray)
-```
-
-- 通过 `dict` 创建：
-
-```{python}
-import pandas as pd
-
-data = {'a': 1, 'b': 2, 'c': 3} # 创建一个字典
-series_from_dict = pd.Series(data)  # 用字典创建 Series
-print(series_from_dict)  # 字典的键会成为 Series 的索引
-```
-
-- 通过标量创建：
-
-```{python}
-import pandas as pd
-
-series_from_scalar = pd.Series(5, index=['a', 'b', 'c'])  # 创建一个所有值都为 5 的 Series
-print(series_from_scalar)
-```
-
-## Series的访问和操作
-
-### Series的访问
-
-- 使用 `iloc` 和 `loc` 函数：
-  - `iloc`：通过**位置**访问，就像数组一样，使用整数索引。
-  - `loc`：通过**标签**访问，就像字典一样，使用索引值。
-
-```{python}
-import pandas as pd
-
-s = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
-
-# 通过位置访问
-print(s.iloc[0])  # 输出: 10
-
-# 通过标签访问
-print(s.loc['b']) # 输出: 20
-```
-
-- 类似数组和属性的访问：
-
-```{python}
-# 类似数组
-print(s[0])  # 输出: 10
-
-# 类似属性(如果索引是有效的Python变量名)
-print(s.a) # 输出: 10
-```
-
-### Series的操作
-
-- **向量化操作**：像数组一样对 Series 进行操作，无需循环，Pandas 会自动处理。
-- **NumPy兼容性**：NumPy 中对 `ndarray` 的操作也适用于 Series，例如加减乘除、求和、平均等。
-- **数据对齐**：由于索引的存在，Series 在操作时会自动对齐数据，不同索引的数据会进行匹配，找不到匹配的会用 `NaN` 填充。
-
-```{python}
-import pandas as pd
-
-s1 = pd.Series([1, 2, 3], index=['a', 'b', 'c'])
-s2 = pd.Series([4, 5, 6], index=['b', 'c', 'd'])
-
-print(s1 + s2)  # 索引对齐，'a' 和 'd' 对应的值为 NaN
-```
-
-## 基础数据结构——DataFrame 🧱
-
-::: {.callout-note}
-**DataFrame** 是 Pandas 中最常用的数据结构，是有标签的**二维数组**，类似于**表格** 📇、**SQL**中的 `table`，或者是一个 `Series` 对象的 `dict`。 可以看作是多个 Series 共享同一个索引。
-:::
-
-- **行索引 (index)** 和 **列索引 (columns)**：DataFrame 同时具有行索引和列索引，就像一个表格有行标题和列标题。
-
-### DataFrame的创建
-
-- **输入**：
-  - 一维 `ndarray`、`list`、`dict` 或 `Series` 的 `dict`。
-  - 二维 `ndarray`。
-  - 一个 `Series`。
-  - 其他 `DataFrame`。
-
-```{python}
-import pandas as pd
-
-# 用字典创建 DataFrame
-data = {'col1': [1, 2], 'col2': [3, 4]}
-df = pd.DataFrame(data)
-print(df)
-
-# 用二维数组创建 DataFrame
-data = [[1, 2], [3, 4]]
-df = pd.DataFrame(data, columns=['col1', 'col2'])
-print(df)
-```
-
-- **索引**：
-  - 创建 DataFrame 时，可以通过 `index` 和 `columns` 参数指定行索引和列索引。
-  - 如果没有明确指定，会自动生成从 0 开始的整数索引。
-
-- **Series的dict创建DataFrame**：
-  - 若指定 `index`，会丢弃所有未和指定 `index` 匹配的数据。
-
-```{python}
-import pandas as pd
-
-data = {'col1': pd.Series([1, 2, 3], index=['a', 'b', 'c']),
-        'col2': pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])}
-df = pd.DataFrame(data)  # 字典的键会成为 DataFrame 的列名
-print(df) # index自动取并集
-
-df = pd.DataFrame(data, index=['a','b'])
-print(df) # index参数为['a','b']，df只有'a','b'两行，抛弃了'c'和'd'行的数据
-```
-
-::: {.callout-note}
-用Series的字典创建DataFrame时，index如果不指定，会自动取并集。
-:::
-
-## DataFrame的访问和操作
-
-### DataFrame的访问
-
-- 多种访问方式:
-  - 通过**列索引**访问：
-  ```{python}
-    #| eval: false
-    df['column_label']
-  ```
-  - 通过**行索引**访问：
-  ```{python}
-    #| eval: false
-    df.loc['row_label']
-  ```
-  - `loc`: 通过**行标签**访问
-    ```{python}
-    #| eval: false
-    print(df.loc['row_label'])
-    ```
-  - `iloc`：通过**行位置**访问。
-     ```{python}
-     #| eval: false
-     print(df.iloc[row_position])
-     ```
-
-```{python}
-import pandas as pd
-
-data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
-df = pd.DataFrame(data, index=['A', 'B', 'C'])
-
-# 通过列索引访问
-print(df['col1'])  # 选择 'col1' 列
-
-# 通过 loc 访问
-print(df.loc['A'])  # 选择 'A' 行
-
-# 通过 iloc 访问
-print(df.iloc[0])  # 选择第一行
-```
-
-### DataFrame的操作
-
-- **算术操作**：支持加、减、乘、除、转置等，就像操作矩阵一样。
-- **NumPy兼容性**：NumPy 中对矩阵的操作也适用于 DataFrame。
-- **数据对齐**：DataFrame 在操作时会自动按行和列索引对齐数据，不同索引的数据会进行匹配，找不到匹配的会用 `NaN` 填充。
-- **增删改查**：可以对 DataFrame 进行增、删、改、查操作。
-
-```{python}
-import pandas as pd
-
-data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
-df = pd.DataFrame(data)
-
-# 添加一列
-df['col3'] = [7, 8, 9]
-
-# 删除一列
-df = df.drop('col2', axis=1)
-
-# 修改数据
-df.loc[0, 'col1'] = 10
-
-# 查询数据
-print(df[df['col1'] > 1])
-print(df)
-```
-
-## 基于Pandas的Index对象的访问操作 🔍
-
-### Pandas的Index对象
-
-- `Series` 中的 `index` 属性。
-- `DataFrame` 中的 `index` 属性和 `columns` 属性。
-
-::: {.callout-note}
-`Series` 和 `DataFrame` 的索引都是 `Index` 对象，用于标识和访问数据。
-:::
-
-### Index对象的特征
-
-- **不可修改** (Immutable)：Index 对象一旦创建，就不能修改，保证了数据的安全性。
-- **有序**：Index 对象中的元素是有序的，可以按照顺序访问。
-- **可切片**：可以像列表或数组一样对 Index 对象进行切片操作，方便获取部分数据。
-
-### Index对象的类型
-
-- **Index**：最泛化的 Index 类型，将轴标签表示为一个由 Python 对象组成的 NumPy 数组。
-- **Int64Index**：针对整数的 Index 类型，用于整数索引。
-- **MultiIndex**：针对多层索引的 Index 类型，用于创建复杂的层次化索引。
-- **DatetimeIndex**：存储时间戳的 Index 类型，用于时间序列数据。
-- **PeriodIndex**：针对时间间隔数据的 Index 类型，用于表示一段时间。
-
-## Index对象的基本操作 🧮
-
-| 函数           | 说明                                                                  |
-| -------------- | --------------------------------------------------------------------- |
-| `delete`       | 删除索引 `i` 处的元素，返回新的 Index 对象（可以传入索引的数组）          |
-| `drop`         | 删除传入的元素 `e`，返回新的 Index 对象（可以传入元素的数组）            |
-| `insert`       | 将元素插入索引 `i` 处，返回新的 Index 对象                             |
-| `append`       | 连接另一个 Index 对象，返回新的 Index 对象                               |
-| `union`        | 与另一个 Index 对象进行并操作，返回两者的并集                             |
-| `difference`   | 与另一个 Index 对象进行差操作，返回两者的差集                             |
-| `intersection` | 与另一个 Index 对象进行交操作，返回两者的交集                             |
-| `isin`         | 判断 Index 对象中每个元素是否在参数所给的数组类型对象中，返回一个与 Index 对象长度相同的 Bool 数组 |
-| `is_monotonic` | 当每个元素都大于前一个元素时，返回 `True`                                |
-| `is_unique`    | 当 Index 对象中没有重复值时，返回 `True`                                  |
-| `unique`       | 返回没有重复数据的 Index 对象                                             |
-
-```{python}
-#| eval: false
-
-import pandas as pd
-
-index = pd.Index(['a', 'b', 'c', 'd'])
-
-# 删除索引为 1 的元素
-new_index = index.delete(1)  # new_index: Index(['a', 'c', 'd'], dtype='object')
-
-# 删除元素 'c'
-new_index = index.drop('c')  # new_index: Index(['a', 'b', 'd'], dtype='object')
-
-# 插入元素 'e' 到索引 2
-new_index = index.insert(2, 'e')  # new_index: Index(['a', 'b', 'e', 'c', 'd'], dtype='object')
-
-# 连接另一个 Index 对象
-other_index = pd.Index(['e', 'f'])
-new_index = index.append(other_index)  # new_index: Index(['a', 'b', 'c', 'd', 'e', 'f'], dtype='object')
-```
-
-## 索引的不同访问方式
-
-### loc 方式
-
-- 关注 `index` 的 **label**，筛选条件与 `label` 相关。
-- 接收 `index` 的 `label` 作为参数输入。
-- 可以接收：
-  - 单个 `label`。
-  - `label` 的数组。
-  - `label` 的分片 (`slice`)。
-  - 布尔数组。
-  - 回调函数（参数为调用 `loc` 函数的对象，即 `Series` 或 `DataFrame`）。
-
-```{python}
-import pandas as pd
-
-data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
-df = pd.DataFrame(data, index=['A', 'B', 'C'])
-
-# 单个 label
-print(df.loc['A'])
-
-# label 数组
-print(df.loc[['A', 'C']])
-
-# label 分片
-print(df.loc['A':'B'])
-
-# 布尔数组
-print(df.loc[df['col1'] > 1])
-
-# 回调函数
-print(df.loc[lambda df: df['col2'] > 4])
-```
-
-### iloc 方式
-
-- 关注 `index` 的 **position**。
-- 接收 `index` 的 `position` 作为参数输入。
-- 可以接收：
-  - 单个整数（表示 `position`）。
-  - `position` 的数组。
-  - `position` 的分片 (`slice`)。
-  - 布尔数组。
-  - 回调函数（参数为调用 `iloc` 函数的对象，即 `Series` 或 `DataFrame`）。
-
-```{python}
-import pandas as pd
-
-data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
-df = pd.DataFrame(data, index=['A', 'B', 'C'])
-
-# 单个整数
-print(df.iloc[0])
-
-# position 数组
-print(df.iloc[[0, 2]])
-
-# position 分片
-print(df.iloc[0:2])
-
-# 布尔数组
-print(df.iloc[(df['col1'] > 1).values])
-
-# 回调函数
-print(df.iloc[lambda df: [0, 2]])  # 注意：这里的回调函数返回的是位置列表
-```
-
-### 类似dict方式的访问
-
-- 可以将 `Series` 和 `DataFrame` 看作 `dict`。
-- `DataFrame` 相当于每个元素是 `Series` 的 `dict`。
-- 可以用类似 `dict` 访问的方式来访问 `Series` 和 `DataFrame`。
-
-```{python}
-import pandas as pd
-
-data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
-df = pd.DataFrame(data)
-
-# 访问 'col1' 列
-print(df['col1'])  # 类似于访问字典的键
-
-# 对于 Series，可以直接通过索引访问
-s = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
-print(s['b'])
-```
-
-### 类似属性方式的访问
-
-- 接受参数类型包括：
-  - 单个变量
-  - 数组形式（`list` 或者 `NumPy` 的 `ndarray`）
-  - 布尔数组
-  - 回调函数。
-
-```{python}
-import pandas as pd
-
-data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
-df = pd.DataFrame(data, index=['A', 'B', 'C'])
-
-# 单个变量
-print(df.col1)  # 访问 'col1' 列，类似于访问对象的属性
-
-# 数组形式
-print(df[['col1', 'col2']])
-
-# 布尔数组
-print(df[df.col1 > 1])  # 使用布尔数组筛选数据
-
-# 回调函数
-print(df[lambda df: df.col2 > 4])
-```
-
-## 调用方式间的区别
-
-### loc函数和iloc函数的区别
-
-- `loc` 函数和 `iloc` 函数都是对 `index` 的访问。
-- 对于 `DataFrame`，也可以实现对某个 `index` 下的某个 `column` 的访问。
-- 接收的数据类型相同，但含义不同：
-  - `loc` 函数接收 `Index` 对象（`index` 和 `columns`）的 `label`。
-  - `iloc` 函数接收 `Index` 对象（`index` 和 `columns`）的 `position`。
-
-### 通过loc访问和通过[]访问的区别
-
-- `loc` 函数和 `[]` 都接收 `Index` 对象（`index` 和 `columns`）的 `label` 作为参数。
-- `loc` 函数是对 `index` 的访问。
-- `[]` 在 `DataFrame` 中是对 `columns` 的访问，在 `Series` 中无差别。
-
-## 特殊的输入类型
-
-### 输入为布尔类型数组
-
-- 使用布尔类型数组作为输入参数也是常见的操作之一。
-- 可用的运算符包括：
-  - `|` (或运算)
-  - `&` (与运算)
-  - `~` (非运算)
-- **注意**：要使用圆括号 `()` 来组合条件。
-
-```{python}
-import pandas as pd
-
-df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
-
-# 选取 col1 大于 1 且 col2 小于 6 的行
-print(df[(df['col1'] > 1) & (df['col2'] < 6)])
-
-# 选取 col1 等于 1 或 col2 大于 5 的行
-print(df[(df['col1'] == 1) | (df['col2'] > 5)])
-```
-
-### 输入为回调函数
-
-- `loc`、`iloc` 和 `[]` 都接收回调函数作为输入来进行访问。
-- 回调函数必须以被访问的 `Series` 或者 `DataFrame` 作为参数。
-
-```{python}
-import pandas as pd
-
-df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
-
-# 使用回调函数选取 col2 大于 4 的行
-print(df[lambda df: df['col2'] > 4])
-
-# 使用 loc 和回调函数选取 col1 大于 1 的行
-print(df.loc[lambda df: df['col1'] > 1])
-
-# 使用 iloc 和回调函数选取第 0 行和第 2 行
-print(df.iloc[lambda df: [0, 2]])
-```
-
-## 数学统计和计算工具 🧮
-
-### 统计函数
-
-- Pandas 提供了一系列统计函数接口，方便用户直接进行统计运算。
-- 包括：
-  - **协方差:** 用于衡量两个变量的总体误差。当两个变量的变化趋势一致时，协方差为正；当变化趋势相反时，协方差为负；如果两个变量相互独立，则协方差为0。
-  - **相关系数:** 用于研究变量之间线性相关程度的量。相关系数的取值范围在-1到1之间，绝对值越大，说明变量之间的线性相关性越强。
-  - **排序:** 对数据进行排序。
-
-- Pandas 提供了：
-  - 两个 `Series` 对象之间的协方差计算接口。
-  - 一个 `DataFrame` 的协方差矩阵的计算接口。
-
-```{python}
-import pandas as pd
-
-s1 = pd.Series([1, 2, 3, 4, 5])
-s2 = pd.Series([2, 3, 1, 5, 4])
-
-# 计算 s1 和 s2 的协方差
-covariance = s1.cov(s2)
-print(f"协方差: {covariance}")
-
-# 计算 s1 和 s2 的相关系数
-correlation = s1.corr(s2)
-print(f"相关系数: {correlation}")
-
-df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
-
-# 计算 DataFrame 的协方差矩阵
-cov_matrix = df.cov()
-print(f"协方差矩阵:\n{cov_matrix}")
-
-# 计算 DataFrame 的相关系数矩阵
-corr_matrix = df.corr()
-print(f"相关系数矩阵:\n{corr_matrix}")
-```
-
-## 窗口函数
-
-::: {.callout-tip}
-在移动窗口上计算统计函数对于处理**时序数据** 📈 非常常见。
-:::
-
-- Pandas 提供了一系列窗口函数，包括：
-  - 计数
-  - 求和
-  - 求平均
-  - 中位数
-  - 相关系数
-  - 方差
-  - 协方差
-  - 标准差
-  - 偏斜度
-  - 峰度
-- 窗口对象：
-  - **Rolling**:
-    - 定长的窗口。
-    - 需要通过参数 `window` 指定窗口大小。
-  - **Expanding**:
-    - 扩展窗口。
-    - 第 `i` 个窗口的大小为 `i`。
-    - 可以将其看作特殊的 `windows` 为数据长度、`min_periods` 为 1 的 `Rolling` 对象。
-  - **EWM (Exponentially Weighted Moving)**:
-    - 指数加权窗口。
-    - 需要定义衰减因子 α。
-    - 定义方式：
-      - 时间间隔 `span`。
-      - 质心 `center of mass`。
-      - 半衰期 `half-life`（指数权重减少到一半需要的时间）。
-      - 直接定义 `alpha`。
-
-```{python}
-import pandas as pd
-
-# 创建一个时间序列
-s = pd.Series([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-              index=pd.date_range('2023-01-01', periods=10, freq='D'))
-
-# Rolling 窗口
-rolling_mean = s.rolling(window=3).mean()  # 计算 3 天的滚动平均值
-print(f"滚动平均:\n{rolling_mean}")
-
-# Expanding 窗口
-expanding_sum = s.expanding().sum()  # 计算累计和
-print(f"累计和:\n{expanding_sum}")
-
-# EWM 窗口
-ewm_mean = s.ewm(span=3).mean()  # 计算指数加权移动平均值
-print(f"指数加权移动平均:\n{ewm_mean}")
-```
-
-## 窗口对象的统计函数 📊
-
-| 函数         | 说明                                                                 |
-| ------------ | -------------------------------------------------------------------- |
-| `count()`    | 移动窗口内非 `NaN` 值的计数                                              |
-| `sum()`      | 移动窗口内的和                                                         |
-| `mean()`     | 移动窗口内的平均值                                                     |
-| `median()`   | 移动窗口内的中位数                                                     |
-| `min()`      | 移动窗口内的最小值                                                     |
-| `max()`      | 移动窗口内的最大值                                                     |
-| `std()`      | 移动窗口内的无偏估计标准差（分母为 `n-1`）                                |
-| `var()`      | 移动窗口内的无偏估计方差（分母为 `n-1`）                                |
-| `skew()`     | 移动窗口内的偏度  (样本的三阶标准化矩)                                                      |
-| `kurt()`     | 移动窗口内的峰度   (样本的四阶标准化矩)                                                      |
-| `quantile()` | 移动窗口内的指定分位数位置的值（传入的应该是 `[0,1]` 的值）                 |
-| `apply()`    | 在移动窗口内使用普通的（可以自定义的）数组函数                           |
-| `cov()`      | 移动窗口内的协方差                                                     |
-| `corr()`     | 移动窗口内的相关系数                                                   |
-
-## 数学聚合和分组运算 ➕➖
-
-::: {.callout-note}
-类似于 SQL 操作中的分组和聚合，Pandas 提供了 `groupby` 功能。
-:::
-
-- `groupby` 包括三个阶段：
-  1. **split**：根据一定原则将数据分组。
-  2. **apply**：每个组分别执行一个函数，产生一个新值。
-  3. **combine**：将各组的结果合并到最终对象中。
-
-- **拆分操作**：
-  - Pandas 对象（`Series` 或 `DataFrame`）根据提供的键在特定的轴上进行拆分。
-  - `DataFrame` 可以指定是在 `index` 轴还是 `columns` 轴。
-
-## 拆分键的形式
-
-| 拆分键的形式说明                       | 示例                                                                  |
-| :------------------------------------- | :-------------------------------------------------------------------- |
-| 和所选轴长度相同的数组（`list` 或 NumPy 的 `array`，甚至是一个 `Series` 对象） | `df.groupby(group_list).count()`                                       |
-| `DataFrame` 某个列名的值或列名的 `list`          | `df.groupby('a')`  `df.groupby(df['a'])`                                             |
-|                                        | `# 上述两个表述等价`                                                          |
-|                                        |`group_series = pd.Series(group_list)`  `df.groupby(group_series)`    |
-| 参数为 `axis` 的标签的函数               | `df.groupby(df.loc['one'],axis=1)`                                   |
-|                                        | `def get_index_number(index):`<br> `if index in ['one','two']:` <br>   `return 'small'` <br> `else:` <br>  `return 'big'` <br> `df.groupby(get_index_number)`|
-| 字典或者 `Series`，给出 `axis` 上的值与分组名之间的对应关系          |`#该示例与Demo1的效果相同`<br>  `group_list = ['one','two','one','two','two']` <br> `group_series = pd.Series(group_list,index = df.index)` <br> `df.groupby(group_series)`                                         |
-| 组1、2、3、4的 `list` 或者              | `df.groupby(['a','b'])`                                               |
-
-```{python}
-import pandas as pd
-
-data = {'col1': ['A', 'A', 'B', 'B', 'A'],
-        'col2': [1, 2, 3, 4, 5],
-        'col3': [6, 7, 8, 9, 10]}
-
-df = pd.DataFrame(data)
-
-# 按 'col1' 分组，计算每组的平均值
-grouped = df.groupby('col1')
-print(grouped.mean())
-
-# 按 'col1' 和 'col2' 分组，计算每组的总和
-grouped = df.groupby(['col1', 'col2'])
-print(grouped.sum())
-
-# 使用自定义函数分组
-def custom_group(index):
-  if index < 2:
-    return 'group1'
-  else:
-    return 'group2'
-
-grouped = df.groupby(custom_group)
-print(grouped.mean())
-```
-
-## 应用部分
-
-- 主要实现以下三类操作：
-  1. **聚合操作**：对于每个组经过计算得到一个概要性质的统计值，例如求和、求平均等。
-  2. **转换操作**：对于每个组经过计算得到和组的长度相同的一系列的值，例如对数据的标准化、填充 `NA` 值等。
-  3. **过滤操作**：通过对每个组的计算得到一个布尔类型的值完成对组的筛选，例如通过求得组的平均值来筛选组，或者每个组内通过一定的条件进行筛选。
-
-```{python}
-import pandas as pd
-
-data = {'group': ['A', 'A', 'B', 'B', 'A'],
-        'value': [1, 2, 3, 4, 5]}
-df = pd.DataFrame(data)
-
-# 聚合：计算每组的总和
-grouped_sum = df.groupby('group').sum()
-print(f"聚合 - 每组总和:\n{grouped_sum}")
-
-# 转换：对每组进行标准化
-normalized = df.groupby('group')['value'].transform(lambda x: (x - x.mean()) / x.std())
-print(f"转换 - 标准化:\n{normalized}")
-
-# 过滤：筛选出 value 平均值大于 2 的组
-filtered = df.groupby('group').filter(lambda x: x['value'].mean() > 2)
-print(f"过滤 - 平均值大于 2 的组:\n{filtered}")
-```
-
-## 总结 📝
-
-- Pandas 是 Python 数据分析的重要工具，提供了 `Series` 和 `DataFrame` 两种核心数据结构。
-- Pandas 具有强大的数据访问、操作、统计和分组功能。
-- 理解 `loc`、`iloc` 和 `[]` 的区别对于高效使用 Pandas 至关重要。
-- 窗口函数是处理时序数据的有力工具。
-- `groupby` 功能可以实现类似于 SQL 的分组聚合操作。
-
-## 思考与讨论 🤔
-
-- 在实际应用中，如何选择合适的数据结构（`Series` 或 `DataFrame`）？
-  - 当只需要处理一维数据，或者需要一个带标签的数组时，选择 `Series`。
-  - 当需要处理二维数据，或者需要一个表格结构时，选择 `DataFrame`。
-- `loc` 和 `iloc` 在使用场景上有哪些区别？
-  - 当需要通过标签访问数据时，使用 `loc`。
-  - 当需要通过位置访问数据时，使用 `iloc`
