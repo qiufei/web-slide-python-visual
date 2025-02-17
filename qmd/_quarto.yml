@@ -1,3 +1,6 @@
+project:
+  output-dir: ../html
+
 lang: zh
 #subtitle: "教材补充解释与说明"
 title-slide-attributes:
@@ -5,6 +8,7 @@ title-slide-attributes:
     data-background-size: contain
     data-background-opacity: "0.5"
 author: "邱飞"
+
 
 format:
   revealjs:
