@@ -234,7 +234,7 @@ Pandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能
     -   **日期范围 (Date Range)**：表示一段连续的日期，例如 "2023-01-01" 到 "2023-01-10"。
     -   **日期偏移 (Date Offset)**：表示一个时间间隔，例如 "2天"、"1个月"、"3小时" 等。
 
-::: {#7b447a3a .cell execution_count=1}
+::: {#c2223a5d .cell execution_count=1}
 ``` {.python .cell-code}
 import pandas as pd
 
@@ -283,7 +283,7 @@ Bob    30    London</code></pre></li>
 </ul></li>
 </ul></li>
 </ul>
-<div id="639ecae4" class="cell" data-execution_count="2">
+<div id="39fd345b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 从 CSV 文件读取数据</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data.csv'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -343,7 +343,7 @@ Tip
 <ul>
 <li>通过 <code>list</code> 创建：</li>
 </ul>
-<div id="4d3bd3c6" class="cell" data-execution_count="3">
+<div id="305796bf" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]  <span class="co"># 创建一个列表</span></span>
@@ -366,7 +366,7 @@ Note
 <ul>
 <li>通过 <code>NumPy</code> 的 <code>ndarray</code> 创建：</li>
 </ul>
-<div id="cab03446" class="cell" data-execution_count="4">
+<div id="13f9d4af" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -377,7 +377,7 @@ Note
 <ul>
 <li>通过 <code>dict</code> 创建：</li>
 </ul>
-<div id="b80597b1" class="cell" data-execution_count="5">
+<div id="bc6c24aa" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'a'</span>: <span class="dv">1</span>, <span class="st">'b'</span>: <span class="dv">2</span>, <span class="st">'c'</span>: <span class="dv">3</span>} <span class="co"># 创建一个字典</span></span>
@@ -387,7 +387,7 @@ Note
 <ul>
 <li>通过标量创建：</li>
 </ul>
-<div id="cd286fe9" class="cell" data-execution_count="6">
+<div id="e0ed2087" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>series_from_scalar <span class="op">=</span> pd.Series(<span class="dv">5</span>, index<span class="op">=</span>[<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])  <span class="co"># 创建一个所有值都为 5 的 Series</span></span>
@@ -409,7 +409,7 @@ Note
 <li><code>loc</code>：通过<strong>标签</strong>访问，就像字典一样，使用索引值。</li>
 </ul></li>
 </ul>
-<div id="c13970b4" class="cell" data-execution_count="7">
+<div id="f89b5189" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>], index<span class="op">=</span>[<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span>
@@ -423,7 +423,7 @@ Note
 <ul>
 <li>类似数组和属性的访问：</li>
 </ul>
-<div id="0f4e7367" class="cell" data-execution_count="8">
+<div id="57c0e508" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 类似数组</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"类似数组访问(s[0]):"</span>, s[<span class="dv">0</span>])  <span class="co"># 输出: 10</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -445,7 +445,7 @@ Note
 <li><strong>数据对齐 (Data Alignment)</strong>：Pandas 在进行运算时，会根据索引自动匹配 Series 或 DataFrame 中的数据。</li>
 </ul></li>
 </ul>
-<div id="ea0d125f" class="cell" data-execution_count="9">
+<div id="849f1a2f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], index<span class="op">=</span>[<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span>
@@ -488,7 +488,7 @@ Note
 <li>其他 <code>DataFrame</code>。</li>
 </ul></li>
 </ul>
-<div id="7712e836" class="cell" data-execution_count="10">
+<div id="54f1b346" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 用字典创建 DataFrame</span></span>
@@ -512,7 +512,7 @@ Note
 <li>若指定 <code>index</code>，会丢弃所有未和指定 <code>index</code> 匹配的数据。</li>
 </ul></li>
 </ul>
-<div id="d3c0b6d5" class="cell" data-execution_count="11">
+<div id="6fdb6d70" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], index<span class="op">=</span>[<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]),</span>
@@ -548,28 +548,28 @@ Note
 <li>通过<strong>列索引</strong>访问：</li>
 </ul></li>
 </ul>
-<div id="0f8edcb4" class="cell" data-execution_count="12">
+<div id="410269be" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'column_label'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>通过<strong>行索引</strong>访问：</li>
 </ul>
-<div id="36aeb6cf" class="cell" data-execution_count="13">
+<div id="b23a65f6" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="st">'row_label'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>loc</code>: 通过<strong>行标签</strong>访问</li>
 </ul>
-<div id="b67fd75d" class="cell" data-execution_count="14">
+<div id="53391625" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.loc[<span class="st">'row_label'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>iloc</code>：通过<strong>行位置</strong>访问。</li>
 </ul>
-<div id="9015f2bf" class="cell" data-execution_count="15">
+<div id="59928b44" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.iloc[row_position])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fbc23ca8" class="cell" data-execution_count="16">
+<div id="694209b4" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
@@ -593,7 +593,7 @@ Note
 <li><strong>数据对齐</strong>：DataFrame 在操作时会自动按行和列索引对齐数据，不同索引的数据会进行匹配，找不到匹配的会用 <code>NaN</code> 填充。</li>
 <li><strong>增删改查</strong>：可以对 DataFrame 进行增、删、改、查操作。</li>
 </ul>
-<div id="dbe6d4ba" class="cell" data-execution_count="17">
+<div id="2d4d2e89" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
@@ -732,7 +732,7 @@ Note
 </tr>
 </tbody>
 </table>
-<div id="c060fbc5" class="cell" data-execution_count="18">
+<div id="4156d6fc" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> pd.Index([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>])</span>
@@ -771,7 +771,7 @@ Note
 <li>回调函数（参数为调用 <code>loc</code> 函数的对象，即 <code>Series</code> 或 <code>DataFrame</code>）。</li>
 </ul></li>
 </ul>
-<div id="37301fbf" class="cell" data-execution_count="19">
+<div id="41fad28a" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
@@ -807,7 +807,7 @@ Note
 <li>回调函数（参数为调用 <code>iloc</code> 函数的对象，即 <code>Series</code> 或 <code>DataFrame</code>）。</li>
 </ul></li>
 </ul>
-<div id="bc988b3a" class="cell" data-execution_count="20">
+<div id="45d62069" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
@@ -836,7 +836,7 @@ Note
 <li><code>DataFrame</code> 相当于每个元素是 <code>Series</code> 的 <code>dict</code>。</li>
 <li>可以用类似 <code>dict</code> 访问的方式来访问 <code>Series</code> 和 <code>DataFrame</code>。</li>
 </ul>
-<div id="4d03def5" class="cell" data-execution_count="21">
+<div id="dc4e9647" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
@@ -861,7 +861,7 @@ Note
 <li>回调函数。</li>
 </ul></li>
 </ul>
-<div id="4bf8b7ff" class="cell" data-execution_count="22">
+<div id="8644f2a1" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
@@ -918,7 +918,7 @@ Note
 </ul></li>
 <li><strong>注意</strong>：要使用圆括号 <code>()</code> 来组合条件。</li>
 </ul>
-<div id="622c546d" class="cell" data-execution_count="23">
+<div id="6570e7a9" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
@@ -936,7 +936,7 @@ Note
 <li><code>loc</code>、<code>iloc</code> 和 <code>[]</code> 都接收回调函数作为输入来进行访问。</li>
 <li>回调函数必须以被访问的 <code>Series</code> 或者 <code>DataFrame</code> 作为参数。</li>
 </ul>
-<div id="fe45e625" class="cell" data-execution_count="24">
+<div id="bb9a6013" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
@@ -986,7 +986,7 @@ Corr(X, Y) = \frac{Cov(X, Y)}{\sigma_X \sigma_Y}
 <li>一个 <code>DataFrame</code> 的协方差矩阵的计算接口。</li>
 </ul></li>
 </ul>
-<div id="077dfcd5" class="cell" data-execution_count="25">
+<div id="e4206a26" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
@@ -1068,7 +1068,7 @@ Tip
 </ul></li>
 </ul></li>
 </ul>
-<div id="34fafbe2" class="cell" data-execution_count="26">
+<div id="76734754" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个时间序列</span></span>
@@ -1247,7 +1247,7 @@ Note
 </tr>
 </tbody>
 </table>
-<div id="62f030f7" class="cell" data-execution_count="27">
+<div id="f50d9975" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="st">'A'</span>, <span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'B'</span>, <span class="st">'A'</span>],</span>
@@ -1294,7 +1294,7 @@ Note
 </ul></li>
 </ol></li>
 </ul>
-<div id="e42136d5" class="cell" data-execution_count="28">
+<div id="1e35e9c7" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'group'</span>: [<span class="st">'A'</span>, <span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'B'</span>, <span class="st">'A'</span>],</span>
@@ -1377,7 +1377,7 @@ Note
 <p>我们将使用 Pandas 分析某个商场不同部门的销售数据。</p>
 <section id="数据读取" class="level3">
 <h3 class="anchored" data-anchor-id="数据读取">1. 数据读取 📂</h3>
-<div id="9f83acc1" class="cell" data-execution_count="29">
+<div id="dcbac916" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设数据文件名为 '商场销售数据.csv'</span></span>
@@ -1390,7 +1390,7 @@ Note
 </section>
 <section id="数据概览" class="level3">
 <h3 class="anchored" data-anchor-id="数据概览">2. 数据概览 👀</h3>
-<div id="ed3e240f" class="cell" data-execution_count="30">
+<div id="333e33d8" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sales_data.head())  <span class="co"># 查看前几行数据</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sales_data.info())  <span class="co"># 查看数据类型和缺失值</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sales_data.describe())  <span class="co"># 查看数据的统计信息</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1418,7 +1418,7 @@ Note
 </section>
 <section id="数据清洗" class="level3">
 <h3 class="anchored" data-anchor-id="数据清洗">3. 数据清洗 🧹</h3>
-<div id="131874a7" class="cell" data-execution_count="31">
+<div id="01c84604" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 处理缺失值（假设用平均值填充）</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>sales_data.fillna(sales_data.mean(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1439,7 +1439,7 @@ Note
 </section>
 <section id="数据访问和筛选" class="level3">
 <h3 class="anchored" data-anchor-id="数据访问和筛选">4. 数据访问和筛选 🎯</h3>
-<div id="d6dce8e7" class="cell" data-execution_count="32">
+<div id="2d241dbe" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 访问特定列</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>departments <span class="op">=</span> sales_data[<span class="st">'department'</span>]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1461,7 +1461,7 @@ Note
 </section>
 <section id="数据统计" class="level3">
 <h3 class="anchored" data-anchor-id="数据统计">5. 数据统计 📈</h3>
-<div id="4642f38b" class="cell" data-execution_count="33">
+<div id="5d5de817" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算总销售额</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>total_sales <span class="op">=</span> sales_data[<span class="st">'sales'</span>].<span class="bu">sum</span>()</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1484,7 +1484,7 @@ Note
 </section>
 <section id="数据排序" class="level3">
 <h3 class="anchored" data-anchor-id="数据排序">6. 数据排序 ⬇️⬆️</h3>
-<div id="ce63f31b" class="cell" data-execution_count="34">
+<div id="a3381fd2" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 按销售额降序排列</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>sales_data_sorted <span class="op">=</span> sales_data.sort_values(by<span class="op">=</span><span class="st">'sales'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1498,7 +1498,7 @@ Note
 </section>
 <section id="窗口函数应用-假设有日期数据" class="level3">
 <h3 class="anchored" data-anchor-id="窗口函数应用-假设有日期数据">7. 窗口函数应用 (假设有日期数据) ⏱️</h3>
-<div id="653d2fc7" class="cell" data-execution_count="35">
+<div id="b9950f62" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设数据中有 'date' 列，表示销售日期</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>sales_data[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(sales_data[<span class="st">'date'</span>])</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>sales_data.set_index(<span class="st">'date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
@@ -1522,7 +1522,7 @@ Note
 </section>
 <section id="分组聚合" class="level3">
 <h3 class="anchored" data-anchor-id="分组聚合">8. 分组聚合 ➕➖</h3>
-<div id="24079c4b" class="cell" data-execution_count="36">
+<div id="2280e27c" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算每个部门的销售总额、平均销售额、最大销售额</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>department_stats <span class="op">=</span> sales_data.groupby(<span class="st">'department'</span>)[<span class="st">'sales'</span>].agg([<span class="st">'sum'</span>, <span class="st">'mean'</span>, <span class="st">'max'</span>])</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
