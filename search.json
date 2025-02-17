@@ -1341,7 +1341,7 @@
     "href": "qmd/chapter7.html#分类方法",
     "title": "信息技术基础",
     "section": "7.1 分类方法",
-    "text": "7.1 分类方法\n分类方法就像一个智能分类器，能够将不同类型的数据区分开来。让我们来看看有哪些神奇的分类器吧！\n\nLogistic 回归\n\n实现:\n\nsklearn.linear_model.LogisticRegression\n\n支持:\n\n二分类 (binary) 🎯：判断是或否 (例如：是否患病)\n一对多分类 (one vs rest) 🥊：多个类别中选择一个 (例如：识别手写数字 0-9)\n多项式回归 ➕：处理非线性关系\n可以选择 L1 或 L2 正则化 💪：防止模型过拟合\n\n\n\n\nLogistic 回归：概念解释\n\nLogistic Regression: 是一种广义的线性回归分析模型，虽然名字里有“回归”，但实际上是用来解决分类问题的。它通过一个叫做 Sigmoid 的函数，将线性回归的输出映射到 0 到 1 之间，表示属于某一类的概率。\n\n📌 例如：判断一封邮件是否为垃圾邮件。\n\n\n\n\nSigmoid 函数\nSigmoid 函数，也称为逻辑函数，是一个 S 形曲线，其数学表达式为：\n\\[\n\\sigma(z) = \\frac{1}{1 + e^{-z}}\n\\]\n其中：\n\n\\(z\\) 是输入值（可以是任意实数）。\n\\(e\\) 是自然对数的底数（欧拉数，约等于 2.71828）。\n\\(\\sigma(z)\\) 是输出值，范围在 0 到 1 之间。\n\nSigmoid函数的图像如下：\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\ndef sigmoid(x):\n  return 1 / (1 + np.exp(-x))\n\nx = np.linspace(-10, 10, 100)\ny = sigmoid(x)\n\nplt.figure(figsize=(6, 4))\nplt.plot(x, y)\nplt.title('Sigmoid Function')\nplt.xlabel('x')\nplt.ylabel('sigmoid(x)')\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: Sigmoid 函数图像\n\n\n\n\n\n\n\nSigmoid 函数的性质\n\nS 形曲线: Sigmoid 函数的图形呈 S 形，将输入值映射到 (0, 1) 的区间内。\n概率解释: 输出值可以被解释为概率，表示样本属于某一类的可能性。\n可微性: Sigmoid 函数是可微的，这使得它在梯度下降等优化算法中非常有用。\n非线性: Sigmoid 函数是非线性的，这使得逻辑回归可以处理非线性关系。\n\n\n\nLogistic 回归中的正则化\n\n正则化 (Regularization): 一种防止模型过拟合的技术。模型过拟合指的是模型在训练数据上表现很好，但在新数据上表现很差。\n\nL1 正则化: 倾向于产生稀疏的模型 (很多参数为 0)，可以用来进行特征选择。\n\nL1 正则化通过向损失函数添加参数向量的 L1 范数（绝对值之和）的惩罚项来实现。\n\nL2 正则化: 倾向于产生参数值较小的模型，可以提高模型的泛化能力。\n\nL2 正则化通过向损失函数添加参数向量的 L2 范数（平方和的平方根）的惩罚项来实现。\n\n\n\n\n\n\n\n\n\nLogistic回归solver选择\n\n\n\n\n\n\n\n\n\n\nCase\nSolver\n\n\n\n\nL1 正则\n“liblinear”, “saga”\n\n\n多项式损失 (multinomial loss)\n“lbfgs”, “sag”, “saga”, “newton-cg”\n\n\n大数据集 (n_samples)\n“sag”, “saga”\n\n\n\n\n\n\n\nLogistic回归solver选择\n\nliblinear:\n\n应用了坐标下降算法(Coordinate Descent)，基于 C++ 库实现，速度较快。\n对于小数据集和二分类问题，liblinear 是一个不错的选择。\n不是真正意义上的多分类模型,而是基于“one-vs-rest”思想,为每个类别训练了一个二元分类器。\n\nlbfgs, sag 和 newton-cg:\n\n只支持 L2 惩罚项，对某些高维数据收敛更快。\nlbfgs 是一种拟牛顿法(Quasi-Newton method)，适用于中小型数据集。\nnewton-cg 是一种牛顿法(Newton’s method)，需要计算海森矩阵(Hessian matrix)，适用于特征维度较少的数据集。\nsag (Stochastic Average Gradient) 是一种随机平均梯度下降算法，适用于大型数据集。\n参数 multi_class 设为 “multinomial” 即为真正的分类,其预测比 liblinear 更为准确。\n\n\n\n\nLogistic回归solver选择\n\nsag:\n\n基于平均随机梯度下降算法(Stochastic Average Gradient descent)。\n在大数据集上的表现更快,大数据集指样本量大且特征数多。\n\nsaga:\n\nsag 的变体，它支持非平滑的 L1 正则选项 penalty=\"l1\"。\n对于稀疏多项式 logistic 回归效果较好。\nsaga 也适用于大型数据集。\n\n\n\n\nLogistic回归代码示例\n\nimport numpy as np\nfrom sklearn import linear_model, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 LogisticRegression 对象，并设置 solver 为 'liblinear'\nlog_reg = linear_model.LogisticRegression(solver='liblinear')\n\n# 使用 fit 方法训练模型\nlog_reg.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(log_reg.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n# 预测概率\nprint(log_reg.predict_proba([[5.1, 3.5, 1.4, 0.2]])) # 第一个类别的概率最高\n\n[0]\n[[8.78030305e-01 1.21958900e-01 1.07949250e-05]]\n\n\n\n\nLogistic回归代码示例：代码解释\n\n导入必要的库：\n\nnumpy 用于数值计算。\nsklearn 中的 linear_model 用于逻辑回归。\ndatasets 用于加载示例数据集。\n\n加载 iris 数据集：这是一个常用的数据集，包含了三种不同类型的鸢尾花（Setosa, Versicolour, Virginica）的萼片和花瓣的长度和宽度。\n\n\n\n\n\n\n\n\n\n\nsepal length (cm)\nsepal width (cm)\npetal length (cm)\npetal width (cm)\ntarget\nspecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\n0.0\nsetosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\n0.0\nsetosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\n0.0\nsetosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\n0.0\nsetosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\n0.0\nsetosa\n\n\n\n\n\n\n\n\n\nLogistic回归代码示例：代码解释\n\n将数据集分为特征 X (萼片和花瓣的长度和宽度) 和目标 Y (鸢尾花的种类)。\n创建一个 LogisticRegression 对象，并设置 solver 参数为 'liblinear'。\n使用 fit 方法训练模型。\n使用 predict 方法对新的数据点 [5.1, 3.5, 1.4, 0.2] 进行预测。\npredict_proba 方法返回的是一个数组，数组中的每一个数字分别代表属于每一个类别的概率。\n\n\n\nSVM (支持向量机)\n\n实现:\n\nsklearn.svm.SVC()：C-支持向量分类。\nsklearn.svm.NuSVC()：Nu-支持向量分类。\nsklearn.svm.LinearSVC()：线性支持向量分类。\n\n区别:\n\nSVC 与 NuSVC 比较接近，两者参数略有不同。SVC 使用参数 C 来控制正则化强度，而 NuSVC 使用参数 nu 来控制支持向量的数量。\nLinearSVC 仅支持线性核函数的分类，速度更快，适用于大规模数据集。\n\n\n\n\nSVM：概念解释\n\nSVM: 一种强大的分类算法，它试图找到一个最佳的超平面，将不同类别的数据分隔开。这个超平面被称为“决策边界”。\n\n🗂️ 就像在不同类别的数据之间画一条线 (或者在高维空间中画一个平面、超平面)，使得不同类别的数据点到这条线的距离尽可能远。\n\n支持向量 (Support Vectors): 离决策边界最近的那些数据点，它们决定了决策边界的位置。\n\n\n\nSVM：核函数\n\n核函数 (Kernel Function): 将数据映射到更高维空间，使得数据更容易被分隔。常用的核函数有：\n\n线性核函数 (Linear Kernel): 不做任何映射，直接在原始空间中寻找超平面。\n多项式核函数 (Polynomial Kernel): 将数据映射到多项式空间。\n径向基核函数 (RBF Kernel): 将数据映射到无限维空间。\n\n支持向量机的目标是找到能够最大化类别之间边距的超平面，从而提高分类的准确性和鲁棒性。它特别适用于高维空间的数据分类问题。\n\n\n\nSVM 代码示例\n\nimport numpy as np\nfrom sklearn import svm, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 SVC 对象，并设置 kernel 为 'rbf' (径向基核函数)\nclf1 = svm.SVC(kernel='rbf')\n\n# 创建 NuSVC 对象\nclf2 = svm.NuSVC()\n\n# 创建 LinearSVC 对象\nclf3 = svm.LinearSVC(max_iter=10000)\n\n# 使用 fit 方法训练模型\nclf1.fit(X, Y)\nclf2.fit(X, Y)\nclf3.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf1.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(clf2.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(clf3.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n[0]\n[0]\n\n\n\n\nSVM：支持向量的获取\n\nsupport_vectors_: 全部支持向量\nsupport_: 支持向量在原始数据集中的索引\nn_support: 各类别的支持向量的数量 (LinearSVC 不支持)\n\n\n# 获取支持向量\nprint(clf1.support_vectors_)\n\n# 获取支持向量的索引\nprint(clf1.support_)\n\n# 获取各类别的支持向量的数量\nprint(clf1.n_support_)\n\n\n\nNearest Neighbors (最近邻)\n\n实现:\n\nsklearn.neighbors.KNeighborsClassifier()：K-近邻分类器。\nsklearn.neighbors.RadiusNeighborsClassifier()：半径近邻分类器。\n\n区别:\n\nKNeighborsClassifier: 基于每个查询点的 k 个最近邻实现。对于一个新的数据点，找到离它最近的 k 个训练数据点，然后根据这 k 个点的类别进行投票，票数最多的类别就是新数据点的预测类别。\n\nk 是用户指定的整数值，通常需要通过交叉验证等方法来选择最佳的 k 值。\n\nRadiusNeighborsClassifier: 基于每个查询点的固定半径 r 内的邻居数量实现。对于一个新的数据点，找到所有离它距离小于等于 r 的训练数据点，然后根据这些点的类别进行投票，票数最多的类别就是新数据点的预测类别。\n\n其中 r 是用户指定的浮点数值，需要根据数据的分布情况来选择合适的 r 值。\n\n\n\n\n\nNearest Neighbors：概念解释\n\nNearest Neighbors: 一种简单且直观的分类算法，它基于“物以类聚”的思想。对于一个新的数据点，找到离它最近的训练数据点（即“邻居”），然后根据这些邻居的类别来预测新数据点的类别。\n\n🚶 就像根据你周围的人群来判断你属于哪个群体。如果你周围大部分人都是医生，那么你很可能也是医生。\n\n\n\n\nNearest Neighbors 参数\n\nn_neighbors 与 radius 参数：设置 k、r 值\nweights 参数：对近邻进行加权。不同的权重策略会影响预测结果。\n\nuniform: 各个“邻居”权重相等。每个邻居对预测结果的贡献相同。\ndistance: 按照距离给各个“邻居”权重，较近点产生的影响更大。距离越近的邻居对预测结果的贡献越大。\n自定的函数：可以自定义一个函数，根据距离或其他因素来计算权重。\n\nalgorithm 参数：指定查找最近邻算法。不同的算法适用于不同的数据规模和维度。\n\nball_tree: 使用球树 (Ball Tree) 数据结构，适用于高维数据。\nkd_tree: 使用 KD 树 (K-D Tree) 数据结构，适用于低维数据。\nbrute: 使用暴力搜索 (Brute-Force Search)，对每个查询点都计算与所有训练数据点的距离，适用于小规模数据集。\nauto: 自动选择最合适的算法。\n\n\n\n\nNearest Neighbors 代码示例\n\nimport numpy as np\nfrom sklearn import neighbors, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 KNeighborsClassifier 对象，并设置 n_neighbors 为 5\nkclf = neighbors.KNeighborsClassifier(n_neighbors=5)\n\n# 创建 RadiusNeighborsClassifier 对象，并设置 radius 为 1.0\nrclf = neighbors.RadiusNeighborsClassifier(radius=1.0)\n\n# 使用 fit 方法训练模型\nkclf.fit(X, Y)\nrclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(kclf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(rclf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n[0]\n\n\n\n\nDecision Tree (决策树)\n\n实现:\n\nsklearn.tree.DecisionTreeClassifier()\n\n概念解释:\n\nDecision Tree: 决策树是一种树状结构的分类算法，它通过一系列的 if-else 问题来对数据进行分类。\n\n🌳 就像一棵树，每个内部节点表示一个特征或属性，每个分支代表一个测试输出，每个叶节点代表一个类别。\n从根节点开始，根据数据的特征进行判断，沿着不同的分支向下走，直到到达叶节点，叶节点所代表的类别就是预测结果。\n\n\n\n\n\n决策树：更详细的解释\n\n决策树是一种直观且易于理解的分类方法。它通过递归地将数据集划分为更小的子集，并在每个子集上构建一个决策节点，最终形成一个树状结构。\n优点：\n\n易于理解和解释，可以可视化决策过程。\n可以处理数值型和类别型数据。\n不需要对数据进行预处理（如归一化）。\n\n缺点：\n\n容易过拟合，需要进行剪枝等处理。\n对数据中的噪声比较敏感。\n可能会产生偏向于某些特征的决策树。\n\n\n\n\nDecision Tree 代码示例\n\nimport numpy as np\nfrom sklearn import tree, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 DecisionTreeClassifier 对象\nclf = tree.DecisionTreeClassifier()\n\n# 使用 fit 方法训练模型\nclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n\n\n\n\nStochastic Gradient Descent (随机梯度下降)\n\n实现:\n\nsklearn.linear_model.SGDClassifier()\n\n支持:\n\n多种 loss functions (损失函数)\n多种 penalties for classification (分类处罚)\n\n概念解释:\n\nStochastic Gradient Descent: 随机梯度下降是一种优化算法，常用于训练机器学习模型，尤其是大规模数据集上的线性模型。\n\n🚀 就像一个探险家，每次只看一小步 (随机选择一个样本)，但最终也能到达目的地 (找到最优解)。\n\n\n\n\n\n随机梯度下降：更详细的解释\n\n与传统的梯度下降算法不同，SGD 每次迭代只使用一个样本来计算梯度，并更新模型参数。这样做的好处是可以大大加快训练速度，尤其是在数据集非常大的情况下。\n优点：\n\n训练速度快，适用于大规模数据集。\n可以用于在线学习 (Online Learning)，即模型可以随着新数据的到来不断更新。\n\n缺点：\n\n收敛过程可能不稳定，需要仔细调整学习率等参数。\n容易陷入局部最优解。\n\n\n\n\n随机梯度下降的参数设置\n\nloss 参数：设置损失函数\n\nhinge (默认)：soft-margin SVM，适用于线性 SVM 分类器。\nmodified_huber：平滑的 hinge 损失，对噪声更鲁棒。\nlog：logistic 回归，适用于概率分类。\nhinge、modified_huber 是惰性的，能够提高训练效率\n\nclass_weight 参数：设置分类权重，用于处理类别不平衡问题。\n\n默认所有类别权重相等，均为 1。\n用形如 “{class: weight}” 的 dict 指明权重，可以手动调整每个类别的权重。\n声明为 “balanced” 自动设置各类权重与其出现概率成反比，可以自动平衡类别权重。\n\n\n\n\nStochastic Gradient Descent 代码示例\n\nimport numpy as np\nfrom sklearn import linear_model, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 SGDClassifier 对象，并设置 loss 为 'log_loss' (logistic 回归)\nclf = linear_model.SGDClassifier(loss='log_loss', max_iter=1000, tol=1e-3)\n\n# 使用 fit 方法训练模型\nclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n\n\n\n\n\n\n\n\nTip\n\n\n\n使用时，需要预先打乱训练数据或在声明时将 “shuffle” 参数设置为 “True” (默认即为 “True”) 以在每次迭代后打乱数据\n\n\n\n\nGaussian Process Classification (高斯过程分类)\n\n实现:\n\nsklearn.gaussian_process.GaussianProcessClassifier()\n\n支持多元分类:\n\novr (默认): 每个类都训练一个二元高斯过程分类器，将该类与其余类分开\novo: 每两个类训练一个二元高斯过程分类器，将两个类分开\n对于高斯过程分类，“ovo” 策略可能在计算上更有效，但是不支持预测概率估计。\n\n\n\n\nGaussian Process Classification：概念解释\n\nGaussian Process: 高斯过程是一种概率模型，它假设任意有限个数据点的联合分布都是一个多元高斯分布。\n高斯过程分类是一种基于概率的分类方法。它假设数据点是由一个潜在的高斯过程生成的，并使用贝叶斯推断来估计后验概率。可以用于对函数的分布进行建模。\n\n📊 可以理解为对函数的“函数”进行建模，不仅可以预测函数值，还可以估计预测的不确定性。\n\n优点：\n\n可以提供预测的置信度。\n可以处理非线性关系。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对核函数的选择比较敏感。\n\n\n\n\nGaussian Process Classification 代码示例\n\nimport numpy as np\nfrom sklearn import gaussian_process, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 GaussianProcessClassifier 对象\nclf = gaussian_process.GaussianProcessClassifier()\n\n# 使用 fit 方法训练模型\nclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n\n\n\n\nMultilayer Perceptron (多层感知器 - 神经网络)\n\n实现:\n\nsklearn.neural_network.MLPClassifier()\n\n部分细节:\n\nMLPClassifier 只支持交叉熵损失函数，通过运行 predict_proba 方法进行概率估计\nMLP 算法使用的是反向传播的方式，通过反向传播计算得到的梯度和某种形式的梯度下降来进行训练\n对于分类来说，它最小化交叉熵损失函数，为每个样本给出一个向量形式的概率估计\n\n\n\n\n神经网络：从感知器到多层感知器\n\n感知器 (Perceptron)\n\n起源: 感知器是最早的人工神经元模型，由 Frank Rosenblatt 在 1957 年提出。\n结构: 单层感知器由一个或多个输入节点、一个输出节点和一个激活函数组成。\n工作原理:\n\n输入信号乘以权重。\n对加权后的输入求和。\n将求和结果输入激活函数，产生输出。\n\n激活函数: 通常使用阶跃函数 (Heaviside step function)。\n局限性: 单层感知器只能解决线性可分问题。\n\n\n\n\n多层感知器 (Multilayer Perceptron, MLP)\n\n突破: 为了解决线性不可分问题，引入了多层感知器。\n结构: MLP 是一种前馈神经网络，由多个层组成：\n\n输入层: 接收原始数据。\n隐藏层: 对数据进行非线性变换。可以有多个隐藏层。\n输出层: 输出预测结果。\n\n神经元: 每个层包含多个神经元，神经元之间全连接。\n激活函数: 隐藏层通常使用非线性激活函数，如 Sigmoid、ReLU、tanh 等。\n反向传播 (Backpropagation): 一种用于训练神经网络的算法，它通过计算损失函数对每个参数的梯度，来更新神经网络的权重。\n\n\n\n神经网络的优点和缺点\n\n优点：\n\n可以学习复杂的非线性关系。\n具有较强的泛化能力。\n可以处理高维数据。\n\n缺点：\n\n训练时间较长。\n容易陷入局部最优解。\n需要仔细调整网络结构和参数。\n可解释性较差。\n\n\n\n\n神经网络的应用\n\n图像识别\n语音识别\n自然语言处理\n推荐系统\n金融预测\n…\n\n\n\nMultilayer Perceptron 参数设置\n\nhidden_layer_sizes 参数声明中间层的单元数\n\ntuple 形式，每一项为中间层各层的单元数\n默认为一层中间层，100 个单元\n例如：hidden_layer_sizes=(100,) 表示只有一个隐藏层且这个隐藏层有100个神经元。hidden_layer_sizes=(50, 50) 表示有两个隐藏层，每个隐藏层有50个神经元。\n\n\n\n\nMultilayer Perceptron 代码示例\n\nimport numpy as np\nfrom sklearn import neural_network, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 MLPClassifier 对象，并设置隐藏层为 (100,)，即一个包含 100 个神经元的隐藏层\nclf = neural_network.MLPClassifier(hidden_layer_sizes=(100,), max_iter=1000)\n\n# 使用 fit 方法训练模型\nclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n# 使用 predict_proba 方法进行概率估计\nprint(clf.predict_proba([[5.1, 3.5, 1.4, 0.2]]))\n\n[0]\n[[9.98715257e-01 1.28474302e-03 5.39198430e-12]]\n\n\n\n\nNaive Bayes (朴素贝叶斯)\n\n实现:\n\nsklearn.naive_bayes.GaussianNB()：高斯朴素贝叶斯，假设特征服从高斯分布。\nsklearn.naive_bayes.MultinomialNB()：多项式朴素贝叶斯，适用于多项式分布的数据，如文本数据 (单词计数)。\nsklearn.naive_bayes.BernoulliNB()：伯努利朴素贝叶斯，适用于二元分布的数据 (特征是二值的)。\n\n注意:\n\n提供 partial_fit 方法用于动态的加载数据以解决大数据量的问题\n首次调用 partial_fit 方法需要传递一个所有期望的类标签的列表\n\n\n\n\nNaive Bayes：概念解释\n\nNaive Bayes: 朴素贝叶斯是一种基于贝叶斯定理的简单概率分类器。“朴素” 的意思是假设特征之间相互独立。\n\n🧮 基于概率的分类器，它假设每个特征对分类结果的影响是独立的。\n\n贝叶斯定理: 一种计算条件概率的公式，即在已知一些条件下，事件发生的概率。\n\nP(A|B) = [P(B|A) * P(A)] / P(B)\n\n优点：\n\n简单、快速、高效。\n适用于高维数据，如文本数据。\n对缺失数据不敏感。\n\n缺点：\n\n“朴素” 的假设在现实中往往不成立，特征之间可能存在相关性。\n对输入数据的表达形式很敏感。\n\n\n\n\nNaive Bayes 代码示例\n\nimport numpy as np\nfrom sklearn import naive_bayes, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 GaussianNB 对象\ngnb = naive_bayes.GaussianNB()\n\n# 创建 MultinomialNB 对象\nmnb = naive_bayes.MultinomialNB()\n\n# 创建 BernoulliNB 对象\nbnb = naive_bayes.BernoulliNB()\n\n# 使用 fit 方法训练模型\ngnb.fit(X, Y)\nmnb.fit(X, Y)\nbnb.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(gnb.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(mnb.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(bnb.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n[0]\n[0]"
+    "text": "7.1 分类方法\n分类方法就像一个智能分类器，能够将不同类型的数据区分开来。让我们来看看有哪些神奇的分类器吧！\n\nLogistic 回归\n\n实现:\n\nsklearn.linear_model.LogisticRegression\n\n支持:\n\n二分类 (binary) 🎯：判断是或否 (例如：是否患病)\n一对多分类 (one vs rest) 🥊：多个类别中选择一个 (例如：识别手写数字 0-9)\n多项式回归 ➕：处理非线性关系\n可以选择 L1 或 L2 正则化 💪：防止模型过拟合\n\n\n\n\nLogistic 回归：概念解释\n\nLogistic Regression: 是一种广义的线性回归分析模型，虽然名字里有“回归”，但实际上是用来解决分类问题的。它通过一个叫做 Sigmoid 的函数，将线性回归的输出映射到 0 到 1 之间，表示属于某一类的概率。\n\n📌 例如：判断一封邮件是否为垃圾邮件。\n\n\n\n\nSigmoid 函数\nSigmoid 函数，也称为逻辑函数，是一个 S 形曲线，其数学表达式为：\n\\[\n\\sigma(z) = \\frac{1}{1 + e^{-z}}\n\\]\n其中：\n\n\\(z\\) 是输入值（可以是任意实数）。\n\\(e\\) 是自然对数的底数（欧拉数，约等于 2.71828）。\n\\(\\sigma(z)\\) 是输出值，范围在 0 到 1 之间。\n\nSigmoid函数的图像如下：\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\ndef sigmoid(x):\n  return 1 / (1 + np.exp(-x))\n\nx = np.linspace(-10, 10, 100)\ny = sigmoid(x)\n\nplt.figure(figsize=(6, 4))\nplt.plot(x, y)\nplt.title('Sigmoid Function')\nplt.xlabel('x')\nplt.ylabel('sigmoid(x)')\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: Sigmoid 函数图像\n\n\n\n\n\n\n\nSigmoid 函数的性质\n\nS 形曲线: Sigmoid 函数的图形呈 S 形，将输入值映射到 (0, 1) 的区间内。\n概率解释: 输出值可以被解释为概率，表示样本属于某一类的可能性。\n可微性: Sigmoid 函数是可微的，这使得它在梯度下降等优化算法中非常有用。\n非线性: Sigmoid 函数是非线性的，这使得逻辑回归可以处理非线性关系。\n\n\n\nLogistic 回归中的正则化\n\n正则化 (Regularization): 一种防止模型过拟合的技术。模型过拟合指的是模型在训练数据上表现很好，但在新数据上表现很差。\n\nL1 正则化: 倾向于产生稀疏的模型 (很多参数为 0)，可以用来进行特征选择。\n\nL1 正则化通过向损失函数添加参数向量的 L1 范数（绝对值之和）的惩罚项来实现。\n\nL2 正则化: 倾向于产生参数值较小的模型，可以提高模型的泛化能力。\n\nL2 正则化通过向损失函数添加参数向量的 L2 范数（平方和的平方根）的惩罚项来实现。\n\n\n\n\n\n\n\n\n\nLogistic回归solver选择\n\n\n\n\n\n\n\n\n\n\nCase\nSolver\n\n\n\n\nL1 正则\n“liblinear”, “saga”\n\n\n多项式损失 (multinomial loss)\n“lbfgs”, “sag”, “saga”, “newton-cg”\n\n\n大数据集 (n_samples)\n“sag”, “saga”\n\n\n\n\n\n\n\nLogistic回归solver选择\n\nliblinear:\n\n应用了坐标下降算法(Coordinate Descent)，基于 C++ 库实现，速度较快。\n对于小数据集和二分类问题，liblinear 是一个不错的选择。\n不是真正意义上的多分类模型,而是基于“one-vs-rest”思想,为每个类别训练了一个二元分类器。\n\nlbfgs, sag 和 newton-cg:\n\n只支持 L2 惩罚项，对某些高维数据收敛更快。\nlbfgs 是一种拟牛顿法(Quasi-Newton method)，适用于中小型数据集。\nnewton-cg 是一种牛顿法(Newton’s method)，需要计算海森矩阵(Hessian matrix)，适用于特征维度较少的数据集。\nsag (Stochastic Average Gradient) 是一种随机平均梯度下降算法，适用于大型数据集。\n参数 multi_class 设为 “multinomial” 即为真正的分类,其预测比 liblinear 更为准确。\n\n\n\n\nLogistic回归solver选择\n\nsag:\n\n基于平均随机梯度下降算法(Stochastic Average Gradient descent)。\n在大数据集上的表现更快,大数据集指样本量大且特征数多。\n\nsaga:\n\nsag 的变体，它支持非平滑的 L1 正则选项 penalty=\"l1\"。\n对于稀疏多项式 logistic 回归效果较好。\nsaga 也适用于大型数据集。\n\n\n\n\nLogistic回归代码示例\n\nimport numpy as np\nfrom sklearn import linear_model, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 LogisticRegression 对象，并设置 solver 为 'liblinear'\nlog_reg = linear_model.LogisticRegression(solver='liblinear')\n\n# 使用 fit 方法训练模型\nlog_reg.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(log_reg.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n# 预测概率\nprint(log_reg.predict_proba([[5.1, 3.5, 1.4, 0.2]])) # 第一个类别的概率最高\n\n[0]\n[[8.78030305e-01 1.21958900e-01 1.07949250e-05]]\n\n\n\n\nLogistic回归代码示例：代码解释\n\n导入必要的库：\n\nnumpy 用于数值计算。\nsklearn 中的 linear_model 用于逻辑回归。\ndatasets 用于加载示例数据集。\n\n加载 iris 数据集：这是一个常用的数据集，包含了三种不同类型的鸢尾花（Setosa, Versicolour, Virginica）的萼片和花瓣的长度和宽度。\n\n\n\n\n\n\n\n\n\n\nsepal length (cm)\nsepal width (cm)\npetal length (cm)\npetal width (cm)\ntarget\nspecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\n0.0\nsetosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\n0.0\nsetosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\n0.0\nsetosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\n0.0\nsetosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\n0.0\nsetosa\n\n\n\n\n\n\n\n\n\nLogistic回归代码示例：代码解释\n\n将数据集分为特征 X (萼片和花瓣的长度和宽度) 和目标 Y (鸢尾花的种类)。\n创建一个 LogisticRegression 对象，并设置 solver 参数为 'liblinear'。\n使用 fit 方法训练模型。\n使用 predict 方法对新的数据点 [5.1, 3.5, 1.4, 0.2] 进行预测。\npredict_proba 方法返回的是一个数组，数组中的每一个数字分别代表属于每一个类别的概率。\n\n\n\nSVM (支持向量机)\n\n实现:\n\nsklearn.svm.SVC()：C-支持向量分类。\nsklearn.svm.NuSVC()：Nu-支持向量分类。\nsklearn.svm.LinearSVC()：线性支持向量分类。\n\n区别:\n\nSVC 与 NuSVC 比较接近，两者参数略有不同。SVC 使用参数 C 来控制正则化强度，而 NuSVC 使用参数 nu 来控制支持向量的数量。\nLinearSVC 仅支持线性核函数的分类，速度更快，适用于大规模数据集。\n\n\n\n\nSVM：概念解释\n\nSVM: 一种强大的分类算法，它试图找到一个最佳的超平面，将不同类别的数据分隔开。这个超平面被称为“决策边界”。\n\n🗂️ 就像在不同类别的数据之间画一条线 (或者在高维空间中画一个平面、超平面)，使得不同类别的数据点到这条线的距离尽可能远。\n\n支持向量 (Support Vectors): 离决策边界最近的那些数据点，它们决定了决策边界的位置。\n\n\n\nSVM：核函数\n\n核函数 (Kernel Function): 将数据映射到更高维空间，使得数据更容易被分隔。常用的核函数有：\n\n线性核函数 (Linear Kernel): 不做任何映射，直接在原始空间中寻找超平面。\n多项式核函数 (Polynomial Kernel): 将数据映射到多项式空间。\n径向基核函数 (RBF Kernel): 将数据映射到无限维空间。\n\n支持向量机的目标是找到能够最大化类别之间边距的超平面，从而提高分类的准确性和鲁棒性。它特别适用于高维空间的数据分类问题。\n\n\n\nSVM 代码示例\n\nimport numpy as np\nfrom sklearn import svm, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 SVC 对象，并设置 kernel 为 'rbf' (径向基核函数)\nclf1 = svm.SVC(kernel='rbf')\n\n# 创建 NuSVC 对象\nclf2 = svm.NuSVC()\n\n# 创建 LinearSVC 对象\nclf3 = svm.LinearSVC(max_iter=10000)\n\n# 使用 fit 方法训练模型\nclf1.fit(X, Y)\nclf2.fit(X, Y)\nclf3.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf1.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(clf2.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(clf3.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n[0]\n[0]\n\n\n\n\nSVM：支持向量的获取\n\nsupport_vectors_: 全部支持向量\nsupport_: 支持向量在原始数据集中的索引\nn_support: 各类别的支持向量的数量 (LinearSVC 不支持)\n\n\n# 获取支持向量\nprint(clf1.support_vectors_)\n\n# 获取支持向量的索引\nprint(clf1.support_)\n\n# 获取各类别的支持向量的数量\nprint(clf1.n_support_)\n\n\n\nNearest Neighbors (最近邻)\n\n实现:\n\nsklearn.neighbors.KNeighborsClassifier()：K-近邻分类器。\nsklearn.neighbors.RadiusNeighborsClassifier()：半径近邻分类器。\n\n区别:\n\nKNeighborsClassifier: 基于每个查询点的 k 个最近邻实现。对于一个新的数据点，找到离它最近的 k 个训练数据点，然后根据这 k 个点的类别进行投票，票数最多的类别就是新数据点的预测类别。\n\nk 是用户指定的整数值，通常需要通过交叉验证等方法来选择最佳的 k 值。\n\nRadiusNeighborsClassifier: 基于每个查询点的固定半径 r 内的邻居数量实现。对于一个新的数据点，找到所有离它距离小于等于 r 的训练数据点，然后根据这些点的类别进行投票，票数最多的类别就是新数据点的预测类别。\n\n其中 r 是用户指定的浮点数值，需要根据数据的分布情况来选择合适的 r 值。\n\n\n\n\n\nNearest Neighbors：概念解释\n\nNearest Neighbors: 一种简单且直观的分类算法，它基于“物以类聚”的思想。对于一个新的数据点，找到离它最近的训练数据点（即“邻居”），然后根据这些邻居的类别来预测新数据点的类别。\n\n🚶 就像根据你周围的人群来判断你属于哪个群体。如果你周围大部分人都是医生，那么你很可能也是医生。\n\n\n\n\nNearest Neighbors 参数\n\nn_neighbors 与 radius 参数：设置 k、r 值\nweights 参数：对近邻进行加权。不同的权重策略会影响预测结果。\n\nuniform: 各个“邻居”权重相等。每个邻居对预测结果的贡献相同。\ndistance: 按照距离给各个“邻居”权重，较近点产生的影响更大。距离越近的邻居对预测结果的贡献越大。\n自定的函数：可以自定义一个函数，根据距离或其他因素来计算权重。\n\nalgorithm 参数：指定查找最近邻算法。不同的算法适用于不同的数据规模和维度。\n\nball_tree: 使用球树 (Ball Tree) 数据结构，适用于高维数据。\nkd_tree: 使用 KD 树 (K-D Tree) 数据结构，适用于低维数据。\nbrute: 使用暴力搜索 (Brute-Force Search)，对每个查询点都计算与所有训练数据点的距离，适用于小规模数据集。\nauto: 自动选择最合适的算法。\n\n\n\n\nNearest Neighbors 代码示例\n\nimport numpy as np\nfrom sklearn import neighbors, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 KNeighborsClassifier 对象，并设置 n_neighbors 为 5\nkclf = neighbors.KNeighborsClassifier(n_neighbors=5)\n\n# 创建 RadiusNeighborsClassifier 对象，并设置 radius 为 1.0\nrclf = neighbors.RadiusNeighborsClassifier(radius=1.0)\n\n# 使用 fit 方法训练模型\nkclf.fit(X, Y)\nrclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(kclf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(rclf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n[0]\n\n\n\n\nDecision Tree (决策树)\n\n实现:\n\nsklearn.tree.DecisionTreeClassifier()\n\n概念解释:\n\nDecision Tree: 决策树是一种树状结构的分类算法，它通过一系列的 if-else 问题来对数据进行分类。\n\n🌳 就像一棵树，每个内部节点表示一个特征或属性，每个分支代表一个测试输出，每个叶节点代表一个类别。\n从根节点开始，根据数据的特征进行判断，沿着不同的分支向下走，直到到达叶节点，叶节点所代表的类别就是预测结果。\n\n\n\n\n\n决策树：更详细的解释\n\n决策树是一种直观且易于理解的分类方法。它通过递归地将数据集划分为更小的子集，并在每个子集上构建一个决策节点，最终形成一个树状结构。\n优点：\n\n易于理解和解释，可以可视化决策过程。\n可以处理数值型和类别型数据。\n不需要对数据进行预处理（如归一化）。\n\n缺点：\n\n容易过拟合，需要进行剪枝等处理。\n对数据中的噪声比较敏感。\n可能会产生偏向于某些特征的决策树。\n\n\n\n\nDecision Tree 代码示例\n\nimport numpy as np\nfrom sklearn import tree, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 DecisionTreeClassifier 对象\nclf = tree.DecisionTreeClassifier()\n\n# 使用 fit 方法训练模型\nclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n\n\n\n\nStochastic Gradient Descent (随机梯度下降)\n\n实现:\n\nsklearn.linear_model.SGDClassifier()\n\n支持:\n\n多种 loss functions (损失函数)\n多种 penalties for classification (分类处罚)\n\n概念解释:\n\nStochastic Gradient Descent: 随机梯度下降是一种优化算法，常用于训练机器学习模型，尤其是大规模数据集上的线性模型。\n\n🚀 就像一个探险家，每次只看一小步 (随机选择一个样本)，但最终也能到达目的地 (找到最优解)。\n\n\n\n\n\n随机梯度下降：更详细的解释\n\n与传统的梯度下降算法不同，SGD 每次迭代只使用一个样本来计算梯度，并更新模型参数。这样做的好处是可以大大加快训练速度，尤其是在数据集非常大的情况下。\n优点：\n\n训练速度快，适用于大规模数据集。\n可以用于在线学习 (Online Learning)，即模型可以随着新数据的到来不断更新。\n\n缺点：\n\n收敛过程可能不稳定，需要仔细调整学习率等参数。\n容易陷入局部最优解。\n\n\n\n\n随机梯度下降的参数设置\n\nloss 参数：设置损失函数\n\nhinge (默认)：soft-margin SVM，适用于线性 SVM 分类器。\nmodified_huber：平滑的 hinge 损失，对噪声更鲁棒。\nlog：logistic 回归，适用于概率分类。\nhinge、modified_huber 是惰性的，能够提高训练效率\n\nclass_weight 参数：设置分类权重，用于处理类别不平衡问题。\n\n默认所有类别权重相等，均为 1。\n用形如 “{class: weight}” 的 dict 指明权重，可以手动调整每个类别的权重。\n声明为 “balanced” 自动设置各类权重与其出现概率成反比，可以自动平衡类别权重。\n\n\n\n\nStochastic Gradient Descent 代码示例\n\nimport numpy as np\nfrom sklearn import linear_model, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 SGDClassifier 对象，并设置 loss 为 'log_loss' (logistic 回归)\nclf = linear_model.SGDClassifier(loss='log_loss', max_iter=1000, tol=1e-3)\n\n# 使用 fit 方法训练模型\nclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n\n\n\n\n\n\n\n\nTip\n\n\n\n使用时，需要预先打乱训练数据或在声明时将 “shuffle” 参数设置为 “True” (默认即为 “True”) 以在每次迭代后打乱数据\n\n\n\n\nGaussian Process Classification (高斯过程分类)\n\n实现:\n\nsklearn.gaussian_process.GaussianProcessClassifier()\n\n支持多元分类:\n\novr (默认): 每个类都训练一个二元高斯过程分类器，将该类与其余类分开\novo: 每两个类训练一个二元高斯过程分类器，将两个类分开\n对于高斯过程分类，“ovo” 策略可能在计算上更有效，但是不支持预测概率估计。\n\n\n\n\nGaussian Process Classification：概念解释\n\nGaussian Process: 高斯过程是一种概率模型，它假设任意有限个数据点的联合分布都是一个多元高斯分布。\n高斯过程分类是一种基于概率的分类方法。它假设数据点是由一个潜在的高斯过程生成的，并使用贝叶斯推断来估计后验概率。可以用于对函数的分布进行建模。\n\n📊 可以理解为对函数的“函数”进行建模，不仅可以预测函数值，还可以估计预测的不确定性。\n\n优点：\n\n可以提供预测的置信度。\n可以处理非线性关系。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对核函数的选择比较敏感。\n\n\n\n\nGaussian Process Classification 代码示例\n\nimport numpy as np\nfrom sklearn import gaussian_process, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 GaussianProcessClassifier 对象\nclf = gaussian_process.GaussianProcessClassifier()\n\n# 使用 fit 方法训练模型\nclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n\n\n\n\nMultilayer Perceptron (多层感知器 - 神经网络)\n\n实现:\n\nsklearn.neural_network.MLPClassifier()\n\n部分细节:\n\nMLPClassifier 只支持交叉熵损失函数，通过运行 predict_proba 方法进行概率估计\nMLP 算法使用的是反向传播的方式，通过反向传播计算得到的梯度和某种形式的梯度下降来进行训练\n对于分类来说，它最小化交叉熵损失函数，为每个样本给出一个向量形式的概率估计\n\n\n\n\n神经网络：从感知器到多层感知器\n\n感知器 (Perceptron)\n\n起源: 感知器是最早的人工神经元模型，由 Frank Rosenblatt 在 1957 年提出。\n结构: 单层感知器由一个或多个输入节点、一个输出节点和一个激活函数组成。\n工作原理:\n\n输入信号乘以权重。\n对加权后的输入求和。\n将求和结果输入激活函数，产生输出。\n\n激活函数: 通常使用阶跃函数 (Heaviside step function)。\n局限性: 单层感知器只能解决线性可分问题。\n\n\n\n\n多层感知器 (Multilayer Perceptron, MLP)\n\n突破: 为了解决线性不可分问题，引入了多层感知器。\n结构: MLP 是一种前馈神经网络，由多个层组成：\n\n输入层: 接收原始数据。\n隐藏层: 对数据进行非线性变换。可以有多个隐藏层。\n输出层: 输出预测结果。\n\n神经元: 每个层包含多个神经元，神经元之间全连接。\n激活函数: 隐藏层通常使用非线性激活函数，如 Sigmoid、ReLU、tanh 等。\n反向传播 (Backpropagation): 一种用于训练神经网络的算法，它通过计算损失函数对每个参数的梯度，来更新神经网络的权重。\n\n\n\n神经网络的优点和缺点\n\n优点：\n\n可以学习复杂的非线性关系。\n具有较强的泛化能力。\n可以处理高维数据。\n\n缺点：\n\n训练时间较长。\n容易陷入局部最优解。\n需要仔细调整网络结构和参数。\n可解释性较差。\n\n\n\n\n神经网络的应用\n\n图像识别\n语音识别\n自然语言处理\n推荐系统\n金融预测\n…\n\n\n\nMultilayer Perceptron 参数设置\n\nhidden_layer_sizes 参数声明中间层的单元数\n\ntuple 形式，每一项为中间层各层的单元数\n默认为一层中间层，100 个单元\n例如：hidden_layer_sizes=(100,) 表示只有一个隐藏层且这个隐藏层有100个神经元。hidden_layer_sizes=(50, 50) 表示有两个隐藏层，每个隐藏层有50个神经元。\n\n\n\n\nMultilayer Perceptron 代码示例\n\nimport numpy as np\nfrom sklearn import neural_network, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 MLPClassifier 对象，并设置隐藏层为 (100,)，即一个包含 100 个神经元的隐藏层\nclf = neural_network.MLPClassifier(hidden_layer_sizes=(100,), max_iter=1000)\n\n# 使用 fit 方法训练模型\nclf.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(clf.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n# 使用 predict_proba 方法进行概率估计\nprint(clf.predict_proba([[5.1, 3.5, 1.4, 0.2]]))\n\n[0]\n[[9.99661119e-01 3.38881272e-04 5.88419745e-13]]\n\n\n\n\nNaive Bayes (朴素贝叶斯)\n\n实现:\n\nsklearn.naive_bayes.GaussianNB()：高斯朴素贝叶斯，假设特征服从高斯分布。\nsklearn.naive_bayes.MultinomialNB()：多项式朴素贝叶斯，适用于多项式分布的数据，如文本数据 (单词计数)。\nsklearn.naive_bayes.BernoulliNB()：伯努利朴素贝叶斯，适用于二元分布的数据 (特征是二值的)。\n\n注意:\n\n提供 partial_fit 方法用于动态的加载数据以解决大数据量的问题\n首次调用 partial_fit 方法需要传递一个所有期望的类标签的列表\n\n\n\n\nNaive Bayes：概念解释\n\nNaive Bayes: 朴素贝叶斯是一种基于贝叶斯定理的简单概率分类器。“朴素” 的意思是假设特征之间相互独立。\n\n🧮 基于概率的分类器，它假设每个特征对分类结果的影响是独立的。\n\n贝叶斯定理: 一种计算条件概率的公式，即在已知一些条件下，事件发生的概率。\n\nP(A|B) = [P(B|A) * P(A)] / P(B)\n\n优点：\n\n简单、快速、高效。\n适用于高维数据，如文本数据。\n对缺失数据不敏感。\n\n缺点：\n\n“朴素” 的假设在现实中往往不成立，特征之间可能存在相关性。\n对输入数据的表达形式很敏感。\n\n\n\n\nNaive Bayes 代码示例\n\nimport numpy as np\nfrom sklearn import naive_bayes, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\nY = iris.target\n\n# 创建 GaussianNB 对象\ngnb = naive_bayes.GaussianNB()\n\n# 创建 MultinomialNB 对象\nmnb = naive_bayes.MultinomialNB()\n\n# 创建 BernoulliNB 对象\nbnb = naive_bayes.BernoulliNB()\n\n# 使用 fit 方法训练模型\ngnb.fit(X, Y)\nmnb.fit(X, Y)\nbnb.fit(X, Y)\n\n# 使用 predict 方法对新的数据点进行预测\nprint(gnb.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(mnb.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\nprint(bnb.predict([[5.1, 3.5, 1.4, 0.2]])) # 预测结果为类别 0 (Setosa)\n\n[0]\n[0]\n[0]"
   },
   {
     "objectID": "qmd/chapter7.html#回归方法",
@@ -1355,7 +1355,7 @@
     "href": "qmd/chapter7.html#聚类方法",
     "title": "信息技术基础",
     "section": "7.3 聚类方法",
-    "text": "7.3 聚类方法\n聚类方法用于将相似的数据点分组到一起，就像一个聪明的组织者🧑‍🤝‍🧑，把相似的东西聚集起来！\n\nK-means\n\n实现:\n\nsklearn.cluster.KMeans()：K-means 聚类。\nsklearn.cluster.MiniBatchKMeans()：Mini-Batch K-means 聚类，适用于大规模数据集。\n\n参数\n\ninit: 指定聚类质心的初始化方法\n\nk-means++ (默认): 使用一种比较智能的方法初始化，各个初始化质心彼此相距较远，能加快收敛速度。这是最常用的初始化方法。\nrandom: 随机选择数据点作为初始质心。\n指定一个 ndarray: 可以手动指定初始质心。\n\nn_init 参数: 算法将初始化 “n_init” 次，并选择结果最好的一次作为最终结果 (默认为 10 次)。多次初始化可以避免陷入局部最优解。\n\n概念解释:\n\nK-means: K-means 是一种常用的聚类算法，它的目标是将数据点划分到 K 个簇中，使得每个数据点都属于离它最近的质心 (centroid) 所对应的簇。\n\n🤝 就像把一群人分成 K 组，每组的中心人物是该组的平均代表。\n质心 (Centroid): 每个簇的中心点，是该簇中所有数据点的平均值。\n\n\n\n\n\nK-means：算法步骤\n\n初始化: 随机选择 K 个数据点作为初始质心。\n分配: 将每个数据点分配到离它最近的质心所对应的簇。\n更新: 重新计算每个簇的质心。\n重复: 重复步骤 2 和 3，直到质心不再变化或达到最大迭代次数。\n\n\n\nK-means：优点与缺点\n\n优点：\n\n简单、快速、高效。\n适用于大规模数据集。\n\n缺点：\n\n需要事先指定簇的数量 K。\n对初始质心的选择比较敏感，可能会陷入局部最优解。\n对异常值比较敏感。\n只能发现球形的簇。\n\n\n\n\nK-means 的参数设置\n\nn_clusters 指定聚类的个数，如不指定则默认为 8\nn_jobs 指定使用的处理器个数\n\n\n\nK-means 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 KMeans 对象，并设置 n_clusters 为 3 (因为鸢尾花数据集有 3 个类别)\nkms = cluster.KMeans(n_clusters=3, n_init = 'auto')\n\n# 创建 MiniBatchKMeans 对象\nmbk = cluster.MiniBatchKMeans(n_clusters=3, n_init = 'auto')\n\n# 使用 fit 方法训练模型\nkms.fit(X)\nmbk.fit(X)\n\n# 查看聚类中心 (cluster_centers_) 和每个数据点所属的簇 (labels_)\nprint(kms.cluster_centers_)\nprint(kms.labels_)\n# print(mbk.cluster_centers_)\n# print(mbk.labels_)\n\n[[5.88360656 2.74098361 4.38852459 1.43442623]\n [5.006      3.428      1.462      0.246     ]\n [6.85384615 3.07692308 5.71538462 2.05384615]]\n[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n 1 1 1 1 1 1 1 1 1 1 1 1 1 2 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 2 2 2 2 0 2 2 2 2\n 2 2 0 0 2 2 2 2 0 2 0 2 0 2 2 0 0 2 2 2 2 2 0 2 2 2 2 0 2 2 2 0 2 2 2 0 2\n 2 0]\n\n\n\n\nAffinity Propagation\n\n实现:\n\nsklearn.cluster.AffinityPropagation()\n\n概念解释:\n\nAffinity Propagation: 亲和力传播是一种基于消息传递的聚类算法，它不需要事先指定簇的数量。\n\n💬 就像一群人通过互相交流来找到自己的群体。每个人都可以是潜在的“聚类中心”(exemplar)，通过不断地在数据点之间传递“吸引度”和“归属度”信息，最终会涌现出一些“聚类中心”，数据点会聚集到这些中心周围。\n\n优点：\n\n不需要事先指定簇的数量。\n可以发现不规则形状的簇。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对参数的选择比较敏感。\n\n\n\n\n\nAffinity Propagation 的参数\n\naffinity: 相似度度量方式\n\nprecomputed：使用预先计算好的相似度矩阵。\neuclidean (默认)：使用欧几里得距离。\n\ndamping: 阻尼因子，\n\n0.5~1 之间的浮点数，用于控制算法的收敛速度。\n\npreference: 偏好，值越高的点越可能被选为样本\n\nvector\n\n\n\n\nAffinity Propagation 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 AffinityPropagation 对象\nap = cluster.AffinityPropagation()\n\n# 使用 fit 方法训练模型\nap.fit(X)\n\n# 查看聚类中心 (cluster_centers_) 和每个数据点所属的簇 (labels_)\nprint(ap.cluster_centers_)\nprint(ap.labels_)\n\n[[4.7 3.2 1.3 0.2]\n [5.3 3.7 1.5 0.2]\n [6.5 2.8 4.6 1.5]\n [5.6 2.5 3.9 1.1]\n [6.  2.7 5.1 1.6]\n [7.6 3.  6.6 2.1]\n [6.8 3.  5.5 2.1]]\n[1 0 0 0 1 1 0 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 0 1 0 0 1 1 1 0 0 1 1 1 0 0 1\n 1 0 1 1 0 0 1 1 0 1 0 1 0 2 2 2 3 2 3 2 3 2 3 3 2 3 2 3 2 4 3 2 3 4 3 4 2\n 2 2 2 2 2 3 3 3 3 4 3 2 2 2 3 3 3 2 3 3 3 3 3 2 3 3 6 4 6 6 6 5 3 5 6 5 6\n 4 6 4 4 6 6 5 5 4 6 4 5 4 6 6 4 4 6 6 5 5 6 4 4 5 6 6 4 6 6 6 4 6 6 6 4 6\n 6 4]\n\n\n\n\nMean-shift\n\n实现:\n\nsklearn.cluster.MeanShift()\n\n概念解释：\n\nMean-shift: 均值漂移是一种基于密度估计的聚类算法，它将数据点沿着密度梯度方向移动，最终聚集到密度较高的区域。\n📈 就像一群人爬山，每个人都朝着最陡峭的方向 (密度梯度) 爬，最终会聚集到山顶 (密度中心)。\n\n\n\n\nMean-shift：算法步骤\n\n初始化: 随机选择一个数据点作为起始点。\n计算均值漂移向量: 计算以当前点为中心的指定半径 (带宽) 内所有数据点的均值，然后计算当前点到均值的向量。\n移动: 将当前点沿着均值漂移向量的方向移动。\n重复: 重复步骤 2 和 3，直到当前点不再移动或达到最大迭代次数。\n聚类: 将所有收敛到同一个点的数据点归为一类。\n\n\n优点：\n\n不需要事先指定簇的数量。\n可以发现任意形状的簇。\n对异常值不敏感。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对带宽参数的选择比较敏感。\n\n参数 bandwidth：\n\n声明浮点数“带宽”限制搜索区域\n默认使用 sklearn.cluster.estimate_bandwidth 函数\n\n\n\n\nMean-shift 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 MeanShift 对象\nms = cluster.MeanShift()\n\n# 使用 fit 方法训练模型\nms.fit(X)\n\n# 查看聚类中心 (cluster_centers_) 和每个数据点所属的簇 (labels_)\nprint(ms.cluster_centers_)\nprint(ms.labels_)\n\n[[6.21142857 2.89285714 4.85285714 1.67285714]\n [5.01632653 3.45102041 1.46530612 0.24489796]]\n[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0]\n\n\n\n\nSpectral Clustering\n\n实现:\n\nsklearn.cluster.SpectralClustering()\n\n概念解释：\n\nSpectral Clustering: 谱聚类是一种基于图论的聚类算法，它将数据点视为图中的节点，并通过图的谱分解 (特征值分解) 来进行聚类。\n\n📊 将数据点之间的相似度构建成一个图，然后将聚类问题转化为图的划分问题。\n\n\n\n\n\nSpectral Clustering：算法步骤\n\n构建相似度图: 根据数据点之间的相似度构建一个相似度矩阵 (或邻接矩阵)。\n计算拉普拉斯矩阵: 根据相似度矩阵计算拉普拉斯矩阵。\n特征值分解: 对拉普拉斯矩阵进行特征值分解，得到特征值和特征向量。\n聚类: 使用 K-means 等算法对特征向量进行聚类。\n\n\n优点：\n\n可以发现非凸形状的簇。\n对数据分布的假设较少。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对参数的选择比较敏感。\n\n\n\n\nSpectral Clustering 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 SpectralClustering 对象\nsc = cluster.SpectralClustering(n_clusters=3)  # 移除 n_init 参数\n\n# 使用 fit 方法训练模型\nsc.fit(X)\n\n# 查看每个数据点所属的簇 (labels_)\nprint(sc.labels_)\n\n[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 2 2 2 2 1 2 2 2 2\n 2 2 1 1 2 2 2 2 1 2 1 2 1 2 2 1 1 2 2 2 2 2 1 1 2 2 2 1 2 2 2 1 2 2 2 1 2\n 2 1]\n\n\n\n\nHierarchical Clustering (层次聚类)\n\n实现:\n\nsklearn.cluster.AgglomerativeClustering()\n\n概念解释：\n\nHierarchical Clustering: 层次聚类是一种构建层次结构的聚类算法，它可以自底向上 (凝聚式) 或自顶向下 (分裂式) 进行。\n\n🌳 就像一棵树，数据点逐渐合并成更大的簇，或者一个大簇逐渐分裂成更小的簇。\n凝聚式层次聚类 (Agglomerative Clustering): 从每个数据点作为一个单独的簇开始，然后逐步合并最相似的簇，直到所有数据点都合并成一个簇。\n分裂式层次聚类 (Divisive Clustering): 从所有数据点都在一个簇开始，然后逐步将簇分裂成更小的簇，直到每个数据点都成为一个单独的簇。\n\n优点：\n\n可以得到数据的层次结构。\n不需要事先指定簇的数量 (可以通过观察层次结构来决定)。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对噪声和异常值比较敏感。\n一旦合并或分裂，就无法撤销。\n\n\n\n\n\nHierarchical Clustering 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 AgglomerativeClustering 对象，并设置 n_clusters 为 3\nag = cluster.AgglomerativeClustering(n_clusters=3)\n\n# 使用 fit 方法训练模型\nag.fit(X)\n\n# 查看每个数据点所属的簇 (labels_)\nprint(ag.labels_)\n\n[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 2 2 2 2 0 2 2 2 2\n 2 2 0 0 2 2 2 2 0 2 0 2 0 2 2 0 0 2 2 2 2 2 0 0 2 2 2 0 2 2 2 0 2 2 2 0 2\n 2 0]\n\n\n\n\nDBSCAN\n\n实现:\n\nsklearn.cluster.DBSCAN()\n\n概念解释：\n\nDBSCAN (Density-Based Spatial Clustering of Applications with Noise): 基于密度的空间聚类算法，它可以发现任意形状的簇，并能识别噪声点。\n\n🌌 就像在星空中寻找星系，密集的地方就是一个星系 (簇)，稀疏的地方就是噪声。\n\n\n\n\n\nDBSCAN：核心概念\n\n核心点 (Core Point): 在指定半径 (eps) 内，邻居数量 (包括自身) 超过指定阈值 (min_samples) 的数据点。\n边界点 (Border Point): 在指定半径 (eps) 内，邻居数量少于指定阈值 (min_samples)，但落在某个核心点的邻域内的数据点。\n噪声点 (Noise Point): 既不是核心点，也不是边界点的数据点。\n\n\n\nDBSCAN：算法步骤\n\n寻找核心点: 遍历所有数据点，找到所有核心点。\n连接核心点: 将相互之间距离小于 eps 的核心点连接起来，形成一个簇。\n合并边界点: 将边界点分配到与其相邻的核心点所在的簇。\n识别噪声点: 将不属于任何簇的数据点标记为噪声点。\n\n\n优点：\n\n可以发现任意形状的簇。\n可以识别噪声点。\n不需要事先指定簇的数量。\n\n缺点：\n\n对参数 (eps 和 min_samples) 的选择比较敏感。\n对于密度差异较大的数据集，聚类效果可能不好。\n\n\n\n\nDBSCAN 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 DBSCAN 对象，并设置 eps (邻域半径) 和 min_samples (最小邻居数)\ndb = cluster.DBSCAN(eps=0.5, min_samples=5)\n\n# 使用 fit 方法训练模型\ndb.fit(X)\n\n# 查看每个数据点所属的簇 (labels_)，-1 表示噪声点\nprint(db.labels_)\n\n[ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1  0  0  0  0  0  0\n  0  0  1  1  1  1  1  1  1 -1  1  1 -1  1  1  1  1  1  1  1 -1  1  1  1\n  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1 -1  1  1  1  1  1 -1  1  1\n  1  1 -1  1  1  1  1  1  1 -1 -1  1 -1 -1  1  1  1  1  1  1  1 -1 -1  1\n  1  1 -1  1  1  1  1  1  1  1  1 -1  1  1 -1 -1  1  1  1  1  1  1  1  1\n  1  1  1  1  1  1]\n\n\n\n\nBirch\n\n实现:\n\nsklearn.cluster.Birch()\n\n概念解释：\n\nBirch (Balanced Iterative Reducing and Clustering using Hierarchies): 一种适用于大规模数据集的层次聚类算法。\n\n🌲 它通过构建一个叫做 CF 树 (Clustering Feature Tree) 的树状结构来存储数据的摘要信息，从而减少计算量。\n\n\n\n\n\nBirch：CF 树\n\nCF (Clustering Feature): 簇特征，包含簇中数据点的个数、数据点的线性和、数据点的平方和。\nCF 树: 一种平衡树，每个节点包含多个 CF 条目。\n\n\n\nBirch：算法步骤\n\n构建 CF 树: 扫描数据集，将数据点插入到 CF 树中。\n调整 CF 树: 对 CF 树进行调整，使其满足内存限制。\n全局聚类: 对 CF 树的叶节点进行聚类。\n聚类优化: 对聚类结果进行优化 (可选)。\n\n\n优点：\n\n适用于大规模数据集。\n计算效率高。\n可以处理噪声数据。\n\n缺点：\n\n对参数的选择比较敏感。\n只能发现球形的簇。\n\n\n\n\nBirch 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 Birch 对象，并设置 n_clusters 为 3\nbir = cluster.Birch(n_clusters=3)\n\n# 使用 fit 方法训练模型\nbir.fit(X)\n\n# 查看每个数据点所属的簇 (labels_)\nprint(bir.labels_)\n\n[2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\n 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 1 0 0 0 1 0 1 1 0 1 0 1 0 0 1 0 1 0 1 0 0\n 0 0 0 0 0 1 1 1 1 0 0 0 0 0 1 1 1 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 1 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0]"
+    "text": "7.3 聚类方法\n聚类方法用于将相似的数据点分组到一起，就像一个聪明的组织者🧑‍🤝‍🧑，把相似的东西聚集起来！\n\nK-means\n\n实现:\n\nsklearn.cluster.KMeans()：K-means 聚类。\nsklearn.cluster.MiniBatchKMeans()：Mini-Batch K-means 聚类，适用于大规模数据集。\n\n参数\n\ninit: 指定聚类质心的初始化方法\n\nk-means++ (默认): 使用一种比较智能的方法初始化，各个初始化质心彼此相距较远，能加快收敛速度。这是最常用的初始化方法。\nrandom: 随机选择数据点作为初始质心。\n指定一个 ndarray: 可以手动指定初始质心。\n\nn_init 参数: 算法将初始化 “n_init” 次，并选择结果最好的一次作为最终结果 (默认为 10 次)。多次初始化可以避免陷入局部最优解。\n\n概念解释:\n\nK-means: K-means 是一种常用的聚类算法，它的目标是将数据点划分到 K 个簇中，使得每个数据点都属于离它最近的质心 (centroid) 所对应的簇。\n\n🤝 就像把一群人分成 K 组，每组的中心人物是该组的平均代表。\n质心 (Centroid): 每个簇的中心点，是该簇中所有数据点的平均值。\n\n\n\n\n\nK-means：算法步骤\n\n初始化: 随机选择 K 个数据点作为初始质心。\n分配: 将每个数据点分配到离它最近的质心所对应的簇。\n更新: 重新计算每个簇的质心。\n重复: 重复步骤 2 和 3，直到质心不再变化或达到最大迭代次数。\n\n\n\nK-means：优点与缺点\n\n优点：\n\n简单、快速、高效。\n适用于大规模数据集。\n\n缺点：\n\n需要事先指定簇的数量 K。\n对初始质心的选择比较敏感，可能会陷入局部最优解。\n对异常值比较敏感。\n只能发现球形的簇。\n\n\n\n\nK-means 的参数设置\n\nn_clusters 指定聚类的个数，如不指定则默认为 8\nn_jobs 指定使用的处理器个数\n\n\n\nK-means 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 KMeans 对象，并设置 n_clusters 为 3 (因为鸢尾花数据集有 3 个类别)\nkms = cluster.KMeans(n_clusters=3, n_init = 'auto')\n\n# 创建 MiniBatchKMeans 对象\nmbk = cluster.MiniBatchKMeans(n_clusters=3, n_init = 'auto')\n\n# 使用 fit 方法训练模型\nkms.fit(X)\nmbk.fit(X)\n\n# 查看聚类中心 (cluster_centers_) 和每个数据点所属的簇 (labels_)\nprint(kms.cluster_centers_)\nprint(kms.labels_)\n# print(mbk.cluster_centers_)\n# print(mbk.labels_)\n\n[[5.9016129  2.7483871  4.39354839 1.43387097]\n [5.006      3.428      1.462      0.246     ]\n [6.85       3.07368421 5.74210526 2.07105263]]\n[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 2 2 2 2 0 2 2 2 2\n 2 2 0 0 2 2 2 2 0 2 0 2 0 2 2 0 0 2 2 2 2 2 0 2 2 2 2 0 2 2 2 0 2 2 2 0 2\n 2 0]\n\n\n\n\nAffinity Propagation\n\n实现:\n\nsklearn.cluster.AffinityPropagation()\n\n概念解释:\n\nAffinity Propagation: 亲和力传播是一种基于消息传递的聚类算法，它不需要事先指定簇的数量。\n\n💬 就像一群人通过互相交流来找到自己的群体。每个人都可以是潜在的“聚类中心”(exemplar)，通过不断地在数据点之间传递“吸引度”和“归属度”信息，最终会涌现出一些“聚类中心”，数据点会聚集到这些中心周围。\n\n优点：\n\n不需要事先指定簇的数量。\n可以发现不规则形状的簇。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对参数的选择比较敏感。\n\n\n\n\n\nAffinity Propagation 的参数\n\naffinity: 相似度度量方式\n\nprecomputed：使用预先计算好的相似度矩阵。\neuclidean (默认)：使用欧几里得距离。\n\ndamping: 阻尼因子，\n\n0.5~1 之间的浮点数，用于控制算法的收敛速度。\n\npreference: 偏好，值越高的点越可能被选为样本\n\nvector\n\n\n\n\nAffinity Propagation 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 AffinityPropagation 对象\nap = cluster.AffinityPropagation()\n\n# 使用 fit 方法训练模型\nap.fit(X)\n\n# 查看聚类中心 (cluster_centers_) 和每个数据点所属的簇 (labels_)\nprint(ap.cluster_centers_)\nprint(ap.labels_)\n\n[[4.7 3.2 1.3 0.2]\n [5.3 3.7 1.5 0.2]\n [6.5 2.8 4.6 1.5]\n [5.6 2.5 3.9 1.1]\n [6.  2.7 5.1 1.6]\n [7.6 3.  6.6 2.1]\n [6.8 3.  5.5 2.1]]\n[1 0 0 0 1 1 0 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 0 1 0 0 1 1 1 0 0 1 1 1 0 0 1\n 1 0 1 1 0 0 1 1 0 1 0 1 0 2 2 2 3 2 3 2 3 2 3 3 2 3 2 3 2 4 3 2 3 4 3 4 2\n 2 2 2 2 2 3 3 3 3 4 3 2 2 2 3 3 3 2 3 3 3 3 3 2 3 3 6 4 6 6 6 5 3 5 6 5 6\n 4 6 4 4 6 6 5 5 4 6 4 5 4 6 6 4 4 6 6 5 5 6 4 4 5 6 6 4 6 6 6 4 6 6 6 4 6\n 6 4]\n\n\n\n\nMean-shift\n\n实现:\n\nsklearn.cluster.MeanShift()\n\n概念解释：\n\nMean-shift: 均值漂移是一种基于密度估计的聚类算法，它将数据点沿着密度梯度方向移动，最终聚集到密度较高的区域。\n📈 就像一群人爬山，每个人都朝着最陡峭的方向 (密度梯度) 爬，最终会聚集到山顶 (密度中心)。\n\n\n\n\nMean-shift：算法步骤\n\n初始化: 随机选择一个数据点作为起始点。\n计算均值漂移向量: 计算以当前点为中心的指定半径 (带宽) 内所有数据点的均值，然后计算当前点到均值的向量。\n移动: 将当前点沿着均值漂移向量的方向移动。\n重复: 重复步骤 2 和 3，直到当前点不再移动或达到最大迭代次数。\n聚类: 将所有收敛到同一个点的数据点归为一类。\n\n\n优点：\n\n不需要事先指定簇的数量。\n可以发现任意形状的簇。\n对异常值不敏感。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对带宽参数的选择比较敏感。\n\n参数 bandwidth：\n\n声明浮点数“带宽”限制搜索区域\n默认使用 sklearn.cluster.estimate_bandwidth 函数\n\n\n\n\nMean-shift 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 MeanShift 对象\nms = cluster.MeanShift()\n\n# 使用 fit 方法训练模型\nms.fit(X)\n\n# 查看聚类中心 (cluster_centers_) 和每个数据点所属的簇 (labels_)\nprint(ms.cluster_centers_)\nprint(ms.labels_)\n\n[[6.21142857 2.89285714 4.85285714 1.67285714]\n [5.01632653 3.45102041 1.46530612 0.24489796]]\n[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0]\n\n\n\n\nSpectral Clustering\n\n实现:\n\nsklearn.cluster.SpectralClustering()\n\n概念解释：\n\nSpectral Clustering: 谱聚类是一种基于图论的聚类算法，它将数据点视为图中的节点，并通过图的谱分解 (特征值分解) 来进行聚类。\n\n📊 将数据点之间的相似度构建成一个图，然后将聚类问题转化为图的划分问题。\n\n\n\n\n\nSpectral Clustering：算法步骤\n\n构建相似度图: 根据数据点之间的相似度构建一个相似度矩阵 (或邻接矩阵)。\n计算拉普拉斯矩阵: 根据相似度矩阵计算拉普拉斯矩阵。\n特征值分解: 对拉普拉斯矩阵进行特征值分解，得到特征值和特征向量。\n聚类: 使用 K-means 等算法对特征向量进行聚类。\n\n\n优点：\n\n可以发现非凸形状的簇。\n对数据分布的假设较少。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对参数的选择比较敏感。\n\n\n\n\nSpectral Clustering 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 SpectralClustering 对象\nsc = cluster.SpectralClustering(n_clusters=3)  # 移除 n_init 参数\n\n# 使用 fit 方法训练模型\nsc.fit(X)\n\n# 查看每个数据点所属的簇 (labels_)\nprint(sc.labels_)\n\n[2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\n 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 1 1 0 1 1 1 1\n 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 0 0 1 1 1 1 1 0 0 1 1 1 0 1 1 1 0 1 1 1 0 1\n 1 0]\n\n\n\n\nHierarchical Clustering (层次聚类)\n\n实现:\n\nsklearn.cluster.AgglomerativeClustering()\n\n概念解释：\n\nHierarchical Clustering: 层次聚类是一种构建层次结构的聚类算法，它可以自底向上 (凝聚式) 或自顶向下 (分裂式) 进行。\n\n🌳 就像一棵树，数据点逐渐合并成更大的簇，或者一个大簇逐渐分裂成更小的簇。\n凝聚式层次聚类 (Agglomerative Clustering): 从每个数据点作为一个单独的簇开始，然后逐步合并最相似的簇，直到所有数据点都合并成一个簇。\n分裂式层次聚类 (Divisive Clustering): 从所有数据点都在一个簇开始，然后逐步将簇分裂成更小的簇，直到每个数据点都成为一个单独的簇。\n\n优点：\n\n可以得到数据的层次结构。\n不需要事先指定簇的数量 (可以通过观察层次结构来决定)。\n\n缺点：\n\n计算复杂度较高，不适用于大规模数据集。\n对噪声和异常值比较敏感。\n一旦合并或分裂，就无法撤销。\n\n\n\n\n\nHierarchical Clustering 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 AgglomerativeClustering 对象，并设置 n_clusters 为 3\nag = cluster.AgglomerativeClustering(n_clusters=3)\n\n# 使用 fit 方法训练模型\nag.fit(X)\n\n# 查看每个数据点所属的簇 (labels_)\nprint(ag.labels_)\n\n[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 2 2 2 2 0 2 2 2 2\n 2 2 0 0 2 2 2 2 0 2 0 2 0 2 2 0 0 2 2 2 2 2 0 0 2 2 2 0 2 2 2 0 2 2 2 0 2\n 2 0]\n\n\n\n\nDBSCAN\n\n实现:\n\nsklearn.cluster.DBSCAN()\n\n概念解释：\n\nDBSCAN (Density-Based Spatial Clustering of Applications with Noise): 基于密度的空间聚类算法，它可以发现任意形状的簇，并能识别噪声点。\n\n🌌 就像在星空中寻找星系，密集的地方就是一个星系 (簇)，稀疏的地方就是噪声。\n\n\n\n\n\nDBSCAN：核心概念\n\n核心点 (Core Point): 在指定半径 (eps) 内，邻居数量 (包括自身) 超过指定阈值 (min_samples) 的数据点。\n边界点 (Border Point): 在指定半径 (eps) 内，邻居数量少于指定阈值 (min_samples)，但落在某个核心点的邻域内的数据点。\n噪声点 (Noise Point): 既不是核心点，也不是边界点的数据点。\n\n\n\nDBSCAN：算法步骤\n\n寻找核心点: 遍历所有数据点，找到所有核心点。\n连接核心点: 将相互之间距离小于 eps 的核心点连接起来，形成一个簇。\n合并边界点: 将边界点分配到与其相邻的核心点所在的簇。\n识别噪声点: 将不属于任何簇的数据点标记为噪声点。\n\n\n优点：\n\n可以发现任意形状的簇。\n可以识别噪声点。\n不需要事先指定簇的数量。\n\n缺点：\n\n对参数 (eps 和 min_samples) 的选择比较敏感。\n对于密度差异较大的数据集，聚类效果可能不好。\n\n\n\n\nDBSCAN 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 DBSCAN 对象，并设置 eps (邻域半径) 和 min_samples (最小邻居数)\ndb = cluster.DBSCAN(eps=0.5, min_samples=5)\n\n# 使用 fit 方法训练模型\ndb.fit(X)\n\n# 查看每个数据点所属的簇 (labels_)，-1 表示噪声点\nprint(db.labels_)\n\n[ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1  0  0  0  0  0  0\n  0  0  1  1  1  1  1  1  1 -1  1  1 -1  1  1  1  1  1  1  1 -1  1  1  1\n  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1 -1  1  1  1  1  1 -1  1  1\n  1  1 -1  1  1  1  1  1  1 -1 -1  1 -1 -1  1  1  1  1  1  1  1 -1 -1  1\n  1  1 -1  1  1  1  1  1  1  1  1 -1  1  1 -1 -1  1  1  1  1  1  1  1  1\n  1  1  1  1  1  1]\n\n\n\n\nBirch\n\n实现:\n\nsklearn.cluster.Birch()\n\n概念解释：\n\nBirch (Balanced Iterative Reducing and Clustering using Hierarchies): 一种适用于大规模数据集的层次聚类算法。\n\n🌲 它通过构建一个叫做 CF 树 (Clustering Feature Tree) 的树状结构来存储数据的摘要信息，从而减少计算量。\n\n\n\n\n\nBirch：CF 树\n\nCF (Clustering Feature): 簇特征，包含簇中数据点的个数、数据点的线性和、数据点的平方和。\nCF 树: 一种平衡树，每个节点包含多个 CF 条目。\n\n\n\nBirch：算法步骤\n\n构建 CF 树: 扫描数据集，将数据点插入到 CF 树中。\n调整 CF 树: 对 CF 树进行调整，使其满足内存限制。\n全局聚类: 对 CF 树的叶节点进行聚类。\n聚类优化: 对聚类结果进行优化 (可选)。\n\n\n优点：\n\n适用于大规模数据集。\n计算效率高。\n可以处理噪声数据。\n\n缺点：\n\n对参数的选择比较敏感。\n只能发现球形的簇。\n\n\n\n\nBirch 代码示例\n\nimport numpy as np\nfrom sklearn import cluster, datasets\n\n# 加载鸢尾花数据集\niris = datasets.load_iris()\nX = iris.data\n\n# 创建 Birch 对象，并设置 n_clusters 为 3\nbir = cluster.Birch(n_clusters=3)\n\n# 使用 fit 方法训练模型\nbir.fit(X)\n\n# 查看每个数据点所属的簇 (labels_)\nprint(bir.labels_)\n\n[2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\n 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 1 0 0 0 1 0 1 1 0 1 0 1 0 0 1 0 1 0 1 0 0\n 0 0 0 0 0 1 1 1 1 0 0 0 0 0 1 1 1 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 1 0 0 0 0\n 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n 0 0]"
   },
   {
     "objectID": "qmd/chapter7.html#总结",
@@ -1915,7 +1915,7 @@
     "href": "qmd/chapter2.html#datetime模块创建对象",
     "title": "信息技术基础 🧐",
     "section": "datetime模块：创建对象",
-    "text": "datetime模块：创建对象\n常用操作：\n\n创建日期和时间对象：\n\n\nfrom datetime import date, time, datetime, timedelta\n\n# 创建日期对象\ntoday = date.today()\nprint(f\"今天的日期：{today}\")\n\n# 创建时间对象\nnow = time(10, 30, 0)  # 10:30:00\nprint(f\"当前时间：{now}\")\n\n# 创建日期时间对象\nnow = datetime.now()\nprint(f\"当前日期和时间：{now}\")\n\n今天的日期：2025-02-17\n当前时间：10:30:00\n当前日期和时间：2025-02-17 16:31:58.087462"
+    "text": "datetime模块：创建对象\n常用操作：\n\n创建日期和时间对象：\n\n\nfrom datetime import date, time, datetime, timedelta\n\n# 创建日期对象\ntoday = date.today()\nprint(f\"今天的日期：{today}\")\n\n# 创建时间对象\nnow = time(10, 30, 0)  # 10:30:00\nprint(f\"当前时间：{now}\")\n\n# 创建日期时间对象\nnow = datetime.now()\nprint(f\"当前日期和时间：{now}\")\n\n今天的日期：2025-02-17\n当前时间：10:30:00\n当前日期和时间：2025-02-17 16:36:19.055781"
   },
   {
     "objectID": "qmd/chapter2.html#datetime模块指定日期时间",
@@ -1929,7 +1929,7 @@
     "href": "qmd/chapter2.html#datetime-模块获取信息",
     "title": "信息技术基础 🧐",
     "section": "datetime 模块：获取信息",
-    "text": "datetime 模块：获取信息\n\n获取日期和时间的组成部分：\n\n\n# 获取年、月、日、时、分、秒\nyear = now.year\nmonth = now.month\nday = now.day\nhour = now.hour\nminute = now.minute\nsecond = now.second\n\nprint(f\"年：{year}, 月：{month}, 日：{day}, 时：{hour}, 分：{minute}, 秒：{second}\")\n\n年：2025, 月：2, 日：17, 时：16, 分：31, 秒：58"
+    "text": "datetime 模块：获取信息\n\n获取日期和时间的组成部分：\n\n\n# 获取年、月、日、时、分、秒\nyear = now.year\nmonth = now.month\nday = now.day\nhour = now.hour\nminute = now.minute\nsecond = now.second\n\nprint(f\"年：{year}, 月：{month}, 日：{day}, 时：{hour}, 分：{minute}, 秒：{second}\")\n\n年：2025, 月：2, 日：17, 时：16, 分：36, 秒：19"
   },
   {
     "objectID": "qmd/chapter2.html#datetime模块日期时间运算",
@@ -1943,7 +1943,7 @@
     "href": "qmd/chapter2.html#datetime-模块格式化",
     "title": "信息技术基础 🧐",
     "section": "datetime 模块：格式化",
-    "text": "datetime 模块：格式化\n\n格式化日期和时间：\n\n\n# 将日期时间对象格式化为字符串\nformatted_date = now.strftime(\"%Y-%m-%d %H:%M:%S\")\nprint(f\"格式化后的日期和时间：{formatted_date}\")\n\n# 将字符串解析为日期时间对象\ndate_str = \"2023-10-27\"\nparsed_date = datetime.strptime(date_str, \"%Y-%m-%d\").date()\nprint(f\"解析后的日期：{parsed_date}\")\n\n格式化后的日期和时间：2025-02-17 16:31:58\n解析后的日期：2023-10-27"
+    "text": "datetime 模块：格式化\n\n格式化日期和时间：\n\n\n# 将日期时间对象格式化为字符串\nformatted_date = now.strftime(\"%Y-%m-%d %H:%M:%S\")\nprint(f\"格式化后的日期和时间：{formatted_date}\")\n\n# 将字符串解析为日期时间对象\ndate_str = \"2023-10-27\"\nparsed_date = datetime.strptime(date_str, \"%Y-%m-%d\").date()\nprint(f\"解析后的日期：{parsed_date}\")\n\n格式化后的日期和时间：2025-02-17 16:36:19\n解析后的日期：2023-10-27"
   },
   {
     "objectID": "qmd/chapter2.html#datetime模块时区处理",
@@ -1992,7 +1992,7 @@
     "href": "qmd/chapter2.html#pandas-series访问元素-12",
     "title": "信息技术基础 🧐",
     "section": "Pandas Series：访问元素 (1/2)",
-    "text": "Pandas Series：访问元素 (1/2)\n访问 Series 中的元素\n\n# 通过位置访问\nprint(s[0])  # 10\n\n# 通过标签访问\nprint(s['x'])  # 10\n\n10\n10\n\n\n/tmp/ipykernel_2543/971424159.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`\n  print(s[0])  # 10"
+    "text": "Pandas Series：访问元素 (1/2)\n访问 Series 中的元素\n\n# 通过位置访问\nprint(s[0])  # 10\n\n# 通过标签访问\nprint(s['x'])  # 10\n\n10\n10\n\n\n/tmp/ipykernel_2530/971424159.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`\n  print(s[0])  # 10"
   },
   {
     "objectID": "qmd/chapter2.html#pandas-series访问元素-22",
@@ -2153,7 +2153,7 @@
     "href": "qmd/chapter2.html#matplotlib-示例折线图-33",
     "title": "信息技术基础 🧐",
     "section": "Matplotlib 示例：折线图 📉 (3/3)",
-    "text": "Matplotlib 示例：折线图 📉 (3/3)\n\n# 5. 添加图例\nplt.legend()\n\n# 6. 添加网格线\nplt.grid(True)\n\n# 7. 显示图表\nplt.show()\n\n/tmp/ipykernel_2543/1043465315.py:2: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.\n  plt.legend()"
+    "text": "Matplotlib 示例：折线图 📉 (3/3)\n\n# 5. 添加图例\nplt.legend()\n\n# 6. 添加网格线\nplt.grid(True)\n\n# 7. 显示图表\nplt.show()\n\n/tmp/ipykernel_2530/1043465315.py:2: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.\n  plt.legend()"
   },
   {
     "objectID": "qmd/chapter2.html#matplotlib折线图代码解释12",
@@ -2298,784 +2298,784 @@
   {
     "objectID": "qmd/chapter3.html",
     "href": "qmd/chapter3.html",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "",
     "text": "我们将围绕以下四个方面展开：\n\n了解数据：数据的分类、特征以及如何描述数据。\n数据质量评估：评估数据的完整性、一致性、准确性和及时性。\n数据清洗：处理缺失值、噪声、不一致和异常数据。\n特征工程：从原始数据中提取有用的特征。"
   },
   {
     "objectID": "qmd/chapter3.html#目录",
     "href": "qmd/chapter3.html#目录",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "",
     "text": "我们将围绕以下四个方面展开：\n\n了解数据：数据的分类、特征以及如何描述数据。\n数据质量评估：评估数据的完整性、一致性、准确性和及时性。\n数据清洗：处理缺失值、噪声、不一致和异常数据。\n特征工程：从原始数据中提取有用的特征。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据",
     "href": "qmd/chapter3.html#了解数据",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 🔎",
     "text": "了解数据 🔎\n首先，深入了解数据。我们需要知道数据有哪些类型，以及如何描述数据的特征。这就像认识一个新朋友 🧑‍🤝‍🧑，要了解他的基本信息和性格特点。😊"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---数据的分类",
     "href": "qmd/chapter3.html#了解数据---数据的分类",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 数据的分类 📊",
     "text": "了解数据 - 数据的分类 📊\n\n\n\n\n\nflowchart TD\n    A[数据 📦] --&gt; B(定量数据 🔢)\n    A --&gt; C(定性数据 🔤)\n    B --&gt; D(离散变量 🎲)\n    B --&gt; E(连续变量 📏)\n    C --&gt; F(定序变量 🥇🥈🥉)\n    C --&gt; G(名义变量 ♂️♀️)"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---数据的分类-续",
     "href": "qmd/chapter3.html#了解数据---数据的分类-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 数据的分类 (续)",
     "text": "了解数据 - 数据的分类 (续)\n数据 (Data) 📦 是我们进行分析的基础。就像建筑师需要了解不同类型的建筑材料🧱、木材🪵、钢筋🔩一样，数据分析师也需要了解不同类型的数据。\n在数据分析中，我们通常将数据分为两大类：定量数据和定性数据。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---定量数据",
     "href": "qmd/chapter3.html#了解数据---定量数据",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 定量数据 🔢",
     "text": "了解数据 - 定量数据 🔢\n\n\n\n\n\nflowchart TD\n    A[数据 📦] --&gt; B(定量数据 🔢)\n    B --&gt; D(离散变量 🎲)\n    B --&gt; E(连续变量 📏)\n\n\n\n\n\n\n\n可以测量，用数字表示。\n就像测量身高📏和体重⚖️一样，可以得到具体的数值。\n可参与数学运算，如计算平均值、标准差等。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---定量数据细分",
     "href": "qmd/chapter3.html#了解数据---定量数据细分",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 定量数据：细分",
     "text": "了解数据 - 定量数据：细分\n定量数据又可以分为两种：\n\n离散变量 (Discrete Variable) 🎲\n连续变量 (Continuous Variable) 📏"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散变量",
     "href": "qmd/chapter3.html#了解数据---离散变量",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散变量 🎲",
     "text": "了解数据 - 离散变量 🎲\n\n\n\n\n\nflowchart TD\n    B(定量数据 🔢) --&gt; D(离散变量 🎲)\n\n\n\n\n\n\n\n取值有限或可数，通常是整数。\n就像掷骰子🎲，结果只能是1、2、3、4、5、6。\n例如：客户数量、产品数量。\n举例：商店一天卖出的苹果数量🍎可能是10个、25个，但不会是10.5个。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---连续变量",
     "href": "qmd/chapter3.html#了解数据---连续变量",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 连续变量 📏",
     "text": "了解数据 - 连续变量 📏\n\n\n\n\n\nflowchart TD\n    B(定量数据 🔢) --&gt; E(连续变量 📏)\n\n\n\n\n\n\n\n取值可以是区间内的任意值，通常带小数点。\n就像测量身高📏，可以精确到毫米。\n例如：身高、体重、温度。\n举例：身高🧍可能是1.75米，体重可能是68.5公斤。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---定性数据",
     "href": "qmd/chapter3.html#了解数据---定性数据",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 定性数据 🔤",
     "text": "了解数据 - 定性数据 🔤\n\n\n\n\n\nflowchart TD\n    A[数据 📦] --&gt; C(定性数据 🔤)\n    C --&gt; F(定序变量 🥇🥈🥉)\n    C --&gt; G(名义变量 ♂️♀️)\n\n\n\n\n\n\n\n描述性质或类别，通常用文字表示。\n就像描述性格😎或爱好🎨。\n通常不能直接参与数学运算。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---定性数据细分",
     "href": "qmd/chapter3.html#了解数据---定性数据细分",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 定性数据：细分",
     "text": "了解数据 - 定性数据：细分\n定性数据也可以分为两种：\n\n定序变量 (Ordinal Variable) 🥇🥈🥉\n名义变量 (Nominal Variable) ♂️♀️"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---定序变量",
     "href": "qmd/chapter3.html#了解数据---定序变量",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 定序变量 🥇🥈🥉",
     "text": "了解数据 - 定序变量 🥇🥈🥉\n\n\n\n\n\nflowchart TD\n    C(定性数据 🔤) --&gt; F(定序变量 🥇🥈🥉)\n\n\n\n\n\n\n\n类别间有顺序关系，但不能进行数值运算。\n例如：教育程度、满意度。\n举例：比赛奖牌🏅有金牌、银牌、铜牌，有等级顺序，但不能说金牌比银牌“好多少”。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---名义变量",
     "href": "qmd/chapter3.html#了解数据---名义变量",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 名义变量 ♂️♀️",
     "text": "了解数据 - 名义变量 ♂️♀️\n\n\n\n\n\nflowchart TD\n    C(定性数据 🔤) --&gt; G(名义变量 ♂️♀️)\n\n\n\n\n\n\n\n类别间无顺序关系，也不能进行数值运算。\n就像性别🚹🚺，只有类别之分，没有等级。\n例如：性别、颜色、血型。\n举例：性别🚹🚺有男和女，没有等级或顺序关系。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---数据分类总结",
     "href": "qmd/chapter3.html#了解数据---数据分类总结",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 数据分类：总结 📝",
     "text": "了解数据 - 数据分类：总结 📝\n理解数据的分类有助于我们选择合适的分析方法。就像选择合适的工具🛠️来修理不同的东西一样。\n\n\n\n\n\n\n\n\n\n数据类型\n子类型\n特点\n举例\n\n\n\n\n定量数据 🔢\n离散变量 🎲\n取值有限或可数，通常为整数\n客户数量、产品数量\n\n\n\n连续变量 📏\n取值可为区间内任意值，通常带小数点\n身高、体重、收入\n\n\n定性数据 🔤\n定序变量 🥇🥈🥉\n类别间有顺序关系，但不能进行数值运算\n教育程度、满意度\n\n\n\n名义变量 ♂️♀️\n类别间无顺序关系，也不能进行数值运算\n性别、颜色、血型"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---数据的特征",
     "href": "qmd/chapter3.html#了解数据---数据的特征",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 数据的特征 🌟",
     "text": "了解数据 - 数据的特征 🌟\n了解数据的分类后，我们再来看看如何描述数据的特征。就像描述一个人的外貌🧔和性格😎一样。\n首先是集中趋势，描述数据集中在哪个位置。就像射箭🎯，看箭是否集中在靶心🎯。常用测度有均值、中位数和众数。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---数据的特征集中趋势---定性数据",
     "href": "qmd/chapter3.html#了解数据---数据的特征集中趋势---定性数据",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 数据的特征：集中趋势 - 定性数据📊",
     "text": "了解数据 - 数据的特征：集中趋势 - 定性数据📊\n对于定性数据：\n\n均值、中位数通常无意义。\n定序变量：中位数和众数能反映一定含义。\n名义变量：仅众数有意义，但不能代表该特征占多数。\n名义变量中的二分变量：若取值合适，均值可解释。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---集中趋势均值",
     "href": "qmd/chapter3.html#了解数据---集中趋势均值",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 集中趋势：均值 ➕➖",
     "text": "了解数据 - 集中趋势：均值 ➕➖\n均值 (Mean)：\n\n所有数据值的总和除以数据个数。\n就像求平均分。\n公式： \\[\n\\bar{x} = \\frac{\\sum_{i=1}^{n} x_i}{n}\n\\]\n优点：易计算，考虑所有值。\n缺点：易受极端值影响。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---集中趋势中位数",
     "href": "qmd/chapter3.html#了解数据---集中趋势中位数",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 集中趋势：中位数 🧍",
     "text": "了解数据 - 集中趋势：中位数 🧍\n中位数 (Median)：\n\n数据按大小排序后，位于中间位置的数值。\n就像按身高排队🧍🧍🧍，中间人的身高。\n若数据个数为偶数，则为中间两个值的平均值。\n优点：不受极端值影响。\n缺点：不能反映所有数据值信息。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---集中趋势众数",
     "href": "qmd/chapter3.html#了解数据---集中趋势众数",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 集中趋势：众数 🙋",
     "text": "了解数据 - 集中趋势：众数 🙋\n众数 (Mode)：\n\n数据中出现次数最多的数值。\n就像投票🗳️，得票最多的选项。\n优点：不受极端值影响，适用所有类型。\n缺点：可能多众数或无众数，不能反映所有值信息。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---集中趋势总结",
     "href": "qmd/chapter3.html#了解数据---集中趋势总结",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 集中趋势：总结 📝",
     "text": "了解数据 - 集中趋势：总结 📝\n\n\n\n\n\n\n\n\n\n\n测度\n定义\n适用数据类型\n优点\n缺点\n\n\n\n\n均值\n总和除以个数\n定量数据\n易计算，考虑所有值\n易受极端值影响\n\n\n中位数\n排序后中间值\n定量、定序\n不受极端值影响\n不能反映所有值信息\n\n\n众数\n出现次数最多值\n定量、定序、名义\n不受极端值影响，适用所有类型\n可能多众数或无众数，不能反映所有值信息"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---集中趋势举例",
     "href": "qmd/chapter3.html#了解数据---集中趋势举例",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 集中趋势：举例 🍎",
     "text": "了解数据 - 集中趋势：举例 🍎\n举例：\n一组学生成绩：70, 75, 80, 85, 90, 95, 100\n\n均值：85\n中位数：85\n众数：无"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---集中趋势举例-续",
     "href": "qmd/chapter3.html#了解数据---集中趋势举例-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 集中趋势：举例 (续) 🍎",
     "text": "了解数据 - 集中趋势：举例 (续) 🍎\n若一个学生成绩为500：\n\n均值：142.14 (受极端值影响)\n中位数：85 (不受影响)\n众数：无"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---集中趋势定性数据",
     "href": "qmd/chapter3.html#了解数据---集中趋势定性数据",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 集中趋势：定性数据 🔤",
     "text": "了解数据 - 集中趋势：定性数据 🔤\n定性数据的集中趋势：\n\n均值、中位数通常无意义。\n众数可反映出现次数最多的类别。\n\n举例：头发颜色调查，众数为“黑色”，则黑发最多。\n\n不同数据类型适用不同集中趋势测度。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散程度",
     "href": "qmd/chapter3.html#了解数据---离散程度",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散程度 📏",
     "text": "了解数据 - 离散程度 📏\n除了集中趋势，还需要了解离散程度，描述数据间的差异。就像测量身高差异🚶🧍🚶‍♀️，是悬殊还是接近。\n常见测度：极差、方差、标准差、四分位距、平均差和变异系数。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散程度定量与定性数据",
     "href": "qmd/chapter3.html#了解数据---离散程度定量与定性数据",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散程度：定量与定性数据",
     "text": "了解数据 - 离散程度：定量与定性数据\n\n定量数据：\n\n极差：数据范围大小。\n方差、标准差、平均差：数据相对均值偏离。\n变异系数：标准差除以均值，修正度量单位影响。\n\n定性数据：\n\n极差：取值类别，含义有限。\n其他测度对定性数据（尤其名义变量）意义不大。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散程度极差",
     "href": "qmd/chapter3.html#了解数据---离散程度极差",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散程度：极差 ↔︎️",
     "text": "了解数据 - 离散程度：极差 ↔︎️\n极差 (Range)：\n\n最大值与最小值之差。\n就像测量班级最高和最矮同学的身高差。\n公式：Range = Max - Min\n优点：计算简单。\n缺点：易受极端值影响，不能反映分布。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散程度方差",
     "href": "qmd/chapter3.html#了解数据---离散程度方差",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散程度：方差 📐",
     "text": "了解数据 - 离散程度：方差 📐\n方差 (Variance)：\n\n每个值与均值之差的平方的平均值。\n衡量数据偏离均值的程度。\n公式： \\[\nVar(X) = \\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n}\n\\]\n优点：考虑所有值，反映离散程度。\n缺点：单位是数据单位平方，不易解释。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散程度标准差",
     "href": "qmd/chapter3.html#了解数据---离散程度标准差",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散程度：标准差 📏",
     "text": "了解数据 - 离散程度：标准差 📏\n标准差 (Standard Deviation)：\n\n方差的平方根。\n衡量偏离均值程度，与数据单位相同。\n公式： \\[\nSD(X) = \\sqrt{Var(X)}\n\\]\n优点：考虑所有值，单位与数据相同，易解释。\n缺点：计算比极差复杂。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散程度四分位距",
     "href": "qmd/chapter3.html#了解数据---离散程度四分位距",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散程度：四分位距 📦",
     "text": "了解数据 - 离散程度：四分位距 📦\n四分位距 (IQR)：\n\n上四分位数(Q3)与下四分位数(Q1)之差。\n衡量中间50%数据的离散程度。\n公式：IQR = Q3 - Q1\n优点：不受极端值影响。\n缺点：不能反映所有值信息。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散程度平均差",
     "href": "qmd/chapter3.html#了解数据---离散程度平均差",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散程度：平均差 ➖",
     "text": "了解数据 - 离散程度：平均差 ➖\n平均差 (MAD)：\n\n每个值与均值之差的绝对值的平均值。\n衡量数据偏离均值的平均距离。\n公式： \\[\nMAD = \\frac{\\sum_{i=1}^{n} |x_i - \\bar{x}|}{n}\n\\]\n优点：考虑所有值，反映离散程度。\n缺点：计算相对复杂。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离散程度变异系数",
     "href": "qmd/chapter3.html#了解数据---离散程度变异系数",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离散程度：变异系数 ➗",
     "text": "了解数据 - 离散程度：变异系数 ➗\n变异系数 (CV)：\n\n标准差除以均值。\n衡量相对离散程度，无量纲。\n公式： \\[\nCV = \\frac{SD(X)}{\\bar{x}}\n\\]\n优点：无量纲，可比较不同数据集离散。\n\n举例：比较身高和体重离散程度。\n\n缺点：均值接近0时可能很大，失去意义。"
   },
   {
     "objectID": "qmd/chapter3.html#离散程度总结",
     "href": "qmd/chapter3.html#离散程度总结",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "离散程度：总结 📝",
     "text": "离散程度：总结 📝\n\n\n\n\n\n\n\n\n\n指标\n定义\n优点\n缺点\n\n\n\n\n极差\n最大值与最小值之差\n计算简单\n易受极端值影响，不能反映分布\n\n\n方差\n值与均值之差的平方的平均值\n考虑所有值，反映离散\n单位平方，不易解释\n\n\n标准差\n方差平方根\n考虑所有值，单位与数据相同，易解释\n计算较复杂\n\n\n四分位距\nQ3与Q1之差\n不受极端值影响\n不能反映所有值信息\n\n\n平均差\n值与均值之差的绝对值的平均值\n考虑所有值，反映离散\n计算较复杂\n\n\n变异系数\n标准差除以均值\n无量纲，可比较不同数据集\n均值接近0时可能很大，失去意义"
   },
   {
     "objectID": "qmd/chapter3.html#离散程度总结-续",
     "href": "qmd/chapter3.html#离散程度总结-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "离散程度：总结 (续) 🍎",
     "text": "离散程度：总结 (续) 🍎\n两组数据：\n\nA: 1, 2, 3, 4, 5\nB: 1, 1, 3, 5, 5\n\n均值都为3，但离散程度不同：\n\nA: 极差=4, 方差=2, 标准差≈1.41, IQR=3, MAD=1.2, CV≈0.47\nB: 极差=4, 方差=3.2, 标准差≈1.79, IQR=4, MAD=1.6, CV≈0.60\n\nB组离散程度更大。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---相关性",
     "href": "qmd/chapter3.html#了解数据---相关性",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 相关性 🤝",
     "text": "了解数据 - 相关性 🤝\n测量相关性，了解变量变化是否相关。就像研究朋友关系🧑‍🤝‍🧑，看是否经常一起玩耍🤹。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---相关性方法",
     "href": "qmd/chapter3.html#了解数据---相关性方法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 相关性：方法",
     "text": "了解数据 - 相关性：方法\n\n相关性测量 🤝\n\n可视化：折线图📈、散点图，探索关系。\n\n举例：气温🌡️和冰淇淋销量🍦。\n\n协方差：确定关系正负，无强度信息，受单位影响。\n相关系数：不受单位影响，理论上限±1，完全线性相关。\n\n举例：身高🧍和体重⚖️。\n\n回归分析：一元或多元。\n\n举例：广告投入💰预测销售额📈。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---协方差",
     "href": "qmd/chapter3.html#了解数据---协方差",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 协方差 ➗✖️",
     "text": "了解数据 - 协方差 ➗✖️\n协方差 (Covariance)：\n\n衡量两变量总体误差。趋势一致为正，相反为负，独立为0。\n公式： \\[\nCov(X, Y) = \\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})(y_i - \\bar{y})}{n}\n\\]\n优点：判断趋势是否一致。\n缺点：受单位影响，不能反映强度。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---相关系数",
     "href": "qmd/chapter3.html#了解数据---相关系数",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 相关系数 📏",
     "text": "了解数据 - 相关系数 📏\n相关系数 (Correlation Coefficient)：\n\n衡量线性相关程度，[-1, 1]。\n公式 (Pearson)： \\[\nr = \\frac{Cov(X, Y)}{SD(X) \\cdot SD(Y)}\n\\]\n优点：不受单位影响，反映强度，范围固定。\n解释：\n\nr = 1：完全正相关。\nr = -1：完全负相关。\nr = 0：不相关。\n|r|越大，相关性越强。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---相关系数举例",
     "href": "qmd/chapter3.html#了解数据---相关系数举例",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 相关系数：举例",
     "text": "了解数据 - 相关系数：举例\n\n\n\n相关系数\n解释\n\n\n\n\n0.9\n强正相关\n\n\n0.5\n中等正相关\n\n\n0.1\n弱正相关\n\n\n0\n不相关\n\n\n-0.1\n弱负相关\n\n\n-0.5\n中等负相关\n\n\n-0.9\n强负相关"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---相关性可视化",
     "href": "qmd/chapter3.html#了解数据---相关性可视化",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 相关性可视化 📊",
     "text": "了解数据 - 相关性可视化 📊\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# 生成模拟数据\nnp.random.seed(42)\nx = np.random.rand(50) * 10\ny = 2 * x + 1 + np.random.randn(50) * 2\n\n# 绘制散点图\nplt.figure(figsize=(8, 6))\nplt.scatter(x, y)\nplt.xlabel(\"变量 X\")\nplt.ylabel(\"变量 Y\")\nplt.title(\"相关性可视化\")\nplt.show()\n\n\n\n\n\n\n\nFigure 1: 相关性可视化示例"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---相关性可视化-续",
     "href": "qmd/chapter3.html#了解数据---相关性可视化-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 相关性可视化 (续)",
     "text": "了解数据 - 相关性可视化 (续)\n相关性可视化:\n\n散点图直观展示关系。\n点呈现趋势 (如倾斜) 则可能相关。\n点杂乱无章则可能不相关。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---数据缺失",
     "href": "qmd/chapter3.html#了解数据---数据缺失",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 数据缺失 ❓",
     "text": "了解数据 - 数据缺失 ❓\n真实数据常有数据缺失。像书📚缺页。需了解原因和类型，以便处理。\n\n数据缺失 (Missing Data) ❓\n\n不含缺失值的变量称完全变量，含缺失值称不完全变量。\n原因：\n\n遗漏：采集故障、存储故障、人为因素等。\n\n举例：传感器故障📡。\n\n属性不存在。\n\n举例：未填婚姻状况💑。\n\n信息忽略。\n\n举例：认为“昵称”👻不重要。\n\n\n\n举例：\n\n收入缺失 💸\n参数缺失 ⚙️\n未答问题 📝"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---缺失原因",
     "href": "qmd/chapter3.html#了解数据---缺失原因",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 缺失原因",
     "text": "了解数据 - 缺失原因\n数据缺失的原因：\n\n数据遗漏：\n\n设备故障：传感器📡、硬盘💽。\n网络问题：中断🔗、丢包。\n人为因素：录入错误⌨️、忘填。\n\n属性不存在：\n\n对象本身不具备。\n\n举例：未婚无配偶。\n\n\n信息被忽略：\n\n采集者认为不重要。\n用户不愿提供。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---噪声",
     "href": "qmd/chapter3.html#了解数据---噪声",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 噪声 📢",
     "text": "了解数据 - 噪声 📢\n噪声是数据中随机误差或偏差。像照片噪点，影响清晰度。需识别处理，减少影响。\n\n噪声 (Noise) 📢\n\n观测变量的随机误差或方差。\n观测量 = 真实数据 + 噪声\n\n举例：\n\n测量误差 📏\n录入错误 ⌨️\n随机干扰 ⚡"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---噪声来源",
     "href": "qmd/chapter3.html#了解数据---噪声来源",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 噪声来源",
     "text": "了解数据 - 噪声来源\n噪声的来源：\n\n测量误差：\n\n仪器精度限制。\n环境干扰。\n人为操作误差。\n\n采集错误：\n\n录入错误。\n传输错误。\n\n随机因素：\n\n自然波动。\n无法预测干扰。"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离群点",
     "href": "qmd/chapter3.html#了解数据---离群点",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离群点 🦄",
     "text": "了解数据 - 离群点 🦄\n离群点是明显不同的数据点。像羊群🐑中独角兽🦄。需识别处理，避免误导。\n\n离群点 (Outlier) 🦄\n\n与一般行为或模型不一致的数据。\n\n举例：\n\n欺诈交易 💳\n异常天气 🌪️\n疾病爆发 🤒"
   },
   {
     "objectID": "qmd/chapter3.html#了解数据---离群点原因",
     "href": "qmd/chapter3.html#了解数据---离群点原因",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "了解数据 - 离群点原因",
     "text": "了解数据 - 离群点原因\n离群点的原因：\n\n数据错误：\n\n录入错误。\n测量错误。\n\n异常事件：\n\n罕见现象。\n突发事件。\n\n真实变异：\n\n个体差异。\n\n举例：篮球运动员身高。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量",
     "href": "qmd/chapter3.html#数据质量",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 💯",
     "text": "数据质量 💯\n预处理前，评估数据质量。像做菜🧑‍🍳前检查食材🥬🥕🥩。质量影响结果可靠性。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量四要素",
     "href": "qmd/chapter3.html#数据质量四要素",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量：四要素",
     "text": "数据质量：四要素\n\n数据分析结果有效性和准确性的前提。💪\n四要素：\n\n完整性 (Completeness)\n一致性 (Consistency)\n准确性 (Accuracy)\n及时性 (Timeliness)"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---完整性",
     "href": "qmd/chapter3.html#数据质量---完整性",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 完整性 💯",
     "text": "数据质量 - 完整性 💯\n完整性 (Completeness) 💯\n\n数据信息是否缺失。可能是记录缺失，也可能是字段缺失。\n\n举例: 记录缺失像漏掉家庭👨‍👩‍👧‍👦信息；字段缺失像漏填必填项。\n\n不完整数据价值降低，是基础评估标准。像书📚缺页。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---完整性检查",
     "href": "qmd/chapter3.html#数据质量---完整性检查",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 完整性：检查",
     "text": "数据质量 - 完整性：检查\n\n统计记录数和唯一值个数。\n\n日志访问量突降需检查。\n地区统计缺失需检查。\n\n统计空值(NULL)个数。\n\n举例: Python pandas：\n\n\n\nimport pandas as pd\nimport numpy as np\n\n# 创建含缺失值的DataFrame\ndata = {'Name': ['Alice', 'Bob', 'Charlie', None],\n        'Age': [25, np.nan, 30, 40],\n        'City': ['NY', 'London', np.nan, 'Tokyo']}\ndf = pd.DataFrame(data)\n\n# 检查缺失值\nprint(df.isnull().sum())\n\nName    1\nAge     1\nCity    1\ndtype: int64"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---完整性评估",
     "href": "qmd/chapter3.html#数据质量---完整性评估",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 完整性：评估",
     "text": "数据质量 - 完整性：评估\n如何评估完整性：\n\n计算缺失值比例：\n\n缺失值数量 / 总数据量。\n\n检查关键字段是否缺失：\n\n举例：客户ID、订单号。\n\n可视化缺失值：\n\n热力图、条形图等。\n\nPython missingno库：\n\n\n\n\nimport missingno as msno\nimport pandas as pd\nimport numpy as np\n\n# 创建含缺失值的DataFrame\ndata = {'Name': ['Alice', 'Bob', 'Charlie', None],\n        'Age': [25, np.nan, 30, 40],\n        'City': ['NY', 'London', np.nan, 'Tokyo']}\ndf = pd.DataFrame(data)\n\n# 可视化缺失值\nmsno.matrix(df)"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---一致性",
     "href": "qmd/chapter3.html#数据质量---一致性",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 一致性 🔄",
     "text": "数据质量 - 一致性 🔄\n一致性 (Consistency) 🔄\n\n数据是否合乎规范，集合内数据是否统一格式。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---一致性体现",
     "href": "qmd/chapter3.html#数据质量---一致性体现",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 一致性：体现",
     "text": "数据质量 - 一致性：体现\n\n主要体现在记录规范和是否符合逻辑。\n\n规范：编码、格式，如手机号13位数字，IP地址格式。\n\n举例: 身份证、日期格式。\n\n逻辑：数据间关系，如PV≥UV，跳出率0-1间。\n\n举例: 年龄非负，身高不超3米。\n\n\n一致性审核重要且复杂。像检查产品📦📦📦是否符合规格。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---一致性举例",
     "href": "qmd/chapter3.html#数据质量---一致性举例",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 一致性：举例",
     "text": "数据质量 - 一致性：举例\n\n举例:\n\n日期格式：\n\n2023-10-26\n10/26/2023\n\n单位：\n\n温度：℃, ℉\n长度：m, ft"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---一致性举例-续",
     "href": "qmd/chapter3.html#数据质量---一致性举例-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 一致性：举例 (续)",
     "text": "数据质量 - 一致性：举例 (续)\n\n编码：\n\n性别：“男/女”, “M/F”, “1/0”\n地区：“北京”, “北京市”\n\n逻辑矛盾：\n\n下单时间晚于发货。\n年龄大于150。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---一致性检查",
     "href": "qmd/chapter3.html#数据质量---一致性检查",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 一致性：检查",
     "text": "数据质量 - 一致性：检查\n\n检查：\n\n定义规范：格式、编码、范围等。\n数据剖析：工具或脚本检查格式、分布等。\n校验规则：编写规则检查关系。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---准确性",
     "href": "qmd/chapter3.html#数据质量---准确性",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 准确性 ✅",
     "text": "数据质量 - 准确性 ✅\n准确性 (Accuracy) ✅\n\n数据记录信息是否异常或错误。\n关注数据中的错误。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---准确性错误",
     "href": "qmd/chapter3.html#数据质量---准确性错误",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 准确性：错误",
     "text": "数据质量 - 准确性：错误\n\n关注错误，例如：\n\n乱码。\n\n举例: 中文变“锟斤拷”�。\n\n异常值，不符有效性。\n\n举例: 年龄-5，身高10米。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---准确性数据集",
     "href": "qmd/chapter3.html#数据质量---准确性数据集",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 准确性：数据集",
     "text": "数据质量 - 准确性：数据集\n\n可能存在于个别记录，也可能存在于整个数据集。\n\n字段错误，如数量级错误，易发现。\n个别异常值，用最大值、最小值、箱线图审核。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---准确性举例",
     "href": "qmd/chapter3.html#数据质量---准确性举例",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 准确性：举例",
     "text": "数据质量 - 准确性：举例\n\n举例：\n\n拼写错误：“北京”写成“背景”。\n数值错误：“100”写成“1000”。\n单位错误：“米”写成“厘米”。\n乱码：文本显示为无法识别字符。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---准确性检查",
     "href": "qmd/chapter3.html#数据质量---准确性检查",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 准确性：检查",
     "text": "数据质量 - 准确性：检查\n\n检查：\n\n可视化：散点图、直方图、箱线图。\n统计分析：均值、中位数、标准差。\n业务规则校验：检查是否符合常识。\n数据比对：与可靠来源比对。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---准确性箱线图",
     "href": "qmd/chapter3.html#数据质量---准确性箱线图",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 准确性：箱线图 📦",
     "text": "数据质量 - 准确性：箱线图 📦\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# 生成模拟数据\nnp.random.seed(42)\ndata = np.concatenate([np.random.normal(0, 1, 950), \n                       np.random.normal(8, 2, 50)])\n\n# 绘制箱线图\nplt.figure(figsize=(8, 6))\nplt.boxplot(data, showmeans=True)\nplt.xlabel(\"数据\")\nplt.ylabel(\"值\")\nplt.title(\"箱线图\")\nplt.show()\n\n/home/runner/.local/lib/python3.12/site-packages/IPython/core/pylabtools.py:170: UserWarning: Glyph 20540 (\\N{CJK UNIFIED IDEOGRAPH-503C}) missing from font(s) DejaVu Sans.\n  fig.canvas.print_figure(bytes_io, **kw)\n/home/runner/.local/lib/python3.12/site-packages/IPython/core/pylabtools.py:170: UserWarning: Glyph 31665 (\\N{CJK UNIFIED IDEOGRAPH-7BB1}) missing from font(s) DejaVu Sans.\n  fig.canvas.print_figure(bytes_io, **kw)\n/home/runner/.local/lib/python3.12/site-packages/IPython/core/pylabtools.py:170: UserWarning: Glyph 32447 (\\N{CJK UNIFIED IDEOGRAPH-7EBF}) missing from font(s) DejaVu Sans.\n  fig.canvas.print_figure(bytes_io, **kw)\n/home/runner/.local/lib/python3.12/site-packages/IPython/core/pylabtools.py:170: UserWarning: Glyph 22270 (\\N{CJK UNIFIED IDEOGRAPH-56FE}) missing from font(s) DejaVu Sans.\n  fig.canvas.print_figure(bytes_io, **kw)\n/home/runner/.local/lib/python3.12/site-packages/IPython/core/pylabtools.py:170: UserWarning: Glyph 25968 (\\N{CJK UNIFIED IDEOGRAPH-6570}) missing from font(s) DejaVu Sans.\n  fig.canvas.print_figure(bytes_io, **kw)\n/home/runner/.local/lib/python3.12/site-packages/IPython/core/pylabtools.py:170: UserWarning: Glyph 25454 (\\N{CJK UNIFIED IDEOGRAPH-636E}) missing from font(s) DejaVu Sans.\n  fig.canvas.print_figure(bytes_io, **kw)\n\n\n\n\n\n\n\n\nFigure 2: 箱线图示例"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---准确性箱线图-续",
     "href": "qmd/chapter3.html#数据质量---准确性箱线图-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 准确性：箱线图 (续)",
     "text": "数据质量 - 准确性：箱线图 (续)\n箱线图：\n\n箱体：中间50%数据。\n中位数：箱体中间线。\n上下边缘：Q3和Q1。\n触须：延伸至1.5倍IQR。\n异常值：超出触须点。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---及时性",
     "href": "qmd/chapter3.html#数据质量---及时性",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 及时性 ⏱️",
     "text": "数据质量 - 及时性 ⏱️\n及时性 (Timeliness) ⏱️\n\n数据产生到可查看的间隔，即延时。\n\n举例: 股票行情、天气预报。\n\n数据分析周期加建立时间过长，结论失去意义。像新闻📰时效性。"
   },
   {
     "objectID": "qmd/chapter3.html#数据质量---及时性重要性",
     "href": "qmd/chapter3.html#数据质量---及时性重要性",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据质量 - 及时性：重要性",
     "text": "数据质量 - 及时性：重要性\n重要性：\n\n实时决策：需据最新数据快速决策。\n\n举例：股票交易、自动驾驶。\n\n趋势分析：过时数据无法反映当前。\n\n举例：去年数据分析明年销售。\n\n数据价值：随时间推移，价值降低。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗",
     "href": "qmd/chapter3.html#数据清洗",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 🧼",
     "text": "数据清洗 🧼\n数据清洗是预处理重要环节，解决质量问题。像做菜🧑‍🍳前洗食材。\n目的是处理缺失值、噪声、不一致、异常数据，使数据符合标准。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗内容",
     "href": "qmd/chapter3.html#数据清洗内容",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗：内容",
     "text": "数据清洗：内容\n\n缺失值处理\n噪声数据处理\n不一致数据处理\n异常数据处理"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值",
     "href": "qmd/chapter3.html#数据清洗---缺失值",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值 ❓",
     "text": "数据清洗 - 缺失值 ❓\n缺失值，可忽略或填补。选择取决于比例和特点。像修衣服👕，洞大则扔，小则补。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值方法",
     "href": "qmd/chapter3.html#数据清洗---缺失值方法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值：方法",
     "text": "数据清洗 - 缺失值：方法\n\n方法：\n\n忽略 (Deletion)：简单，但可能损失数据。像扔苹果🍎。\n填补 (Imputation)：填固定值、均值，或据记录填充。像替苹果🍎。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值忽略",
     "href": "qmd/chapter3.html#数据清洗---缺失值忽略",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值：忽略",
     "text": "数据清洗 - 缺失值：忽略\n忽略 (Deletion)：\n\n方法：\n\n删含缺失值记录 (行)。\n删缺失过多属性 (列)。\n\n优点：简单。\n缺点：\n\n可能损失数据。\n可能偏差。\n\n举例：缺失值集中某群体，删数据致结果偏。\n\n\n适用：\n\n缺失值比例低。\n缺失值不重要。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值填补",
     "href": "qmd/chapter3.html#数据清洗---缺失值填补",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值：填补",
     "text": "数据清洗 - 缺失值：填补\n填补 (Imputation)：\n\n方法：\n\n固定值：0、-1、“未知”。\n统计值：均值、中位数、众数。\n模型预测：回归、决策树。\n最近邻：用相似记录值填充。\n\n优点：\n\n保留记录。\n减少损失。\n\n缺点：\n\n填补值可能不准。\n可能偏差。\n\n适用：\n\n缺失值比例高。\n缺失值重要。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值固定值",
     "href": "qmd/chapter3.html#数据清洗---缺失值固定值",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值：固定值",
     "text": "数据清洗 - 缺失值：固定值\n固定值填补：\n\n举例：\n\n数值型：0或-1。\n类别型：“未知”、“佚名”、“N/A”。\n\n优点：简单。\n缺点：\n\n单一，不符实际。\n可能偏差。\n\n适用：\n\n含义明确，可用固定值替代。\n\n举例：“是否已婚”，缺失值用0表未婚。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值统计值",
     "href": "qmd/chapter3.html#数据清洗---缺失值统计值",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值：统计值",
     "text": "数据清洗 - 缺失值：统计值\n统计值填补：\n\n举例：\n\n数值型：均值、中位数、众数。\n类别型：众数。\n\n优点：利用已有信息。\n缺点：\n\n易受极端值影响 (均值)。\n可能掩盖分布。\n\n适用：\n\n数值型，分布均匀 (均值)。\n数值型，分布偏斜 (中位数)。\n类别型 (众数)。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值模型预测",
     "href": "qmd/chapter3.html#数据清洗---缺失值模型预测",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值：模型预测",
     "text": "数据清洗 - 缺失值：模型预测\n模型预测填补：\n\n举例：\n\n回归、决策树、随机森林。\n\n优点：\n\n利用关系，填补值更接近真实。\n\n缺点：\n\n计算复杂。\n需选模型。\n可能过拟合。\n\n适用：\n\n与其他变量有强关系。\n有合适模型。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值对比",
     "href": "qmd/chapter3.html#数据清洗---缺失值对比",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值：对比 📝",
     "text": "数据清洗 - 缺失值：对比 📝\n\n\n\n\n\n\n\n\n\n方法\n优点\n缺点\n适用场景\n\n\n\n\n忽略\n简单\n可能损失数据，偏差\n比例低，不重要\n\n\n填补\n保留记录，减少损失\n可能不准，偏差\n比例高，重要\n\n\n固定值\n简单\n单一，不符实际\n含义明确，可固定值替代\n\n\n统计值\n利用已有信息\n易受极端影响，掩盖分布\n数值型，分布均匀(均值)；偏斜(中位数)；类别型(众数)\n\n\n模型预测\n利用关系，更接近真实\n计算复杂，需选模型，可能过拟合\n与其他变量强关系，有模型"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值举例",
     "href": "qmd/chapter3.html#数据清洗---缺失值举例",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值：举例",
     "text": "数据清洗 - 缺失值：举例\n举例：\n“年龄”列有缺失值。\n\n忽略：删年龄缺失记录。\n固定值：用0或-1填充。\n统计值：用已知年龄均值填充。\n模型预测：据职业、收入等"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---缺失值处理模型预测续",
     "href": "qmd/chapter3.html#数据清洗---缺失值处理模型预测续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 缺失值处理：模型预测（续）",
     "text": "数据清洗 - 缺失值处理：模型预测（续）\n模型预测填补：\n\n举例：\n\n根据用户的其他信息（如职业、收入等），建立一个模型来预测缺失的年龄。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---噪声数据处理",
     "href": "qmd/chapter3.html#数据清洗---噪声数据处理",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 噪声数据处理 🔊",
     "text": "数据清洗 - 噪声数据处理 🔊\n对于噪声数据，我们可以使用分箱、聚类或回归等方法进行处理。就像去除照片上的噪点📸一样，让照片更清晰。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---噪声数据处理方法",
     "href": "qmd/chapter3.html#数据清洗---噪声数据处理方法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 噪声数据处理：方法",
     "text": "数据清洗 - 噪声数据处理：方法\n\n分箱 (Binning) 🗑️\n\n通过考察相邻数据来确定最终值，实现平滑。按属性值划分子区间，放入“箱子”。箱深表记录数，宽表范围。\n举例: 年龄分段：0-10、11-20、21-30岁等。\n\n聚类 (Clustering) 🧩\n\n数据分组为簇。找出并清除簇外值 (孤立点)。\n举例: 客户按消费习惯分群，找出“异常客户”。\n\n回归 (Regression) 📈\n\n发现变量关系，寻找映射，平滑数据。预测数值，包括线性回归和非线性回归。\n举例: 用面积、位置预测房价。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---噪声分箱",
     "href": "qmd/chapter3.html#数据清洗---噪声分箱",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 噪声：分箱 🗑️",
     "text": "数据清洗 - 噪声：分箱 🗑️\n分箱 (Binning)：\n\n方法：\n\n数据按属性值划分区间 (箱子)。\n用代表值 (均值、中位数、边界值等) 替代箱内值。\n\n类型：\n\n等宽：宽度相同。\n等频：数据量相同。\n自定义：据需求定边界。\n\n优点：\n\n简单。\n平滑，降噪。\n\n缺点：\n\n需确定数量和宽度。\n可能损失细节。\n\n适用：\n\n数据量大。\n噪声为小幅波动。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---噪声聚类",
     "href": "qmd/chapter3.html#数据清洗---噪声聚类",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 噪声：聚类 🧩",
     "text": "数据清洗 - 噪声：聚类 🧩\n聚类 (Clustering)：\n\n方法：\n\n数据划分簇，簇内相似度高，簇间低。\n远离中心点视为噪声或离群点。\n\n算法：\n\nK-Means\nDBSCAN\n层次聚类\n\n优点：\n\n自动识别离群点。\n\n缺点：\n\n需选算法和参数。\n计算量可能大。\n\n适用：\n\n明显类别结构。\n噪声为离群点。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---噪声回归",
     "href": "qmd/chapter3.html#数据清洗---噪声回归",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 噪声：回归 📈",
     "text": "数据清洗 - 噪声：回归 📈\n回归 (Regression)：\n\n方法：\n\n建立模型，用其他变量预测目标变量。\n用预测值代替原始值，平滑数据。\n\n模型：\n\n线性回归\n多项式回归\n支持向量回归\n决策树回归\n\n优点：\n\n利用关系，平滑预测。\n\n缺点：\n\n需选模型。\n可能过拟合或欠拟合。\n\n适用：\n\n明显趋势或模式。\n噪声为随机误差。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---噪声对比",
     "href": "qmd/chapter3.html#数据清洗---噪声对比",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 噪声：对比 📝",
     "text": "数据清洗 - 噪声：对比 📝\n\n\n\n\n\n\n\n\n\n方法\n优点\n缺点\n适用场景\n\n\n\n\n分箱\n简单，平滑，降噪\n需定数量宽度，可能损失细节\n数据量大，噪声小幅波动\n\n\n聚类\n自动识别离群点\n需选算法参数，计算量可能大\n明显类别结构，噪声为离群点\n\n\n回归\n利用关系，平滑预测\n需选模型，可能过拟合或欠拟合\n明显趋势模式，噪声为随机误差"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---不一致数据",
     "href": "qmd/chapter3.html#数据清洗---不一致数据",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 不一致数据 🔄",
     "text": "数据清洗 - 不一致数据 🔄\n不一致数据，据情况处理，可能需人工干预或工具。像整理房间🧹，放东西到正确位置。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---不一致数据处理",
     "href": "qmd/chapter3.html#数据清洗---不一致数据处理",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 不一致数据：处理",
     "text": "数据清洗 - 不一致数据：处理\n\n据实际情况定方案。\n人工修复，知识工程工具修改。\n\n举例: “性别”列有“男/女”和“M/F”，统一。\n\n多源集成，编码差异，需转化。\n\n举例: 两库“日期”格式不同，统一。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---不一致数据方法-续",
     "href": "qmd/chapter3.html#数据清洗---不一致数据方法-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 不一致数据：方法 (续)",
     "text": "数据清洗 - 不一致数据：方法 (续)\n处理方法：\n\n标准化：\n\n统一格式、编码、单位。\n\n举例：日期统一为“YYYY-MM-DD”。\n\n\n转换：\n\n转换为统一表示。\n\n举例：“男/女”和“M/F”转“1/0”。\n\n\n合并：\n\n多源数据合并为统一集。\n\n举例：不同部门客户数据合并。\n\n\n人工校验：\n\n无法自动处理，需人工检查修正。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---异常数据",
     "href": "qmd/chapter3.html#数据清洗---异常数据",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 异常数据 💥🩹",
     "text": "数据清洗 - 异常数据 💥🩹\n异常数据，判断是否可还原。不可还原则过滤；可还原尝试修复。像修电器🔌，有些可修，有些不可。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---异常数据类型",
     "href": "qmd/chapter3.html#数据清洗---异常数据类型",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 异常数据：类型",
     "text": "数据清洗 - 异常数据：类型\n\n不可还原 (Irrecoverable) 💥\n\n难修正，如乱码，字符截断，异常值。无规律则过滤。像碎花瓶💐。\n\n可还原 (Recoverable) 🩹\n\n参杂无用字符，用取子串、trim()去空格。\n\n举例: ” Hello World “去空格。\n\n字符截断，可推导则还原。\n\n举例: 用户名“Alexan”，推断“Alexander”。\n\n数值单位差异，转化处理。\n\n举例: 重量“克”和“千克”统一。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---异常不可还原",
     "href": "qmd/chapter3.html#数据清洗---异常不可还原",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 异常：不可还原",
     "text": "数据清洗 - 异常：不可还原\n不可还原异常：\n\n特点：无法恢复到原始正确状态。\n举例：\n\n乱码：编码错误致无法识别。\n严重丢失：关键信息缺失。\n完全错误：与真实不符。\n\n处理：\n\n过滤：直接删除。"
   },
   {
     "objectID": "qmd/chapter3.html#数据清洗---异常可还原",
     "href": "qmd/chapter3.html#数据清洗---异常可还原",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "数据清洗 - 异常：可还原",
     "text": "数据清洗 - 异常：可还原\n可还原异常：\n\n特点：可恢复到原始正确状态。\n举例：\n\n字符串：\n\n多余空格、特殊字符：trim()、正则。\n截断：可推断则恢复。\n\n数值：\n\n单位错误：转换。\n数量级错误：乘除常数。\n\n\n处理：\n\n据情况选方法修复。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程",
     "href": "qmd/chapter3.html#特征工程",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 ⚙️",
     "text": "特征工程 ⚙️\n特征工程是预处理最后和重要环节。提取有用特征，提高性能。像厨师👨‍🍳切食材🔪，方便烹饪。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程作用",
     "href": "qmd/chapter3.html#特征工程作用",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程：作用",
     "text": "特征工程：作用\n\n原始数据维数高，清洗后成原始特征，但不都有用，有些需处理，有些干扰。像木材🪵，有些直接用，有些加工，有些不能用。\n利用知识处理数据创建特征，供后续分析。目的：尽量少特征描述数据，保持特性。像木材加工家具🪑🛏️🛋️。\n\n特征选择 (Feature Selection)\n特征构建 (Feature Construction)\n特征提取 (Feature Extraction)"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征选择",
     "href": "qmd/chapter3.html#特征工程---特征选择",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征选择 🎯",
     "text": "特征工程 - 特征选择 🎯\n特征选择是从原始特征中选对分析最有用的。像选演员🎭，选最适合角色的。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征选择原则",
     "href": "qmd/chapter3.html#特征工程---特征选择原则",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征选择：原则",
     "text": "特征工程 - 特征选择：原则\n\n原则 🎯\n\n是否发散：不发散，方差近0，无区分作用。像身高🧍都一样。\n是否相关：取值能改变结果。相关性高优先。像预测房价🏠，面积、位置比颜色重要。\n信息是否冗余：本质相同，相关性高。像“年龄”和“出生年”。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征选择重要性",
     "href": "qmd/chapter3.html#特征工程---特征选择重要性",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征选择：重要性",
     "text": "特征工程 - 特征选择：重要性\n重要性：\n\n提高性能：选相关特征提准确性和泛化。\n降低成本：减少数量降训练预测时间和资源。\n增强可解释性：更少特征使模型易理解。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征选择方法",
     "href": "qmd/chapter3.html#特征工程---特征选择方法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征选择：方法 🧰",
     "text": "特征工程 - 特征选择：方法 🧰\n方法多，据情况选。像选交通工具🚗✈️🚄，据距离、时间、预算。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征选择方法-续",
     "href": "qmd/chapter3.html#特征工程---特征选择方法-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征选择：方法 (续)",
     "text": "特征工程 - 特征选择：方法 (续)\n\n方法 🧰\n\nFilter (过滤)：按发散性或相关性评分，设阈值或个数，选择。\n\n举例: 算方差，选大于阈值。\n\nWrapper (包装)：据目标函数，每次选或排除若干。\n\n举例: 递归特征消除 (RFE)，逐步减，直到最佳。\n\nEmbedded (集成)：训练算法模型，得权值，据系数选。类似Filter，但通过训练定优劣。\n\n举例: LASSO回归，L1正则化使系数变0，选择。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---选择过滤法",
     "href": "qmd/chapter3.html#特征工程---选择过滤法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 选择：过滤法",
     "text": "特征工程 - 选择：过滤法\n过滤法 (Filter)：\n\n原理：据特性 (方差、相关系数、互信息等) 评估重要性，排序或筛选。\n指标：\n\n方差：离散程度。\n相关系数：线性相关。\n卡方检验：类别型特征与目标相关性。\n互信息：非线性相关。\n\n优点：\n\n计算简单，快。\n不需训练。\n\n缺点：\n\n忽略关系。\n可能选冗余。\n\n适用：\n\n维度高，需快速筛选。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---选择包装法",
     "href": "qmd/chapter3.html#特征工程---选择包装法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 选择：包装法",
     "text": "特征工程 - 选择：包装法\n包装法 (Wrapper)：\n\n原理：看作搜索，通过组合训练模型，评估性能，选最佳子集。\n方法：\n\n递归特征消除 (RFE)：逐步减，直到最佳。\n前向选择：逐步加，直到不提升。\n后向消除：逐步减，直到不下降。\n\n优点：\n\n针对目标函数优化，效果好。\n\n缺点：\n\n计算量大。\n易过拟合。\n\n适用：\n\n维度不高。\n性能要求高。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---选择集成法",
     "href": "qmd/chapter3.html#特征工程---选择集成法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 选择：集成法",
     "text": "特征工程 - 选择：集成法\n集成法 (Embedded)：\n\n原理：嵌入模型训练，通过学习自动选择。\n方法：\n\nLASSO回归：L1正则化使系数变0，选择。\n决策树：据信息增益或基尼系数选分裂。\n随机森林：评估重要性，排序。\n\n优点：\n\n结合过滤和包装，考虑关系，利用模型，效果好。\n\n缺点：\n\n需训练，计算量可能大。\n\n适用：\n\n维度高。\n性能要求高。"
   },
   {
     "objectID": "qmd/chapter3.html#特征选择对比",
     "href": "qmd/chapter3.html#特征选择对比",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征选择：对比 📝",
     "text": "特征选择：对比 📝\n\n\n\n\n\n\n\n\n\n方法\n优点\n缺点\n适用场景\n\n\n\n\n过滤法\n计算简单，快，不需训练\n忽略关系，可能选冗余\n维度高，需快速筛选\n\n\n包装法\n针对目标函数优化，效果好\n计算量大，易过拟合\n维度不高，性能要求高\n\n\n集成法\n结合过滤和包装，考虑关系，利用模型，效果好\n需训练，计算量可能大\n维度高，性能要求高"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征构建",
     "href": "qmd/chapter3.html#特征工程---特征构建",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征构建 🧱",
     "text": "特征工程 - 特征构建 🧱\n特征构建是据知识，人工构造新特征。需理解数据和业务。像厨师👨‍🍳据食材特点，创菜肴🍽️。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征构建作用",
     "href": "qmd/chapter3.html#特征工程---特征构建作用",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征构建：作用",
     "text": "特征工程 - 特征构建：作用\n\n从原始特征中人工构建。像积木🧱搭城堡🏰，用已有积木创新形状。\n需洞察力和分析力，从数据中找物理意义特征。\n表格数据，可用混合或组合属性创建，或分解切分原有特征。\n\n举例：\n\n混合：“年”和“月”合并“年月”。\n组合：“身高”和“体重”组合“BMI”。\n分解：“日期”分解“年”、“月”、“日”、“星期”。\n切分：“年龄”切分“儿童”、“青年”、“中年”、“老年”。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---构建方法",
     "href": "qmd/chapter3.html#特征工程---构建方法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 构建：方法",
     "text": "特征工程 - 构建：方法\n方法：\n\n组合：多特征组合。\n\n举例：BMI = 体重(kg) / 身高(m)^2\n\n多项式：乘方、开方、相乘等。\n\n举例：x1, x2 -&gt; x1^2, x2^2, x1*x2\n\n比率：相关特征相除。\n\n举例：每公里油耗 = 耗油 / 里程\n\n类别编码：类别型转数值型。\n\n举例：One-Hot, Label Encoding\n\n时间处理：提取年、月、日等。\n文本处理：提取关键词、主题等。\n\n举例：TF-IDF, Word Embeddings\n\n领域知识：据知识设计。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征提取",
     "href": "qmd/chapter3.html#特征工程---特征提取",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征提取 ✨",
     "text": "特征工程 - 特征提取 ✨\n特征提取是算法自动生成新特征。用于降维和提取潜在结构。像照片📸转素描✏️，提取主要特征。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---特征提取方法",
     "href": "qmd/chapter3.html#特征工程---特征提取方法",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 特征提取：方法",
     "text": "特征工程 - 特征提取：方法\n\n自动构建新特征，将原始特征转为更具物理意义、统计意义或核的特征。方法包括PCA、ICA和LDA。\n\nPCA：坐标轴转换，寻最优子空间，降维、去相关。\n\n举例：1000维人脸图像降100维，保留特征。\n\nICA：PCA提不相关，ICA获独立属性。\n\n举例：混合音频分离独立声源 (人声、乐器)。\n\nLDA：投影到低维，使同类点接近，异类点远离。\n\n举例：文档映射低维，同主题近，不同主题远。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---提取pca",
     "href": "qmd/chapter3.html#特征工程---提取pca",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 提取：PCA",
     "text": "特征工程 - 提取：PCA\nPCA：\n\n原理：线性变换转为不相关特征 (主成分)，按方差排序。\n步骤：\n\n算协方差矩阵。\n算特征值和向量。\n选最大k个特征值对应向量，构成变换矩阵。\n原始数据乘变换矩阵，得降维数据。\n\n优点：\n\n降维，去冗余。\n发现主要成分，提潜在结构。\n\n缺点：\n\n解释性差。\n可能损失信息。\n\n适用：\n\n高维降维。\n可视化。\n去噪。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---提取ica",
     "href": "qmd/chapter3.html#特征工程---提取ica",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 提取：ICA",
     "text": "特征工程 - 提取：ICA\nICA：\n\n原理：假设数据由独立、非高斯成分混合，ICA找独立成分。\n与PCA区别：\n\nPCA找不相关 (主成分)，ICA找独立。\nPCA适用高斯分布，ICA适用非高斯。\n\n优点：\n\n分离独立信号源。\n\n缺点：\n\n计算复杂。\n对分布有假设。\n\n适用：\n\n信号分离 (鸡尾酒会问题)。\n图像处理。\n脑电图分析。"
   },
   {
     "objectID": "qmd/chapter3.html#特征工程---提取lda",
     "href": "qmd/chapter3.html#特征工程---提取lda",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "特征工程 - 提取：LDA",
     "text": "特征工程 - 提取：LDA\nLDA：\n\n原理：投影到低维，同类点近，异类点远。\n与PCA区别：\n\nPCA无监督，LDA有监督。\nPCA目标最大化方差，LDA目标最大化可分性。\n\n优点：\n\n提分类性能。\n\n缺点：\n\n对分布有假设 (通常正态)。\n可能过拟合。\n\n适用：\n\n分类。\n降维。"
   },
   {
     "objectID": "qmd/chapter3.html#总结",
     "href": "qmd/chapter3.html#总结",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "总结 📝",
     "text": "总结 📝\n数据预处理流程：\n\n了解数据：类型、特征、问题。\n质量评估：完整性、一致性、准确性、及时性。\n数据清洗：处理缺失值、噪声、不一致、异常。\n特征工程：提取有用特征，包括选择、构建、提取。"
   },
   {
     "objectID": "qmd/chapter3.html#总结-续",
     "href": "qmd/chapter3.html#总结-续",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "总结 (续)",
     "text": "总结 (续)\n\n学习了预处理概念和方法。\n预处理是分析重要环节，提质量，改善性能。\n包括质量评估、清洗和特征工程。"
   },
   {
     "objectID": "qmd/chapter3.html#思考与讨论",
     "href": "qmd/chapter3.html#思考与讨论",
-    "title": "数据分析理论与Python实战",
+    "title": "信息技术基础",
     "section": "思考与讨论 🤔",
     "text": "思考与讨论 🤔\n\n你遇到过哪些质量问题？如何处理？\n除本章方法，还知道哪些预处理方法？\n预处理对分析和建模多重要？为什么？\n如何评价预处理方案好坏？"
   },
@@ -3084,14 +3084,14 @@
     "href": "qmd/chapter5.html",
     "title": "信息技术基础 📊",
     "section": "",
-    "text": "Pandas介绍 🐼\n基础数据结构 🧱\nIndex对象访问 🔍\n数学统计计算 🧮\n聚合分组运算 ➕➖\n\n\n\n\n\n这里我对目录进行了一些改进：\n\n1.  使用 `layout-ncol=2` 将目录分为两列，使页面更紧凑。\n2.  简化了目录标题，使其更简洁明了。\n\n接下来是 Pandas 介绍部分：\n\n```qmd\n## Pandas介绍 🐼\n\n::: {.callout-note}\nPandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能**、**简单易用**的数据结构和数据分析工具。就像一个超级工具箱🧰，让数据处理变得轻松又高效！\n:::\n\n- Pandas 得名于 **pan**el **da**ta **s**ystem，即面板数据系统。\n- Pandas 基于 NumPy 构建，但提供了更高级、更方便的数据操作接口。\n- Pandas 擅长处理**结构化数据**，如表格、数据库、CSV 文件等。\n\n## Pandas介绍 🐼\n\n### Pandas可以完成什么事情？ {.smaller}\n\n- **索引对象**：包括简单的索引和多层次的索引，就像给数据贴上标签🏷️，方便查找和管理。\n    -  **索引 (Index)**：Pandas 中用于标记和定位数据的重要组成部分，类似于数据的“地址簿”。\n    -  **简单索引**：最基本的索引形式，通常是一个整数或字符串序列。\n    -  **多层次索引 (MultiIndex)**：一种更复杂的索引形式，允许在一个轴上有多个层级的索引，类似于“多级目录”，可以更精细地组织和访问数据。\n- **引擎集成组合**：用于汇总和转换数据集合，可以将多个数据源整合在一起，进行统一处理。\n    -   **汇总 (Aggregation)**：将多个数据值合并为一个值，例如求和、平均值、最大值等。\n    -   **转换 (Transformation)**：对数据进行某种形式的修改，例如标准化、填充缺失值等。\n- **日期范围生成器**：可以生成日期范围 📅，并支持自定义日期偏移（实现自定义频率），时间序列分析必备！\n    -   **日期范围 (Date Range)**：表示一段连续的日期，例如 \"2023-01-01\" 到 \"2023-01-10\"。\n    -   **日期偏移 (Date Offset)**：表示一个时间间隔，例如 \"2天\"、\"1个月\"、\"3小时\" 等。\n\n::: {#06ae27e4 .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\n\n# 生成日期范围\ndate_range = pd.date_range(start='2023-01-01', end='2023-01-10')\nprint(date_range)\n\n# 自定义日期偏移\ncustom_dates = pd.date_range(start='2023-01-01', periods=5, freq='2D') # 每两天\nprint(custom_dates)\n:::"
+    "text": "Pandas介绍 🐼\n基础数据结构 🧱\nIndex对象访问 🔍\n数学统计计算 🧮\n聚合分组运算 ➕➖\n\n\n\n\n\n这里我对目录进行了一些改进：\n\n1.  使用 `layout-ncol=2` 将目录分为两列，使页面更紧凑。\n2.  简化了目录标题，使其更简洁明了。\n\n接下来是 Pandas 介绍部分：\n\n```qmd\n## Pandas介绍 🐼\n\n::: {.callout-note}\nPandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能**、**简单易用**的数据结构和数据分析工具。就像一个超级工具箱🧰，让数据处理变得轻松又高效！\n:::\n\n- Pandas 得名于 **pan**el **da**ta **s**ystem，即面板数据系统。\n- Pandas 基于 NumPy 构建，但提供了更高级、更方便的数据操作接口。\n- Pandas 擅长处理**结构化数据**，如表格、数据库、CSV 文件等。\n\n## Pandas介绍 🐼\n\n### Pandas可以完成什么事情？ {.smaller}\n\n- **索引对象**：包括简单的索引和多层次的索引，就像给数据贴上标签🏷️，方便查找和管理。\n    -  **索引 (Index)**：Pandas 中用于标记和定位数据的重要组成部分，类似于数据的“地址簿”。\n    -  **简单索引**：最基本的索引形式，通常是一个整数或字符串序列。\n    -  **多层次索引 (MultiIndex)**：一种更复杂的索引形式，允许在一个轴上有多个层级的索引，类似于“多级目录”，可以更精细地组织和访问数据。\n- **引擎集成组合**：用于汇总和转换数据集合，可以将多个数据源整合在一起，进行统一处理。\n    -   **汇总 (Aggregation)**：将多个数据值合并为一个值，例如求和、平均值、最大值等。\n    -   **转换 (Transformation)**：对数据进行某种形式的修改，例如标准化、填充缺失值等。\n- **日期范围生成器**：可以生成日期范围 📅，并支持自定义日期偏移（实现自定义频率），时间序列分析必备！\n    -   **日期范围 (Date Range)**：表示一段连续的日期，例如 \"2023-01-01\" 到 \"2023-01-10\"。\n    -   **日期偏移 (Date Offset)**：表示一个时间间隔，例如 \"2天\"、\"1个月\"、\"3小时\" 等。\n\n::: {#7b447a3a .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\n\n# 生成日期范围\ndate_range = pd.date_range(start='2023-01-01', end='2023-01-10')\nprint(date_range)\n\n# 自定义日期偏移\ncustom_dates = pd.date_range(start='2023-01-01', periods=5, freq='2D') # 每两天\nprint(custom_dates)\n:::"
   },
   {
     "objectID": "qmd/chapter5.html#目录",
     "href": "qmd/chapter5.html#目录",
     "title": "信息技术基础 📊",
     "section": "",
-    "text": "Pandas介绍 🐼\n基础数据结构 🧱\nIndex对象访问 🔍\n数学统计计算 🧮\n聚合分组运算 ➕➖\n\n\n\n\n\n这里我对目录进行了一些改进：\n\n1.  使用 `layout-ncol=2` 将目录分为两列，使页面更紧凑。\n2.  简化了目录标题，使其更简洁明了。\n\n接下来是 Pandas 介绍部分：\n\n```qmd\n## Pandas介绍 🐼\n\n::: {.callout-note}\nPandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能**、**简单易用**的数据结构和数据分析工具。就像一个超级工具箱🧰，让数据处理变得轻松又高效！\n:::\n\n- Pandas 得名于 **pan**el **da**ta **s**ystem，即面板数据系统。\n- Pandas 基于 NumPy 构建，但提供了更高级、更方便的数据操作接口。\n- Pandas 擅长处理**结构化数据**，如表格、数据库、CSV 文件等。\n\n## Pandas介绍 🐼\n\n### Pandas可以完成什么事情？ {.smaller}\n\n- **索引对象**：包括简单的索引和多层次的索引，就像给数据贴上标签🏷️，方便查找和管理。\n    -  **索引 (Index)**：Pandas 中用于标记和定位数据的重要组成部分，类似于数据的“地址簿”。\n    -  **简单索引**：最基本的索引形式，通常是一个整数或字符串序列。\n    -  **多层次索引 (MultiIndex)**：一种更复杂的索引形式，允许在一个轴上有多个层级的索引，类似于“多级目录”，可以更精细地组织和访问数据。\n- **引擎集成组合**：用于汇总和转换数据集合，可以将多个数据源整合在一起，进行统一处理。\n    -   **汇总 (Aggregation)**：将多个数据值合并为一个值，例如求和、平均值、最大值等。\n    -   **转换 (Transformation)**：对数据进行某种形式的修改，例如标准化、填充缺失值等。\n- **日期范围生成器**：可以生成日期范围 📅，并支持自定义日期偏移（实现自定义频率），时间序列分析必备！\n    -   **日期范围 (Date Range)**：表示一段连续的日期，例如 \"2023-01-01\" 到 \"2023-01-10\"。\n    -   **日期偏移 (Date Offset)**：表示一个时间间隔，例如 \"2天\"、\"1个月\"、\"3小时\" 等。\n\n::: {#06ae27e4 .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\n\n# 生成日期范围\ndate_range = pd.date_range(start='2023-01-01', end='2023-01-10')\nprint(date_range)\n\n# 自定义日期偏移\ncustom_dates = pd.date_range(start='2023-01-01', periods=5, freq='2D') # 每两天\nprint(custom_dates)\n:::"
+    "text": "Pandas介绍 🐼\n基础数据结构 🧱\nIndex对象访问 🔍\n数学统计计算 🧮\n聚合分组运算 ➕➖\n\n\n\n\n\n这里我对目录进行了一些改进：\n\n1.  使用 `layout-ncol=2` 将目录分为两列，使页面更紧凑。\n2.  简化了目录标题，使其更简洁明了。\n\n接下来是 Pandas 介绍部分：\n\n```qmd\n## Pandas介绍 🐼\n\n::: {.callout-note}\nPandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能**、**简单易用**的数据结构和数据分析工具。就像一个超级工具箱🧰，让数据处理变得轻松又高效！\n:::\n\n- Pandas 得名于 **pan**el **da**ta **s**ystem，即面板数据系统。\n- Pandas 基于 NumPy 构建，但提供了更高级、更方便的数据操作接口。\n- Pandas 擅长处理**结构化数据**，如表格、数据库、CSV 文件等。\n\n## Pandas介绍 🐼\n\n### Pandas可以完成什么事情？ {.smaller}\n\n- **索引对象**：包括简单的索引和多层次的索引，就像给数据贴上标签🏷️，方便查找和管理。\n    -  **索引 (Index)**：Pandas 中用于标记和定位数据的重要组成部分，类似于数据的“地址簿”。\n    -  **简单索引**：最基本的索引形式，通常是一个整数或字符串序列。\n    -  **多层次索引 (MultiIndex)**：一种更复杂的索引形式，允许在一个轴上有多个层级的索引，类似于“多级目录”，可以更精细地组织和访问数据。\n- **引擎集成组合**：用于汇总和转换数据集合，可以将多个数据源整合在一起，进行统一处理。\n    -   **汇总 (Aggregation)**：将多个数据值合并为一个值，例如求和、平均值、最大值等。\n    -   **转换 (Transformation)**：对数据进行某种形式的修改，例如标准化、填充缺失值等。\n- **日期范围生成器**：可以生成日期范围 📅，并支持自定义日期偏移（实现自定义频率），时间序列分析必备！\n    -   **日期范围 (Date Range)**：表示一段连续的日期，例如 \"2023-01-01\" 到 \"2023-01-10\"。\n    -   **日期偏移 (Date Offset)**：表示一个时间间隔，例如 \"2天\"、\"1个月\"、\"3小时\" 等。\n\n::: {#7b447a3a .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\n\n# 生成日期范围\ndate_range = pd.date_range(start='2023-01-01', end='2023-01-10')\nprint(date_range)\n\n# 自定义日期偏移\ncustom_dates = pd.date_range(start='2023-01-01', periods=5, freq='2D') # 每两天\nprint(custom_dates)\n:::"
   },
   {
     "objectID": "qmd/chapter5.html#pandas介绍-续",
@@ -3294,7 +3294,7 @@
     "href": "qmd/chapter6.html#逻辑回归-logistic-regression",
     "title": "信息技术基础 📊",
     "section": "逻辑回归 (Logistic Regression) 🧠",
-    "text": "逻辑回归 (Logistic Regression) 🧠\n\n概念解释 🤓\n\n线性关系: 特征与分类结果之间的关系可以用线性方程表示，就像我们可以用一条直线 📏 来近似描述身高和体重的关系。\n\n线性方程：\\(y = wx + b\\)\n其中，\\(w\\) 是权重向量，\\(x\\) 是特征向量，\\(b\\) 是偏置项。\n\n实数域: 所有实数的集合，就像一条无限延伸的数轴 ↔︎️。\n{0, 1} 空间: 只有 0 和 1 两个值的集合，就像一个开关 💡，只有开和关两种状态。\nLogistic 函数: 一种 S 形函数，可以将实数映射到 (0, 1) 区间，就像一个魔法 🧙‍♀️，将任何数字变成 0 到 1 之间的数字。\n\n\n\nLogistic 函数 📝\n\\[\n\\sigma(z) = \\frac{1}{1 + e^{-z}}\n\\]\n\n\\(z\\): 线性方程的结果 (\\(z = wx + b\\))\n\\(e\\): 自然对数的底数 (约等于 2.718)\n\\(\\sigma(z)\\): 介于 0 和 1 之间的概率值\n\n\n\n\n\n\n\nLogistic函数图像\n\n\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nz = np.linspace(-10, 10, 100)\nsigma = 1 / (1 + np.exp(-z))\n\nplt.figure(figsize=(8, 6))\nplt.plot(z, sigma)\nplt.xlabel(\"z\")\nplt.ylabel(\"$\\sigma(z)$\")\nplt.title(\"Logistic Function\")\nplt.grid(True)\nplt.show()\n\n\n&lt;&gt;:10: SyntaxWarning: invalid escape sequence '\\s'\n&lt;&gt;:10: SyntaxWarning: invalid escape sequence '\\s'\n/tmp/ipykernel_2718/2242896298.py:10: SyntaxWarning: invalid escape sequence '\\s'\n  plt.ylabel(\"$\\sigma(z)$\")\n\n\n\n\n\n\n\n\nFigure 1: Logistic函数图像\n\n\n\n\n\n从图中可以看出，Logistic函数将任意实数映射到 (0, 1) 区间，当 \\(z\\) 趋近于正无穷时，\\(\\sigma(z)\\) 趋近于 1；当 \\(z\\) 趋近于负无穷时，\\(\\sigma(z)\\) 趋近于 0。\n\n\n\n\n逻辑回归的优点 👍\n\n直接对分类概率进行建模，无需事先假设数据分布，就像我们可以直接估计一件事情发生的可能性，而不需要知道事情发生的具体细节。\n是一个判别模型 (Discriminative Model)。\n\n判别模型: 直接学习预测模型，例如逻辑回归，就像我们直接学习如何区分猫 🐱 和狗 🐶，而不需要知道猫和狗是如何产生的。\n生成模型 (Generative Model): 学习数据的联合分布，然后进行预测，例如朴素贝叶斯，就像我们先学习猫和狗的各种特征，然后根据这些特征来判断一个动物是猫还是狗。\n\nLogistic 函数是任意阶可导凸函数，可以使用许多数学优化算法，就像我们可以用各种工具 🛠️ 来打磨一块玉石 💎。"
+    "text": "逻辑回归 (Logistic Regression) 🧠\n\n概念解释 🤓\n\n线性关系: 特征与分类结果之间的关系可以用线性方程表示，就像我们可以用一条直线 📏 来近似描述身高和体重的关系。\n\n线性方程：\\(y = wx + b\\)\n其中，\\(w\\) 是权重向量，\\(x\\) 是特征向量，\\(b\\) 是偏置项。\n\n实数域: 所有实数的集合，就像一条无限延伸的数轴 ↔︎️。\n{0, 1} 空间: 只有 0 和 1 两个值的集合，就像一个开关 💡，只有开和关两种状态。\nLogistic 函数: 一种 S 形函数，可以将实数映射到 (0, 1) 区间，就像一个魔法 🧙‍♀️，将任何数字变成 0 到 1 之间的数字。\n\n\n\nLogistic 函数 📝\n\\[\n\\sigma(z) = \\frac{1}{1 + e^{-z}}\n\\]\n\n\\(z\\): 线性方程的结果 (\\(z = wx + b\\))\n\\(e\\): 自然对数的底数 (约等于 2.718)\n\\(\\sigma(z)\\): 介于 0 和 1 之间的概率值\n\n\n\n\n\n\n\nLogistic函数图像\n\n\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nz = np.linspace(-10, 10, 100)\nsigma = 1 / (1 + np.exp(-z))\n\nplt.figure(figsize=(8, 6))\nplt.plot(z, sigma)\nplt.xlabel(\"z\")\nplt.ylabel(\"$\\sigma(z)$\")\nplt.title(\"Logistic Function\")\nplt.grid(True)\nplt.show()\n\n\n&lt;&gt;:10: SyntaxWarning: invalid escape sequence '\\s'\n&lt;&gt;:10: SyntaxWarning: invalid escape sequence '\\s'\n/tmp/ipykernel_2700/2242896298.py:10: SyntaxWarning: invalid escape sequence '\\s'\n  plt.ylabel(\"$\\sigma(z)$\")\n\n\n\n\n\n\n\n\nFigure 1: Logistic函数图像\n\n\n\n\n\n从图中可以看出，Logistic函数将任意实数映射到 (0, 1) 区间，当 \\(z\\) 趋近于正无穷时，\\(\\sigma(z)\\) 趋近于 1；当 \\(z\\) 趋近于负无穷时，\\(\\sigma(z)\\) 趋近于 0。\n\n\n\n\n逻辑回归的优点 👍\n\n直接对分类概率进行建模，无需事先假设数据分布，就像我们可以直接估计一件事情发生的可能性，而不需要知道事情发生的具体细节。\n是一个判别模型 (Discriminative Model)。\n\n判别模型: 直接学习预测模型，例如逻辑回归，就像我们直接学习如何区分猫 🐱 和狗 🐶，而不需要知道猫和狗是如何产生的。\n生成模型 (Generative Model): 学习数据的联合分布，然后进行预测，例如朴素贝叶斯，就像我们先学习猫和狗的各种特征，然后根据这些特征来判断一个动物是猫还是狗。\n\nLogistic 函数是任意阶可导凸函数，可以使用许多数学优化算法，就像我们可以用各种工具 🛠️ 来打磨一块玉石 💎。"
   },
   {
     "objectID": "qmd/chapter6.html#线性判别分析-linear-discriminant-analysis-lda",
