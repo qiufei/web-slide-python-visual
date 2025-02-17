@@ -436,7 +436,7 @@ Note
 <section id="基本布局对象实战演练" class="level2">
 <h2 class="anchored" data-anchor-id="基本布局对象实战演练">基本布局对象：实战演练 ⚔️</h2>
 <p>让我们通过一个简单的例子来理解这些概念：</p>
-<div id="71965763" class="cell" data-execution_count="1">
+<div id="5fa6a32a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>)  <span class="co"># 创建一个包含 2x2 个子图的 Figure</span></span>
@@ -465,7 +465,7 @@ Note
 <section id="基本布局对象进阶实战" class="level2">
 <h2 class="anchored" data-anchor-id="基本布局对象进阶实战">基本布局对象：进阶实战 🚀</h2>
 <p>现在，让我们在每个子图中绘制不同的图表：</p>
-<div id="a933bbe0" class="cell" data-output-location="slide" data-execution_count="2">
+<div id="ddc4e221" class="cell" data-output-location="slide" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -488,7 +488,7 @@ Note
 </section>
 <section id="基本布局对象进阶实战-续" class="level2">
 <h2 class="anchored" data-anchor-id="基本布局对象进阶实战-续">基本布局对象：进阶实战 🚀 （续）</h2>
-<div id="61713bde" class="cell" data-output-location="slide" data-execution_count="3">
+<div id="325f8db4" class="cell" data-output-location="slide" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制直方图</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">20180201</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.random.randn(<span class="dv">2</span>, <span class="dv">50</span>)</span>
@@ -513,7 +513,7 @@ NumPy：Python 数值计算的基石 🧱
 </section>
 <section id="基本布局对象进阶实战-续-1" class="level2">
 <h2 class="anchored" data-anchor-id="基本布局对象进阶实战-续-1">基本布局对象：进阶实战 🚀 （续）</h2>
-<div id="f8d75e8b" class="cell" data-output-location="slide" data-execution_count="4">
+<div id="0727d4a4" class="cell" data-output-location="slide" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制散点图</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].scatter(s[<span class="dv">0</span>], s[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'coral'</span>, marker<span class="op">=</span><span class="st">'o'</span>) <span class="co"># 绘制散点图，设置颜色，标记</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].set_title(<span class="st">'Scatter Plot'</span>)</span>
@@ -522,7 +522,7 @@ NumPy：Python 数值计算的基石 🧱
 </section>
 <section id="基本布局对象进阶实战-续-2" class="level2">
 <h2 class="anchored" data-anchor-id="基本布局对象进阶实战-续-2">基本布局对象：进阶实战 🚀 （续）</h2>
-<div id="3aaf1a30" class="cell" data-output-location="slide" data-execution_count="5">
+<div id="df9dfd18" class="cell" data-output-location="slide" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制饼图</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> <span class="st">'Taxi'</span>, <span class="st">'Metro'</span>, <span class="st">'Walk'</span>, <span class="st">'Bus'</span>, <span class="st">'Bicycle'</span>, <span class="st">'Drive'</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">5</span>, <span class="dv">25</span>, <span class="dv">5</span>, <span class="dv">25</span>]</span>
@@ -567,7 +567,7 @@ Note
 <section id="直接创建并选中-subplot一步到位" class="level2">
 <h2 class="anchored" data-anchor-id="直接创建并选中-subplot一步到位">直接创建并选中 <code>Subplot</code>：一步到位 🎯</h2>
 <p>除了使用 <code>add_subplot()</code> 方法外，还可以使用 <code>matplotlib.pyplot.subplot()</code> 方法直接创建一个 <code>Subplot</code> 并将其设置为当前活动的 <code>Subplot</code>，这样后续的绘图操作都会在这个 <code>Subplot</code> 上进行。</p>
-<div id="d44736fb" class="cell" data-output-location="slide" data-execution_count="6">
+<div id="4c6c3419" class="cell" data-output-location="slide" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
@@ -586,7 +586,7 @@ Note
 </section>
 <section id="直接创建并选中-subplot一步到位-续" class="level2">
 <h2 class="anchored" data-anchor-id="直接创建并选中-subplot一步到位-续">直接创建并选中 <code>Subplot</code>：一步到位 🎯 （续）</h2>
-<div id="9dd83498" class="cell" data-output-location="slide" data-execution_count="7">
+<div id="6473989d" class="cell" data-output-location="slide" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>axe <span class="op">=</span> plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)  <span class="co"># 选中第三个子图</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 在第三个子图中绘制一些内容...</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>axe.scatter([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>], [<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>])</span>
@@ -637,7 +637,7 @@ Tip
 </section>
 <section id="修改图表样式线条的舞步" class="level2">
 <h2 class="anchored" data-anchor-id="修改图表样式线条的舞步">修改图表样式：线条的舞步 💃</h2>
-<div id="af039366" class="cell" data-output-location="slide" data-execution_count="8">
+<div id="3d2b4f9c" class="cell" data-output-location="slide" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -659,7 +659,7 @@ Tip
 </section>
 <section id="修改图表样式线条的舞步-续" class="level2">
 <h2 class="anchored" data-anchor-id="修改图表样式线条的舞步-续">修改图表样式：线条的舞步 💃（续）</h2>
-<div id="b055c681" class="cell" data-output-location="slide" data-execution_count="9">
+<div id="df6664a2" class="cell" data-output-location="slide" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制第二条曲线</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> (t <span class="op">+</span> <span class="fl">0.5</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>axe.plot(t, s, color<span class="op">=</span><span class="st">'cyan'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, marker<span class="op">=</span><span class="st">'o'</span>, markersize<span class="op">=</span><span class="dv">4</span>)  <span class="co"># 青色虚线, 加点标记</span></span>
@@ -733,7 +733,7 @@ Tip
 </section>
 <section id="修改装饰项坐标轴的刻度与标签" class="level2">
 <h2 class="anchored" data-anchor-id="修改装饰项坐标轴的刻度与标签">修改装饰项：坐标轴的刻度与标签 📏</h2>
-<div id="0175f151" class="cell" data-output-location="slide" data-execution_count="10">
+<div id="7b4b7ca5" class="cell" data-output-location="slide" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -761,7 +761,7 @@ Tip
 </section>
 <section id="修改装饰项坐标轴的刻度与标签-续" class="level2">
 <h2 class="anchored" data-anchor-id="修改装饰项坐标轴的刻度与标签-续">修改装饰项：坐标轴的刻度与标签 📏 （续）</h2>
-<div id="7e27fa25" class="cell" data-output-location="slide" data-execution_count="11">
+<div id="7f1d2623" class="cell" data-output-location="slide" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>axe.minorticks_on()  <span class="co"># 显示 minor ticks</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 修改x轴刻度标签</span></span>
@@ -802,7 +802,7 @@ Tip
 </section>
 <section id="添加注释实战演练" class="level2">
 <h2 class="anchored" data-anchor-id="添加注释实战演练">添加注释：实战演练 ⚔️</h2>
-<div id="d3823a47" class="cell" data-output-location="slide" data-execution_count="12">
+<div id="4e324d7f" class="cell" data-output-location="slide" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -842,7 +842,7 @@ Tip
 </section>
 <section id="添加注释实战演练-续" class="level2">
 <h2 class="anchored" data-anchor-id="添加注释实战演练-续">添加注释：实战演练 ⚔️ （续）</h2>
-<div id="cc78c1df" class="cell" data-output-location="slide" data-execution_count="13">
+<div id="a23b2795" class="cell" data-output-location="slide" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加文本注释</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>axe.text(<span class="dv">12</span>, <span class="dv">10</span>, <span class="st">'日期: 2018年3月26日'</span>, bbox<span class="op">=</span>{<span class="st">'facecolor'</span>: <span class="st">'cyan'</span>, <span class="st">'alpha'</span>: <span class="fl">0.3</span>, <span class="st">'pad'</span>: <span class="dv">6</span>})</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -865,7 +865,7 @@ Tip
 <section id="绘制直方图数据的体检报告" class="level2">
 <h2 class="anchored" data-anchor-id="绘制直方图数据的体检报告">绘制直方图：数据的“体检报告” 📊</h2>
 <p>直方图用于显示数据集中各个区间内数据值出现的频数或频率。通过直方图，我们可以大致了解数据集的分布情况，判断数据是否集中在某个区间，是否存在异常值等。</p>
-<div id="e83862c9" class="cell" data-output-location="slide" data-execution_count="14">
+<div id="3d9f79e6" class="cell" data-output-location="slide" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -892,7 +892,7 @@ Tip
 <section id="绘制带有正态分布密度曲线的直方图更上一层楼" class="level2">
 <h2 class="anchored" data-anchor-id="绘制带有正态分布密度曲线的直方图更上一层楼">绘制带有正态分布密度曲线的直方图：更上一层楼 📈</h2>
 <p>我们可以在直方图上叠加一条正态分布密度曲线，以便更直观地观察数据的分布是否接近正态分布。</p>
-<div id="9acdc118" class="cell" data-output-location="slide" data-execution_count="15">
+<div id="01dd2b7f" class="cell" data-output-location="slide" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -915,7 +915,7 @@ Tip
 </section>
 <section id="绘制带有正态分布密度曲线的直方图更上一层楼-续" class="level2">
 <h2 class="anchored" data-anchor-id="绘制带有正态分布密度曲线的直方图更上一层楼-续">绘制带有正态分布密度曲线的直方图：更上一层楼 📈（续）</h2>
-<div id="cf15bfa8" class="cell" data-output-location="slide" data-execution_count="16">
+<div id="b7609e0b" class="cell" data-output-location="slide" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算正态分布密度曲线</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>standard_data <span class="op">=</span> ((<span class="dv">1</span> <span class="op">/</span> (np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi) <span class="op">*</span> <span class="dv">1</span>)) <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.5</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">/</span> <span class="dv">1</span> <span class="op">*</span> (bins <span class="op">-</span> <span class="dv">0</span>))<span class="op">**</span><span class="dv">2</span>))</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -952,7 +952,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 <section id="绘制散点图探索数据星座的奥秘" class="level2">
 <h2 class="anchored" data-anchor-id="绘制散点图探索数据星座的奥秘">绘制散点图：探索数据“星座”的奥秘 🌌</h2>
 <p>散点图用于显示两个变量之间的关系。将样本数据绘制在二维平面上，可以直观地显示这些点的分布情况，判断两个变量之间是否存在线性关系、非线性关系或其他关系。</p>
-<div id="be06bd9e" class="cell" data-output-location="slide" data-execution_count="17">
+<div id="b4169ed7" class="cell" data-output-location="slide" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -989,7 +989,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 </section>
 <section id="自定义-marker实战演练" class="level2">
 <h2 class="anchored" data-anchor-id="自定义-marker实战演练">自定义 Marker：实战演练 ⚔️</h2>
-<div id="5efb60b1" class="cell" data-output-location="slide" data-execution_count="18">
+<div id="6408da5c" class="cell" data-output-location="slide" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1017,7 +1017,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 </section>
 <section id="自定义-marker实战演练-续" class="level2">
 <h2 class="anchored" data-anchor-id="自定义-marker实战演练-续">自定义 Marker：实战演练 ⚔️（续）</h2>
-<div id="32598f92" class="cell" data-output-location="slide" data-execution_count="19">
+<div id="a043b2b9" class="cell" data-output-location="slide" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fig.colorbar(sc) <span class="co">#添加颜色条</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1027,7 +1027,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 <section id="绘制饼图切蛋糕的艺术" class="level2">
 <h2 class="anchored" data-anchor-id="绘制饼图切蛋糕的艺术">绘制饼图：切蛋糕的艺术 🍰</h2>
 <p>饼图用于显示某一类别数据在全部样本数据中所占的百分比，就像切蛋糕一样，可以清晰地展现数据的组成。</p>
-<div id="77e567a4" class="cell" data-output-location="slide" data-execution_count="20">
+<div id="9fb0bbe0" class="cell" data-output-location="slide" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1056,7 +1056,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 <section id="绘制柱状图数据的身高比拼" class="level2">
 <h2 class="anchored" data-anchor-id="绘制柱状图数据的身高比拼">绘制柱状图：数据的“身高”比拼 📏</h2>
 <p>柱状图用于比较不同类别的数据，就像数据的“身高”比拼，可以直观地反映不同类别数据之间的数量差异。</p>
-<div id="6a76ecd0" class="cell" data-output-location="slide" data-execution_count="21">
+<div id="36143d2a" class="cell" data-output-location="slide" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1082,7 +1082,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 </section>
 <section id="绘制柱状图数据的身高比拼-续" class="level2">
 <h2 class="anchored" data-anchor-id="绘制柱状图数据的身高比拼-续">绘制柱状图：数据的“身高”比拼 📏（续）</h2>
-<div id="6d2bdff2" class="cell" data-output-location="slide" data-execution_count="22">
+<div id="22ee7576" class="cell" data-output-location="slide" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rects2 <span class="op">=</span> axe.bar(index <span class="op">+</span> width, data_f, width, color<span class="op">=</span><span class="st">'coral'</span>, label<span class="op">=</span><span class="st">'Women'</span>) <span class="co"># 女性柱子</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>axe.set_xticks(index <span class="op">+</span> width <span class="op">/</span> <span class="dv">2</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>axe.set_xticklabels(labels)</span>
@@ -1109,7 +1109,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 <section id="绘制堆叠柱状图更上一层楼" class="level2">
 <h2 class="anchored" data-anchor-id="绘制堆叠柱状图更上一层楼">绘制堆叠柱状图：更上一层楼 🏢</h2>
 <p>我们可以在柱状图的基础上绘制堆叠柱状图，将不同类别的数据堆叠在一起，更清晰地展现数据的组成。</p>
-<div id="1974f3d9" class="cell" data-output-location="slide" data-execution_count="23">
+<div id="d2906ae5" class="cell" data-output-location="slide" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1142,7 +1142,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 <section id="绘制并排和部分重叠柱状图各显神通" class="level2">
 <h2 class="anchored" data-anchor-id="绘制并排和部分重叠柱状图各显神通">绘制并排和部分重叠柱状图：各显神通 🤼</h2>
 <p>我们还可以绘制并排柱状图或部分重叠柱状图，以不同的方式展示数据的对比。</p>
-<div id="0407345c" class="cell" data-output-location="slide" data-execution_count="24">
+<div id="90bfb4db" class="cell" data-output-location="slide" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1175,7 +1175,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 <section id="绘制水平柱状图并添加透明度换个角度看世界" class="level2">
 <h2 class="anchored" data-anchor-id="绘制水平柱状图并添加透明度换个角度看世界">绘制水平柱状图并添加透明度：换个角度看世界 🔄</h2>
 <p>我们还可以绘制水平柱状图，并添加透明度，让图表更具层次感。</p>
-<div id="19d4d4ed" class="cell" data-output-location="slide" data-execution_count="25">
+<div id="15545ddc" class="cell" data-output-location="slide" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1202,7 +1202,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 </section>
 <section id="绘制水平柱状图并添加透明度换个角度看世界-续" class="level2">
 <h2 class="anchored" data-anchor-id="绘制水平柱状图并添加透明度换个角度看世界-续">绘制水平柱状图并添加透明度：换个角度看世界 🔄（续）</h2>
-<div id="a0475cac" class="cell" data-output-location="slide" data-execution_count="26">
+<div id="d74c3dda" class="cell" data-output-location="slide" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>axe.barh(index <span class="op">+</span> width, data_f, width, color<span class="op">=</span><span class="st">'coral'</span>, align<span class="op">=</span><span class="st">'center'</span>, alpha<span class="op">=</span>opacity, label<span class="op">=</span><span class="st">'Women'</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>axe.set_yticks(index <span class="op">+</span>width <span class="op">/</span> <span class="dv">2</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>axe.set_yticklabels(labels)</span>
@@ -1215,7 +1215,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 <section id="绘制折线图数据的心电图" class="level2">
 <h2 class="anchored" data-anchor-id="绘制折线图数据的心电图">绘制折线图：数据的“心电图” 💓</h2>
 <p>折线图用于显示数据随时间变化的趋势，就像数据的“心电图”，可以清晰地展示数据的变化规律。</p>
-<div id="b2bed9d7" class="cell" data-output-location="slide" data-execution_count="27">
+<div id="4fa1d506" class="cell" data-output-location="slide" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1245,7 +1245,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
 <section id="绘制表格数据一目了然" class="level2">
 <h2 class="anchored" data-anchor-id="绘制表格数据一目了然">绘制表格：数据一目了然 📃</h2>
 <p><code>table()</code> 函数可以在图表中显示表格数据，让数据更加清晰易读。</p>
-<div id="5c1e669d" class="cell" data-output-location="slide" data-execution_count="28">
+<div id="ac5f2e9b" class="cell" data-output-location="slide" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1307,7 +1307,7 @@ Note
 </section>
 <section id="绘制极坐标系下的双纽线展现曲线之美" class="level2">
 <h2 class="anchored" data-anchor-id="绘制极坐标系下的双纽线展现曲线之美">绘制极坐标系下的双纽线：展现曲线之美 🌀</h2>
-<div id="d3ece873" class="cell" data-output-location="slide" data-execution_count="29">
+<div id="4737e8ac" class="cell" data-output-location="slide" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1347,7 +1347,7 @@ Note
 </section>
 <section id="绘制-3d-散点图-使用-axes3d星辰大海" class="level2">
 <h2 class="anchored" data-anchor-id="绘制-3d-散点图-使用-axes3d星辰大海">绘制 3D 散点图 (使用 <code>Axes3D</code>)：星辰大海 ✨</h2>
-<div id="fb7a8bb0" class="cell" data-output-location="slide" data-execution_count="30">
+<div id="3d5b9a0f" class="cell" data-output-location="slide" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
@@ -1386,7 +1386,7 @@ Note
 <section id="绘制-3d-散点图-使用-pyplot殊途同归" class="level2">
 <h2 class="anchored" data-anchor-id="绘制-3d-散点图-使用-pyplot殊途同归">绘制 3D 散点图 (使用 <code>pyplot</code>)：殊途同归 🎯</h2>
 <p>除了使用 <code>Axes3D</code> 类外，我们还可以直接使用 <code>pyplot</code> 模块的 <code>subplot()</code> 函数，并指定 <code>projection='3d'</code> 来创建三维坐标系。</p>
-<div id="62a5ab5b" class="cell" data-output-location="slide" data-execution_count="31">
+<div id="1dab5603" class="cell" data-output-location="slide" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
