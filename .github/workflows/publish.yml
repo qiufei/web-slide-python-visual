@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-pip
-          pip3 install jupyter
+          pip3 install jupyter pandas matplotlib seaborn scikit-learn
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
