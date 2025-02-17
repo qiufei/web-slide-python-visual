@@ -1,6 +1,6 @@
 ---
 title: "信息技术基础"
-subtitle: "导论"
+subtitle: "第一章 导论"
 ---
 
 # 目录
