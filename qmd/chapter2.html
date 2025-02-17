@@ -1,0 +1,3262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>信息技术基础 🧐</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../https://assets.qiufei.site/personal/profile.jpg" rel="icon" type="image/jpeg">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-681fbf911679f9b3dbf9743eb275ba49.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e49aeac8059a213a463aa1a739e8272.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://qiufei.github.io"> 
+<span class="menu-text">首页</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://qiufei.github.io/web-slide"> 
+<span class="menu-text">课件</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">信息技术基础 🧐</h1>
+<p class="subtitle lead">第二章：Python —— 从了解 Python 开始 🚀</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="本章概述" class="level2">
+<h2 class="anchored" data-anchor-id="本章概述">本章概述 📚</h2>
+<ul>
+<li>为什么要学习Python？🤔</li>
+<li>Python 的基本概念和应用 💡</li>
+<li>如何安装和配置 Python 环境 ⚙️</li>
+<li>重要的 Python 库介绍 📦</li>
+<li>Jupyter Notebook 的使用 📝</li>
+</ul>
+</section>
+<section id="为什么选择-python-13" class="level2">
+<h2 class="anchored" data-anchor-id="为什么选择-python-13">为什么选择 Python？🐍 (1/3)</h2>
+<p><strong>易学易用</strong> 👍:</p>
+<ul>
+<li>Python的语法设计得非常简洁和清晰，就像读英语一样自然。</li>
+<li>这使得Python对编程初学者非常友好，可以更快地上手并开始编写代码。</li>
+</ul>
+</section>
+<section id="为什么选择-python-23" class="level2">
+<h2 class="anchored" data-anchor-id="为什么选择-python-23">为什么选择 Python？🐍 (2/3)</h2>
+<p><strong>应用广泛</strong> 🌍:</p>
+<p>Python在许多领域都有广泛的应用，包括但不限于：</p>
+<ul>
+<li><strong>数据分析</strong> 📊: Python可以帮助你处理、清洗和分析各种类型的数据，从中提取有价值的信息。</li>
+<li><strong>机器学习</strong> 🤖: 你可以使用Python构建智能模型，进行预测、分类和聚类等任务，实现自动化决策。</li>
+<li><strong>Web 开发</strong> 🌐: Python可以用于搭建网站和开发Web应用程序，提供各种在线服务。</li>
+</ul>
+</section>
+<section id="为什么选择-python-33" class="level2">
+<h2 class="anchored" data-anchor-id="为什么选择-python-33">为什么选择 Python？🐍 (3/3)</h2>
+<p><strong>应用广泛</strong> 🌍 (续):</p>
+<ul>
+<li><strong>自动化脚本</strong> ⚙️: 你可以编写Python脚本来自动执行各种重复性的任务，提高工作效率。</li>
+<li><strong>科学计算</strong> 🔬: Python可以进行复杂的数学运算、模拟实验等科学计算任务。</li>
+<li><strong>更多领域…</strong></li>
+</ul>
+</section>
+<section id="python-社区与职业发展" class="level2">
+<h2 class="anchored" data-anchor-id="python-社区与职业发展">Python 社区与职业发展</h2>
+<p><strong>社区强大</strong> 💪:</p>
+<ul>
+<li>Python拥有一个庞大而活跃的开发者社区。</li>
+<li>这意味着你可以轻松地找到各种Python库、工具和技术支持。</li>
+<li>遇到问题时，你可以方便地在社区中寻求帮助或找到解决方案。</li>
+</ul>
+<p><strong>需求量大</strong> 💼:</p>
+<ul>
+<li>Python是目前最热门的编程语言之一，在各行各业都有广泛的应用。</li>
+<li>掌握Python可以为你带来更多的职业发展机会。</li>
+</ul>
+</section>
+<section id="python-语言的特性" class="level2">
+<h2 class="anchored" data-anchor-id="python-语言的特性">Python 语言的特性</h2>
+<p>Python 是一种<strong>解释型</strong>、<strong>面向对象</strong>、<strong>动态数据类型</strong>的高级程序设计语言。</p>
+<ul>
+<li><strong>解释型语言</strong>：代码在运行时由解释器逐行翻译成机器码并执行，无需事先编译。</li>
+<li><strong>面向对象</strong>：支持面向对象编程（OOP）范式，提高了代码的可重用性和可维护性。</li>
+<li><strong>动态数据类型</strong>：变量类型在运行时自动确定，使代码更简洁，但也需注意类型错误。</li>
+</ul>
+</section>
+<section id="python-解释器工作原理" class="level2">
+<h2 class="anchored" data-anchor-id="python-解释器工作原理">Python 解释器工作原理 ⚙️</h2>
+<p>解释型语言如 Python，代码在执行时会被解释器逐行翻译成机器码。</p>
+<p><strong>工作流程</strong>：</p>
+<ol type="1">
+<li><strong>读取代码</strong>：解释器读取 Python 代码文件（通常是 <code>.py</code> 文件）。</li>
+<li><strong>词法分析</strong>：解释器将代码分解成一个个的标记（Token），例如关键字、标识符、运算符、字面量等。</li>
+<li><strong>语法分析</strong>：解释器根据 Python 的语法规则，将标记组合成语法树（Parse Tree）。语法树表示了代码的结构。</li>
+</ol>
+</section>
+<section id="python解释器与编译型语言的区别" class="level2">
+<h2 class="anchored" data-anchor-id="python解释器与编译型语言的区别">Python解释器与编译型语言的区别</h2>
+<p><strong>与编译型语言的区别</strong>：</p>
+<ul>
+<li><strong>编译型语言</strong>（如 C++、Java）：源代码首先被编译器一次性编译成机器码（可执行文件），然后直接运行。</li>
+<li><strong>解释型语言</strong>（如 Python、JavaScript）：源代码在运行时由解释器逐行翻译执行。</li>
+</ul>
+</section>
+<section id="编译型语言-vs.-解释型语言" class="level2">
+<h2 class="anchored" data-anchor-id="编译型语言-vs.-解释型语言">编译型语言 vs.&nbsp;解释型语言</h2>
+<p><strong>优缺点比较</strong>：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 44%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">编译型语言</th>
+<th style="text-align: left;">解释型语言</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>优点</strong></td>
+<td style="text-align: left;">执行速度快</td>
+<td style="text-align: left;">开发速度快，跨平台性好</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>缺点</strong></td>
+<td style="text-align: left;">开发效率低，调试麻烦，跨平台性差</td>
+<td style="text-align: left;">执行速度相对较慢</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-面向对象编程oop-13" class="level2">
+<h2 class="anchored" data-anchor-id="python-面向对象编程oop-13">Python 面向对象编程（OOP）🏠 (1/3)</h2>
+<p>面向对象编程 (OOP) 是一种编程范式，它使用“对象”来设计应用程序和程序。对象可以包含数据（称为属性或字段）和操作这些数据的代码（称为方法）。</p>
+<p><strong>核心概念</strong>：</p>
+<ol type="1">
+<li><strong>类 (Class)</strong>：类是对象的蓝图或模板。它定义了对象将具有的属性和方法。
+<ul>
+<li>例如，你可以定义一个 <code>Dog</code> 类，它具有 <code>name</code>、<code>breed</code> 和 <code>age</code> 等属性，以及 <code>bark()</code> 和 <code>fetch()</code> 等方法。</li>
+</ul></li>
+</ol>
+</section>
+<section id="python-面向对象编程oop-23" class="level2">
+<h2 class="anchored" data-anchor-id="python-面向对象编程oop-23">Python 面向对象编程（OOP）🏠 (2/3)</h2>
+<ol type="1">
+<li><strong>对象 (Object)</strong>：对象是类的实例。创建类的一个实例就是创建一个具有该类属性和方法的对象。
+<ul>
+<li>例如，你可以创建两个 <code>Dog</code> 对象：<code>my_dog</code> 和 <code>your_dog</code>，它们各自有不同的名字、品种和年龄。</li>
+</ul></li>
+<li><strong>属性 (Attribute)</strong>：属性是对象的数据。
+<ul>
+<li>例如，<code>my_dog</code> 对象的 <code>name</code> 属性可能是 “Buddy”。</li>
+</ul></li>
+<li><strong>方法 (Method)</strong>：方法是对象可以执行的操作。
+<ul>
+<li>例如，<code>my_dog</code> 对象可以调用 <code>bark()</code> 方法来发出叫声。</li>
+</ul></li>
+</ol>
+</section>
+<section id="python-面向对象编程oop-33" class="level2">
+<h2 class="anchored" data-anchor-id="python-面向对象编程oop-33">Python 面向对象编程（OOP）🏠 (3/3)</h2>
+<ol type="1">
+<li><strong>封装 (Encapsulation)</strong>：将数据（属性）和操作数据的代码（方法）捆绑在一起，形成一个独立的实体（对象）。
+<ul>
+<li>封装可以隐藏对象的内部实现细节，只暴露必要的接口。</li>
+</ul></li>
+<li><strong>继承 (Inheritance)</strong>：允许一个类（子类）继承另一个类（父类）的属性和方法。
+<ul>
+<li>子类可以重用父类的代码，并添加或修改自己的特性。</li>
+<li>例如，你可以创建一个 <code>Poodle</code> 类，它继承自 <code>Dog</code> 类，并添加一个 <code>groom()</code> 方法。</li>
+</ul></li>
+<li><strong>多态 (Polymorphism)</strong>：允许不同类的对象对同一消息做出响应。
+<ul>
+<li>例如，<code>Dog</code> 类和 <code>Cat</code> 类都可以有一个 <code>make_sound()</code> 方法，但它们的实现方式不同。</li>
+</ul></li>
+</ol>
+</section>
+<section id="oop的优势" class="level2">
+<h2 class="anchored" data-anchor-id="oop的优势">OOP的优势</h2>
+<p><strong>优势</strong>：</p>
+<ul>
+<li><strong>模块化</strong>：代码被组织成更易于管理和理解的模块。</li>
+<li><strong>可重用性</strong>：通过继承和组合，可以重用现有的代码。</li>
+<li><strong>可维护性</strong>：更容易修改和扩展代码，而不会影响其他部分。</li>
+<li><strong>可扩展性</strong>：更容易添加新功能。</li>
+</ul>
+</section>
+<section id="python-动态数据类型-12" class="level2">
+<h2 class="anchored" data-anchor-id="python-动态数据类型-12">Python 动态数据类型 ❓ (1/2)</h2>
+<p>在Python中，你不需要在声明变量时指定其数据类型。变量的类型在运行时根据你赋给它的值自动确定。</p>
+<p><strong>示例</strong>：</p>
+<div id="d9fbaf08" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span>       <span class="co"># x 是整数类型 (int)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Hello"</span>  <span class="co"># 现在 x 是字符串类型 (str)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'int'&gt;
+&lt;class 'str'&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="python-动态数据类型-22" class="level2">
+<h2 class="anchored" data-anchor-id="python-动态数据类型-22">Python 动态数据类型 ❓ (2/2)</h2>
+<div id="0e93b63e" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">3.14</span>     <span class="co"># 现在 x 是浮点数类型 (float)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="co"># 现在 x 是列表类型 (list)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'float'&gt;
+&lt;class 'list'&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="动态数据类型的优势与注意点" class="level2">
+<h2 class="anchored" data-anchor-id="动态数据类型的优势与注意点">动态数据类型的优势与注意点</h2>
+<p><strong>优势</strong>：</p>
+<ul>
+<li><strong>代码简洁</strong>：不需要显式地声明变量类型，使代码更简洁易读。</li>
+<li><strong>灵活性</strong>：变量可以在运行时改变类型，提供了更大的灵活性。</li>
+</ul>
+<p><strong>需要注意的点</strong>：</p>
+<ul>
+<li><strong>类型错误</strong>：由于变量类型是动态的，如果在运行时进行了不兼容的操作，可能会导致类型错误。</li>
+<li><strong>代码可读性</strong>：虽然不需要显式声明类型，但良好的代码风格仍然建议在适当的地方添加注释或使用类型提示来提高代码的可读性和可维护性。</li>
+</ul>
+</section>
+<section id="python-类型提示-type-hints" class="level2">
+<h2 class="anchored" data-anchor-id="python-类型提示-type-hints">Python 类型提示 (Type Hints)</h2>
+<p><strong>类型提示 (Type Hints)</strong>：</p>
+<div id="c587169d" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(name: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Hello, "</span> <span class="op">+</span> name</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(greet(<span class="st">"World"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, World</code></pre>
+</div>
+</div>
+</section>
+<section id="python-发展史-12" class="level2">
+<h2 class="anchored" data-anchor-id="python-发展史-12">Python 发展史 📜 (1/2)</h2>
+<ul>
+<li><strong>1989 年圣诞节</strong> 🎄:
+<ul>
+<li>Guido van Rossum，一位荷兰的数学家和计算机学家，为了打发圣诞节的无聊时间，开始开发 Python 语言。</li>
+<li>Python 的名字来源于他喜欢的一个喜剧团体 “Monty Python’s Flying Circus”。</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-发展史-22" class="level2">
+<h2 class="anchored" data-anchor-id="python-发展史-22">Python 发展史 📜 (2/2)</h2>
+<ul>
+<li><strong>1991 年</strong> 🎉:
+<ul>
+<li>Python 的第一个公开发行版问世，标志着 Python 语言的正式诞生。</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-2.0-的里程碑" class="level2">
+<h2 class="anchored" data-anchor-id="python-2.0-的里程碑">Python 2.0 的里程碑</h2>
+<ul>
+<li><strong>2000 年 10 月</strong> 2️⃣:
+<ul>
+<li>Python 2.0 版本发布，这是一个重要的里程碑。</li>
+<li>Python 2.0 引入了许多新的特性：
+<ul>
+<li><strong>垃圾回收机制</strong>：解决了程序员手动管理内存的难题，减少了内存泄漏的风险。</li>
+<li><strong>Unicode 支持</strong>：使得 Python 可以更好地处理多语言文本，为国际化应用提供了基础。</li>
+<li>列表推导式等。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="python-3.0-的重大升级" class="level2">
+<h2 class="anchored" data-anchor-id="python-3.0-的重大升级">Python 3.0 的重大升级</h2>
+<ul>
+<li><strong>2008 年 12 月</strong> 3️⃣:
+<ul>
+<li>Python 3.0 版本发布，这是 Python 语言的一次重大升级。</li>
+<li>Python 3.0 对语言进行了一些不兼容的改进，旨在去除一些冗余和过时的特性，使 Python 更加简洁、规范和一致。</li>
+<li><strong>重要提示</strong>：Python 3 与 Python 2 不完全兼容。</li>
+</ul></li>
+</ul>
+</section>
+<section id="为什么-python-3-不完全兼容-python-2-12" class="level2">
+<h2 class="anchored" data-anchor-id="为什么-python-3-不完全兼容-python-2-12">为什么 Python 3 不完全兼容 Python 2？🤔 (1/2)</h2>
+<p>Python 3 的设计者认为，为了保持语言的长期健康发展，有必要进行一些不兼容的更改，以解决 Python 2 中存在的一些设计缺陷和历史遗留问题。</p>
+<p><strong>主要原因</strong>：</p>
+<ol type="1">
+<li><strong>Unicode</strong>：
+<ul>
+<li>Python 2 使用 ASCII 作为默认编码，对非英文字符的支持不够好。</li>
+<li>Python 3 将 Unicode 作为默认编码，更好地支持多语言文本。</li>
+<li>这一变化导致了字符串处理方式的不同，是 Python 2 和 Python 3 之间最主要的不兼容之处。</li>
+</ul></li>
+</ol>
+</section>
+<section id="为什么-python-3-不完全兼容-python-2-22" class="level2">
+<h2 class="anchored" data-anchor-id="为什么-python-3-不完全兼容-python-2-22">为什么 Python 3 不完全兼容 Python 2？🤔 (2/2)</h2>
+<ol type="1">
+<li><strong><code>print</code> 语句</strong>：
+<ul>
+<li>Python 2 中，<code>print</code> 是一个语句。</li>
+<li>Python 3 中，<code>print</code> 变成了一个函数。</li>
+<li>这使得 <code>print</code> 的使用更加灵活，但也导致了不兼容。</li>
+</ul></li>
+<li><strong>整数除法</strong>：
+<ul>
+<li>Python 2 中，整数除法的结果仍然是整数（向下取整）。</li>
+<li>Python 3 中，整数除法的结果是浮点数。</li>
+<li>这使得除法运算的结果更符合预期，但也导致了不兼容。</li>
+</ul></li>
+</ol>
+</section>
+<section id="python2和python3的其他不兼容之处" class="level2">
+<h2 class="anchored" data-anchor-id="python2和python3的其他不兼容之处">Python2和Python3的其他不兼容之处</h2>
+<ol type="1">
+<li><strong>异常处理</strong>：
+<ul>
+<li>Python 2 和 Python 3 在异常处理的语法上有一些细微的差别。</li>
+</ul></li>
+<li><strong>其他</strong>：
+<ul>
+<li>Python 3 还进行了一些其他的改进，例如：
+<ul>
+<li><code>range()</code> 和 <code>xrange()</code> 的合并。</li>
+<li>迭代器行为的改变。</li>
+<li>一些标准库模块的重组和重命名。</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+<section id="python-3-的优势" class="level2">
+<h2 class="anchored" data-anchor-id="python-3-的优势">Python 3 的优势</h2>
+<p><strong>总结</strong>：</p>
+<p>虽然 Python 3 的不兼容性给迁移带来了一些麻烦，但从长远来看，这些改进使得 Python 成为了一种更强大、更一致、更易于使用的语言。</p>
+</section>
+<section id="python-版本进化-垃圾回收机制-12" class="level2">
+<h2 class="anchored" data-anchor-id="python-版本进化-垃圾回收机制-12">Python 版本进化 🔄 💡 垃圾回收机制 (1/2)</h2>
+<p>垃圾回收 (Garbage Collection, GC) 是一种自动内存管理机制。当程序不再需要某些内存块（对象）时，垃圾回收器会自动检测并释放这些内存，避免内存泄漏，提高程序运行效率。</p>
+<p><strong>工作原理</strong>：</p>
+<ol type="1">
+<li><p><strong>对象创建：</strong> 当你在Python中创建对象时，Python解释器会为这些对象分配内存空间。</p></li>
+<li><p><strong>引用计数（主要机制）：</strong> Python使用引用计数作为垃圾回收的主要机制。每个对象都有一个引用计数，记录有多少个变量或数据结构引用了该对象。</p></li>
+</ol>
+</section>
+<section id="垃圾回收机制22" class="level2">
+<h2 class="anchored" data-anchor-id="垃圾回收机制22">垃圾回收机制（2/2）</h2>
+<ol start="3" type="1">
+<li><p><strong>引用增加：</strong> 当你将一个对象赋值给一个变量、将对象添加到列表、或将对象作为参数传递给函数时，该对象的引用计数会增加。</p></li>
+<li><p><strong>引用减少：</strong> 当变量被重新赋值、离开作用域、或从列表中删除时，相应对象的引用计数会减少。</p></li>
+<li><p><strong>垃圾回收触发：</strong> 当一个对象的引用计数变为0时，意味着没有任何变量或数据结构引用该对象，该对象就变成了“垃圾”。Python的垃圾回收器会自动释放该对象占用的内存。</p></li>
+</ol>
+</section>
+<section id="垃圾回收机制循环引用" class="level2">
+<h2 class="anchored" data-anchor-id="垃圾回收机制循环引用">垃圾回收机制：循环引用</h2>
+<ol start="6" type="1">
+<li><strong>循环引用处理（辅助机制）</strong>
+<ul>
+<li>引用计数无法处理循环引用的情况。循环引用是指两个或多个对象相互引用，形成一个闭环，导致它们的引用计数永远不会变为0。</li>
+<li>为了解决循环引用问题，Python还使用了标记-清除（Mark and Sweep）和分代回收（Generational Garbage Collection）等辅助机制。</li>
+<li><strong>标记-清除：</strong> 定期扫描内存中的所有对象，标记可达对象，然后清除未标记的对象。</li>
+<li><strong>分代回收：</strong> 将对象分为不同的代，新创建的对象属于“年轻代”，经历过多次垃圾回收仍然存活的对象会晋升到“老年代”。垃圾回收器会更频繁地扫描年轻代。</li>
+</ul></li>
+</ol>
+</section>
+<section id="垃圾回收机制的好处" class="level2">
+<h2 class="anchored" data-anchor-id="垃圾回收机制的好处">垃圾回收机制的好处</h2>
+<p><strong>好处</strong>：</p>
+<ul>
+<li>简化了程序员的内存管理工作，无需手动释放内存。</li>
+<li>减少了内存泄漏的风险，提高了程序的稳定性。</li>
+</ul>
+</section>
+<section id="python-及相关包的安装-12" class="level2">
+<h2 class="anchored" data-anchor-id="python-及相关包的安装-12">Python 及相关包的安装 🛠️ (1/2)</h2>
+<ul>
+<li>Python 的安装
+<ul>
+<li><strong>Windows 环境</strong> 💻
+<ul>
+<li>访问 Python 官网：<a href="https://www.python.org/">https://www.python.org/</a></li>
+<li>下载适用于 Windows 的 Python 安装程序（通常是 <code>.exe</code> 文件）。</li>
+<li>运行安装程序，按照提示进行安装。
+<ul>
+<li><strong>注意</strong>：在安装过程中，务必勾选 “Add Python to PATH” 选项，这样可以在命令行中直接运行 Python。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="python-及相关包的安装-22" class="level2">
+<h2 class="anchored" data-anchor-id="python-及相关包的安装-22">Python 及相关包的安装 🛠️ (2/2)</h2>
+<ul>
+<li>Python 的安装（续）
+<ul>
+<li><strong>Mac 环境</strong> 🍎
+<ul>
+<li>方法一：与 Windows 类似，从 Python 官网下载安装程序进行安装。</li>
+<li>方法二：使用 Homebrew（macOS 上的软件包管理器）安装。
+<ul>
+<li><strong>Homebrew 简介</strong>：Homebrew 可以让你方便地在 macOS 上安装、更新和管理各种软件。</li>
+</ul></li>
+<li>安装完成后，打开命令提示符（CMD）或 PowerShell，输入 <code>python --version</code>，如果看到 Python 版本号，说明安装成功。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="使用-homebrew-安装-python-macos-12" class="level2">
+<h2 class="anchored" data-anchor-id="使用-homebrew-安装-python-macos-12">使用 Homebrew 安装 Python (macOS) 🍺 (1/2)</h2>
+<ol type="1">
+<li><strong>安装 Homebrew</strong>：
+<ul>
+<li>打开终端（Terminal）应用程序。</li>
+<li>复制并粘贴以下命令到终端，然后按回车键执行：</li>
+</ul>
+<pre class="{bash}"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre></li>
+</ol>
+</section>
+<section id="使用-homebrew-安装-python-macos-22" class="level2">
+<h2 class="anchored" data-anchor-id="使用-homebrew-安装-python-macos-22">使用 Homebrew 安装 Python (macOS) 🍺 (2/2)</h2>
+<ul>
+<li>按照屏幕上的提示完成安装过程。</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>使用 Homebrew 安装 Python</strong>：
+<ul>
+<li>安装完 Homebrew 后，在终端中输入以下命令：</li>
+</ul>
+<pre class="{bash}"><code>brew install python</code></pre>
+<ul>
+<li>Homebrew 会自动下载并安装最新版本的 Python。</li>
+</ul></li>
+<li><strong>验证安装</strong>：
+<ul>
+<li>安装完成后，输入 <code>python3 --version</code> 或 <code>python --version</code>，如果看到 Python 版本号，说明安装成功。</li>
+</ul></li>
+</ol>
+</section>
+<section id="相关包的安装-12" class="level2">
+<h2 class="anchored" data-anchor-id="相关包的安装-12">相关包的安装 📦 (1/2)</h2>
+<ul>
+<li><strong>使用 <code>pip</code> 进行安装</strong>
+<ul>
+<li><code>pip</code> 是 Python 的包管理工具，它就像一个应用商店，可以让你轻松地安装、卸载和管理各种 Python 包（库）。</li>
+<li><strong>常用命令</strong>：
+<ul>
+<li><code>pip install &lt;package_name&gt;</code>: 安装指定的包。例如：<code>pip install pandas</code>。</li>
+<li><code>pip install &lt;package_name&gt;==&lt;version&gt;</code>: 安装指定版本的包。例如：<code>pip install pandas==1.5.0</code></li>
+<li><code>pip uninstall &lt;package_name&gt;</code>: 卸载指定的包。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="相关包的安装-22" class="level2">
+<h2 class="anchored" data-anchor-id="相关包的安装-22">相关包的安装 📦 (2/2)</h2>
+<ul>
+<li><strong>使用 <code>pip</code> 进行安装</strong>（续） - <code>pip list</code>: 列出已安装的所有包。 - <code>pip show &lt;package_name&gt;</code>: 显示指定包的详细信息。 - <code>pip install --upgrade &lt;package_name&gt;</code>: 升级包到最新的版本。</li>
+</ul>
+</section>
+<section id="pip-更换源" class="level2">
+<h2 class="anchored" data-anchor-id="pip-更换源">pip 更换源</h2>
+<ul>
+<li><strong>更换 pip 源（可选）</strong>：
+<ul>
+<li>由于网络原因，有时从默认的 PyPI 源下载包可能会很慢。</li>
+<li>可以更换为国内的镜像源，提高下载速度。</li>
+<li>常用的国内镜像源：
+<ul>
+<li>清华大学：<code>https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
+<li>阿里云：<code>https://mirrors.aliyun.com/pypi/simple/</code></li>
+<li>豆瓣：<code>https://pypi.douban.com/simple/</code></li>
+</ul></li>
+<li><strong>临时更换</strong>：在 <code>pip install</code> 命令后加上 <code>-i &lt;镜像源地址&gt;</code>。例如：<code>pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="pip-永久更换源的方法" class="level2">
+<h2 class="anchored" data-anchor-id="pip-永久更换源的方法">pip 永久更换源的方法</h2>
+<ul>
+<li><strong>更换 pip 源（可选）</strong>：</li>
+<li><strong>永久更换</strong>：
+<ul>
+<li><strong>Windows</strong>: 在 <code>%APPDATA%</code> 目录下创建 <code>pip</code> 文件夹，然后在 <code>pip</code> 文件夹中创建 <code>pip.ini</code> 文件，写入内容（见下页）。</li>
+<li><strong>Linux/macOS</strong>: 在 <code>~/.pip/</code> 目录下创建 <code>pip.conf</code> 文件（如果目录不存在，则创建），写入内容（见后续页）。</li>
+</ul></li>
+</ul>
+</section>
+<section id="pip-永久更换国内源windows-12" class="level2">
+<h2 class="anchored" data-anchor-id="pip-永久更换国内源windows-12">pip 永久更换国内源（Windows）🪟 (1/2)</h2>
+<p>在 Windows 系统中永久更换 pip 源，可以按照以下步骤操作：</p>
+<ol type="1">
+<li><p><strong>打开文件资源管理器</strong>。</p></li>
+<li><p><strong>在地址栏输入 <code>%APPDATA%</code>，然后按回车键</strong>。</p>
+<ul>
+<li>这将打开当前用户的应用程序数据目录。</li>
+</ul></li>
+<li><p><strong>在该目录下创建一个名为 <code>pip</code> 的新文件夹</strong>。</p>
+<ul>
+<li>如果 <code>pip</code> 文件夹已存在，则跳过此步骤。</li>
+</ul></li>
+</ol>
+</section>
+<section id="pip-永久更换国内源windows-22" class="level2">
+<h2 class="anchored" data-anchor-id="pip-永久更换国内源windows-22">pip 永久更换国内源（Windows）🪟 (2/2)</h2>
+<ol start="4" type="1">
+<li><p><strong>进入 <code>pip</code> 文件夹</strong>。</p></li>
+<li><p><strong>在 <code>pip</code> 文件夹中创建一个名为 <code>pip.ini</code> 的新文件</strong>。</p>
+<ul>
+<li>如果 <code>pip.ini</code> 文件已存在，则跳过此步骤。</li>
+<li>你可以使用记事本或其他文本编辑器创建该文件。</li>
+</ul></li>
+<li><p><strong>用文本编辑器打开 <code>pip.ini</code> 文件，并将以下内容复制粘贴到文件中</strong>：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[global]</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">index-url </span><span class="ot">=</span><span class="st"> https://pypi.tuna.tsinghua.edu.cn/simple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>这里以清华大学的镜像源为例，你也可以选择其他国内镜像源。</li>
+</ul></li>
+<li><p><strong>保存并关闭 <code>pip.ini</code> 文件</strong>。</p></li>
+</ol>
+</section>
+<section id="pip-永久更换国内源-linuxmacos-12" class="level2">
+<h2 class="anchored" data-anchor-id="pip-永久更换国内源-linuxmacos-12">pip 永久更换国内源 (Linux/macOS) 🍎 (1/2)</h2>
+<p>在 Linux 或 macOS 系统中永久更换 pip 源，可以按照以下步骤操作：</p>
+<ol type="1">
+<li><p><strong>打开终端</strong>。</p></li>
+<li><p><strong>创建或编辑 <code>~/.pip/pip.conf</code> 文件</strong>。</p>
+<ul>
+<li>如果 <code>~/.pip</code> 目录不存在，则先创建该目录：</li>
+</ul>
+<pre class="{bash}"><code>mkdir ~/.pip</code></pre></li>
+</ol>
+</section>
+<section id="pip-永久更换国内源-linuxmacos-22" class="level2">
+<h2 class="anchored" data-anchor-id="pip-永久更换国内源-linuxmacos-22">pip 永久更换国内源 (Linux/macOS) 🍎 (2/2)</h2>
+<ul>
+<li>然后创建或编辑 <code>pip.conf</code> 文件：</li>
+</ul>
+<pre class="{bash}"><code>nano ~/.pip/pip.conf  # 或者使用你喜欢的文本编辑器，如 vim</code></pre>
+<ol start="3" type="1">
+<li><p><strong>将以下内容复制粘贴到 <code>pip.conf</code> 文件中</strong>：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[global]</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dt">index-url </span><span class="ot">=</span><span class="st"> https://pypi.tuna.tsinghua.edu.cn/simple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>这里以清华大学的镜像源为例，你也可以选择其他国内镜像源。</li>
+</ul></li>
+<li><p><strong>保存并关闭 <code>pip.conf</code> 文件</strong>。</p>
+<ul>
+<li>如果你使用的是 <code>nano</code> 编辑器，按 <code>Ctrl + O</code> 保存，然后按 <code>Ctrl + X</code> 退出。</li>
+</ul></li>
+</ol>
+</section>
+<section id="安装常用数据分析包" class="level2">
+<h2 class="anchored" data-anchor-id="安装常用数据分析包">安装常用数据分析包</h2>
+<ul>
+<li><strong>常用数据分析包</strong>
+<ul>
+<li>Pandas: 用于数据处理和分析的强大工具。</li>
+<li>Scikit-learn: 包含各种机器学习算法和模型的库。</li>
+<li>Matplotlib: 用于绘制各种图表的库。</li>
+</ul></li>
+</ul>
+<section id="如何安装pandasscikit-learnmatplotlib" class="level3">
+<h3 class="anchored" data-anchor-id="如何安装pandasscikit-learnmatplotlib">💡如何安装Pandas，Scikit-learn，Matplotlib</h3>
+<p>打开CMD或者Powershell这样的终端，在终端中输入：</p>
+<pre class="{bash}"><code>pip install pandas scikit-learn matplotlib -i https://pypi.tuna.tsinghua.edu.cn/simple</code></pre>
+<p>等待安装完毕即可。这里使用了清华的镜像源加速下载。</p>
+</section>
+</section>
+<section id="使用科学计算发行版-12" class="level2">
+<h2 class="anchored" data-anchor-id="使用科学计算发行版-12">使用科学计算发行版 🧪 (1/2)</h2>
+<ul>
+<li><strong>科学计算发行版 Python</strong>
+<ul>
+<li>通常包含一个标准版本的 Python，以及预装的多个科学计算、数据分析相关的包。</li>
+<li>可以省去手动安装各个包的麻烦，一次安装，即可拥有完整的科学计算环境。</li>
+<li>非常适合初学者和需要快速搭建环境的用户。</li>
+</ul></li>
+<li><strong>流行的科学计算发行版 Python</strong>
+<ul>
+<li><strong>Anaconda</strong> 🐍
+<ul>
+<li><a href="https://www.anaconda.com/">Anaconda官网</a></li>
+<li>功能强大，包含 Python 和数百个常用的科学计算、数据分析库。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="使用科学计算发行版-22" class="level2">
+<h2 class="anchored" data-anchor-id="使用科学计算发行版-22">使用科学计算发行版 🧪 (2/2)</h2>
+<ul>
+<li><strong>流行的科学计算发行版 Python</strong>（续）
+<ul>
+<li><strong>Anaconda</strong> 🐍 (续)
+<ul>
+<li>提供 Conda 包管理工具。
+<ul>
+<li><strong>Conda 简介</strong>：Conda 不仅可以管理 Python 包，还可以创建和管理多个独立的 Python 环境。</li>
+<li><strong>虚拟环境</strong>：虚拟环境可以隔离不同项目的依赖，避免包之间的冲突。</li>
+</ul></li>
+<li>Anaconda Navigator：图形化界面，方便管理环境和包。</li>
+</ul></li>
+<li><strong>WinPython</strong> 🪟
+<ul>
+<li><a href="https://winpython.github.io/">WinPython官网</a></li>
+<li>专门为 Windows 系统设计的发行版。</li>
+<li>便携性好，可以放在 U 盘中随身携带。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="anaconda-虚拟环境-12" class="level2">
+<h2 class="anchored" data-anchor-id="anaconda-虚拟环境-12">Anaconda 虚拟环境 📦 (1/2)</h2>
+<section id="什么是虚拟环境" class="level3">
+<h3 class="anchored" data-anchor-id="什么是虚拟环境">💡 什么是虚拟环境？</h3>
+<ul>
+<li>虚拟环境是 Python 项目的独立、隔离的运行环境。</li>
+<li>每个虚拟环境都有自己的 Python 解释器和安装的包，与其他虚拟环境互不干扰。</li>
+</ul>
+</section>
+<section id="为什么要使用虚拟环境" class="level3">
+<h3 class="anchored" data-anchor-id="为什么要使用虚拟环境">为什么要使用虚拟环境？</h3>
+<ul>
+<li><strong>隔离项目依赖</strong>：不同的项目可能需要不同版本的 Python 包。使用虚拟环境可以避免包之间的版本冲突。</li>
+<li><strong>保持全局环境干净</strong>：避免将所有项目的包都安装在全局 Python 环境中，导致全局环境臃肿、混乱。</li>
+</ul>
+</section>
+</section>
+<section id="anaconda-虚拟环境-22" class="level2">
+<h2 class="anchored" data-anchor-id="anaconda-虚拟环境-22">Anaconda 虚拟环境 📦 (2/2)</h2>
+<section id="为什么要使用虚拟环境续" class="level3">
+<h3 class="anchored" data-anchor-id="为什么要使用虚拟环境续">为什么要使用虚拟环境？（续）</h3>
+<ul>
+<li><strong>可重现性</strong>：可以轻松地创建和共享项目的虚拟环境，确保其他人在相同的环境中运行你的代码。</li>
+</ul>
+</section>
+<section id="如何使用-anaconda-创建虚拟环境12" class="level3">
+<h3 class="anchored" data-anchor-id="如何使用-anaconda-创建虚拟环境12">如何使用 Anaconda 创建虚拟环境？(1/2)</h3>
+<ol type="1">
+<li><p><strong>打开 Anaconda Prompt</strong>（Windows）或 <strong>终端</strong>（macOS/Linux）。</p></li>
+<li><p><strong>创建虚拟环境</strong>：</p></li>
+</ol>
+<pre class="{bash}"><code>conda create -n myenv python=3.8  # 将 myenv 替换为你想要的环境名称</code></pre>
+<pre><code>-   `-n` 选项指定虚拟环境的名称。
+-   `python=3.8` 指定虚拟环境中 Python 的版本。你可以根据需要更改版本号。</code></pre>
+</section>
+</section>
+<section id="anaconda创建虚拟环境22" class="level2">
+<h2 class="anchored" data-anchor-id="anaconda创建虚拟环境22">Anaconda创建虚拟环境(2/2)</h2>
+<ol start="3" type="1">
+<li><p><strong>激活虚拟环境</strong>：</p>
+<ul>
+<li>Windows:</li>
+</ul>
+<pre class="{bash}"><code>conda activate myenv</code></pre>
+<ul>
+<li>macOS/Linux:</li>
+</ul>
+<pre class="{bash}"><code>source activate myenv</code></pre></li>
+<li><p><strong>在虚拟环境中安装包</strong>：</p>
+<pre class="{bash}"><code>pip install pandas scikit-learn matplotlib</code></pre></li>
+<li><p><strong>退出虚拟环境</strong>：</p>
+<pre class="{bash}"><code>conda deactivate</code></pre></li>
+</ol>
+</section>
+<section id="python-基础知识求斐波那契数列-13" class="level2">
+<h2 class="anchored" data-anchor-id="python-基础知识求斐波那契数列-13">Python 基础知识：求斐波那契数列 🔢 (1/3)</h2>
+<div id="49eec49a" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Fibonacci sequence</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co">"""</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co">斐波那契数列</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="co">输入：项数n</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="co">输出：前n项</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co">"""</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="im">import</span> os  <span class="co"># 导入 os 模块</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a></span>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="kw">def</span> fibo(num):                    <span class="co"># 定义名为 fibo 的函数，参数为 num</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>    numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>]             <span class="co"># 初始化列表，包含前两项</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num <span class="op">-</span> <span class="dv">2</span>):     <span class="co"># 循环计算剩余的项</span></span>
+<span id="cb20-14"><a href="#cb20-14"></a>        numbers.append(numbers[i] <span class="op">+</span> numbers[i <span class="op">+</span> <span class="dv">1</span>])  <span class="co"># 计算新项并添加到列表</span></span>
+<span id="cb20-15"><a href="#cb20-15"></a>    <span class="cf">return</span> numbers                <span class="co"># 返回计算结果</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python-基础知识求斐波那契数列-23" class="level2">
+<h2 class="anchored" data-anchor-id="python-基础知识求斐波那契数列-23">Python 基础知识：求斐波那契数列 🔢 (2/3)</h2>
+<div id="0f0f5cbd" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>answer <span class="op">=</span> fibo(<span class="dv">10</span>)              <span class="co"># 调用 fibo 函数，计算前 10 项</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="bu">print</span>(answer)                   <span class="co"># 打印结果</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]</code></pre>
+</div>
+</div>
+</section>
+<section id="python-基础知识求斐波那契数列-33" class="level2">
+<h2 class="anchored" data-anchor-id="python-基础知识求斐波那契数列-33">Python 基础知识：求斐波那契数列 🔢 (3/3)</h2>
+<div id="886346a2" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'result'</span>):  <span class="co"># 检查名为 'result' 的目录是否存在</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>    os.mkdir(<span class="st">'result'</span>)            <span class="co"># 如果不存在，则创建该目录</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'result/fibo.txt'</span>, <span class="st">'w'</span>)  <span class="co"># 以写入模式打开文件 'result/fibo.txt'</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="cf">for</span> num <span class="kw">in</span> answer:                <span class="co"># 遍历计算结果</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>    <span class="bu">file</span>.write(<span class="bu">str</span>(num) <span class="op">+</span> <span class="st">' '</span>)     <span class="co"># 将每个数字转换为字符串并写入文件，用空格分隔</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="bu">file</span>.close()                      <span class="co"># 关闭文件</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="斐波那契数列代码解释-13" class="level2">
+<h2 class="anchored" data-anchor-id="斐波那契数列代码解释-13">斐波那契数列：代码解释 (1/3)</h2>
+<p>💡 代码详细解释</p>
+<ol type="1">
+<li><strong>注释</strong>:
+<ul>
+<li><code>#</code> 开头的是单行注释，用于解释单行代码的作用。</li>
+<li><code>"""</code> 包围的是多行注释（文档字符串），用于描述函数的功能、输入和输出。</li>
+</ul></li>
+<li><strong>引入包</strong>:
+<ul>
+<li><code>import os</code> 引入了 <code>os</code> 模块，该模块提供了与操作系统交互的功能，如文件和目录操作。</li>
+</ul></li>
+<li><strong>函数定义</strong>:
+<ul>
+<li><code>def fibo(num):</code> 定义了一个名为 <code>fibo</code> 的函数。</li>
+<li><code>def</code> 是定义函数的关键字。</li>
+<li><code>fibo</code> 是函数名。</li>
+<li><code>(num)</code> 表示函数接受一个参数 <code>num</code>。</li>
+</ul></li>
+</ol>
+</section>
+<section id="斐波那契数列代码解释-23" class="level2">
+<h2 class="anchored" data-anchor-id="斐波那契数列代码解释-23">斐波那契数列：代码解释 (2/3)</h2>
+<ol start="4" type="1">
+<li><strong>函数体</strong>:
+<ul>
+<li>缩进的代码块是函数体，执行具体的操作。</li>
+<li><code>numbers = [1, 1]</code>：初始化一个列表 <code>numbers</code>，包含斐波那契数列的前两项 1 和 1。</li>
+<li><code>for i in range(num - 2):</code>：循环 <code>num - 2</code> 次。
+<ul>
+<li><code>range(num - 2)</code> 生成一个从 0 到 <code>num - 3</code> 的整数序列。</li>
+<li><code>for</code> 循环用于遍历这个序列，每次迭代将当前的整数赋值给变量 <code>i</code>。</li>
+</ul></li>
+<li><code>numbers.append(numbers[i] + numbers[i + 1])</code>：计算新的斐波那契数，并将其添加到 <code>numbers</code> 列表的末尾。
+<ul>
+<li><code>numbers[i]</code> 表示列表 <code>numbers</code> 中索引为 <code>i</code> 的元素。</li>
+<li><code>numbers[i] + numbers[i + 1]</code> 计算当前项和下一项的和。</li>
+<li><code>append()</code> 是列表的方法，用于在列表末尾添加元素。</li>
+</ul></li>
+<li><code>return numbers</code>：返回计算好的斐波那契数列列表。</li>
+</ul></li>
+</ol>
+</section>
+<section id="斐波那契数列代码解释-33" class="level2">
+<h2 class="anchored" data-anchor-id="斐波那契数列代码解释-33">斐波那契数列：代码解释 (3/3)</h2>
+<ol start="5" type="1">
+<li><strong>函数调用</strong>:
+<ul>
+<li><code>answer = fibo(10)</code> 调用了 <code>fibo</code> 函数，传入参数 <code>10</code>。</li>
+<li><code>fibo(10)</code> 的返回值（一个列表）被赋值给变量 <code>answer</code>。</li>
+</ul></li>
+<li><strong>打印结果</strong>:
+<ul>
+<li><code>print(answer)</code> 将变量 <code>answer</code> 的值打印到控制台。</li>
+</ul></li>
+<li><strong>条件语句</strong>:
+<ul>
+<li><code>if not os.path.exists('result'):</code>：判断名为 <code>result</code> 的目录是否存在。
+<ul>
+<li><code>os.path.exists()</code> 是 <code>os</code> 模块中的函数，用于检查文件或目录是否存在。</li>
+<li><code>not</code> 表示取反。</li>
+</ul></li>
+<li><code>os.mkdir('result')</code>：如果 <code>result</code> 目录不存在，则创建该目录。</li>
+</ul></li>
+<li><strong>文件操作</strong> :
+<ul>
+<li><code>file = open('result/fibo.txt', 'w')</code>: 以写入模式打开文件 ‘result/fibo.txt’。
+<ul>
+<li><code>open()</code> 函数返回一个文件对象，赋值给变量 <code>file</code>。</li>
+</ul></li>
+<li><code>for num in answer:</code>：遍历 <code>answer</code> 列表中的每个数字。</li>
+<li><code>file.write(str(num) + ' ')</code>：将当前数字转换为字符串，并在末尾添加一个空格，然后写入文件。
+<ul>
+<li><code>str(num)</code> 将数字 <code>num</code> 转换为字符串。</li>
+<li><code>+</code> 用于连接字符串。</li>
+<li><code>file.write()</code> 是文件对象的方法，用于向文件中写入内容。</li>
+</ul></li>
+<li><code>file.close()</code>：关闭文件。关闭文件可以释放资源，并确保写入的内容被保存到磁盘。</li>
+</ul></li>
+</ol>
+</section>
+<section id="斐波那契数列的数学背景-12" class="level2">
+<h2 class="anchored" data-anchor-id="斐波那契数列的数学背景-12">斐波那契数列的数学背景 ➗ (1/2)</h2>
+<p>💡 数学公式</p>
+<p>斐波那契数列由以下递推关系定义：</p>
+<ul>
+<li><span class="math inline">\(F(0) = 1\)</span></li>
+<li><span class="math inline">\(F(1) = 1\)</span></li>
+<li><span class="math inline">\(F(n) = F(n-1) + F(n-2)\)</span> (当 <span class="math inline">\(n &gt; 1\)</span> 时)</li>
+</ul>
+<p>其中，<span class="math inline">\(F(n)\)</span> 表示斐波那契数列的第 <span class="math inline">\(n\)</span> 项。</p>
+<p><strong>通项公式</strong></p>
+<p>斐波那契数列的通项公式为：</p>
+<p><span class="math display">\[
+F(n) = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n\right]
+\]</span></p>
+</section>
+<section id="斐波那契数列的数学背景-22" class="level2">
+<h2 class="anchored" data-anchor-id="斐波那契数列的数学背景-22">斐波那契数列的数学背景 ➗ (2/2)</h2>
+<p><strong>与黄金分割的关系</strong></p>
+<p>斐波那契数列与黄金分割（<span class="math inline">\(\phi = \frac{1+\sqrt{5}}{2} \approx 1.618\)</span>）密切相关。随着项数的增加，斐波那契数列中相邻两项的比值会越来越接近黄金分割。</p>
+<p><span class="math display">\[
+\lim_{n\to\infty} \frac{F(n+1)}{F(n)} = \phi
+\]</span></p>
+<p><strong>应用</strong></p>
+<p>斐波那契数列在自然界和人类社会中有很多有趣的出现，例如：</p>
+<ul>
+<li>植物的花瓣数、树枝的分叉数、松果的螺线数等。</li>
+<li>艺术作品、建筑设计等。</li>
+<li>在计算机科学中，斐波那契数列可用于某些算法的设计和分析。</li>
+</ul>
+</section>
+<section id="python-基础知识缩进-12" class="level2">
+<h2 class="anchored" data-anchor-id="python-基础知识缩进-12">Python 基础知识：缩进 📏 (1/2)</h2>
+<ul>
+<li><strong>缩进的重要性</strong>
+<ul>
+<li>在 Python 中，缩进不仅仅是为了美观，它决定了代码的<strong>结构</strong>和<strong>逻辑</strong>。</li>
+<li>Python 使用缩进来区分代码块，而不是像 C++、Java 等语言那样使用花括号 <code>{}</code>。</li>
+<li>同一级别的代码块必须有相同的缩进量。</li>
+<li>通常使用 <strong>4 个空格</strong>作为标准缩进（强烈建议）。</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-基础知识缩进-22" class="level2">
+<h2 class="anchored" data-anchor-id="python-基础知识缩进-22">Python 基础知识：缩进 📏 (2/2)</h2>
+<ul>
+<li><strong>不同类型的语句块</strong>
+<ul>
+<li><strong>分支结构</strong>（<code>if</code>, <code>elif</code>, <code>else</code>）：
+<ul>
+<li><code>if</code> 语句后面的代码块需要缩进。</li>
+<li><code>elif</code> 和 <code>else</code> 语句后面的代码块也需要缩进，并且与对应的 <code>if</code> 语句对齐。</li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="fb24cb53" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condition1:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="co"># 如果 condition1 为真，执行这里的代码</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    statement1</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> condition2:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 如果 condition2 为真，执行这里的代码</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    statement2</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 如果以上条件都不为真，执行这里的代码</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    statement3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python-缩进循环结构" class="level2">
+<h2 class="anchored" data-anchor-id="python-缩进循环结构">Python 缩进：循环结构</h2>
+<ul>
+<li><strong>不同类型的语句块</strong> (续)
+<ul>
+<li><strong>循环结构</strong> (<code>for</code>, <code>while</code>):
+<ul>
+<li>循环体内的代码需要缩进。</li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="78776c6f" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> iterable:</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 对于 iterable 中的每个元素，执行这里的代码</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    statement1</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> condition:</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 当 condition 为真时，重复执行这里的代码</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    statement2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python-缩进函数" class="level2">
+<h2 class="anchored" data-anchor-id="python-缩进函数">Python 缩进：函数</h2>
+<ul>
+<li><strong>不同类型的语句块</strong> (续)</li>
+<li><strong>函数体</strong> (<code>def</code>):
+<ul>
+<li>函数体内的代码需要缩进。</li>
+</ul></li>
+</ul>
+<div id="231f8bad" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> function_name(parameters):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 函数体，执行函数的具体操作</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    statement1</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    statement2</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value  <span class="co"># 可选的返回值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python-缩进常见错误-12" class="level2">
+<h2 class="anchored" data-anchor-id="python-缩进常见错误-12">Python 缩进：常见错误 ⚠️ (1/2)</h2>
+<ol type="1">
+<li><strong>缩进不一致</strong>：
+<ul>
+<li>在同一个代码块中，有的行缩进了 4 个空格，有的行缩进了 2 个空格，或者使用了 Tab 键。</li>
+</ul></li>
+</ol>
+<div id="5a6e4d25" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 错误示例</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function():</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"World"</span>)  <span class="co"># 缩进不一致</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python-缩进常见错误-22" class="level2">
+<h2 class="anchored" data-anchor-id="python-缩进常见错误-22">Python 缩进：常见错误 ⚠️ (2/2)</h2>
+<ol start="2" type="1">
+<li><strong>缩进级别错误</strong>：
+<ul>
+<li>代码块的缩进没有正确地反映其逻辑结构。</li>
+</ul></li>
+</ol>
+<div id="f01c2bac" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 错误示例</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"x is positive"</span>)  <span class="co"># 缩进错误</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is non-positive"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python缩进缺少缩进" class="level2">
+<h2 class="anchored" data-anchor-id="python缩进缺少缩进">Python缩进：缺少缩进</h2>
+<ol start="3" type="1">
+<li><strong>缺少缩进</strong>：
+<ul>
+<li>应该缩进的代码块没有缩进。</li>
+</ul></li>
+</ol>
+<div id="d9e8834d" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 错误示例</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(i)  <span class="co"># 缺少缩进</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python-缩进最佳实践" class="level2">
+<h2 class="anchored" data-anchor-id="python-缩进最佳实践">Python 缩进：最佳实践 ✅</h2>
+<ol type="1">
+<li><p><strong>始终使用 4 个空格进行缩进</strong>。</p>
+<ul>
+<li>这是 Python 社区的推荐做法（PEP 8），大多数 IDE 和文本编辑器都支持。</li>
+</ul></li>
+<li><p><strong>保持缩进一致</strong>。</p>
+<ul>
+<li>在同一个代码块中，始终使用相同数量的空格进行缩进。</li>
+</ul></li>
+<li><p><strong>使用 IDE 或文本编辑器的自动缩进功能</strong>。</p></li>
+<li><p><strong>注意代码块的嵌套</strong>。</p>
+<ul>
+<li>内层代码块的缩进要比外层代码块多 4 个空格。</li>
+</ul></li>
+</ol>
+</section>
+<section id="python缩进最佳实践续" class="level2">
+<h2 class="anchored" data-anchor-id="python缩进最佳实践续">Python缩进：最佳实践（续）</h2>
+<ol start="5" type="1">
+<li><p><strong>在函数、类、条件语句、循环等后面使用冒号 <code>:</code>，然后换行并缩进</strong>。</p></li>
+<li><p><strong>避免过深的嵌套</strong>。</p>
+<ul>
+<li>如果代码嵌套层级过多，会难以阅读和理解。</li>
+</ul></li>
+</ol>
+</section>
+<section id="python-基础知识模块化-12" class="level2">
+<h2 class="anchored" data-anchor-id="python-基础知识模块化-12">Python 基础知识：模块化 🧩 (1/2)</h2>
+<ul>
+<li><strong>模块化的系统</strong>
+<ul>
+<li>Python 是一种高度模块化的语言。</li>
+<li>可以将代码组织成多个模块（<code>.py</code> 文件），每个模块包含相关的函数、类和变量。</li>
+<li><strong>模块化的好处</strong>：
+<ul>
+<li><strong>代码复用</strong>：可以将常用的功能封装成模块，在不同的程序中重复使用。</li>
+<li><strong>可维护性</strong>：将代码分解成更小的部分，易于理解、修改和调试。</li>
+<li><strong>命名空间</strong>：不同的模块可以有相同的变量名或函数名，避免命名冲突。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="python-基础知识模块化-22" class="level2">
+<h2 class="anchored" data-anchor-id="python-基础知识模块化-22">Python 基础知识：模块化 🧩 (2/2)</h2>
+<ul>
+<li><strong>模块化的系统</strong> (续)
+<ul>
+<li>Python 拥有庞大而丰富的<strong>标准库</strong>和<strong>第三方库</strong>，提供了各种各样的功能，无需从头编写所有代码。</li>
+</ul></li>
+<li><strong>标准库</strong> (Standard Library)
+<ul>
+<li>Python 自带的一组模块，提供了各种常用的功能。</li>
+<li>无需额外安装，可以直接使用。</li>
+<li><strong>常用标准库模块</strong>：<code>os</code>, <code>time</code>, <code>datetime</code>, <code>sys</code>, <code>math</code>, <code>random</code>, <code>re</code>, <code>json</code>, <code>urllib</code>等。</li>
+</ul></li>
+</ul>
+</section>
+<section id="python第三方库" class="level2">
+<h2 class="anchored" data-anchor-id="python第三方库">Python第三方库</h2>
+<ul>
+<li><strong>第三方库</strong> (Third-party Libraries)
+<ul>
+<li>由 Python 社区开发的各种库，提供了标准库之外的更丰富的功能。</li>
+<li>通常需要使用 <code>pip</code> 安装后才能使用。</li>
+<li><strong>常用第三方库</strong>： <code>scipy</code>, <code>scikit-learn</code>等。</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-标准库示例os-模块-13" class="level2">
+<h2 class="anchored" data-anchor-id="python-标准库示例os-模块-13">Python 标准库示例：<code>os</code> 模块 📁 (1/3)</h2>
+<p><code>os</code> 模块提供了与操作系统交互的功能，例如：</p>
+<ul>
+<li><strong>文件和目录操作</strong>：
+<ul>
+<li><code>os.getcwd()</code>: 获取当前工作目录。</li>
+<li><code>os.chdir(path)</code>: 改变当前工作目录。</li>
+<li><code>os.listdir(path)</code>: 列出指定目录下的文件和子目录。</li>
+<li><code>os.mkdir(path)</code>: 创建目录。</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-标准库示例os-模块-23" class="level2">
+<h2 class="anchored" data-anchor-id="python-标准库示例os-模块-23">Python 标准库示例：<code>os</code> 模块 📁 (2/3)</h2>
+<ul>
+<li><strong>文件和目录操作</strong>（续）：
+<ul>
+<li><code>os.makedirs(path)</code>: 递归创建目录。</li>
+<li><code>os.remove(path)</code>: 删除文件。</li>
+<li><code>os.rmdir(path)</code>: 删除空目录。</li>
+<li><code>os.removedirs(path)</code>: 递归删除空目录。</li>
+<li><code>os.rename(src, dst)</code>: 重命名文件或目录。</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-标准库示例os-模块-33" class="level2">
+<h2 class="anchored" data-anchor-id="python-标准库示例os-模块-33">Python 标准库示例：<code>os</code> 模块 📁 (3/3)</h2>
+<ul>
+<li><strong>文件和目录操作</strong> (续)：
+<ul>
+<li><code>os.path.exists(path)</code>: 判断文件或目录是否存在。</li>
+<li><code>os.path.isfile(path)</code>: 判断是否为文件。</li>
+<li><code>os.path.isdir(path)</code>: 判断是否为目录。</li>
+<li><code>os.path.join(path1, path2, ...)</code>: 拼接路径。</li>
+<li><code>os.path.split(path)</code>: 分割路径为目录和文件名。</li>
+<li><code>os.path.splitext(path)</code>: 分割文件名为文件名和扩展名。</li>
+</ul></li>
+</ul>
+</section>
+<section id="os模块进程管理和其他" class="level2">
+<h2 class="anchored" data-anchor-id="os模块进程管理和其他"><code>os</code>模块：进程管理和其他</h2>
+<ul>
+<li><strong>进程管理</strong>：
+<ul>
+<li><code>os.system(command)</code>: 执行系统命令。</li>
+<li><code>os.popen(command)</code>: 执行系统命令并返回输出。</li>
+<li><code>os.getpid()</code>: 获取当前进程 ID。</li>
+<li><code>os.getppid()</code>: 获取父进程 ID。</li>
+</ul></li>
+<li><strong>环境变量</strong>：
+<ul>
+<li><code>os.environ</code>: 获取所有环境变量。</li>
+<li><code>os.getenv(key)</code>: 获取指定环境变量的值。</li>
+<li><code>os.putenv(key, value)</code>: 设置环境变量。</li>
+</ul></li>
+<li><strong>其他</strong>：
+<ul>
+<li><code>os.name</code>: 获取操作系统名称。</li>
+<li><code>os.sep</code>: 获取路径分隔符。</li>
+</ul></li>
+</ul>
+</section>
+<section id="os-模块示例代码" class="level2">
+<h2 class="anchored" data-anchor-id="os-模块示例代码"><code>os</code> 模块示例代码</h2>
+<p><strong>示例</strong>：</p>
+<div id="4df3569c" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取当前工作目录</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>current_dir <span class="op">=</span> os.getcwd()</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"当前工作目录：</span><span class="sc">{</span>current_dir<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建目录</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'mydir'</span>):</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    os.mkdir(<span class="st">'mydir'</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"创建目录：mydir"</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 列出目录内容</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> os.listdir(<span class="st">'.'</span>)</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"当前目录下的文件和子目录：</span><span class="sc">{</span>files<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>当前工作目录：/home/runner/work/web-slide-python-visual/web-slide-python-visual/qmd
+创建目录：mydir
+当前目录下的文件和子目录：['_quarto.yml', 'result', 'chapter2.qmd', 'chapter2.quarto_ipynb', 'zwu_logo.png', 'chapter7.qmd', 'mydir', 'chapter3.qmd', '.gitignore', 'chapter1.qmd', 'chapter5.qmd', 'chapter8.qmd', 'chapter6.qmd', 'chapter4.qmd', 'my.css']</code></pre>
+</div>
+</div>
+</section>
+<section id="python-标准库示例datetime-模块-12" class="level2">
+<h2 class="anchored" data-anchor-id="python-标准库示例datetime-模块-12">Python 标准库示例：<code>datetime</code> 模块 📅 (1/2)</h2>
+<p><code>datetime</code> 模块提供了处理日期和时间的类和函数。</p>
+<p><strong>主要类</strong>：</p>
+<ul>
+<li><code>date</code>: 表示日期（年、月、日）。</li>
+<li><code>time</code>: 表示时间（时、分、秒、微秒）。</li>
+<li><code>datetime</code>: 表示日期和时间（年、月、日、时、分、秒、微秒）。</li>
+</ul>
+</section>
+<section id="python-标准库示例datetime-模块-22" class="level2">
+<h2 class="anchored" data-anchor-id="python-标准库示例datetime-模块-22">Python 标准库示例：<code>datetime</code> 模块 📅 (2/2)</h2>
+<p><strong>主要类</strong>（续）：</p>
+<ul>
+<li><code>timedelta</code>: 表示时间间隔。</li>
+<li><code>timezone</code>: 表示时区。</li>
+</ul>
+</section>
+<section id="datetime模块创建对象" class="level2">
+<h2 class="anchored" data-anchor-id="datetime模块创建对象"><code>datetime</code>模块：创建对象</h2>
+<p><strong>常用操作</strong>：</p>
+<ul>
+<li><strong>创建日期和时间对象</strong>：</li>
+</ul>
+<div id="6b3869b5" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date, time, datetime, timedelta</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建日期对象</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>today <span class="op">=</span> date.today()</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"今天的日期：</span><span class="sc">{</span>today<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建时间对象</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>now <span class="op">=</span> time(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">0</span>)  <span class="co"># 10:30:00</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"当前时间：</span><span class="sc">{</span>now<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建日期时间对象</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>now <span class="op">=</span> datetime.now()</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"当前日期和时间：</span><span class="sc">{</span>now<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>今天的日期：2025-02-17
+当前时间：10:30:00
+当前日期和时间：2025-02-17 16:17:05.678831</code></pre>
+</div>
+</div>
+</section>
+<section id="datetime模块指定日期时间" class="level2">
+<h2 class="anchored" data-anchor-id="datetime模块指定日期时间"><code>datetime</code>模块：指定日期时间</h2>
+<div id="befaf2f0" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定日期和时间</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime(<span class="dv">2023</span>, <span class="dv">10</span>, <span class="dv">27</span>, <span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">0</span>)  <span class="co"># 2023-10-27 15:00:00</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"指定日期和时间：</span><span class="sc">{</span>dt<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>指定日期和时间：2023-10-27 15:00:00</code></pre>
+</div>
+</div>
+</section>
+<section id="datetime-模块获取信息" class="level2">
+<h2 class="anchored" data-anchor-id="datetime-模块获取信息"><code>datetime</code> 模块：获取信息</h2>
+<ul>
+<li><strong>获取日期和时间的组成部分</strong>：</li>
+</ul>
+<div id="5fdb8d75" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取年、月、日、时、分、秒</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>year <span class="op">=</span> now.year</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> now.month</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>day <span class="op">=</span> now.day</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>hour <span class="op">=</span> now.hour</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>minute <span class="op">=</span> now.minute</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>second <span class="op">=</span> now.second</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"年：</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">, 月：</span><span class="sc">{</span>month<span class="sc">}</span><span class="ss">, 日：</span><span class="sc">{</span>day<span class="sc">}</span><span class="ss">, 时：</span><span class="sc">{</span>hour<span class="sc">}</span><span class="ss">, 分：</span><span class="sc">{</span>minute<span class="sc">}</span><span class="ss">, 秒：</span><span class="sc">{</span>second<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>年：2025, 月：2, 日：17, 时：16, 分：17, 秒：5</code></pre>
+</div>
+</div>
+</section>
+<section id="datetime模块日期时间运算" class="level2">
+<h2 class="anchored" data-anchor-id="datetime模块日期时间运算"><code>datetime</code>模块：日期时间运算</h2>
+<ul>
+<li><strong>日期和时间运算</strong>：</li>
+</ul>
+<div id="bafbf039" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算时间间隔</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>delta <span class="op">=</span> timedelta(days<span class="op">=</span><span class="dv">7</span>)  <span class="co"># 7 天</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"7 天后的日期：</span><span class="sc">{</span>today <span class="op">+</span> delta<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算两个日期之间的差值</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>diff <span class="op">=</span> date(<span class="dv">2024</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="op">-</span> today</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"距离 2024 年 1 月 1 日还有：</span><span class="sc">{</span>diff<span class="sc">.</span>days<span class="sc">}</span><span class="ss"> 天"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>7 天后的日期：2025-02-24
+距离 2024 年 1 月 1 日还有：-413 天</code></pre>
+</div>
+</div>
+</section>
+<section id="datetime-模块格式化" class="level2">
+<h2 class="anchored" data-anchor-id="datetime-模块格式化"><code>datetime</code> 模块：格式化</h2>
+<ul>
+<li><strong>格式化日期和时间</strong>：</li>
+</ul>
+<div id="5df85ed4" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 将日期时间对象格式化为字符串</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>formatted_date <span class="op">=</span> now.strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S"</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"格式化后的日期和时间：</span><span class="sc">{</span>formatted_date<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 将字符串解析为日期时间对象</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>date_str <span class="op">=</span> <span class="st">"2023-10-27"</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>parsed_date <span class="op">=</span> datetime.strptime(date_str, <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>).date()</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"解析后的日期：</span><span class="sc">{</span>parsed_date<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>格式化后的日期和时间：2025-02-17 16:17:05
+解析后的日期：2023-10-27</code></pre>
+</div>
+</div>
+</section>
+<section id="datetime模块时区处理" class="level2">
+<h2 class="anchored" data-anchor-id="datetime模块时区处理"><code>datetime</code>模块：时区处理</h2>
+<ul>
+<li><strong>时区处理</strong>：
+<ul>
+<li><code>datetime</code> 模块本身不提供完善的时区处理功能。</li>
+<li>可以使用第三方库 <code>pytz</code> 或 <code>dateutil</code> 来处理时区相关的操作。</li>
+</ul></li>
+</ul>
+</section>
+<section id="重要的-python-库pandas-12" class="level2">
+<h2 class="anchored" data-anchor-id="重要的-python-库pandas-12">重要的 Python 库：Pandas 🐼 (1/2)</h2>
+<ul>
+<li><strong>Pandas</strong>
+<ul>
+<li>构建在 NumPy 之上的高性能数据分析库。</li>
+<li>提供了两种主要的数据结构：
+<ul>
+<li><strong>Series</strong>：一维带标签数组，类似于带索引的列表。</li>
+<li><strong>DataFrame</strong>：二维表格型数据结构，类似于 Excel 表格或 SQL 表。</li>
+</ul></li>
+<li>可以方便地进行数据清洗、转换、分析和可视化。</li>
+</ul></li>
+</ul>
+</section>
+<section id="重要的-python-库pandas-22" class="level2">
+<h2 class="anchored" data-anchor-id="重要的-python-库pandas-22">重要的 Python 库：Pandas 🐼 (2/2)</h2>
+<ul>
+<li><strong>Pandas</strong> (续)
+<ul>
+<li>支持各种数据操作，如：
+<ul>
+<li><strong>数据读取和写入</strong>：可以读取和写入各种格式的数据。</li>
+<li><strong>数据清洗</strong>：处理缺失值、重复值、异常值等。</li>
+<li><strong>数据转换</strong>：修改数据类型、重塑数据结构、数据透视等。</li>
+<li><strong>数据选择和过滤</strong>：根据条件选择数据、筛选数据。</li>
+<li><strong>数据分组和聚合</strong>：按列分组，计算分组统计量。</li>
+<li><strong>数据合并和连接</strong>：将多个数据集按指定条件合并。</li>
+<li><strong>排序、分组、归并</strong></li>
+<li><strong>统计计算</strong>：求和、求均值、求中位数、求标准差、协方差矩阵计算等。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="pandas-series-示例-13" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-series-示例-13">Pandas Series 示例 📝 (1/3)</h2>
+<p>💡 什么是 Series？</p>
+<ul>
+<li>Series 是 Pandas 中一维带标签的数组。</li>
+<li>可以看作是带有索引的列表或一列数据。</li>
+<li>每个 Series 对象都有一个索引（index）和一个值（values）数组。</li>
+</ul>
+<p><strong>创建 Series</strong></p>
+<div id="74f57ddf" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 从列表创建</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series(data)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    10
+1    20
+2    30
+3    40
+4    50
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-series-示例-23" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-series-示例-23">Pandas Series 示例 📝 (2/3)</h2>
+<div id="dc0c7a4a" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 从字典创建</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'a'</span>: <span class="dv">10</span>, <span class="st">'b'</span>: <span class="dv">20</span>, <span class="st">'c'</span>: <span class="dv">30</span>}</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series(data)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a    10
+b    20
+c    30
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-series-示例-33" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-series-示例-33">Pandas Series 示例 📝 (3/3)</h2>
+<div id="b1f3d94d" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定索引</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> [<span class="st">'x'</span>, <span class="st">'y'</span>, <span class="st">'z'</span>]</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series(data, index<span class="op">=</span>index)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x    10
+y    20
+z    30
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-series访问元素-12" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-series访问元素-12">Pandas Series：访问元素 (1/2)</h2>
+<p><strong>访问 Series 中的元素</strong></p>
+<div id="5aa4c193" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 通过位置访问</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s[<span class="dv">0</span>])  <span class="co"># 10</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 通过标签访问</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s[<span class="st">'x'</span>])  <span class="co"># 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10
+10</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_2548/971424159.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  print(s[0])  # 10</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-series访问元素-22" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-series访问元素-22">Pandas Series：访问元素 (2/2)</h2>
+<div id="2334b73c" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 切片</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s[<span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># 获取索引为 1 和 2 的元素</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s[<span class="st">'y'</span>:<span class="st">'z'</span>])  <span class="co"># 获取标签为 'y' 和 'z' 的元素</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>y    20
+z    30
+dtype: int64
+y    20
+z    30
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-series运算-12" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-series运算-12">Pandas Series：运算 (1/2)</h2>
+<div id="8637db8f" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> [<span class="st">'x'</span>, <span class="st">'y'</span>, <span class="st">'z'</span>]</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series(data, index<span class="op">=</span>index)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 与标量运算</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s <span class="op">*</span> <span class="dv">2</span>)  <span class="co"># 每个元素乘以 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x    20
+y    40
+z    60
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-series运算-22" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-series运算-22">Pandas Series：运算 (2/2)</h2>
+<div id="e7896513" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 与另一个 Series 运算</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], index<span class="op">=</span>[<span class="st">'x'</span>, <span class="st">'y'</span>, <span class="st">'z'</span>])</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], index<span class="op">=</span>[<span class="st">'x'</span>, <span class="st">'y'</span>, <span class="st">'z'</span>])</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s1 <span class="op">+</span> s2)  <span class="co"># 对应元素相加</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 常用统计方法</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.mean())  <span class="co"># 平均值</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.<span class="bu">sum</span>())  <span class="co"># 求和</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.<span class="bu">max</span>())  <span class="co"># 最大值</span></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.<span class="bu">min</span>())  <span class="co"># 最小值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x    5
+y    7
+z    9
+dtype: int64
+20.0
+60
+30
+10</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe-示例-12" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-dataframe-示例-12">Pandas DataFrame 示例 📊 (1/2)</h2>
+<p>💡 什么是 DataFrame？</p>
+<ul>
+<li>DataFrame 是 Pandas 中二维表格型数据结构。</li>
+<li>可以看作是由多个 Series 对象组成的表格，每个 Series 对象代表一列。</li>
+<li>每个 DataFrame 对象都有一个行索引（index）和一个列索引（columns）。</li>
+</ul>
+<p><strong>创建 DataFrame</strong></p>
+<div id="e05390e2" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 从字典创建</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'name'</span>: [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Charlie'</span>],</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'age'</span>: [<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>],</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'city'</span>: [<span class="st">'New York'</span>, <span class="st">'London'</span>, <span class="st">'Paris'</span>]</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      name  age      city
+0    Alice   25  New York
+1      Bob   30    London
+2  Charlie   35     Paris</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe-示例-22" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-dataframe-示例-22">Pandas DataFrame 示例 📊 (2/2)</h2>
+<div id="97340657" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 从列表的列表创建</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Alice'</span>, <span class="dv">25</span>, <span class="st">'New York'</span>],</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Bob'</span>, <span class="dv">30</span>, <span class="st">'London'</span>],</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Charlie'</span>, <span class="dv">35</span>, <span class="st">'Paris'</span>]</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">'name'</span>, <span class="st">'age'</span>, <span class="st">'city'</span>]</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>columns)</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      name  age      city
+0    Alice   25  New York
+1      Bob   30    London
+2  Charlie   35     Paris</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe-获取列" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-dataframe-获取列">Pandas DataFrame: 获取列</h2>
+<p><strong>访问 DataFrame 中的数据</strong></p>
+<div id="c74b9339" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取列</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">'name'</span>])  <span class="co"># 获取 'name' 列</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.age)  <span class="co"># 另一种获取列的方式</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0      Alice
+1        Bob
+2    Charlie
+Name: name, dtype: object
+0    25
+1    30
+2    35
+Name: age, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe-获取行" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-dataframe-获取行">Pandas DataFrame: 获取行</h2>
+<div id="625ec91d" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取行</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.loc[<span class="dv">0</span>])  <span class="co"># 获取第一行（索引为 0）</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>])  <span class="co"># 另一种获取第一行的方式</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>name       Alice
+age           25
+city    New York
+Name: 0, dtype: object
+name       Alice
+age           25
+city    New York
+Name: 0, dtype: object</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe获取特定单元格" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-dataframe获取特定单元格">Pandas DataFrame：获取特定单元格</h2>
+<div id="37e644e8" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取特定单元格</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.loc[<span class="dv">0</span>, <span class="st">'name'</span>])  <span class="co"># 获取第一行 'name' 列的值</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>, <span class="dv">0</span>])  <span class="co"># 另一种获取方式</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Alice
+Alice</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe切片" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-dataframe切片">Pandas DataFrame：切片</h2>
+<div id="4aa83f67" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 切片</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 获取前两行</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'name'</span>, <span class="st">'age'</span>]])  <span class="co"># 获取 'name' 和 'age' 列</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    name  age      city
+0  Alice   25  New York
+1    Bob   30    London
+      name  age
+0    Alice   25
+1      Bob   30
+2  Charlie   35</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe-常用操作12" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-dataframe-常用操作12">Pandas DataFrame 常用操作(1/2)</h2>
+<div id="88643d7e" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加列</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'salary'</span>] <span class="op">=</span> [<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>]</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 筛选数据</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[df[<span class="st">'age'</span>] <span class="op">&gt;</span> <span class="dv">30</span>])  <span class="co"># 获取年龄大于 30 的行</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      name  age   city  salary
+2  Charlie   35  Paris   70000</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe-常用操作22" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-dataframe-常用操作22">Pandas DataFrame 常用操作(2/2)</h2>
+<div id="a7374cae" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 排序</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.sort_values(<span class="st">'age'</span>))  <span class="co"># 按年龄升序排序</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 分组统计</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.groupby(<span class="st">'name'</span>)[<span class="st">'salary'</span>].mean())  <span class="co"># 按姓名分组，计算平均薪资</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      name  age      city  salary
+0    Alice   25  New York   50000
+1      Bob   30    London   60000
+2  Charlie   35     Paris   70000
+name
+Alice      50000.0
+Bob        60000.0
+Charlie    70000.0
+Name: salary, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="重要的-python-库scikit-learn-12" class="level2">
+<h2 class="anchored" data-anchor-id="重要的-python-库scikit-learn-12">重要的 Python 库：Scikit-learn 🤖 (1/2)</h2>
+<ul>
+<li><strong>Scikit-learn</strong>
+<ul>
+<li>构建在 NumPy、SciPy 和 Matplotlib 上的机器学习库。</li>
+<li>提供了各种经典和常用的机器学习算法和模型，涵盖了监督学习、无监督学习、模型选择、数据预处理等方面。</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Scikit-learn Logo</figcaption>
+</figure>
+</div>
+</section>
+<section id="重要的-python-库scikit-learn-22" class="level2">
+<h2 class="anchored" data-anchor-id="重要的-python-库scikit-learn-22">重要的 Python 库：Scikit-learn 🤖 (2/2)</h2>
+<ul>
+<li><strong>Scikit-learn</strong> (续)
+<ul>
+<li><strong>主要功能</strong>：
+<ul>
+<li><strong>分类</strong> (Classification)：预测数据的类别标签。常用算法有：SVM、k-NN、朴素贝叶斯、决策树、随机森林、逻辑回归。</li>
+<li><strong>回归</strong> (Regression)：预测连续值的目标变量。常用算法有：线性回归、岭回归、Lasso 回归、SVR。</li>
+<li><strong>聚类</strong> (Clustering)：将数据划分为不同的簇。常用算法有：K 均值聚类、层次聚类、DBSCAN。</li>
+<li><strong>降维</strong> (Dimensionality Reduction)：减少数据的特征数量。常用算法有：PCA、LDA、t-SNE。</li>
+<li><strong>模型选择</strong> (Model Selection)：选择最佳的模型和参数。常用方法有：交叉验证、网格搜索、随机搜索。</li>
+<li><strong>预处理</strong> (Preprocessing)：对数据进行预处理，提高模型性能。常用方法有：特征缩放、特征编码、特征选择、缺失值处理。</li>
+</ul></li>
+<li>Scikit-learn 简单易用，文档齐全，非常适合快速构建和评估机器学习模型。</li>
+</ul></li>
+</ul>
+</section>
+<section id="scikit-learn-示例线性回归-13" class="level2">
+<h2 class="anchored" data-anchor-id="scikit-learn-示例线性回归-13">Scikit-learn 示例：线性回归 📈 (1/3)</h2>
+<p>💡 什么是线性回归？</p>
+<ul>
+<li>线性回归是一种用于预测连续值目标变量的监督学习算法。</li>
+<li>它假设目标变量与特征之间存在线性关系。</li>
+<li>线性回归的目标是找到一条最佳拟合直线（或超平面），使得预测值与真实值之间的误差最小。</li>
+</ul>
+<p><strong>线性回归的数学模型</strong></p>
+<ul>
+<li>简单线性回归（单变量）：
+<ul>
+<li><span class="math inline">\(y = wx + b\)</span></li>
+<li>其中，<span class="math inline">\(y\)</span> 是目标变量，<span class="math inline">\(x\)</span> 是特征，<span class="math inline">\(w\)</span> 是权重，<span class="math inline">\(b\)</span> 是偏置。</li>
+</ul></li>
+</ul>
+</section>
+<section id="scikit-learn-示例线性回归-23" class="level2">
+<h2 class="anchored" data-anchor-id="scikit-learn-示例线性回归-23">Scikit-learn 示例：线性回归 📈 (2/3)</h2>
+<ul>
+<li><strong>线性回归的数学模型</strong> (续)
+<ul>
+<li>多元线性回归（多变量）：
+<ul>
+<li><span class="math inline">\(y = w_1x_1 + w_2x_2 + ... + w_nx_n + b\)</span></li>
+<li>其中，<span class="math inline">\(y\)</span> 是目标变量，<span class="math inline">\(x_1, x_2, ..., x_n\)</span> 是特征，<span class="math inline">\(w_1, w_2, ..., w_n\)</span> 是权重，<span class="math inline">\(b\)</span> 是偏置。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="scikit-learn-示例线性回归-33" class="level2">
+<h2 class="anchored" data-anchor-id="scikit-learn-示例线性回归-33">Scikit-learn 示例：线性回归 📈 (3/3)</h2>
+<ul>
+<li><strong>线性回归的数学模型</strong> (续)
+<ul>
+<li>矩阵形式：
+<ul>
+<li><span class="math inline">\(y = Xw + b\)</span></li>
+<li>其中，<span class="math inline">\(y\)</span> 是目标变量向量，<span class="math inline">\(X\)</span> 是特征矩阵，<span class="math inline">\(w\)</span> 是权重向量，<span class="math inline">\(b\)</span> 是偏置向量。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="scikit-learn-线性回归代码示例-12" class="level2">
+<h2 class="anchored" data-anchor-id="scikit-learn-线性回归代码示例-12">Scikit-learn 线性回归代码示例 (1/2)</h2>
+<div id="a1660be7" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 准备数据</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">2</span>, <span class="dv">2</span>], [<span class="dv">2</span>, <span class="dv">3</span>]])  <span class="co"># 特征</span></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.dot(X, np.array([<span class="dv">1</span>, <span class="dv">2</span>])) <span class="op">+</span> <span class="dv">3</span>  <span class="co"># 目标变量</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 划分训练集和测试集</span></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. 创建模型</span></span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. 训练模型</span></span>
+<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LinearRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div>
+</div>
+</div>
+</section>
+<section id="scikit-learn-线性回归代码示例-22" class="level2">
+<h2 class="anchored" data-anchor-id="scikit-learn-线性回归代码示例-22">Scikit-learn 线性回归代码示例 (2/2)</h2>
+<div id="2c4c04e5" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. 预测</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. 评估模型</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"均方误差：</span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. 查看模型参数</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"权重：</span><span class="sc">{</span>model<span class="sc">.</span>coef_<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"偏置：</span><span class="sc">{</span>model<span class="sc">.</span>intercept_<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>均方误差：3.1554436208840472e-30
+权重：[1. 2.]
+偏置：2.9999999999999956</code></pre>
+</div>
+</div>
+</section>
+<section id="重要的-python-库matplotlib-12" class="level2">
+<h2 class="anchored" data-anchor-id="重要的-python-库matplotlib-12">重要的 Python 库：Matplotlib 📊 (1/2)</h2>
+<ul>
+<li><strong>Matplotlib</strong>
+<ul>
+<li>Python 中最常用的绘图库，用于创建各种静态、动态、交互式的图表。</li>
+<li>可以绘制各种图形，如：折线图、散点图、直方图、条形图、饼图、箱线图、等高线图、3D 图形、图像、甚至是动画。</li>
+<li>可以自定义图表的各种属性，如颜色、线型、标记、标题、坐标轴标签、图例等。</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://matplotlib.org/_static/logo2_compressed.svg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Matplotlib Logo</figcaption>
+</figure>
+</div>
+</section>
+<section id="重要的-python-库matplotlib-22" class="level2">
+<h2 class="anchored" data-anchor-id="重要的-python-库matplotlib-22">重要的 Python 库：Matplotlib 📊 (2/2)</h2>
+<ul>
+<li><strong>Matplotlib</strong> (续)
+<ul>
+<li>Matplotlib 提供了两种主要的绘图接口：
+<ul>
+<li><strong>基于 MATLAB 风格的接口</strong>：使用全局函数来创建和修改图表。</li>
+<li><strong>面向对象的接口</strong>：使用 Figure 和 Axes 对象来创建和控制图表。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="matplotlib-示例折线图-13" class="level2">
+<h2 class="anchored" data-anchor-id="matplotlib-示例折线图-13">Matplotlib 示例：折线图 📉 (1/3)</h2>
+<p>💡 如何使用 Matplotlib 绘制折线图？</p>
+<div id="9585f71b" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 准备数据</span></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)  <span class="co"># 生成 0 到 10 之间的 100 个等间距点</span></span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)  <span class="co"># 计算正弦值</span></span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 创建图表</span></span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))  <span class="co"># 创建一个 8x6 英寸的图表</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>&lt;Figure size 768x576 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 768x576 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="matplotlib-示例折线图-23" class="level2">
+<h2 class="anchored" data-anchor-id="matplotlib-示例折线图-23">Matplotlib 示例：折线图 📉 (2/3)</h2>
+<div id="907a16f6" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. 绘制折线图</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, label<span class="op">=</span><span class="st">'sin(x)'</span>, color<span class="op">=</span><span class="st">'blue'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. 添加标题和标签</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sine Wave'</span>)</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sin(x)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>Text(0, 0.5, 'sin(x)')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/cell-38-output-2.png" width="608" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="matplotlib-示例折线图-33" class="level2">
+<h2 class="anchored" data-anchor-id="matplotlib-示例折线图-33">Matplotlib 示例：折线图 📉 (3/3)</h2>
+<div id="3c0b281e" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. 添加图例</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. 添加网格线</span></span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. 显示图表</span></span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_2548/1043465315.py:2: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  plt.legend()</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/cell-39-output-2.png" width="581" height="416" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="matplotlib折线图代码解释12" class="level2">
+<h2 class="anchored" data-anchor-id="matplotlib折线图代码解释12">Matplotlib折线图代码解释(1/2)</h2>
+<ul>
+<li><code>plt.figure()</code>: 创建一个图表对象。
+<ul>
+<li><code>figsize</code>: 指定图表的大小（英寸）。</li>
+</ul></li>
+<li><code>plt.plot()</code>: 绘制折线图。
+<ul>
+<li><code>x</code>: x 轴数据。</li>
+<li><code>y</code>: y 轴数据。</li>
+<li><code>label</code>: 曲线标签（用于图例）。</li>
+<li><code>color</code>: 曲线颜色。</li>
+</ul></li>
+</ul>
+</section>
+<section id="matplotlib折线图代码解释22" class="level2">
+<h2 class="anchored" data-anchor-id="matplotlib折线图代码解释22">Matplotlib折线图代码解释(2/2)</h2>
+<ul>
+<li><code>plt.plot()</code>: 绘制折线图。（续）
+<ul>
+<li><code>linestyle</code>: 曲线线型。</li>
+<li><code>linewidth</code>: 曲线线宽。</li>
+</ul></li>
+<li><code>plt.title()</code>: 设置图表标题。</li>
+<li><code>plt.xlabel()</code>: 设置 x 轴标签。</li>
+<li><code>plt.ylabel()</code>: 设置 y 轴标签。</li>
+<li><code>plt.legend()</code>: 显示图例。</li>
+<li><code>plt.grid()</code>: 显示网格线。</li>
+<li><code>plt.show()</code>: 显示图表。</li>
+</ul>
+</section>
+<section id="其他重要的-python-库-12" class="level2">
+<h2 class="anchored" data-anchor-id="其他重要的-python-库-12">其他重要的 Python 库 (1/2)</h2>
+<ul>
+<li><strong>NumPy</strong> (Numerical Python):
+<ul>
+<li>Python 科学计算的基础库。</li>
+<li>提供了高性能的多维数组对象 (ndarray)。</li>
+<li>提供了各种数组操作和数学函数，如矩阵运算、线性代数、傅里叶变换等。</li>
+<li>是许多其他科学计算库的基础。</li>
+</ul></li>
+<li><strong>SciPy</strong> (Scientific Python):
+<ul>
+<li>构建在 NumPy 之上，提供了更多高级的科学计算功能。</li>
+<li>包含许多数学、科学和工程计算中常用的模块。</li>
+</ul></li>
+</ul>
+</section>
+<section id="其他重要的-python-库-22" class="level2">
+<h2 class="anchored" data-anchor-id="其他重要的-python-库-22">其他重要的 Python 库 (2/2)</h2>
+<ul>
+<li><strong>Scrapy</strong>:
+<ul>
+<li>强大的网络爬虫框架，用于快速构建网络爬虫应用。</li>
+<li>可以自动抓取网页数据、提取结构化信息、存储数据等。</li>
+</ul></li>
+<li><strong>Beautiful Soup</strong>:
+<ul>
+<li>网页解析库，可以从 HTML 或 XML 文件中提取数据。</li>
+<li>可以方便地解析网页结构、查找特定标签、提取文本内容等。</li>
+<li>常与 Requests 库一起使用，用于爬取网页数据。</li>
+</ul></li>
+</ul>
+</section>
+<section id="其他重要的python库补充12" class="level2">
+<h2 class="anchored" data-anchor-id="其他重要的python库补充12">其他重要的Python库补充(1/2)</h2>
+<ul>
+<li><strong>NLTK</strong> (Natural Language Toolkit):
+<ul>
+<li>自然语言处理库，用于文本分析、处理和理解。</li>
+<li>提供了各种自然语言处理工具。</li>
+</ul></li>
+<li><strong>Statsmodels</strong>:
+<ul>
+<li>统计学计算库，提供各种统计模型和方法。</li>
+<li>可以进行各种统计分析。</li>
+</ul></li>
+</ul>
+</section>
+<section id="其他重要的python库补充22" class="level2">
+<h2 class="anchored" data-anchor-id="其他重要的python库补充22">其他重要的Python库补充(2/2)</h2>
+<ul>
+<li><strong>Requests</strong>:
+<ul>
+<li>简洁易用的 HTTP 库，用于发送 HTTP 请求，与 Web 服务交互。</li>
+<li>可以方便地发送各种类型的 HTTP 请求，获取响应数据。</li>
+</ul></li>
+</ul>
+</section>
+<section id="jupyter-notebook-12" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebook-12">Jupyter Notebook 📝 (1/2)</h2>
+<ul>
+<li><strong>Jupyter Notebook</strong>
+<ul>
+<li>交互式的数据科学与科学计算开发环境。</li>
+<li>基于 Web 的 Python 编辑器。</li>
+<li>支持 <strong>Python</strong>、<strong>R</strong>、<strong>Julia</strong>、<strong>Scala</strong> 等在内的超过 40 多种编程语言。</li>
+<li>可以将代码、运行结果、文本、图像、公式、视频等内容整合到一个文档中 (.ipynb 文件)。</li>
+<li>非常适合数据分析、机器学习、科学计算等需要交互式探索和展示结果的场景。</li>
+</ul></li>
+</ul>
+</section>
+<section id="jupyter-notebook-22" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebook-22">Jupyter Notebook 📝 (2/2)</h2>
+<ul>
+<li><strong>Jupyter Notebook</strong> (续)
+<ul>
+<li><strong>主要特点</strong>：
+<ul>
+<li><strong>交互式编程</strong>：可以逐个单元格执行代码，并立即查看结果。</li>
+<li><strong>富文本支持</strong>：可以使用 Markdown 语法编写格式丰富的文本。</li>
+<li><strong>代码和结果并存</strong>：代码和运行结果都保存在同一个文档中。</li>
+<li><strong>可视化支持</strong>：可以直接在 Notebook 中显示图表、图像等。</li>
+<li><strong>可扩展性</strong>：支持各种插件和扩展。</li>
+<li><strong>导出功能</strong>: 可以将notebook导出为多种格式。</li>
+</ul></li>
+</ul></li>
+<li><strong>JupyterLab</strong>
+<ul>
+<li>Jupyter Notebook的下一代产品，提供更强大的功能和更灵活的界面。</li>
+</ul></li>
+</ul>
+</section>
+<section id="如何启动jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="如何启动jupyter-notebook">如何启动Jupyter Notebook</h2>
+<p>💡 如何启动Jupyter Notebook？</p>
+<ol type="1">
+<li><strong>打开命令行或终端</strong>。</li>
+<li><strong>导航到你想要保存 Notebook 文件的目录</strong> (可选，但建议这样做)。
+<ul>
+<li>使用 <code>cd</code> 命令切换目录。</li>
+</ul></li>
+<li><strong>输入以下命令并按回车键</strong>：</li>
+</ol>
+<pre class="{bash}"><code>jupyter notebook</code></pre>
+<ol start="4" type="1">
+<li>稍等片刻，Jupyter Notebook 会自动在你的默认浏览器中打开。</li>
+<li>在 Jupyter Notebook 界面中，你可以创建新的 Notebook 文件，或者打开已有的文件。</li>
+</ol>
+</section>
+<section id="jupyter-notebook-使用示例-12" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebook-使用示例-12">Jupyter Notebook 使用示例 📈 (1/2)</h2>
+<ul>
+<li>这是一个绘制双纽线的例子，展示了如何在 Jupyter Notebook 中结合代码、解释文本和图形来清晰地展示数据分析过程。</li>
+</ul>
+</section>
+<section id="jupyter-notebook-使用示例-22" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebook-使用示例-22">Jupyter Notebook 使用示例 📈 (2/2)</h2>
+<p>💡 代码详细解释</p>
+<p>这段代码使用了 <code>matplotlib</code> 库在极坐标系中绘制双纽线。</p>
+<ol type="1">
+<li><strong>导入库</strong>：
+<ul>
+<li><code>import matplotlib.pyplot as plt</code></li>
+<li><code>import numpy as np</code></li>
+</ul></li>
+<li><strong>生成数据</strong>：
+<ul>
+<li><code>theta_list = np.arange(0, 2*np.pi, 0.01)</code>：生成一组角度值。
+<ul>
+<li><code>np.arange()</code> 是 <code>numpy</code> 中的函数，用于生成等差数列。</li>
+<li><code>np.pi</code> 是 <code>numpy</code> 中的常量，表示圆周率 π。</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+<section id="jupyter-notebook-使用示例-22-1" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebook-使用示例-22-1">Jupyter Notebook 使用示例 📈 (2/2)</h2>
+<ul>
+<li><strong>生成数据</strong>（续）：
+<ul>
+<li><code>r = [2*np.cos(2*theta) for theta in theta_list]</code>：根据双纽线的极坐标方程计算对应的半径值。
+<ul>
+<li>这是一个列表推导式。</li>
+<li><code>np.cos()</code> 是 <code>numpy</code> 中的函数，用于计算余弦值。</li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>创建图表</strong>：
+<ul>
+<li><code>axe = plt.subplot(projection='polar')</code>：创建一个极坐标子图。
+<ul>
+<li><code>plt.subplot()</code> 用于创建子图。</li>
+<li><code>projection='polar'</code> 指定子图的类型为极坐标。</li>
+<li>返回的 <code>axe</code> 对象代表这个子图。</li>
+</ul></li>
+</ul></li>
+<li><strong>绘制曲线</strong>：
+<ul>
+<li><code>axe.plot(theta_list, r)</code>：在极坐标子图中绘制双纽线。
+<ul>
+<li><code>axe.plot()</code> 是 <code>Axes</code> 对象的方法，用于绘制曲线。</li>
+</ul></li>
+</ul></li>
+<li><strong>设置图表属性</strong>：
+<ul>
+<li><code>axe.set_rticks([])</code>：隐藏半径刻度。</li>
+</ul></li>
+<li><strong>显示图表</strong>：
+<ul>
+<li><code>plt.show()</code>：显示绘制好的图表。</li>
+</ul></li>
+</ol>
+</section>
+<section id="双纽线的数学背景-12" class="level2">
+<h2 class="anchored" data-anchor-id="双纽线的数学背景-12">双纽线的数学背景 ➗ (1/2)</h2>
+<p>💡 数学公式</p>
+<p>双纽线的极坐标方程为：</p>
+<p><span class="math display">\[
+r^2 = a^2 \cos(2\theta)
+\]</span></p>
+<p>或</p>
+<p><span class="math display">\[
+r = \pm a\sqrt{\cos(2\theta)}
+\]</span></p>
+<p>其中，<span class="math inline">\(r\)</span> 是极径，<span class="math inline">\(\theta\)</span> 是极角，<span class="math inline">\(a\)</span> 是一个常数。</p>
+</section>
+<section id="双纽线的数学背景-22" class="level2">
+<h2 class="anchored" data-anchor-id="双纽线的数学背景-22">双纽线的数学背景 ➗ (2/2)</h2>
+<p>💡 直角坐标方程</p>
+<p>双纽线的直角坐标方程为：</p>
+<p><span class="math display">\[
+(x^2 + y^2)^2 = a^2(x^2 - y^2)
+\]</span></p>
+<p>💡 参数方程</p>
+<p>双纽线的参数方程为：</p>
+<p><span class="math display">\[
+x = a\sqrt{\cos(2t)}\cos(t)
+\]</span></p>
+<p><span class="math display">\[
+y = a\sqrt{\cos(2t)}\sin(t)
+\]</span></p>
+<p>其中，<span class="math inline">\(t\)</span> 是参数。</p>
+</section>
+<section id="双纽线的性质" class="level2">
+<h2 class="anchored" data-anchor-id="双纽线的性质">双纽线的性质</h2>
+<p>💡 性质</p>
+<ul>
+<li>双纽线关于原点对称。</li>
+<li>双纽线有两个环，分别位于 x 轴的两侧。</li>
+<li>双纽线的形状类似于阿拉伯数字 “8” 或无限符号 “∞”。</li>
+</ul>
+</section>
+<section id="总结" class="level2">
+<h2 class="anchored" data-anchor-id="总结">总结 🎉</h2>
+<ul>
+<li>Python 是一种功能强大、应用广泛的编程语言，非常适合数据分析和机器学习。
+<ul>
+<li>易学易用、社区强大、库丰富。</li>
+</ul></li>
+<li>掌握 Python 的基本语法、常用库和工具，是进行数据分析的基础。
+<ul>
+<li>缩进、模块化、数据类型、控制流等。</li>
+<li>Pandas、NumPy、Matplotlib、Scikit-learn 等。</li>
+</ul></li>
+<li>Jupyter Notebook 是一个强大的交互式开发环境，可以帮助你更好地探索和展示数据分析结果。
+<ul>
+<li>交互式编程、富文本、可视化、代码和结果并存。</li>
+</ul></li>
+<li>不断学习和实践，才能更好地掌握 Python 数据分析技能。💪</li>
+</ul>
+</section>
+<section id="思考与讨论-12" class="level2">
+<h2 class="anchored" data-anchor-id="思考与讨论-12">思考与讨论 🤔 (1/2)</h2>
+<ul>
+<li>Python 还有哪些其他的应用领域？
+<ul>
+<li>游戏开发 (Pygame)</li>
+<li>网络编程 (Socket, Twisted)</li>
+<li>图形用户界面 (GUI) 开发 (Tkinter, PyQt, wxPython)</li>
+</ul></li>
+</ul>
+</section>
+<section id="思考与讨论-22" class="level2">
+<h2 class="anchored" data-anchor-id="思考与讨论-22">思考与讨论 🤔 (2/2)</h2>
+<ul>
+<li>除了本章介绍的库，你还了解哪些常用的 Python 库？它们有什么作用？
+<ul>
+<li>TensorFlow, PyTorch: 深度学习框架</li>
+<li>Seaborn: 基于 Matplotlib 的高级绘图库</li>
+<li>Bokeh, Plotly: 交互式可视化库</li>
+<li>SQLAlchemy: 数据库 ORM (Object-Relational Mapper)</li>
+<li>Flask, Django: Web 开发框架</li>
+</ul></li>
+</ul>
+</section>
+<section id="如何利用-jupyter-notebook-提高效率" class="level2">
+<h2 class="anchored" data-anchor-id="如何利用-jupyter-notebook-提高效率">如何利用 Jupyter Notebook 提高效率？</h2>
+<ul>
+<li>如何利用 Jupyter Notebook 提高你的数据分析效率？
+<ul>
+<li>交互式探索数据</li>
+<li>快速原型验证</li>
+<li>编写可重复的分析流程</li>
+<li>制作数据分析报告</li>
+<li>分享和协作</li>
+</ul></li>
+</ul>
+</section>
+<section id="如何进一步学习python数据分析" class="level2">
+<h2 class="anchored" data-anchor-id="如何进一步学习python数据分析">如何进一步学习Python数据分析？</h2>
+<ul>
+<li>如何进一步学习和提升 Python 数据分析能力？
+<ul>
+<li>阅读官方文档</li>
+<li>学习在线教程</li>
+<li>参与开源项目</li>
+<li>参加数据分析竞赛 (Kaggle)</li>
+<li>阅读相关书籍</li>
+<li>多做项目，多实践</li>
+</ul></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/qiufei\.github\.io\/web-slide-python-visual");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>🔋<a href="https://posit.co"><img src="https://posit.co/wp-content/themes/Posit/assets/images/posit-logo-2024.svg" class="img-fluid" alt="Posit" width="65"></a></p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ 邱飞 © 2025
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://beian.miit.gov.cn">
+<p>浙ICP备 2024072710号-1</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021202002511">
+<p>浙公网安备 33021202002511号</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:hfutqiufei@163.com">
+      <i class="bi bi-envelope-at-fill" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

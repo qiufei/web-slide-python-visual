@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="zh-Hans"><head>
+<script src="chapter1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="chapter1_files/libs/quarto-html/tabby.min.js"></script>
+<script src="chapter1_files/libs/quarto-html/popper.min.js"></script>
+<script src="chapter1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="chapter1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="chapter1_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="chapter1_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.39">
+
+  <meta name="author" content="邱飞">
+  <title>信息技术基础</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="chapter1_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="chapter1_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="chapter1_files/libs/revealjs/dist/theme/quarto-a527665ed01beaa5bc5d6c6d96bbc18d.css">
+  <link rel="stylesheet" href="my.css">
+  <link href="chapter1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="chapter1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="chapter1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="chapter1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="chapter1_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="chapter1_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="chapter1_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="https://assets.qiufei.site/zwu/nice_to_meet_you.png" data-background-opacity="0.5" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">信息技术基础</h1>
+  <p class="subtitle">导论</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+邱飞 
+</div>
+</div>
+</div>
+
+</section>
+<section id="目录" class="title-slide slide level1 center">
+<h1>目录</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>🔍 海量数据背后蕴藏的知识</li>
+<li>🔄 数据分析与数据挖掘的关系</li>
+<li>🤖 机器学习与数据分析的关系</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>👣 数据分析的基本步骤</li>
+<li>🐍 Python和数据分析</li>
+</ul>
+</div></div>
+</section>
+
+<section>
+<section id="海量数据背后蕴藏的知识" class="title-slide slide level1 center">
+<h1>海量数据背后蕴藏的知识</h1>
+
+</section>
+<section id="数据蕴含了大量知识" class="title-slide slide level2 center">
+<h2>数据蕴含了大量知识 💡</h2>
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href=""></a>flowchart LR</span>
+<span id="cb1-2"><a href=""></a>    A[对象] --&gt;|观察现象| B(数据);</span>
+<span id="cb1-3"><a href=""></a>    B --&gt;|归纳总结| C[规律];</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-data-to-knowledge" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-data-to-knowledge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-data-to-knowledge">flowchart LR
+    A[对象] --&gt;|观察现象| B(数据);
+    B --&gt;|归纳总结| C[规律];
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-to-knowledge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1: 从数据到知识的转化过程
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>对象（Object）</strong>: 我们观察和研究的对象，可以是人、事、物等。</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据蕴含了大量知识-1" class="title-slide slide level2 center">
+<h2>数据蕴含了大量知识 💡</h2>
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href=""></a>flowchart LR</span>
+<span id="cb2-2"><a href=""></a>    A[对象] --&gt;|观察现象| B(数据);</span>
+<span id="cb2-3"><a href=""></a>    B --&gt;|归纳总结| C[规律];</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-data-to-knowledge2" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-data-to-knowledge2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-data-to-knowledge2">flowchart LR
+    A[对象] --&gt;|观察现象| B(数据);
+    B --&gt;|归纳总结| C[规律];
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-to-knowledge2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;2: 从数据到知识的转化过程
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>观察现象 (Observation)</strong>: 通过各种方式（如传感器、问卷调查、人工记录等）收集关于对象的信息。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据蕴含了大量知识-2" class="title-slide slide level2 center">
+<h2>数据蕴含了大量知识 💡</h2>
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href=""></a>flowchart LR</span>
+<span id="cb3-2"><a href=""></a>    A[对象] --&gt;|观察现象| B(数据);</span>
+<span id="cb3-3"><a href=""></a>    B --&gt;|归纳总结| C[规律];</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-data-to-knowledge3" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-data-to-knowledge3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-data-to-knowledge3">flowchart LR
+    A[对象] --&gt;|观察现象| B(数据);
+    B --&gt;|归纳总结| C[规律];
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-to-knowledge3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;3: 从数据到知识的转化过程
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>数据 (Data)</strong>: 对观察到的现象进行量化或编码后的结果。例如，温度传感器记录的温度值、问卷调查中的选项、文本记录中的关键词等。</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据蕴含了大量知识-3" class="title-slide slide level2 center">
+<h2>数据蕴含了大量知识 💡</h2>
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href=""></a>flowchart LR</span>
+<span id="cb4-2"><a href=""></a>    A[对象] --&gt;|观察现象| B(数据);</span>
+<span id="cb4-3"><a href=""></a>    B --&gt;|归纳总结| C[规律];</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-data-to-knowledge4" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-data-to-knowledge4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-data-to-knowledge4">flowchart LR
+    A[对象] --&gt;|观察现象| B(数据);
+    B --&gt;|归纳总结| C[规律];
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-to-knowledge4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;4: 从数据到知识的转化过程
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>归纳总结 (Induction &amp; Summarization)</strong>: 对数据进行分析、处理，找出其中的规律、模式、趋势等。</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据蕴含了大量知识-4" class="title-slide slide level2 center">
+<h2>数据蕴含了大量知识 💡</h2>
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href=""></a>flowchart LR</span>
+<span id="cb5-2"><a href=""></a>    A[对象] --&gt;|观察现象| B(数据);</span>
+<span id="cb5-3"><a href=""></a>    B --&gt;|归纳总结| C[规律];</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-data-to-knowledge5" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-data-to-knowledge5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-data-to-knowledge5">flowchart LR
+    A[对象] --&gt;|观察现象| B(数据);
+    B --&gt;|归纳总结| C[规律];
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-to-knowledge5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;5: 从数据到知识的转化过程
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>规律 (Pattern/Rule)</strong>: 从数据中提炼出的可重复、可验证的知识。</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据蕴含了大量知识-5" class="title-slide slide level2 center">
+<h2>数据蕴含了大量知识 💡</h2>
+<p><strong>举例：</strong></p>
+<p>一家电商公司（对象）通过用户浏览记录、购买记录等（观察现象）收集了大量的用户行为数据（数据）。通过对这些数据进行分析（归纳总结），发现用户在晚上8点到10点之间购买量最大（规律）。</p>
+</section>
+
+<section id="规律可用于" class="title-slide slide level2 center">
+<h2>规律可用于</h2>
+<ul>
+<li><strong>解释</strong>当前发生的事情 🧐
+<ul>
+<li><strong>案例</strong>: 通过分析历史销售数据，发现某款产品在夏季销量最高，可以解释为什么当前该产品销量很好。</li>
+</ul></li>
+<li><strong>预测</strong>未来的情况 🔮
+<ul>
+<li><strong>案例</strong>: 利用历史股票价格数据，可以构建模型预测未来股票价格的走势。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据分析的意义案例分析" class="title-slide slide level2 center">
+<h2>数据分析的意义：案例分析</h2>
+
+</section>
+<section id="案例1电商推荐系统" class="slide level3">
+<h3>案例1：电商推荐系统 🛍️</h3>
+<ul>
+<li><strong>背景</strong>: 电商平台每天都会产生大量的用户浏览、搜索、购买等数据。</li>
+<li><strong>目标</strong>: 通过分析这些数据，了解用户的兴趣偏好，为用户推荐他们可能感兴趣的商品，提高用户满意度和销售额。</li>
+<li><strong>方法</strong>: 使用协同过滤、内容推荐等算法，分析用户的历史行为，找到与用户兴趣相似的其他用户或商品，进行推荐。</li>
+</ul>
+</section>
+
+<section id="数据分析的意义案例分析-1" class="title-slide slide level2 center">
+<h2>数据分析的意义：案例分析</h2>
+
+</section>
+<section id="案例2金融风控" class="slide level3">
+<h3>案例2：金融风控 🏦</h3>
+<ul>
+<li><strong>背景</strong>: 金融机构需要评估贷款申请人的信用风险，决定是否批准贷款以及贷款的利率。</li>
+<li><strong>目标</strong>: 通过分析申请人的个人信息、信用记录、财务状况等数据，预测申请人违约的可能性。</li>
+<li><strong>方法</strong>: 使用逻辑回归、决策树、支持向量机等机器学习算法，构建信用评分模型，对申请人进行风险评估。</li>
+</ul>
+</section>
+
+<section id="数据分析的意义案例分析-2" class="title-slide slide level2 center">
+<h2>数据分析的意义：案例分析</h2>
+
+</section>
+<section id="案例3医疗诊断" class="slide level3">
+<h3>案例3：医疗诊断 🩺</h3>
+<ul>
+<li><strong>背景</strong>: 医院每天都会产生大量的病人病历、检查报告、影像资料等数据。</li>
+<li><strong>目标</strong>: 通过分析这些数据，辅助医生进行疾病诊断，提高诊断的准确性和效率。</li>
+<li><strong>方法</strong>: 使用自然语言处理技术分析病历文本，使用图像识别技术分析医学影像，结合机器学习算法，构建疾病诊断模型。</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="数据分析与数据挖掘的关系" class="title-slide slide level1 center">
+<h1>数据分析与数据挖掘的关系</h1>
+
+</section>
+<section id="统计分析的含义" class="title-slide slide level2 center">
+<h2>统计分析的含义</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>在已定假设、先验约束上，对数据进行整理、筛选和加工，并得到<strong>信息</strong>的过程。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="统计分析的含义-1" class="title-slide slide level2 center">
+<h2>统计分析的含义</h2>
+<ul>
+<li><strong>已定假设、先验约束</strong>: 指在分析之前，已经有了一些关于数据的假设或预期。</li>
+<li><strong>整理、筛选和加工</strong>: 对数据进行清洗、转换、选择等操作，去除噪声、异常值，提取有用的特征。</li>
+</ul>
+</section>
+
+<section id="统计分析的含义-2" class="title-slide slide level2 center">
+<h2>统计分析的含义</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>信息</strong>: 从数据得出的一些初步结论和结果。例如：平均值、方差、相关性等。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="统计分析的含义-3" class="title-slide slide level2 center">
+<h2>统计分析的含义</h2>
+<p><strong>举例：</strong> 假设我们已经知道，用户年龄和购买金额可能存在正相关。那么，我们就可以选择年龄和购买金额这两个feature，计算它们的相关系数。如果相关系数为正，说明两者确实存在正相关，验证了我们的假设。</p>
+</section>
+
+<section id="数据挖掘的含义" class="title-slide slide level2 center">
+<h2>数据挖掘的含义</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>在数据分析得到信息的基础上进一步获得<strong>认知</strong>，转为有效的预测和决策。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据挖掘的含义-1" class="title-slide slide level2 center">
+<h2>数据挖掘的含义</h2>
+<ul>
+<li><strong>认知</strong>: 对数据背后更深层次的规律、模式的理解。</li>
+</ul>
+</section>
+
+<section id="数据挖掘的含义-2" class="title-slide slide level2 center">
+<h2>数据挖掘的含义</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>有效的预测和决策</strong>: 基于认知，可以对未来进行预测，或做出更明智的决策。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据挖掘的含义-3" class="title-slide slide level2 center">
+<h2>数据挖掘的含义</h2>
+<p><strong>举例：</strong> 在统计分析得出用户年龄和购买金额存在正相关的结论后，我们可以使用线性回归等算法，建立一个预测模型。输入用户的年龄，预测其购买金额。这样就将信息转化为了认知和预测能力。</p>
+</section>
+
+<section id="数据分析-统计分析-数据挖掘" class="title-slide slide level2 center">
+<h2>数据分析 = 统计分析 + 数据挖掘</h2>
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href=""></a>flowchart LR</span>
+<span id="cb6-2"><a href=""></a>    A[数据] --&gt;|统计分析| B(信息);</span>
+<span id="cb6-3"><a href=""></a>    B --&gt;|数据挖掘| C[知识];</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-stat-dm" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-stat-dm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-stat-dm">flowchart LR
+    A[数据] --&gt;|统计分析| B(信息);
+    B --&gt;|数据挖掘| C[知识];
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stat-dm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;6: 数据分析、统计分析与数据挖掘的关系
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据分析-统计分析-数据挖掘-1" class="title-slide slide level2 center">
+<h2>数据分析 = 统计分析 + 数据挖掘</h2>
+<ul>
+<li><strong>统计分析</strong>：数据预处理阶段 🧹
+<ul>
+<li>主要关注数据的基本特征、分布、相关性等。</li>
+<li>常用的方法包括描述性统计、假设检验、方差分析等。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据分析-统计分析-数据挖掘-2" class="title-slide slide level2 center">
+<h2>数据分析 = 统计分析 + 数据挖掘</h2>
+<ul>
+<li><strong>数据挖掘</strong>：知识发现阶段 🕵️‍♀️
+<ul>
+<li>主要关注从数据中发现更深层次的模式、规律。</li>
+<li>常用的方法包括聚类分析、分类分析、关联分析、预测建模等。</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="机器学习与数据分析的关系" class="title-slide slide level1 center">
+<h1>机器学习与数据分析的关系</h1>
+
+</section>
+<section id="机器学习的含义" class="title-slide slide level2 center">
+<h2>机器学习的含义</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>重要</strong></p>
+</div>
+<div class="callout-content">
+<p>利用<strong>经验</strong>来改善计算机系统自身的性能。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="机器学习的含义-1" class="title-slide slide level2 center">
+<h2>机器学习的含义</h2>
+<ul>
+<li><strong>经验</strong>在计算机系统中主要以<strong>数据</strong>形式存在.</li>
+</ul>
+</section>
+
+<section id="机器学习的含义-2" class="title-slide slide level2 center">
+<h2>机器学习的含义</h2>
+<ul>
+<li>计算机程序通过分析数据，学习数据中的规律，从而在面对新的数据时，能够做出更准确的判断或预测。</li>
+</ul>
+</section>
+
+<section id="机器学习的含义-3" class="title-slide slide level2 center">
+<h2>机器学习的含义</h2>
+<p><strong>案例：垃圾邮件过滤</strong></p>
+<ul>
+<li><strong>经验</strong>：大量的已标记为垃圾邮件或非垃圾邮件的邮件数据。</li>
+<li><strong>学习</strong>：机器学习算法（如朴素贝叶斯、支持向量机等）分析这些邮件数据，学习垃圾邮件和非垃圾邮件的特征（如关键词、发件人等）。</li>
+<li><strong>性能改善</strong>：学习后的模型可以自动识别新的邮件是否为垃圾邮件，准确率会随着训练数据的增加而提高。</li>
+</ul>
+</section>
+
+<section id="数据分析的含义再强调" class="title-slide slide level2 center">
+<h2>数据分析的含义（再强调）</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>重要</strong></p>
+</div>
+<div class="callout-content">
+<p>识别出巨量数据中有效的、新颖的、潜在有用的、最终可理解的模式的非平凡过程，即从海量数据中找到有用的知识。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据分析的含义再强调-1" class="title-slide slide level2 center">
+<h2>数据分析的含义（再强调）</h2>
+<ul>
+<li><strong>有效的（Valid）</strong>：发现的模式必须在新的数据上也能成立，具有泛化能力。</li>
+<li><strong>新颖的（Novel）</strong>：发现的模式是以前未知的，能够带来新的洞见。</li>
+<li><strong>潜在有用的（Potentially Useful）</strong>：发现的模式能够用于实际的应用场景，解决实际问题。</li>
+<li><strong>最终可理解的（Ultimately Understandable）</strong>：发现的模式必须是人类可以理解的，不能是黑盒子。</li>
+</ul>
+</section>
+
+<section id="两者之间的关系" class="title-slide slide level2 center">
+<h2>两者之间的关系</h2>
+<ul>
+<li><strong>机器学习是数据分析的重要工具</strong>。数据分析过程经常需要利用机器学习算法来发现数据中的模式。</li>
+<li><strong>数据分析为机器学习提供数据和问题</strong>。机器学习算法需要大量的数据进行训练，而数据分析可以帮助我们理解数据、提出问题，为机器学习提供方向。</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="数据分析的基本步骤" class="title-slide slide level1 center scrollable">
+<h1>数据分析的基本步骤 👣</h1>
+<ol type="1">
+<li><strong>数据收集</strong> 📦：获取数据</li>
+<li><strong>数据预处理</strong> 🧹：清洗、转换数据</li>
+<li><strong>数据分析与知识发现</strong> 🕵️‍♀️：探索数据、发现模式</li>
+<li><strong>数据后处理</strong> 📊：结果呈现、应用</li>
+</ol>
+</section>
+<section id="数据收集" class="title-slide slide level2 center">
+<h2>1. 数据收集 📦</h2>
+<ul>
+<li><strong>数据来源</strong>:
+<ul>
+<li><strong>内部数据</strong>: 企业自身的业务数据，如销售记录、用户行为数据、生产数据等。</li>
+<li><strong>外部数据</strong>: 来自第三方的数据，如行业报告、市场调研数据、公开数据集等。</li>
+<li><strong>公开数据</strong>：政府、研究机构等发布的公开数据。</li>
+<li><strong>网络爬虫</strong>：从网页上抓取数据。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据收集-1" class="title-slide slide level2 center">
+<h2>1. 数据收集 📦</h2>
+<ul>
+<li><strong>数据类型</strong>:
+<ul>
+<li><strong>结构化数据</strong>: 具有固定格式的数据，如数据库中的表格数据。</li>
+<li><strong>非结构化数据</strong>: 没有固定格式的数据，如文本、图片、音频、视频等。</li>
+<li><strong>半结构化数据</strong>: 介于结构化和非结构化之间的数据，如XML、JSON格式的数据。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据收集-2" class="title-slide slide level2 center">
+<h2>1. 数据收集 📦</h2>
+<ul>
+<li><strong>大数据特点</strong>:
+<ul>
+<li><strong>大量 (Volume)</strong>: 数据量巨大。</li>
+<li><strong>多样 (Variety)</strong>: 数据类型多样。</li>
+<li><strong>高速 (Velocity)</strong>: 数据产生和处理速度快。</li>
+<li><strong>价值 (Value)</strong>: 数据中蕴含着巨大的价值，但价值密度较低。</li>
+<li><strong>真实性（Veracity）</strong>: 数据的质量和可信度。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据预处理" class="title-slide slide level2 center">
+<h2>2. 数据预处理 🧹</h2>
+<ul>
+<li><strong>目标</strong>: 将原始数据转化为高质量的数据，为后续的分析和建模做准备。</li>
+</ul>
+</section>
+
+<section id="数据预处理-1" class="title-slide slide level2 center">
+<h2>2. 数据预处理 🧹</h2>
+<ul>
+<li><strong>主要任务</strong>:
+<ul>
+<li><strong>数据清洗</strong>:
+<ul>
+<li><strong>缺失值处理</strong>: 填充缺失值（如均值、中位数、众数、模型预测值等）或删除缺失值。</li>
+<li><strong>异常值处理</strong>: 检测和处理异常值（如删除、替换、分箱等）。</li>
+<li><strong>重复值处理</strong>: 检测和删除重复值。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据预处理-2" class="title-slide slide level2 center">
+<h2>2. 数据预处理 🧹</h2>
+<ul>
+<li><strong>主要任务</strong>:
+<ul>
+<li><strong>数据转换</strong>:
+<ul>
+<li><strong>标准化/归一化</strong>: 将不同量纲的数据缩放到同一范围。</li>
+<li><strong>离散化</strong>: 将连续数据划分为若干区间。</li>
+<li><strong>特征编码</strong>: 将非数值型特征转换为数值型特征（如One-Hot编码、Label编码等）。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据预处理-3" class="title-slide slide level2 center">
+<h2>2. 数据预处理 🧹</h2>
+<ul>
+<li><strong>主要任务</strong>:
+<ul>
+<li><strong>数据选择</strong>:
+<ul>
+<li><strong>特征选择</strong>: 选择对分析目标有用的特征。</li>
+<li><strong>样本选择</strong>: 选择具有代表性的样本。</li>
+<li><strong>数据抽样</strong>：为了减少计算量，对数据进行抽样。</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>数据预处理是数据分析中非常重要的环节，数据质量的好坏直接影响到后续分析结果的准确性和可靠性。通常会占到整个数据分析流程60%以上的时间。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="数据分析与知识发现" class="title-slide slide level2 center">
+<h2>3. 数据分析与知识发现 🕵️‍♀️</h2>
+<ul>
+<li>将预处理后的数据进行进一步的分析，完成信息到认知的过程。</li>
+</ul>
+</section>
+
+<section id="数据分析与知识发现-1" class="title-slide slide level2 center">
+<h2>3. 数据分析与知识发现 🕵️‍♀️</h2>
+<ul>
+<li>方法分类
+<ul>
+<li><strong>有监督学习</strong>：
+<ul>
+<li><strong>分类（Classification）</strong>：预测数据的类别标签。如：判断一封邮件是否为垃圾邮件、判断一张图片中的物体是什么。
+<ul>
+<li>常用算法：
+<ul>
+<li>逻辑回归（Logistic Regression）</li>
+<li>决策树（Decision Tree）</li>
+<li>支持向量机（Support Vector Machine）</li>
+<li>朴素贝叶斯（Naive Bayes）</li>
+<li>随机森林（Random Forest）</li>
+<li>K近邻（K-Nearest Neighbors）</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据分析与知识发现-2" class="title-slide slide level2 center">
+<h2>3. 数据分析与知识发现 🕵️‍♀️</h2>
+<ul>
+<li>方法分类
+<ul>
+<li><strong>有监督学习</strong>：
+<ul>
+<li><strong>回归（Regression）</strong>：预测数据的连续值。如：预测房价、预测股票价格。
+<ul>
+<li>常用算法：
+<ul>
+<li>线性回归（Linear Regression）</li>
+<li>多项式回归（Polynomial Regression）</li>
+<li>支持向量回归（Support Vector Regression）</li>
+<li>决策树回归（Decision Tree Regression）</li>
+<li>随机森林回归（Random Forest Regression）</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据分析与知识发现-3" class="title-slide slide level2 center">
+<h2>3. 数据分析与知识发现 🕵️‍♀️</h2>
+<ul>
+<li>方法分类
+<ul>
+<li><strong>有监督学习</strong>：
+<ul>
+<li><strong>关联分析（Association Analysis）</strong>：发现数据中项集之间的关联规则。如：购物篮分析，发现哪些商品经常被一起购买。
+<ul>
+<li>常用算法：
+<ul>
+<li>Apriori</li>
+<li>FP-Growth</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据分析与知识发现-4" class="title-slide slide level2 center">
+<h2>3. 数据分析与知识发现 🕵️‍♀️</h2>
+<ul>
+<li>方法分类
+<ul>
+<li><strong>无监督学习</strong>：
+<ul>
+<li><strong>聚类（Clustering）</strong>：将数据划分为若干个群组，使得同一群组内的数据相似度较高，不同群组之间的数据相似度较低。如：客户细分、文档聚类。
+<ul>
+<li>常用算法：
+<ul>
+<li>K-Means</li>
+<li>层次聚类（Hierarchical Clustering）</li>
+<li>DBSCAN</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据分析与知识发现-5" class="title-slide slide level2 center">
+<h2>3. 数据分析与知识发现 🕵️‍♀️</h2>
+<ul>
+<li>方法分类
+<ul>
+<li><strong>无监督学习</strong>：
+<ul>
+<li><strong>异常检测（Anomaly Detection）</strong>：识别数据中的异常值或异常模式。如：信用卡欺诈检测、网络入侵检测。
+<ul>
+<li>常用算法：
+<ul>
+<li>基于统计的方法（如Z-score、箱线图）</li>
+<li>基于距离的方法（如K近邻）</li>
+<li>基于密度的方法（如DBSCAN）</li>
+<li>孤立森林（Isolation Forest）</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据后处理" class="title-slide slide level2 center">
+<h2>4. 数据后处理 📊</h2>
+<ul>
+<li><strong>结果评估</strong>: 对数据分析的结果进行评估，判断其是否有效、可靠。
+<ul>
+<li><strong>分类模型评估指标</strong>: 准确率、精确率、召回率、F1值、ROC曲线、AUC等。</li>
+<li><strong>回归模型评估指标</strong>: 均方误差、均方根误差、平均绝对误差、R方等。</li>
+<li><strong>聚类模型评估指标</strong>: 轮廓系数、Calinski-Harabasz指数等。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据后处理-1" class="title-slide slide level2 center">
+<h2>4. 数据后处理 📊</h2>
+<ul>
+<li><strong>结果呈现</strong>: 将数据分析的结果以直观、易懂的方式呈现给用户。
+<ul>
+<li><strong>数据可视化</strong>: 使用图表、图形等展示数据。</li>
+<li><strong>报告撰写</strong>: 将数据分析的过程、结果、结论等以书面形式呈现。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="数据后处理-2" class="title-slide slide level2 center">
+<h2>4. 数据后处理 📊</h2>
+<ul>
+<li><strong>结果应用</strong>: 将数据分析的结果应用于实际业务场景，解决实际问题。
+<ul>
+<li><strong>决策支持</strong>: 为决策者提供数据支持，辅助决策。</li>
+<li><strong>模型部署</strong>: 将训练好的模型部署到生产环境中，进行实时预测或分类。</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="python和数据分析" class="title-slide slide level1 center">
+<h1>Python和数据分析 🐍</h1>
+
+</section>
+<section id="专用数据分析语言" class="title-slide slide level2 center">
+<h2>专用数据分析语言</h2>
+<ul>
+<li><strong>R 语言</strong>: 统计分析和数据可视化</li>
+<li>Matlab: 科学计算和工程应用</li>
+<li>Sas: 商业分析和数据挖掘</li>
+<li>Spss: 统计分析和社会科学研究</li>
+</ul>
+</section>
+
+<section id="python的优势面向生产" class="title-slide slide level2 center">
+<h2>Python的优势：面向生产</h2>
+<ul>
+<li>大部分数据分析过程需要首先进行实验性研究和原型构建，再移植到生产系统中。</li>
+</ul>
+</section>
+
+<section id="python的优势面向生产-1" class="title-slide slide level2 center">
+<h2>Python的优势：面向生产</h2>
+<ul>
+<li><strong>Python</strong> 适用于原型构建，且能够直接将分析程序运用到生产系统中。</li>
+</ul>
+</section>
+
+<section id="python的优势面向生产-2" class="title-slide slide level2 center">
+<h2>Python的优势：面向生产</h2>
+<ul>
+<li>其他的分析语言，则需要使用其他语言（如C/C++）重写代码，才能部署到生产环境。</li>
+</ul>
+</section>
+
+<section id="python的优势强大的第三方库" class="title-slide slide level2 center">
+<h2>Python的优势：强大的第三方库</h2>
+<ul>
+<li>Python 的强大功能依赖于第三方库实现。</li>
+</ul>
+</section>
+
+<section id="python的优势强大的第三方库-1" class="title-slide slide level2 center">
+<h2>Python的优势：强大的第三方库</h2>
+<ul>
+<li>常用数据分析库包括：
+<ul>
+<li><strong>Numpy</strong>: 提供高性能的数值计算功能。
+<ul>
+<li>多维数组对象（ndarray）</li>
+<li>线性代数运算</li>
+<li>随机数生成</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="python的优势强大的第三方库-2" class="title-slide slide level2 center">
+<h2>Python的优势：强大的第三方库</h2>
+<ul>
+<li>常用数据分析库包括：
+<ul>
+<li><strong>Scipy</strong>: 提供科学计算工具，如统计分析、信号处理等。
+<ul>
+<li>统计分布和检验</li>
+<li>优化算法</li>
+<li>信号处理</li>
+<li>图像处理</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="python的优势强大的第三方库-3" class="title-slide slide level2 center">
+<h2>Python的优势：强大的第三方库</h2>
+<ul>
+<li>常用数据分析库包括：
+<ul>
+<li><strong>Pandas</strong>: 提供数据处理和分析工具，如数据清洗、转换、聚合等。
+<ul>
+<li>Series 和 DataFrame 数据结构</li>
+<li>数据读取和写入（CSV、Excel、SQL等）</li>
+<li>数据清洗和转换</li>
+<li>数据分组和聚合</li>
+<li>时间序列分析</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="python的优势强大的第三方库-4" class="title-slide slide level2 center">
+<h2>Python的优势：强大的第三方库</h2>
+<ul>
+<li><p>常用数据分析库包括：</p>
+<ul>
+<li><strong>Scikit-learn</strong>: 提供机器学习算法库，如分类、回归、聚类等。
+<ul>
+<li>各种机器学习算法（分类、回归、聚类、降维等）</li>
+<li>模型选择和评估</li>
+<li>数据预处理</li>
+<li>流水线（Pipeline）</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="python的优势强大的第三方库-5" class="title-slide slide level2 center">
+<h2>Python的优势：强大的第三方库</h2>
+<ul>
+<li><p>常用数据分析库包括：</p>
+<ul>
+<li><strong>Matplotlib</strong>: 提供数据可视化工具，如绘制各种图表。
+<ul>
+<li>折线图、散点图、柱状图、直方图、饼图等</li>
+<li>自定义图表样式</li>
+<li>交互式绘图</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="python的优势强大的第三方库-6" class="title-slide slide level2 center">
+<h2>Python的优势：强大的第三方库</h2>
+<ul>
+<li>常用数据分析库包括：
+<ul>
+<li><strong>Seaborn</strong>: 基于Matplotlib的高级可视化库</li>
+<li><strong>Plotly</strong>: 交互式可视化图表</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="python的优势胶水语言特性" class="title-slide slide level2 center">
+<h2>Python的优势：胶水语言特性</h2>
+<ul>
+<li>Python 语言的底层可以用 C 语言实现，使用 C 语言实现的算法性能很高。</li>
+</ul>
+</section>
+
+<section id="python的优势胶水语言特性-1" class="title-slide slide level2 center">
+<h2>Python的优势：胶水语言特性</h2>
+<ul>
+<li>Numpy 的底层使用 C 实现，其效率比 R 语言更高。</li>
+</ul>
+</section>
+
+<section id="python的优势胶水语言特性-2" class="title-slide slide level2 center">
+<h2>Python的优势：胶水语言特性</h2>
+<ul>
+<li>Python可以方便地调用其他语言编写的程序（如C/C++，Java等），可以把其他语言的优势集成进来。</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>Python 的胶水语言特性使其能够方便地调用其他语言编写的程序，从而充分利用各种资源，提高开发效率。</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="总结" class="title-slide slide level1 center">
+<h1>总结</h1>
+<ul>
+<li>数据分析是从海量数据中提取有用信息和知识的过程，可以帮助我们解释过去、预测未来。</li>
+<li>数据分析、数据挖掘和机器学习之间存在密切的关系：
+<ul>
+<li>数据分析包含统计分析和数据挖掘两个阶段。</li>
+<li>机器学习是数据分析的重要工具，数据分析为机器学习提供数据和问题。</li>
+</ul></li>
+<li>数据分析的基本步骤包括数据收集、数据预处理、数据分析与知识发现以及数据后处理。每个步骤都有其特定的任务和方法。</li>
+<li>Python 是一种非常适合数据分析的编程语言，具有面向生产、强大的第三方库支持以及胶水语言特性等优势。</li>
+</ul>
+</section>
+
+<section id="思考与讨论" class="title-slide slide level1 center">
+<h1>思考与讨论 🤔</h1>
+<ul>
+<li>你认为数据分析在哪些领域有重要的应用？请举例说明。</li>
+<li>除了本章介绍的数据分析方法外，你还了解哪些其他的数据分析方法？</li>
+<li>你认为 Python 在数据分析领域有哪些不足之处？</li>
+<li>数据伦理和隐私保护在数据分析中非常重要。你认为在进行数据分析时，应该如何保护用户的隐私？</li>
+<li>请分享一个你认为有趣或有价值的数据分析案例。</li>
+</ul>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="zwu_logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>邱飞 💌 qiufei@zwu.edu.cn</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="chapter1_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="chapter1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="chapter1_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "已复制");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "已复制");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

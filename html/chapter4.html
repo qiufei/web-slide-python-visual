@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="zh-Hans"><head>
+<script src="chapter4_files/libs/clipboard/clipboard.min.js"></script>
+<script src="chapter4_files/libs/quarto-html/tabby.min.js"></script>
+<script src="chapter4_files/libs/quarto-html/popper.min.js"></script>
+<script src="chapter4_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="chapter4_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="chapter4_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="chapter4_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.39">
+
+  <meta name="author" content="邱飞">
+  <title>信息技术基础</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="chapter4_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="chapter4_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="chapter4_files/libs/revealjs/dist/theme/quarto-a527665ed01beaa5bc5d6c6d96bbc18d.css">
+  <link rel="stylesheet" href="my.css">
+  <link href="chapter4_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="chapter4_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="chapter4_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="chapter4_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="https://assets.qiufei.site/zwu/nice_to_meet_you.png" data-background-opacity="0.5" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">信息技术基础</h1>
+  <p class="subtitle">第四章 NumPy——数据分析基础工具 🚀</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+邱飞 
+</div>
+</div>
+</div>
+
+</section>
+<section id="课程引入" class="title-slide slide level2 center">
+<h2>课程引入</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><font size="5">本节课我们将深入学习NumPy，它是Python数据科学生态的基石。🧱</font></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/numpy_logo.png"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>NumPy为我们提供了强大的多维数组对象和快速的数值计算能力，是数据分析和机器学习的必备工具！💪</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="目录" class="title-slide slide level2 center">
+<h2>目录</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<ul>
+<li>NumPy介绍 🧐
+<ul>
+<li>什么是NumPy？</li>
+<li>为什么使用NumPy？</li>
+<li>NumPy的应用场景</li>
+</ul></li>
+<li>NumPy的数组对象-ndarray 📦
+<ul>
+<li>什么是ndarray?</li>
+<li>ndarray的重要属性</li>
+<li>创建ndarray</li>
+<li>ndarray的数据类型</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<ul>
+<li>ndarray的索引、切片和迭代 🔍
+<ul>
+<li>索引（Indexing）</li>
+<li>切片（Slicing）</li>
+<li>布尔索引（Boolean Indexing）</li>
+<li>花式索引（Fancy Indexing）</li>
+<li>迭代（Iteration）</li>
+</ul></li>
+<li>ndarray的基础操作 ⚙️
+<ul>
+<li>算术运算</li>
+<li>广播（Broadcasting）</li>
+<li>通用函数（Universal Functions, ufuncs）</li>
+<li>聚合函数（Aggregation Functions）</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="numpy介绍" class="title-slide slide level2 center">
+<h2>NumPy介绍</h2>
+
+</section>
+<section id="什么是numpy" class="slide level3">
+<h3>什么是NumPy？</h3>
+<ul>
+<li>NumPy（Numerical Python的缩写）是一个开源的Python库。🐍</li>
+<li>几乎所有Python的数据科学和机器学习库（如Pandas, SciPy, scikit-learn等）都依赖于NumPy。🧩
+<ul>
+<li><strong>Pandas</strong>: 提供高性能、易于使用的数据结构和数据分析工具。</li>
+<li><strong>SciPy</strong>: 基于NumPy，提供许多科学计算中常用的算法，例如数值积分、插值、优化、线性代数等。</li>
+<li><strong>scikit-learn</strong>: 流行的机器学习库，建立在NumPy, SciPy, and matplotlib之上，提供了许多用于机器学习的工具，包括分类、回归、聚类、降维、模型选择和预处理等。</li>
+</ul></li>
+<li>NumPy的核心是<strong>ndarray</strong>（n-dimensional array，多维数组）对象，它提供：
+<ul>
+<li>快速的向量化运算（比Python内置列表快得多！⚡）。</li>
+<li>高效的内存利用。💾</li>
+<li>大量的数学函数库。➕➖✖️➗</li>
+<li>线性代数、傅里叶变换、随机数生成等高级功能。🧮</li>
+<li><strong>向量化运算</strong>: 意味着运算可以直接应用于整个数组，而无需编写循环。</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="numpy介绍-1" class="title-slide slide level2 center">
+<h2>NumPy介绍</h2>
+
+</section>
+<section id="为什么要用numpy-不用python自带的列表list" class="slide level3 scrollable">
+<h3>为什么要用NumPy, 不用Python自带的列表（list）？ 🤔</h3>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><strong>速度</strong>：NumPy底层使用C语言编写，执行速度快。🚄
+<ul>
+<li>NumPy数组上的操作通常比Python列表快得多，尤其是在进行数学和科学计算时。</li>
+</ul></li>
+<li><strong>内存</strong>：NumPy数组在内存中是连续存储的，Python列表中的元素是指针，分散在内存各处，访问效率低。💾 vs 🗂️
+<ul>
+<li>NumPy数组是连续的内存块，存储相同类型的元素。</li>
+<li>Python列表可以包含不同类型的对象，这导致额外的内存开销和类型检查。</li>
+</ul></li>
+<li><strong>向量化操作</strong>：NumPy支持对整个数组进行操作，而无需编写循环。➿
+<ul>
+<li>这种方式更简洁、更易读，也更高效。</li>
+</ul></li>
+<li><strong>广播机制</strong>：NumPy可以对形状不同的数组进行运算。📡
+<ul>
+<li>广播是NumPy中一种强大的机制，可以自动处理不同形状数组之间的运算。</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+</section></section>
+<section id="numpy介绍-2" class="title-slide slide level2 center">
+<h2>NumPy介绍</h2>
+<p>让我们通过一个例子来直观感受一下NumPy的速度优势：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href=""></a><span class="im">import</span> time</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="co"># Python列表</span></span>
+<span id="cb1-5"><a href=""></a>size <span class="op">=</span> <span class="dv">1000000</span></span>
+<span id="cb1-6"><a href=""></a>list1 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(size))</span>
+<span id="cb1-7"><a href=""></a>list2 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(size))</span>
+<span id="cb1-8"><a href=""></a></span>
+<span id="cb1-9"><a href=""></a>start <span class="op">=</span> time.time()</span>
+<span id="cb1-10"><a href=""></a>result_list <span class="op">=</span> [(x <span class="op">+</span> y) <span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(list1, list2)]</span>
+<span id="cb1-11"><a href=""></a>end <span class="op">=</span> time.time()</span>
+<span id="cb1-12"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Python列表耗时: </span><span class="sc">{</span>(end <span class="op">-</span> start) <span class="op">*</span> <span class="dv">1000</span><span class="sc">:.2f}</span><span class="ss"> 毫秒"</span>)</span>
+<span id="cb1-13"><a href=""></a></span>
+<span id="cb1-14"><a href=""></a><span class="co"># Numpy数组</span></span>
+<span id="cb1-15"><a href=""></a>array1 <span class="op">=</span> np.arange(size)</span>
+<span id="cb1-16"><a href=""></a>array2 <span class="op">=</span> np.arange(size)</span>
+<span id="cb1-17"><a href=""></a></span>
+<span id="cb1-18"><a href=""></a>start <span class="op">=</span> time.time()</span>
+<span id="cb1-19"><a href=""></a>result_array <span class="op">=</span> array1 <span class="op">+</span> array2</span>
+<span id="cb1-20"><a href=""></a>end <span class="op">=</span> time.time()</span>
+<span id="cb1-21"><a href=""></a><span class="bu">print</span>(<span class="ss">f"NumPy数组耗时: </span><span class="sc">{</span>(end <span class="op">-</span> start) <span class="op">*</span> <span class="dv">1000</span><span class="sc">:.2f}</span><span class="ss"> 毫秒"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy介绍-3" class="title-slide slide level2 center">
+<h2>NumPy介绍</h2>
+<p>你会发现，对于大规模数据的运算，NumPy比Python列表快得多！🚀</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>通常情况下，数据量越大，NumPy的优势越明显。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="numpy介绍-4" class="title-slide slide level2 center">
+<h2>NumPy介绍</h2>
+
+</section>
+<section id="numpy的应用场景" class="slide level3">
+<h3>NumPy的应用场景</h3>
+<ul>
+<li><strong>数据分析</strong>：清洗、转换、统计分析。📊
+<ul>
+<li>使用NumPy可以方便地对数据进行各种操作，如筛选、排序、去重、聚合等。</li>
+</ul></li>
+<li><strong>机器学习</strong>：特征工程、模型输入。🤖
+<ul>
+<li>NumPy数组是许多机器学习算法的期望输入格式。</li>
+</ul></li>
+<li><strong>科学计算</strong>：物理模拟、工程计算。🔬
+<ul>
+<li>NumPy提供了许多用于科学计算的函数和工具。</li>
+</ul></li>
+<li><strong>图像处理</strong>：图像表示、滤波、变换。🖼️
+<ul>
+<li>图像可以表示为NumPy数组，从而进行各种处理。</li>
+</ul></li>
+<li><strong>信号处理</strong>：滤波、频谱分析。📡
+<ul>
+<li>NumPy的傅里叶变换等函数可用于信号处理。</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="numpy介绍-5" class="title-slide slide level2 center">
+<h2>NumPy介绍</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>可以说，NumPy是现代Python数据科学生态的<strong>核心</strong>。掌握NumPy，是进行高效数据处理和科学计算的<strong>关键</strong>！🔑</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="numpy的数组对象-ndarray" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+
+</section>
+<section id="什么是ndarray" class="slide level3">
+<h3>什么是ndarray?</h3>
+<ul>
+<li>ndarray是NumPy中的核心数据结构，表示一个多维数组。📦</li>
+<li>数组中的所有元素必须是<strong>相同类型</strong>（例如，都是整数，或都是浮点数）。🔢</li>
+<li>数组的维度（dimension）称为轴（axis），轴的数量称为秩（rank）。📏</li>
+</ul>
+</section></section>
+<section id="numpy的数组对象-ndarray-1" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+
+<img data-src="images/ndarray.png" class="r-stretch quarto-figure-center"><p class="caption">ndarray示意图</p><div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>上图展示了一个二维数组，它有2个轴（axis），形状（shape）为(3, 4)，即3行4列。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="numpy的数组对象-ndarray-2" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+
+</section>
+<section id="ndarray的重要属性" class="slide level3">
+<h3>ndarray的重要属性 📝</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 93%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>shape</code></td>
+<td>返回一个元组(tuple)，表示ndarray各个维度的长度。元组的长度就是数组的维度（轴的个数，也称作秩rank）。元组中每个元素的值表示对应维度的大小。</td>
+</tr>
+<tr class="even">
+<td><code>ndim</code></td>
+<td>ndarray对象的维度（轴的个数，即秩）。</td>
+</tr>
+<tr class="odd">
+<td><code>size</code></td>
+<td>ndarray中元素的总个数。</td>
+</tr>
+<tr class="even">
+<td><code>dtype</code></td>
+<td>ndarray中存储的元素的数据类型（如int32, float64等）。</td>
+</tr>
+<tr class="odd">
+<td><code>itemsize</code></td>
+<td>ndarray中每个元素占用的字节数。</td>
+</tr>
+<tr class="even">
+<td><code>nbytes</code></td>
+<td>整个ndarray数组占用的总字节数</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section id="numpy的数组对象-ndarray-3" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>通过这些属性，我们可以快速了解数组的结构、大小和数据类型。</p>
+</div>
+</div>
+</div>
+<p>让我们看一个例子：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href=""></a></span>
+<span id="cb2-3"><a href=""></a>arr <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb2-4"><a href=""></a></span>
+<span id="cb2-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"形状 (shape): </span><span class="sc">{</span>arr<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-6"><a href=""></a><span class="bu">print</span>(<span class="ss">f"维度 (ndim): </span><span class="sc">{</span>arr<span class="sc">.</span>ndim<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-7"><a href=""></a><span class="bu">print</span>(<span class="ss">f"元素个数 (size): </span><span class="sc">{</span>arr<span class="sc">.</span>size<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-4" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a>arr <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb3-4"><a href=""></a><span class="bu">print</span>(<span class="ss">f"数据类型 (dtype): </span><span class="sc">{</span>arr<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"元素字节数 (itemsize): </span><span class="sc">{</span>arr<span class="sc">.</span>itemsize<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-6"><a href=""></a><span class="bu">print</span>(<span class="ss">f"数组总字节数 (nbytes): </span><span class="sc">{</span>arr<span class="sc">.</span>nbytes<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section>
+<section id="numpy的数组对象-ndarray-5" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+
+</section>
+<section id="创建ndarray" class="slide level3">
+<h3>创建ndarray 🛠️</h3>
+<p>我们可以使用多种方法创建ndarray：</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>array</code></td>
+<td>将输入的序列类型数据（如列表、元组、其他ndarray等）转换为ndarray。如果未指定dtype，会自动推断。</td>
+</tr>
+<tr class="even">
+<td><code>asarray</code></td>
+<td>类似于<code>array</code>，但如果输入已经是ndarray，则不会创建副本，而是直接引用。</td>
+</tr>
+<tr class="odd">
+<td><code>arange</code></td>
+<td>类似于Python内置的<code>range</code>，但返回的是ndarray而不是列表。可以指定起始值、终止值（不包含）和步长。</td>
+</tr>
+<tr class="even">
+<td><code>ones</code></td>
+<td>创建指定形状的全1数组。</td>
+</tr>
+<tr class="odd">
+<td><code>ones_like</code></td>
+<td>以另一个ndarray的形状为模板，创建全1数组。</td>
+</tr>
+<tr class="even">
+<td><code>zeros</code></td>
+<td>创建指定形状的全0数组。</td>
+</tr>
+<tr class="odd">
+<td><code>zeros_like</code></td>
+<td>以另一个ndarray的形状为模板，创建全0数组。</td>
+</tr>
+<tr class="even">
+<td><code>empty</code></td>
+<td>创建指定形状的未初始化数组（值不确定，可能是内存中的残留数据）。</td>
+</tr>
+<tr class="odd">
+<td><code>empty_like</code></td>
+<td>以另一个ndarray的形状为模板，创建未初始化数组。</td>
+</tr>
+<tr class="even">
+<td><code>eye</code>, <code>identity</code></td>
+<td>创建N×N单位矩阵（对角线元素为1，其余为0）。</td>
+</tr>
+<tr class="odd">
+<td><code>full</code></td>
+<td>创建指定形状，并用指定值填充的数组</td>
+</tr>
+<tr class="even">
+<td><code>full_like</code></td>
+<td>以另一个ndarray的形状为模板，创建指定填充值的数组</td>
+</tr>
+<tr class="odd">
+<td><code>random</code></td>
+<td>NumPy的子模块，用于生成各种随机数组，包括：<code>random.rand</code>, <code>random.randn</code>, <code>random.randint</code>, <code>random.uniform</code>等等</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section id="numpy的数组对象-ndarray-6" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a><span class="co"># 从列表创建</span></span>
+<span id="cb4-4"><a href=""></a>arr1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb4-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr1: </span><span class="ch">\n</span><span class="sc">{</span>arr1<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-6"><a href=""></a></span>
+<span id="cb4-7"><a href=""></a><span class="co"># 从元组创建</span></span>
+<span id="cb4-8"><a href=""></a>arr2 <span class="op">=</span> np.array((<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>))</span>
+<span id="cb4-9"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr2: </span><span class="ch">\n</span><span class="sc">{</span>arr2<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-10"><a href=""></a></span>
+<span id="cb4-11"><a href=""></a><span class="co"># 指定数据类型</span></span>
+<span id="cb4-12"><a href=""></a>arr3 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], dtype<span class="op">=</span>np.float64)</span>
+<span id="cb4-13"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr3: </span><span class="ch">\n</span><span class="sc">{</span>arr3<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-7" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href=""></a><span class="co"># 使用arange</span></span>
+<span id="cb5-3"><a href=""></a>arr4 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>)  <span class="co"># 从0开始，到10结束（不包含），步长为2</span></span>
+<span id="cb5-4"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr4: </span><span class="ch">\n</span><span class="sc">{</span>arr4<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-5"><a href=""></a></span>
+<span id="cb5-6"><a href=""></a><span class="co"># 创建全1数组</span></span>
+<span id="cb5-7"><a href=""></a>arr5 <span class="op">=</span> np.ones((<span class="dv">2</span>, <span class="dv">3</span>))  <span class="co"># 2行3列</span></span>
+<span id="cb5-8"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr5: </span><span class="ch">\n</span><span class="sc">{</span>arr5<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-9"><a href=""></a></span>
+<span id="cb5-10"><a href=""></a><span class="co"># 创建全0数组</span></span>
+<span id="cb5-11"><a href=""></a>arr6 <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">2</span>), dtype<span class="op">=</span>np.int32)  <span class="co"># 3行2列，整数类型</span></span>
+<span id="cb5-12"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr6: </span><span class="ch">\n</span><span class="sc">{</span>arr6<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-8" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href=""></a><span class="co"># 创建单位矩阵</span></span>
+<span id="cb6-3"><a href=""></a>arr7 <span class="op">=</span> np.eye(<span class="dv">3</span>)  <span class="co"># 3x3单位矩阵</span></span>
+<span id="cb6-4"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr7: </span><span class="ch">\n</span><span class="sc">{</span>arr7<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-5"><a href=""></a></span>
+<span id="cb6-6"><a href=""></a><span class="co"># 创建指定填充值的数组</span></span>
+<span id="cb6-7"><a href=""></a>arr8 <span class="op">=</span> np.full((<span class="dv">2</span>,<span class="dv">3</span>), <span class="fl">3.14</span>)</span>
+<span id="cb6-8"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr8: </span><span class="ch">\n</span><span class="sc">{</span>arr8<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-9" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href=""></a><span class="co"># 创建随机数组</span></span>
+<span id="cb7-3"><a href=""></a>arr9 <span class="op">=</span> np.random.rand(<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># 从0到1的均匀分布随机数</span></span>
+<span id="cb7-4"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr9: </span><span class="ch">\n</span><span class="sc">{</span>arr9<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-5"><a href=""></a></span>
+<span id="cb7-6"><a href=""></a>arr10 <span class="op">=</span> np.random.randn(<span class="dv">3</span>,<span class="dv">2</span>) <span class="co"># 标准正态分布随机数</span></span>
+<span id="cb7-7"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr10: </span><span class="ch">\n</span><span class="sc">{</span>arr10<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-10" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href=""></a><span class="co"># 创建随机数组</span></span>
+<span id="cb8-3"><a href=""></a>arr11 <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">10</span>, (<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co"># 最小值和最大值之间的随机整数</span></span>
+<span id="cb8-4"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr11: </span><span class="ch">\n</span><span class="sc">{</span>arr11<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-5"><a href=""></a></span>
+<span id="cb8-6"><a href=""></a>arr12 <span class="op">=</span> np.random.uniform(<span class="dv">1</span>, <span class="dv">10</span>, (<span class="dv">2</span>,<span class="dv">4</span>)) <span class="co"># 从最小值和最大值之间的均匀分布</span></span>
+<span id="cb8-7"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr12: </span><span class="ch">\n</span><span class="sc">{</span>arr12<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-11" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>重要</strong></p>
+</div>
+<div class="callout-content">
+<p><code>np.array</code>会试图为创建的数组推断出一个合适的数据类型。</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="co"># 整数列表</span></span>
+<span id="cb9-2"><a href=""></a>arr1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb9-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr1 dtype: </span><span class="sc">{</span>arr1<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-12" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="co"># 浮点数列表</span></span>
+<span id="cb10-2"><a href=""></a>arr2 <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>])</span>
+<span id="cb10-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr2 dtype: </span><span class="sc">{</span>arr2<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-4"><a href=""></a></span>
+<span id="cb10-5"><a href=""></a><span class="co"># 混合整数和浮点数</span></span>
+<span id="cb10-6"><a href=""></a>arr3 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="fl">2.0</span>, <span class="dv">3</span>])</span>
+<span id="cb10-7"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr3 dtype: </span><span class="sc">{</span>arr3<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-13" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="co"># 包含字符串</span></span>
+<span id="cb11-2"><a href=""></a>arr4 <span class="op">=</span> np.array([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span>
+<span id="cb11-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"arr4 dtype: </span><span class="sc">{</span>arr4<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section>
+<section id="numpy的数组对象-ndarray-14" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+
+</section>
+<section id="ndarray的数据类型" class="slide level3">
+<h3>ndarray的数据类型 📊</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 83%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>数据类型</th>
+<th>类型代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>int8</code>, <code>uint8</code></td>
+<td><code>i1</code>, <code>u1</code></td>
+<td>有符号和无符号8位（1字节）整型</td>
+</tr>
+<tr class="even">
+<td><code>int16</code>, <code>uint16</code></td>
+<td><code>i2</code>, <code>u2</code></td>
+<td>有符号和无符号16位（2字节）整型</td>
+</tr>
+<tr class="odd">
+<td><code>int32</code>, <code>uint32</code></td>
+<td><code>i4</code>, <code>u4</code></td>
+<td>有符号和无符号32位（4字节）整型</td>
+</tr>
+<tr class="even">
+<td><code>int64</code>, <code>uint64</code></td>
+<td><code>i8</code>, <code>u8</code></td>
+<td>有符号和无符号64位（8字节）整型</td>
+</tr>
+<tr class="odd">
+<td><code>float16</code></td>
+<td><code>f2</code></td>
+<td>半精度浮点数（16位，2字节）</td>
+</tr>
+<tr class="even">
+<td><code>float32</code></td>
+<td><code>f4</code>或<code>f</code></td>
+<td>单精度浮点数（32位，4字节），与C语言的<code>float</code>兼容</td>
+</tr>
+<tr class="odd">
+<td><code>float64</code></td>
+<td><code>f8</code>或<code>d</code></td>
+<td>双精度浮点数（64位，8字节），与C语言的<code>double</code>和Python的<code>float</code>对象兼容</td>
+</tr>
+<tr class="even">
+<td><code>float128</code></td>
+<td><code>f16</code>或<code>g</code></td>
+<td>扩展精度浮点数（128位，16字节）</td>
+</tr>
+<tr class="odd">
+<td><code>complex64</code></td>
+<td><code>c8</code></td>
+<td>复数，由两个32位浮点数表示</td>
+</tr>
+<tr class="even">
+<td><code>complex128</code></td>
+<td><code>c16</code></td>
+<td>复数，由两个64位浮点数表示</td>
+</tr>
+<tr class="odd">
+<td><code>complex256</code></td>
+<td><code>c32</code></td>
+<td>复数，由两个128位浮点数表示</td>
+</tr>
+<tr class="even">
+<td><code>bool</code></td>
+<td><code>?</code></td>
+<td>布尔类型，存储<code>True</code>或<code>False</code></td>
+</tr>
+<tr class="odd">
+<td><code>object</code></td>
+<td><code>O</code></td>
+<td>Python对象类型</td>
+</tr>
+<tr class="even">
+<td><code>string_</code></td>
+<td><code>S</code></td>
+<td>固定长度字符串类型（每个字符1字节）。例如，<code>S10</code>表示长度为10的字符串。</td>
+</tr>
+<tr class="odd">
+<td><code>unicode_</code></td>
+<td><code>U</code></td>
+<td>固定长度Unicode类型（字节数取决于平台）。例如，<code>U10</code>表示长度为10的Unicode字符串。</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section id="numpy的数组对象-ndarray-15" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>我们可以使用<code>dtype</code>属性查看或指定数组的数据类型。在创建数组时，可以使用<code>dtype</code>参数指定数据类型。</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], dtype<span class="op">=</span>np.float64)</span>
+<span id="cb12-2"><a href=""></a><span class="bu">print</span>(arr.dtype)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-16" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>还可以使用<code>astype</code>方法显式地转换数组的数据类型。</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb13-2"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Original dtype: </span><span class="sc">{</span>arr<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-3"><a href=""></a></span>
+<span id="cb13-4"><a href=""></a>float_arr <span class="op">=</span> arr.astype(np.float64)</span>
+<span id="cb13-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Converted to float64: </span><span class="sc">{</span>float_arr<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-17" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb14-2"><a href=""></a></span>
+<span id="cb14-3"><a href=""></a>string_arr <span class="op">=</span> arr.astype(np.string_)</span>
+<span id="cb14-4"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Converted to string_: </span><span class="sc">{</span>string_arr<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="numpy的数组对象-ndarray-18" class="title-slide slide level2 center">
+<h2>NumPy的数组对象-ndarray</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>重要</strong></p>
+</div>
+<div class="callout-content">
+<p><code>astype</code>方法会创建一个新的数组（原始数组的副本），即使新的数据类型与原来的相同。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="ndarray的索引切片和迭代" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="索引indexing" class="slide level3">
+<h3>索引（Indexing）</h3>
+<ul>
+<li><strong>一维数组</strong>：与Python列表类似，使用方括号<code>[]</code>和从0开始的下标。</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
+<span id="cb15-2"><a href=""></a><span class="bu">print</span>(arr)</span>
+<span id="cb15-3"><a href=""></a><span class="bu">print</span>(arr[<span class="dv">0</span>])  <span class="co"># 第一个元素</span></span>
+<span id="cb15-4"><a href=""></a><span class="bu">print</span>(arr[<span class="dv">5</span>])  <span class="co"># 第六个元素</span></span>
+<span id="cb15-5"><a href=""></a><span class="bu">print</span>(arr[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># 最后一个元素</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-1" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="索引indexing-1" class="slide level3">
+<h3>索引（Indexing）</h3>
+<ul>
+<li><strong>多维数组</strong>：
+<ul>
+<li>每个维度都有一个索引，用逗号分隔。</li>
+<li>可以使用递归方式访问元素，也可以使用逗号分隔的索引列表。</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a>arr2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb16-2"><a href=""></a><span class="bu">print</span>(arr2d)</span>
+<span id="cb16-3"><a href=""></a><span class="bu">print</span>(arr2d[<span class="dv">0</span>, <span class="dv">0</span>])  <span class="co"># 第一行第一列</span></span>
+<span id="cb16-4"><a href=""></a><span class="bu">print</span>(arr2d[<span class="dv">1</span>, <span class="dv">2</span>])  <span class="co"># 第二行第三列</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-2" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="索引indexing-2" class="slide level3">
+<h3>索引（Indexing）</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a>arr2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb17-2"><a href=""></a><span class="bu">print</span>(arr2d[<span class="dv">2</span>, <span class="dv">0</span>])  <span class="co"># 第三行第一列</span></span>
+<span id="cb17-3"><a href=""></a><span class="bu">print</span>(arr2d[<span class="dv">2</span>][<span class="dv">0</span>])  <span class="co"># 与上一行等价</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section id="ndarray的索引切片和迭代-3" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>如果只指定部分维度，返回的将是降维后的子数组。</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a><span class="co"># 假设有一个3x4x5的三维数组</span></span>
+<span id="cb18-2"><a href=""></a>arr3d <span class="op">=</span> np.arange(<span class="dv">60</span>).reshape(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb18-3"><a href=""></a><span class="bu">print</span>(<span class="st">"arr3d:</span><span class="ch">\n</span><span class="st">"</span>, arr3d)</span>
+<span id="cb18-4"><a href=""></a></span>
+<span id="cb18-5"><a href=""></a><span class="co"># 获取第一个维度为0的子数组</span></span>
+<span id="cb18-6"><a href=""></a>slice_0 <span class="op">=</span> arr3d[<span class="dv">0</span>]</span>
+<span id="cb18-7"><a href=""></a><span class="bu">print</span>(<span class="st">"arr3d[0]:</span><span class="ch">\n</span><span class="st">"</span>, slice_0)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的索引切片和迭代-4" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a><span class="co"># 假设有一个3x4x5的三维数组</span></span>
+<span id="cb19-2"><a href=""></a>arr3d <span class="op">=</span> np.arange(<span class="dv">60</span>).reshape(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb19-3"><a href=""></a></span>
+<span id="cb19-4"><a href=""></a><span class="co"># 获取第一个维度为1的子数组</span></span>
+<span id="cb19-5"><a href=""></a>slice_1 <span class="op">=</span> arr3d[<span class="dv">1</span>]</span>
+<span id="cb19-6"><a href=""></a><span class="bu">print</span>(<span class="st">"arr3d[1]:</span><span class="ch">\n</span><span class="st">"</span>, slice_1)</span>
+<span id="cb19-7"><a href=""></a></span>
+<span id="cb19-8"><a href=""></a><span class="co"># 获取第一个维度为2的子数组</span></span>
+<span id="cb19-9"><a href=""></a>slice_2 <span class="op">=</span> arr3d[<span class="dv">2</span>]</span>
+<span id="cb19-10"><a href=""></a><span class="bu">print</span>(<span class="st">"arr3d[2]:</span><span class="ch">\n</span><span class="st">"</span>, slice_2)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section>
+<section id="ndarray的索引切片和迭代-5" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="切片slicing" class="slide level3">
+<h3>切片（Slicing）</h3>
+<ul>
+<li>一维数组的切片与Python列表的切片类似, 都是“左闭右开”区间。</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
+<span id="cb20-2"><a href=""></a><span class="bu">print</span>(arr)</span>
+<span id="cb20-3"><a href=""></a><span class="bu">print</span>(arr[<span class="dv">2</span>:<span class="dv">5</span>])  <span class="co"># 下标2到5（不包含5）</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-6" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="切片slicing-1" class="slide level3">
+<h3>切片（Slicing）</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
+<span id="cb21-2"><a href=""></a><span class="bu">print</span>(arr[:<span class="dv">4</span>])  <span class="co"># 开头到4（不包含4）</span></span>
+<span id="cb21-3"><a href=""></a><span class="bu">print</span>(arr[<span class="dv">6</span>:])  <span class="co"># 6到结尾</span></span>
+<span id="cb21-4"><a href=""></a><span class="bu">print</span>(arr[::<span class="dv">2</span>])  <span class="co"># 从头到尾，步长为2</span></span>
+<span id="cb21-5"><a href=""></a><span class="bu">print</span>(arr[::<span class="op">-</span><span class="dv">1</span>])  <span class="co"># 倒序</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-7" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="切片slicing-2" class="slide level3">
+<h3>切片（Slicing）</h3>
+<ul>
+<li>多维数组的切片：
+<ul>
+<li>在每个维度上分别进行切片，用逗号分隔。</li>
+<li>可以使用<code>:</code>表示整个轴。</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a>arr2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb22-2"><a href=""></a><span class="bu">print</span>(arr2d)</span>
+<span id="cb22-3"><a href=""></a><span class="bu">print</span>(arr2d[:<span class="dv">2</span>, :<span class="dv">2</span>])  <span class="co"># 前两行，前两列</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-8" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="切片slicing-3" class="slide level3">
+<h3>切片（Slicing）</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a>arr2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb23-2"><a href=""></a><span class="bu">print</span>(arr2d[<span class="dv">1</span>, :])  <span class="co"># 第二行的所有列</span></span>
+<span id="cb23-3"><a href=""></a><span class="bu">print</span>(arr2d[:, <span class="dv">2</span>])  <span class="co"># 第三列的所有行</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section id="ndarray的索引切片和迭代-9" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>重要</strong></p>
+</div>
+<div class="callout-content">
+<p>与Python列表不同，NumPy数组的切片是原始数组的<strong>视图（view）</strong>。这意味着对切片的修改会直接影响原始数组！⚠️</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
+<span id="cb24-2"><a href=""></a><span class="bu">print</span>(<span class="st">"Original array:"</span>, arr)</span>
+<span id="cb24-3"><a href=""></a>arr_slice <span class="op">=</span> arr[<span class="dv">1</span>:<span class="dv">4</span>]</span>
+<span id="cb24-4"><a href=""></a><span class="bu">print</span>(<span class="st">"Slice:"</span>, arr_slice)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的索引切片和迭代-10" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
+<span id="cb25-2"><a href=""></a>arr_slice <span class="op">=</span> arr[<span class="dv">1</span>:<span class="dv">4</span>]</span>
+<span id="cb25-3"><a href=""></a>arr_slice[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb25-4"><a href=""></a><span class="bu">print</span>(<span class="st">"Modified slice:"</span>, arr_slice)</span>
+<span id="cb25-5"><a href=""></a><span class="bu">print</span>(<span class="st">"Original array after modification:"</span>, arr)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的索引切片和迭代-11" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>如果希望得到副本（copy）而不是视图，可以使用<code>copy()</code>方法。</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
+<span id="cb26-2"><a href=""></a>arr_copy <span class="op">=</span> arr[<span class="dv">1</span>:<span class="dv">4</span>].copy()</span>
+<span id="cb26-3"><a href=""></a>arr_copy[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">100</span>  <span class="co"># 修改副本不会影响原始数组</span></span>
+<span id="cb26-4"><a href=""></a><span class="bu">print</span>(arr)</span>
+<span id="cb26-5"><a href=""></a><span class="bu">print</span>(arr_copy)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section>
+<section id="ndarray的索引切片和迭代-12" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="布尔索引boolean-indexing" class="slide level3">
+<h3>布尔索引（Boolean Indexing）</h3>
+<ul>
+<li>可以使用布尔数组（通常是比较运算的结果）来选择元素。</li>
+<li>布尔数组的形状必须与要索引的数组相同。</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb27-2"><a href=""></a>bool_index <span class="op">=</span> arr <span class="op">&gt;</span> <span class="dv">2</span>  <span class="co"># 返回一个布尔数组</span></span>
+<span id="cb27-3"><a href=""></a><span class="bu">print</span>(bool_index)</span>
+<span id="cb27-4"><a href=""></a><span class="bu">print</span>(arr[bool_index])  <span class="co"># 选择大于2的元素</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-13" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="布尔索引boolean-indexing-1" class="slide level3">
+<h3>布尔索引（Boolean Indexing）</h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a>arr2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb28-2"><a href=""></a>bool_index2d <span class="op">=</span> arr2d <span class="op">&gt;</span> <span class="dv">5</span></span>
+<span id="cb28-3"><a href=""></a><span class="bu">print</span>(bool_index2d)</span>
+<span id="cb28-4"><a href=""></a><span class="bu">print</span>(arr2d[bool_index2d])  <span class="co"># 选择大于5的元素</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section id="ndarray的索引切片和迭代-14" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>布尔索引常用于根据条件筛选数据。</p>
+</div>
+</div>
+</div>
+<p>我们还可以在布尔索引中使用逻辑运算符<code>&amp;</code>(和), <code>|</code> (或), <code>~</code> (非)来组合多个条件。</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb29-2"><a href=""></a></span>
+<span id="cb29-3"><a href=""></a><span class="co"># 选择大于2且小于6的元素</span></span>
+<span id="cb29-4"><a href=""></a>condition1 <span class="op">=</span> arr <span class="op">&gt;</span> <span class="dv">2</span></span>
+<span id="cb29-5"><a href=""></a>condition2 <span class="op">=</span> arr <span class="op">&lt;</span> <span class="dv">6</span></span>
+<span id="cb29-6"><a href=""></a>combined_condition <span class="op">=</span> condition1 <span class="op">&amp;</span> condition2</span>
+<span id="cb29-7"><a href=""></a><span class="bu">print</span>(arr[combined_condition])</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的索引切片和迭代-15" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb30-2"><a href=""></a></span>
+<span id="cb30-3"><a href=""></a><span class="co"># 选择小于2或大于4的元素</span></span>
+<span id="cb30-4"><a href=""></a>condition3 <span class="op">=</span> arr <span class="op">&lt;</span> <span class="dv">2</span></span>
+<span id="cb30-5"><a href=""></a>condition4 <span class="op">=</span> arr <span class="op">&gt;</span> <span class="dv">4</span></span>
+<span id="cb30-6"><a href=""></a>combined_condition2 <span class="op">=</span> condition3 <span class="op">|</span> condition4</span>
+<span id="cb30-7"><a href=""></a><span class="bu">print</span>(arr[combined_condition2])</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的索引切片和迭代-16" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb31-2"><a href=""></a><span class="co"># 选择不等于3的元素</span></span>
+<span id="cb31-3"><a href=""></a>condition5 <span class="op">=</span> arr <span class="op">!=</span> <span class="dv">3</span></span>
+<span id="cb31-4"><a href=""></a><span class="bu">print</span>(arr[condition5])</span>
+<span id="cb31-5"><a href=""></a></span>
+<span id="cb31-6"><a href=""></a><span class="co"># 或者使用~运算符</span></span>
+<span id="cb31-7"><a href=""></a>condition6 <span class="op">=</span> <span class="op">~</span>(arr<span class="op">==</span><span class="dv">3</span>)</span>
+<span id="cb31-8"><a href=""></a><span class="bu">print</span>(arr[condition6])</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section>
+<section id="ndarray的索引切片和迭代-17" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="花式索引fancy-indexing" class="slide level3">
+<h3>花式索引（Fancy Indexing）</h3>
+<ul>
+<li>使用整数数组（或列表）作为索引，一次选择多个元素。</li>
+<li>与切片不同，花式索引总是返回数据的<strong>副本</strong>。</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">10</span>) <span class="op">*</span> <span class="dv">10</span></span>
+<span id="cb32-2"><a href=""></a><span class="bu">print</span>(arr)</span>
+<span id="cb32-3"><a href=""></a>indices <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>]</span>
+<span id="cb32-4"><a href=""></a><span class="bu">print</span>(arr[indices])  <span class="co"># 选择下标为1、3、5的元素</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-18" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="花式索引fancy-indexing-1" class="slide level3">
+<h3>花式索引（Fancy Indexing）</h3>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a>arr2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb33-2"><a href=""></a><span class="bu">print</span>(arr2d)</span>
+<span id="cb33-3"><a href=""></a>row_indices <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">2</span>]</span>
+<span id="cb33-4"><a href=""></a>col_indices <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>]</span>
+<span id="cb33-5"><a href=""></a><span class="bu">print</span>(arr2d[row_indices, col_indices])  <span class="co"># 选择(0, 1)和(2, 0)位置的元素</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section id="ndarray的索引切片和迭代-19" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>花式索引可以用于按任意顺序选择或重排数组的行或列。</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a>arr2d <span class="op">=</span> np.arange(<span class="dv">12</span>).reshape(<span class="dv">4</span>,<span class="dv">3</span>)</span>
+<span id="cb34-2"><a href=""></a><span class="bu">print</span>(arr2d)</span>
+<span id="cb34-3"><a href=""></a></span>
+<span id="cb34-4"><a href=""></a>new_order <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>]</span>
+<span id="cb34-5"><a href=""></a>rearranged_arr2d <span class="op">=</span> arr2d[new_order]</span>
+<span id="cb34-6"><a href=""></a><span class="bu">print</span>(rearranged_arr2d)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section>
+<section id="ndarray的索引切片和迭代-20" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="迭代iteration" class="slide level3">
+<h3>迭代（Iteration）</h3>
+<ul>
+<li><strong>一维数组</strong>：迭代方式与Python列表相同。</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
+<span id="cb35-2"><a href=""></a><span class="cf">for</span> x <span class="kw">in</span> arr:</span>
+<span id="cb35-3"><a href=""></a>    <span class="bu">print</span>(x)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-21" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="迭代iteration-1" class="slide level3">
+<h3>迭代（Iteration）</h3>
+<ul>
+<li><strong>多维数组</strong>：迭代是相对于第一个轴（axis 0，即行）进行的。</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a>arr2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb36-2"><a href=""></a><span class="cf">for</span> row <span class="kw">in</span> arr2d:</span>
+<span id="cb36-3"><a href=""></a>    <span class="bu">print</span>(row)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的索引切片和迭代-22" class="title-slide slide level2 center">
+<h2>ndarray的索引、切片和迭代</h2>
+
+</section>
+<section id="迭代iteration-2" class="slide level3">
+<h3>迭代（Iteration）</h3>
+<ul>
+<li>如果需要遍历每个元素，可以使用<code>flat</code>属性（返回一个迭代器）：</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a>arr2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb37-2"><a href=""></a><span class="cf">for</span> element <span class="kw">in</span> arr2d.flat:</span>
+<span id="cb37-3"><a href=""></a>    <span class="bu">print</span>(element)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的基础操作" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+
+</section>
+<section id="算术运算" class="slide level3">
+<h3>算术运算 ➕➖✖️➗</h3>
+<ul>
+<li>NumPy数组支持元素级（element-wise）的算术运算（<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>**</code>等）。</li>
+<li>运算是在两个数组的对应元素之间进行的。</li>
+<li>数组必须具有兼容的形状（或满足广播规则）。</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a>arr1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb38-2"><a href=""></a>arr2 <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb38-3"><a href=""></a></span>
+<span id="cb38-4"><a href=""></a><span class="bu">print</span>(arr1 <span class="op">+</span> arr2)  <span class="co"># 对应元素相加</span></span>
+<span id="cb38-5"><a href=""></a><span class="bu">print</span>(arr1 <span class="op">*</span> arr2)  <span class="co"># 对应元素相乘</span></span>
+<span id="cb38-6"><a href=""></a><span class="bu">print</span>(arr1 <span class="op">**</span> <span class="dv">2</span>)  <span class="co"># 每个元素求平方</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ndarray的基础操作-1" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+
+</section>
+<section id="广播broadcasting" class="slide level3 scrollable">
+<h3>广播（Broadcasting）📡</h3>
+<ul>
+<li>广播是一种强大的机制，允许NumPy在不同形状的数组之间进行算术运算。</li>
+<li>广播的规则：
+<ol type="1">
+<li>如果两个数组的维度不同，则维度较小的数组会在其前面补1，直到维度相同。</li>
+<li>如果两个数组在某个维度上的大小相同，或者其中一个数组在该维度上的大小为1，则认为它们在该维度上是兼容的。</li>
+<li>如果两个数组在所有维度上都兼容，则可以进行广播运算。</li>
+<li>在广播运算中，大小为1的维度会被“拉伸”以匹配另一个数组在该维度上的大小。</li>
+</ol></li>
+</ul>
+</section></section>
+<section id="ndarray的基础操作-2" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>理解广播规则对于高效使用NumPy非常重要。</p>
+</div>
+</div>
+</div>
+<p>可以参考如下图片来理解数组的广播： <img data-src="images/numpy_broadcasting.png"></p>
+</section>
+
+<section id="ndarray的基础操作-3" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<p>让我们通过几个例子来理解广播：</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a><span class="co"># 例子1：数组与标量相加</span></span>
+<span id="cb39-2"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb39-3"><a href=""></a>scalar <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb39-4"><a href=""></a><span class="bu">print</span>(arr <span class="op">+</span> scalar)  <span class="co"># 标量被广播到数组的每个元素</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-4" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a><span class="co"># 例子2：不同形状数组相加</span></span>
+<span id="cb40-2"><a href=""></a>arr1 <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])  <span class="co"># 形状为(2, 3)</span></span>
+<span id="cb40-3"><a href=""></a>arr2 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])            <span class="co"># 形状为(3,)</span></span>
+<span id="cb40-4"><a href=""></a><span class="bu">print</span>(arr1 <span class="op">+</span> arr2)</span>
+<span id="cb40-5"><a href=""></a><span class="co"># arr2被广播到arr1的每一行</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-5" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href=""></a><span class="co"># 例子3：更复杂的广播</span></span>
+<span id="cb41-2"><a href=""></a>arr1 <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>]])  <span class="co"># 形状为(4, 3)</span></span>
+<span id="cb41-3"><a href=""></a>arr2 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])                                   <span class="co"># 形状为(3,)</span></span>
+<span id="cb41-4"><a href=""></a><span class="bu">print</span>(arr1 <span class="op">+</span> arr2)</span>
+<span id="cb41-5"><a href=""></a><span class="co"># arr2被广播到arr1的每一行</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-6" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a><span class="co"># 例子3：更复杂的广播</span></span>
+<span id="cb42-2"><a href=""></a>arr1 <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>]])  <span class="co"># 形状为(4, 3)</span></span>
+<span id="cb42-3"><a href=""></a>arr3 <span class="op">=</span> np.array([[<span class="dv">1</span>,], [<span class="dv">2</span>,], [<span class="dv">3</span>,], [<span class="dv">4</span>,]])                   <span class="co"># 形状为(4, 1)</span></span>
+<span id="cb42-4"><a href=""></a><span class="bu">print</span>(arr1 <span class="op">+</span> arr3)</span>
+<span id="cb42-5"><a href=""></a><span class="co"># arr3被广播到arr1的每一列</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-7" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>重要</strong></p>
+</div>
+<div class="callout-content">
+<p>如果两个数组的形状不满足广播规则，会抛出<code>ValueError</code>异常。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="ndarray的基础操作-8" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+
+</section>
+<section id="通用函数universal-functions-ufuncs" class="slide level3">
+<h3>通用函数（Universal Functions, ufuncs）⚙️</h3>
+<ul>
+<li>ufunc是一种对ndarray中的每个元素进行操作的函数。</li>
+<li>ufunc是向量化操作的基础，可以避免编写显式循环，提高效率。⚡</li>
+<li>常见的ufunc：
+<ul>
+<li>一元ufunc（接受一个数组）：<code>abs</code>, <code>sqrt</code>, <code>exp</code>, <code>log</code>, <code>sin</code>, <code>cos</code>, <code>tan</code>等。</li>
+<li>二元ufunc（接受两个数组）：<code>add</code>, <code>subtract</code>, <code>multiply</code>, <code>divide</code>, <code>power</code>, <code>maximum</code>, <code>minimum</code>等。</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="ndarray的基础操作-9" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href=""></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>])</span>
+<span id="cb43-2"><a href=""></a></span>
+<span id="cb43-3"><a href=""></a><span class="bu">print</span>(np.sqrt(arr))  <span class="co"># 对每个元素求平方根</span></span>
+<span id="cb43-4"><a href=""></a><span class="bu">print</span>(np.sin(arr))  <span class="co"># 对每个元素求正弦值</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-10" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a>arr1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb44-2"><a href=""></a>arr2 <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb44-3"><a href=""></a><span class="bu">print</span>(np.maximum(arr1, arr2))  <span class="co"># 逐元素比较，取最大值</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-11" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>许多ufunc都有一个可选的<code>out</code>参数，允许你指定结果存放的位置。</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href=""></a>arr <span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
+<span id="cb45-2"><a href=""></a>out_arr <span class="op">=</span> np.zeros(<span class="dv">5</span>)</span>
+<span id="cb45-3"><a href=""></a>np.multiply(arr, <span class="dv">10</span>, out<span class="op">=</span>out_arr)</span>
+<span id="cb45-4"><a href=""></a><span class="bu">print</span>(out_arr)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section>
+<section id="ndarray的基础操作-12" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+
+</section>
+<section id="聚合函数aggregation-functions" class="slide level3">
+<h3>聚合函数（Aggregation Functions）📊</h3>
+<ul>
+<li>聚合函数是对数组进行汇总计算的函数，返回一个标量结果。</li>
+<li>常见的聚合函数：<code>sum</code>, <code>mean</code>, <code>min</code>, <code>max</code>, <code>std</code>, <code>var</code>, <code>argmin</code>, <code>argmax</code>等。</li>
+<li>可以指定<code>axis</code>参数来沿着某个轴进行聚合。</li>
+</ul>
+</section></section>
+<section id="ndarray的基础操作-13" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a>arr <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb46-2"><a href=""></a><span class="bu">print</span>(<span class="st">"arr:</span><span class="ch">\n</span><span class="st">"</span>, arr)</span>
+<span id="cb46-3"><a href=""></a></span>
+<span id="cb46-4"><a href=""></a><span class="bu">print</span>(<span class="st">"np.sum(arr):"</span>, np.<span class="bu">sum</span>(arr))  <span class="co"># 所有元素求和</span></span>
+<span id="cb46-5"><a href=""></a><span class="bu">print</span>(<span class="st">"np.mean(arr):"</span>,np.mean(arr))  <span class="co"># 所有元素的平均值</span></span>
+<span id="cb46-6"><a href=""></a><span class="bu">print</span>(<span class="st">"np.min(arr):"</span>, np.<span class="bu">min</span>(arr))  <span class="co"># 所有元素的最小值</span></span>
+<span id="cb46-7"><a href=""></a><span class="bu">print</span>(<span class="st">"np.max(arr):"</span>, np.<span class="bu">max</span>(arr))  <span class="co"># 所有元素的最大值</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-14" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href=""></a>arr <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb47-2"><a href=""></a><span class="bu">print</span>(<span class="st">"np.std(arr):"</span>, np.std(arr)) <span class="co"># 所有元素的标准差</span></span>
+<span id="cb47-3"><a href=""></a><span class="bu">print</span>(<span class="st">"np.var(arr):"</span>, np.var(arr))  <span class="co"># 所有元素的方差</span></span>
+<span id="cb47-4"><a href=""></a><span class="bu">print</span>(<span class="st">"np.argmin(arr):"</span>, np.argmin(arr))  <span class="co"># 最小元素的索引</span></span>
+<span id="cb47-5"><a href=""></a><span class="bu">print</span>(<span class="st">"np.argmax(arr):"</span>, np.argmax(arr))  <span class="co"># 最大元素的索引</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-15" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a>arr <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb48-2"><a href=""></a></span>
+<span id="cb48-3"><a href=""></a><span class="co"># 沿着axis 0（行）求和</span></span>
+<span id="cb48-4"><a href=""></a><span class="bu">print</span>(<span class="st">"np.sum(arr, axis=0):"</span>, np.<span class="bu">sum</span>(arr, axis<span class="op">=</span><span class="dv">0</span>))  </span>
+<span id="cb48-5"><a href=""></a><span class="bu">print</span>(<span class="st">"np.sum(arr, axis=1):"</span>, np.<span class="bu">sum</span>(arr, axis<span class="op">=</span><span class="dv">1</span>))  <span class="co"># 沿着axis 1（列）求和</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="ndarray的基础操作-16" class="title-slide slide level2 center">
+<h2>ndarray的基础操作</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>重要</strong></p>
+</div>
+<div class="callout-content">
+<p>当对多维数组进行聚合时，如果不指定<code>axis</code>参数，会沿着所有轴进行聚合，得到一个标量值。如果指定了<code>axis</code>参数，会沿着指定的轴进行聚合，得到一个降维的数组。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="总结" class="title-slide slide level2 center">
+<h2>总结 📝</h2>
+<ul>
+<li><p>NumPy是Python数据科学的核心库，提供了高性能的多维数组对象<code>ndarray</code>。</p></li>
+<li><p><code>ndarray</code>具有多个重要属性，如<code>shape</code>、<code>ndim</code>、<code>size</code>、<code>dtype</code>等。</p></li>
+<li><p>可以使用多种方法创建<code>ndarray</code>，如<code>array</code>、<code>arange</code>、<code>ones</code>、<code>zeros</code>等。🛠️</p></li>
+<li><p>NumPy支持多种数据类型，如整数、浮点数、复数、布尔值等。📊</p></li>
+<li><p><code>ndarray</code>支持索引、切片、布尔索引、花式索引等多种数据访问方式。🔍</p></li>
+<li><p>NumPy的广播机制允许在不同形状的数组之间进行算术运算。📡</p></li>
+<li><p>通用函数（ufunc）提供了元素级的快速运算。⚙️</p></li>
+<li><p>聚合函数可以对数组进行汇总计算。📊</p></li>
+</ul>
+</section>
+
+<section id="思考与讨论" class="title-slide slide level2 center scrollable">
+<h2>思考与讨论 🤔</h2>
+<ol type="1">
+<li><p>你能总结一下NumPy数组（ndarray）与Python列表（list）的主要区别吗？</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>NumPy数组是同质的（所有元素类型相同），Python列表可以是异质的。</li>
+<li>NumPy数组在内存中连续存储，Python列表元素分散存储。</li>
+<li>NumPy数组支持向量化运算和广播，Python列表需要循环。</li>
+<li>NumPy数组通常比Python列表更快、更省内存。</li>
+</ul>
+</div>
+</div>
+</div></li>
+<li><p>你能举例说明NumPy的广播机制是如何工作的吗？</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>例如，一个形状为(3, 3)的数组与一个形状为(3,)的数组相加，(3,)的数组会被广播到(3, 3)的每一行。</p>
+</div>
+</div>
+</div></li>
+<li><p>你能说出至少5种常见的NumPy通用函数（ufunc）吗？</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p><code>np.sqrt</code>, <code>np.sin</code>, <code>np.cos</code>, <code>np.exp</code>, <code>np.log</code>, <code>np.add</code>, <code>np.multiply</code>, <code>np.maximum</code>等。</p>
+</div>
+</div>
+</div></li>
+<li><p>如何根据某个条件筛选NumPy数组中的元素？</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>使用布尔索引。例如，<code>arr[arr &gt; 5]</code>会选择<code>arr</code>中所有大于5的元素。</p>
+</div>
+</div>
+</div></li>
+<li><p>你觉得学习NumPy对你未来的数据分析或机器学习工作有何帮助？</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>NumPy是数据分析和机器学习的基础工具，掌握NumPy可以提高数据处理的效率，为后续的学习打下基础。</p>
+</div>
+</div>
+</div></li>
+</ol>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="zwu_logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>邱飞 💌 qiufei@zwu.edu.cn</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="chapter4_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="chapter4_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="chapter4_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="chapter4_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="chapter4_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="chapter4_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="chapter4_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="chapter4_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="chapter4_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="chapter4_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "已复制");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "已复制");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

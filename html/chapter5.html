@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.39" />
+
+  <meta name="author" content="邱飞">
+  <title>chapter5</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="chapter5_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="chapter5_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="chapter5_files/libs/revealjs/dist/theme/quarto-a527665ed01beaa5bc5d6c6d96bbc18d.css">
+  <link rel="stylesheet" href="my.css"/>
+  <link href="chapter5_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="chapter5_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="chapter5_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="chapter5_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level3">
+
+<p>好的，我来帮你准备这门课的幻灯片。由于内容较多，我将分批输出，每次输出一部分幻灯片。</p>
+<p>首先是幻灯片的开头部分，包括标题、副标题、格式设置和目录：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource qmd number-lines"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>---</span>
+<span id="cb1-2"><a href="#cb1-2"></a>title: &quot;信息技术基础 📊&quot;</span>
+<span id="cb1-3"><a href="#cb1-3"></a>subtitle: &quot;第五章 Pandas——处理结构化数据 🐼&quot;</span>
+<span id="cb1-4"><a href="#cb1-4"></a>format:</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  revealjs:</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    theme: [sky]</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    slide-number: true</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    show-slide-number: all</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    preview-links: auto</span>
+<span id="cb1-10"><a href="#cb1-10"></a>---</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>## 目录</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>::: {layout-ncol=2}</span>
+<span id="cb1-15"><a href="#cb1-15"></a>- Pandas介绍 🐼</span>
+<span id="cb1-16"><a href="#cb1-16"></a>- 基础数据结构 🧱</span>
+<span id="cb1-17"><a href="#cb1-17"></a>- Index对象访问 🔍</span>
+<span id="cb1-18"><a href="#cb1-18"></a>- 数学统计计算 🧮</span>
+<span id="cb1-19"><a href="#cb1-19"></a>- 聚合分组运算 ➕➖</span>
+<span id="cb1-20"><a href="#cb1-20"></a>:::</span></code></pre></div>
+<p>这里我对目录进行了一些改进：</p>
+<ol type="1">
+<li>使用 <code>layout-ncol=2</code> 将目录分为两列，使页面更紧凑。</li>
+<li>简化了目录标题，使其更简洁明了。</li>
+</ol>
+<p>接下来是 Pandas 介绍部分：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource qmd number-lines"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>## Pandas介绍 🐼</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>::: {.callout-note}</span>
+<span id="cb2-4"><a href="#cb2-4"></a>Pandas 是 Python 的一个**开源**工具包，为 Python 提供了**高性能**、**简单易用**的数据结构和数据分析工具。就像一个超级工具箱🧰，让数据处理变得轻松又高效！</span>
+<span id="cb2-5"><a href="#cb2-5"></a>:::</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a>- Pandas 得名于 **pan**el **da**ta **s**ystem，即面板数据系统。</span>
+<span id="cb2-8"><a href="#cb2-8"></a>- Pandas 基于 NumPy 构建，但提供了更高级、更方便的数据操作接口。</span>
+<span id="cb2-9"><a href="#cb2-9"></a>- Pandas 擅长处理**结构化数据**，如表格、数据库、CSV 文件等。</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a>## Pandas介绍 🐼</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>### Pandas可以完成什么事情？ {.smaller}</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a>- **索引对象**：包括简单的索引和多层次的索引，就像给数据贴上标签🏷️，方便查找和管理。</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    -  **索引 (Index)**：Pandas 中用于标记和定位数据的重要组成部分，类似于数据的“地址簿”。</span>
+<span id="cb2-17"><a href="#cb2-17"></a>    -  **简单索引**：最基本的索引形式，通常是一个整数或字符串序列。</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    -  **多层次索引 (MultiIndex)**：一种更复杂的索引形式，允许在一个轴上有多个层级的索引，类似于“多级目录”，可以更精细地组织和访问数据。</span>
+<span id="cb2-19"><a href="#cb2-19"></a>- **引擎集成组合**：用于汇总和转换数据集合，可以将多个数据源整合在一起，进行统一处理。</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    -   **汇总 (Aggregation)**：将多个数据值合并为一个值，例如求和、平均值、最大值等。</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    -   **转换 (Transformation)**：对数据进行某种形式的修改，例如标准化、填充缺失值等。</span>
+<span id="cb2-22"><a href="#cb2-22"></a>- **日期范围生成器**：可以生成日期范围 📅，并支持自定义日期偏移（实现自定义频率），时间序列分析必备！</span>
+<span id="cb2-23"><a href="#cb2-23"></a>    -   **日期范围 (Date Range)**：表示一段连续的日期，例如 &quot;2023-01-01&quot; 到 &quot;2023-01-10&quot;。</span>
+<span id="cb2-24"><a href="#cb2-24"></a>    -   **日期偏移 (Date Offset)**：表示一个时间间隔，例如 &quot;2天&quot;、&quot;1个月&quot;、&quot;3小时&quot; 等。</span>
+<span id="cb2-25"><a href="#cb2-25"></a></span>
+<span id="cb2-26"><a href="#cb2-26"></a>::: {#28a1ac12 .cell execution_count=1}</span>
+<span id="cb2-27"><a href="#cb2-27"></a>``` {.python .cell-code}</span>
+<span id="cb2-28"><a href="#cb2-28"></a>import pandas as pd</span>
+<span id="cb2-29"><a href="#cb2-29"></a></span>
+<span id="cb2-30"><a href="#cb2-30"></a># 生成日期范围</span>
+<span id="cb2-31"><a href="#cb2-31"></a>date_range = pd.date_range(start=&#39;2023-01-01&#39;, end=&#39;2023-01-10&#39;)</span>
+<span id="cb2-32"><a href="#cb2-32"></a>print(date_range)</span>
+<span id="cb2-33"><a href="#cb2-33"></a></span>
+<span id="cb2-34"><a href="#cb2-34"></a># 自定义日期偏移</span>
+<span id="cb2-35"><a href="#cb2-35"></a>custom_dates = pd.date_range(start=&#39;2023-01-01&#39;, periods=5, freq=&#39;2D&#39;) # 每两天</span>
+<span id="cb2-36"><a href="#cb2-36"></a>print(custom_dates)</span></code></pre></div>
+<p>:::</p>
+</section>
+<section id="pandas介绍-续" class="title-slide slide level2">
+<h2>Pandas介绍 🐼 (续)</h2>
+<ul>
+<li><strong>输入/输出工具</strong>：从各种格式的文件（如 CSV、Excel）中加载表格数据，以及从 PyTables/HDF5 格式中保存和加载 Pandas 对象。数据导入导出，畅通无阻！
+<ul>
+<li><strong>CSV (Comma Separated Values)</strong>：逗号分隔值，一种常见的文本文件格式，用于存储表格数据。可以理解为用逗号<code>,</code>分隔字段（列），用换行符分隔每条记录（行）的纯文本。
+<ul>
+<li>示例:</li>
+</ul>
+<pre><code>Name,Age,City
+Alice,25,New York
+Bob,30,London
+Charlie,22,Paris</code></pre></li>
+<li><strong>Delimited Files</strong>: 使用特定分隔符（如制表符<code>\t</code>、空格<code></code>等）分隔数据的文件。
+<ul>
+<li>示例 (使用制表符分隔):</li>
+</ul>
+<pre><code>Name    Age    City
+Alice    25    New York
+Bob    30    London</code></pre></li>
+<li><strong>Excel 2003</strong>: 指的是 Microsoft Excel 2003 版本的文件格式（.xls）。现在更常用的是.xlsx格式。
+<ul>
+<li>Excel 文件是二进制文件，包含多个工作表（Sheet），每个工作表包含行和列组成的表格数据。</li>
+</ul></li>
+<li><strong>PyTables/HDF5</strong>:
+<ul>
+<li><strong>PyTables</strong> 是一个用于管理分层数据集的 Python 包，设计用于高效处理大量数据。</li>
+<li><strong>HDF5 (Hierarchical Data Format version 5)</strong> 是一种用于存储和管理数据的文件格式。特点是支持存储非常大的、异构的、复杂的数据对象。
+<ul>
+<li><strong>分层数据</strong>：数据以类似文件系统的目录结构组织，可以包含多个组（Group）和数据集（Dataset）。</li>
+<li><strong>高效</strong>：HDF5 使用了各种优化技术，例如压缩、分块等，可以快速读写大量数据。</li>
+<li><strong>异构数据</strong>：HDF5 可以存储不同类型的数据，例如整数、浮点数、字符串、数组等。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="626d638a" class="cell" data-execution_count="2">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># 从 CSV 文件读取数据</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;data.csv&#39;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># 将数据保存为 Excel 文件</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>df.to_excel(<span class="st">&#39;data.xlsx&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+</div>
+</section>
+
+<section id="pandas介绍-续-1" class="title-slide slide level2">
+<h2>Pandas介绍 🐼 (续)</h2>
+<ul>
+<li><strong>标准数据结构</strong>：支持存储大量缺失或一致的数据，就像一个大仓库 🏭，可以容纳各种类型的数据。
+<ul>
+<li><strong>缺失数据 (Missing Data)</strong>：数据集中某些值不存在或未知的情况，通常用 NaN (Not a Number) 表示。</li>
+<li><strong>一致的数据 (Homogeneous Data)</strong>：数据集中所有值都是相同类型的情况。</li>
+<li>Pandas 可以同时处理缺失数据和一致的数据，并提供了灵活的工具来处理这些情况。</li>
+</ul></li>
+<li><strong>移动窗口统计</strong>：如滚动平均值、滚动标准偏差等，非常适合处理时间序列数据，就像一个滑动窗口 🪟，可以观察数据的变化趋势。
+<ul>
+<li><strong>移动窗口 (Moving Window)</strong>：在数据序列上按一定大小滑动的窗口，用于计算窗口内数据的统计量。</li>
+<li><strong>滚动平均值 (Rolling Mean)</strong>：移动窗口内数据的平均值。</li>
+<li><strong>滚动标准偏差 (Rolling Standard Deviation)</strong>：移动窗口内数据的标准偏差。</li>
+<li><strong>时间序列数据 (Time Series Data)</strong>：按时间顺序排列的数据，例如股票价格、气温变化等。</li>
+</ul></li>
+</ul>
+</section>
+
+<section>
+<section id="基础数据结构series" class="title-slide slide level2">
+<h2>基础数据结构——Series 🧱</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Series</strong> 是 Pandas 中一种重要的数据结构，类似于<strong>一维数组</strong>与<strong>字典</strong>的结合。可以看作是带标签的数组，每个元素都有一个对应的标签（索引）。</p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>定长有序字典</strong>：Series 可以理解为一个定长、有序的“字典”结构，键值对一一对应。
+<ul>
+<li><strong>定长 (Fixed-length)</strong>：Series 一旦创建，其长度（元素个数）通常是固定的。</li>
+<li><strong>有序 (Ordered)</strong>：Series 中的元素按照一定的顺序排列。</li>
+<li><strong>字典 (Dictionary)</strong>：Python 中的一种数据结构，由键值对 (key-value pairs) 组成。</li>
+</ul></li>
+<li><strong>有标签的一维数组</strong>：Series 是一个有标签的一维数组，标签在 Pandas 中对应的数据类型是 <code>index</code>。
+<ul>
+<li><strong>一维数组 (1D Array)</strong>：只有一个维度的数据集合，类似于一个列表。</li>
+<li><strong>标签 (Label)</strong>：Series 中每个元素对应的名称或标识符，用于访问和操作数据。</li>
+<li><strong>Index</strong>：Pandas 中用于表示 Series 或 DataFrame 的标签的数据类型。</li>
+</ul></li>
+</ul>
+</section>
+<section id="series的创建" class="slide level3">
+<h3>Series的创建</h3>
+<ul>
+<li>通过 <code>list</code> 创建：</li>
+</ul>
+<div id="b4dc62b7" class="cell" data-execution_count="3">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>data <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]  <span class="co"># 创建一个列表</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>series_from_list <span class="op">=</span> pd.Series(data)  <span class="co"># 用列表创建 Series</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">print</span>(series_from_list) <span class="co"># 打印 Series, 包含索引和值</span></span></code></pre></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>创建Series时可以指定index，如果没指定index，则自动使用整数索引，从0开始。</p>
+</div>
+</div>
+</div>
+<ul>
+<li>通过 <code>NumPy</code> 的 <code>ndarray</code> 创建：</li>
+</ul>
+<div id="fd180543" class="cell" data-execution_count="4">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a>data <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]) <span class="co"># 创建一个 NumPy 数组</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>series_from_ndarray <span class="op">=</span> pd.Series(data)  <span class="co"># 用 NumPy 数组创建 Series</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="bu">print</span>(series_from_ndarray)</span></code></pre></div>
+</div>
+<ul>
+<li>通过 <code>dict</code> 创建：</li>
+</ul>
+<div id="e73a7b5f" class="cell" data-execution_count="5">
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a>data <span class="op">=</span> {<span class="st">&#39;a&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;b&#39;</span>: <span class="dv">2</span>, <span class="st">&#39;c&#39;</span>: <span class="dv">3</span>} <span class="co"># 创建一个字典</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>series_from_dict <span class="op">=</span> pd.Series(data)  <span class="co"># 用字典创建 Series</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="bu">print</span>(series_from_dict)  <span class="co"># 字典的键会成为 Series 的索引</span></span></code></pre></div>
+</div>
+<ul>
+<li>通过标量创建：</li>
+</ul>
+<div id="03f357a8" class="cell" data-execution_count="6">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>series_from_scalar <span class="op">=</span> pd.Series(<span class="dv">5</span>, index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>])  <span class="co"># 创建一个所有值都为 5 的 Series</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="bu">print</span>(series_from_scalar)</span></code></pre></div>
+</div>
+</section></section>
+<section>
+<section id="series的访问和操作" class="title-slide slide level2">
+<h2>Series的访问和操作</h2>
+
+</section>
+<section id="series的访问" class="slide level3">
+<h3>Series的访问</h3>
+<ul>
+<li>使用 <code>iloc</code> 和 <code>loc</code> 函数：
+<ul>
+<li><code>iloc</code>：通过<strong>位置</strong>访问，就像数组一样，使用整数索引。
+<ul>
+<li><strong>位置 (Position)</strong>：元素在 Series 中的顺序编号，从 0 开始。</li>
+</ul></li>
+<li><code>loc</code>：通过<strong>标签</strong>访问，就像字典一样，使用索引值。</li>
+</ul></li>
+</ul>
+<div id="7cba6ed0" class="cell" data-execution_count="7">
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>s <span class="op">=</span> pd.Series([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>], index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>])</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># 通过位置访问</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="bu">print</span>(<span class="st">&quot;通过位置访问(s.iloc[0]):&quot;</span>, s.iloc[<span class="dv">0</span>])  <span class="co"># 输出: 10</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># 通过标签访问</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="bu">print</span>(<span class="st">&quot;通过标签访问(s.loc[&#39;b&#39;]):&quot;</span>, s.loc[<span class="st">&#39;b&#39;</span>]) <span class="co"># 输出: 20</span></span></code></pre></div>
+</div>
+<ul>
+<li>类似数组和属性的访问：</li>
+</ul>
+<div id="451274c2" class="cell" data-execution_count="8">
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># 类似数组</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="bu">print</span>(<span class="st">&quot;类似数组访问(s[0]):&quot;</span>, s[<span class="dv">0</span>])  <span class="co"># 输出: 10</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># 类似属性(如果索引是有效的Python变量名)</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="bu">print</span>(<span class="st">&quot;类似属性访问(s.a):&quot;</span>, s.a) <span class="co"># 输出: 10</span></span></code></pre></div>
+</div>
+</section>
+<section id="series的操作" class="slide level3">
+<h3>Series的操作</h3>
+<ul>
+<li><strong>向量化操作</strong>：像数组一样对 Series 进行操作，无需循环，Pandas 会自动处理。
+<ul>
+<li><strong>向量化 (Vectorized)</strong>：对整个 Series 或数组进行操作，而不是逐个元素进行操作。</li>
+<li>Pandas 的向量化操作通常比 Python 循环快得多。</li>
+</ul></li>
+<li><strong>NumPy兼容性</strong>：NumPy 中对 <code>ndarray</code> 的操作也适用于 Series，例如加减乘除、求和、平均等。</li>
+<li><strong>数据对齐</strong>：由于索引的存在，Series 在操作时会自动对齐数据，不同索引的数据会进行匹配，找不到匹配的会用 <code>NaN</code> 填充。
+<ul>
+<li><strong>数据对齐 (Data Alignment)</strong>：Pandas 在进行运算时，会根据索引自动匹配 Series 或 DataFrame 中的数据。</li>
+</ul></li>
+</ul>
+<div id="b4e16ca6" class="cell" data-execution_count="9">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a>s1 <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>])</span>
+<span id="cb12-4"><a href="#cb12-4"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], index<span class="op">=</span>[<span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>])</span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="bu">print</span>(<span class="st">&quot;s1 + s2:</span><span class="ch">\n</span><span class="st">&quot;</span>, s1 <span class="op">+</span> s2)  <span class="co"># 索引对齐，&#39;a&#39; 和 &#39;d&#39; 对应的值为 NaN</span></span></code></pre></div>
+</div>
+</section></section>
+<section>
+<section id="基础数据结构dataframe" class="title-slide slide level2">
+<h2>基础数据结构——DataFrame 🧱</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>DataFrame</strong> 是 Pandas 中最常用的数据结构，是有标签的<strong>二维数组</strong>，类似于<strong>表格</strong> 📇、<strong>SQL</strong>中的 <code>table</code>，或者是一个 <code>Series</code> 对象的 <code>dict</code>。 可以看作是多个 Series 共享同一个索引。</p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>行索引 (index)</strong> 和 <strong>列索引 (columns)</strong>：DataFrame 同时具有行索引和列索引，就像一个表格有行标题和列标题。
+<ul>
+<li><strong>行索引 (Row Index)</strong>：用于标识 DataFrame 中每一行的标签。</li>
+<li><strong>列索引 (Column Index)</strong>：用于标识 DataFrame 中每一列的标签。</li>
+</ul></li>
+</ul>
+</section>
+<section id="dataframe的创建" class="slide level3">
+<h3>DataFrame的创建</h3>
+<ul>
+<li><strong>输入</strong>：
+<ul>
+<li>一维 <code>ndarray</code>、<code>list</code>、<code>dict</code> 或 <code>Series</code> 的 <code>dict</code>。</li>
+<li>二维 <code>ndarray</code>。</li>
+<li>一个 <code>Series</code>。</li>
+<li>其他 <code>DataFrame</code>。</li>
+</ul></li>
+</ul>
+<div id="61b1b7cc" class="cell" data-execution_count="10">
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co"># 用字典创建 DataFrame</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">3</span>, <span class="dv">4</span>]}</span>
+<span id="cb13-5"><a href="#cb13-5"></a>df1 <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="bu">print</span>(<span class="st">&quot;用字典创建 DataFrame:</span><span class="ch">\n</span><span class="st">&quot;</span>, df1)</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="co"># 用二维数组创建 DataFrame</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>data <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
+<span id="cb13-10"><a href="#cb13-10"></a>df2 <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>])</span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="bu">print</span>(<span class="st">&quot;用二维数组创建 DataFrame:</span><span class="ch">\n</span><span class="st">&quot;</span>, df2)</span></code></pre></div>
+</div>
+<ul>
+<li><strong>索引</strong>：
+<ul>
+<li>创建 DataFrame 时，可以通过 <code>index</code> 和 <code>columns</code> 参数指定行索引和列索引。</li>
+<li>如果没有明确指定，会自动生成从 0 开始的整数索引。</li>
+</ul></li>
+<li><strong>Series的dict创建DataFrame</strong>：
+<ul>
+<li>若指定 <code>index</code>，会丢弃所有未和指定 <code>index</code> 匹配的数据。</li>
+</ul></li>
+</ul>
+<div id="707f364c" class="cell" data-execution_count="11">
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]),</span>
+<span id="cb14-4"><a href="#cb14-4"></a>        <span class="st">&#39;col2&#39;</span>: pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>])}</span>
+<span id="cb14-5"><a href="#cb14-5"></a>df3 <span class="op">=</span> pd.DataFrame(data)  <span class="co"># 字典的键会成为 DataFrame 的列名</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="bu">print</span>(<span class="st">&quot;用Series的dict创建DataFrame:</span><span class="ch">\n</span><span class="st">&quot;</span>, df3) <span class="co"># index自动取并集</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a>df4 <span class="op">=</span> pd.DataFrame(data, index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>])</span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="bu">print</span>(<span class="st">&quot;指定index创建DataFrame:</span><span class="ch">\n</span><span class="st">&quot;</span>, df4) <span class="co"># index参数为[&#39;a&#39;,&#39;b&#39;]，df只有&#39;a&#39;,&#39;b&#39;两行，抛弃了&#39;c&#39;和&#39;d&#39;行的数据</span></span></code></pre></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>用Series的字典创建DataFrame时，index如果不指定，会自动取并集。</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="dataframe的访问和操作" class="title-slide slide level2">
+<h2>DataFrame的访问和操作</h2>
+
+</section>
+<section id="dataframe的访问" class="slide level3">
+<h3>DataFrame的访问</h3>
+<ul>
+<li>多种访问方式:
+<ul>
+<li>通过<strong>列索引</strong>访问：</li>
+</ul></li>
+</ul>
+<div id="48cf38e2" class="cell" data-execution_count="12">
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df[<span class="st">&#39;column_label&#39;</span>]</span></code></pre></div>
+</div>
+<ul>
+<li>通过<strong>行索引</strong>访问：</li>
+</ul>
+<div id="2763dbb8" class="cell" data-execution_count="13">
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df.loc[<span class="st">&#39;row_label&#39;</span>]</span></code></pre></div>
+</div>
+<ul>
+<li><code>loc</code>: 通过<strong>行标签</strong>访问</li>
+</ul>
+<div id="a0aa20da" class="cell" data-execution_count="14">
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">print</span>(df.loc[<span class="st">&#39;row_label&#39;</span>])</span></code></pre></div>
+</div>
+<ul>
+<li><code>iloc</code>：通过<strong>行位置</strong>访问。</li>
+</ul>
+<div id="60aebbe6" class="cell" data-execution_count="15">
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">print</span>(df.iloc[row_position])</span></code></pre></div>
+</div>
+<div id="004058d2" class="cell" data-execution_count="16">
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href="#cb19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
+<span id="cb19-4"><a href="#cb19-4"></a>df <span class="op">=</span> pd.DataFrame(data, index<span class="op">=</span>[<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>])</span>
+<span id="cb19-5"><a href="#cb19-5"></a></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="co"># 通过列索引访问</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a><span class="bu">print</span>(<span class="st">&quot;通过列索引访问:</span><span class="ch">\n</span><span class="st">&quot;</span>, df[<span class="st">&#39;col1&#39;</span>])  <span class="co"># 选择 &#39;col1&#39; 列</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="co"># 通过 loc 访问</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="bu">print</span>(<span class="st">&quot;通过 loc 访问:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.loc[<span class="st">&#39;A&#39;</span>])  <span class="co"># 选择 &#39;A&#39; 行</span></span>
+<span id="cb19-11"><a href="#cb19-11"></a></span>
+<span id="cb19-12"><a href="#cb19-12"></a><span class="co"># 通过 iloc 访问</span></span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="bu">print</span>(<span class="st">&quot;通过 iloc 访问:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.iloc[<span class="dv">0</span>])  <span class="co"># 选择第一行</span></span></code></pre></div>
+</div>
+</section>
+<section id="dataframe的操作" class="slide level3">
+<h3>DataFrame的操作</h3>
+<ul>
+<li><strong>算术操作</strong>：支持加、减、乘、除、转置等，就像操作矩阵一样。</li>
+<li><strong>NumPy兼容性</strong>：NumPy 中对矩阵的操作也适用于 DataFrame。</li>
+<li><strong>数据对齐</strong>：DataFrame 在操作时会自动按行和列索引对齐数据，不同索引的数据会进行匹配，找不到匹配的会用 <code>NaN</code> 填充。</li>
+<li><strong>增删改查</strong>：可以对 DataFrame 进行增、删、改、查操作。</li>
+</ul>
+<div id="3de6e2f4" class="cell" data-execution_count="17">
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
+<span id="cb20-4"><a href="#cb20-4"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="co"># 添加一列</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>df[<span class="st">&#39;col3&#39;</span>] <span class="op">=</span> [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="bu">print</span>(<span class="st">&quot;添加一列后:</span><span class="ch">\n</span><span class="st">&quot;</span>, df)</span>
+<span id="cb20-9"><a href="#cb20-9"></a></span>
+<span id="cb20-10"><a href="#cb20-10"></a><span class="co"># 删除一列</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>df <span class="op">=</span> df.drop(<span class="st">&#39;col2&#39;</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb20-12"><a href="#cb20-12"></a><span class="bu">print</span>(<span class="st">&quot;删除一列后:</span><span class="ch">\n</span><span class="st">&quot;</span>, df)</span>
+<span id="cb20-13"><a href="#cb20-13"></a></span>
+<span id="cb20-14"><a href="#cb20-14"></a><span class="co"># 修改数据</span></span>
+<span id="cb20-15"><a href="#cb20-15"></a>df.loc[<span class="dv">0</span>, <span class="st">&#39;col1&#39;</span>] <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a><span class="bu">print</span>(<span class="st">&quot;修改数据后:</span><span class="ch">\n</span><span class="st">&quot;</span>, df)</span>
+<span id="cb20-17"><a href="#cb20-17"></a></span>
+<span id="cb20-18"><a href="#cb20-18"></a><span class="co"># 查询数据</span></span>
+<span id="cb20-19"><a href="#cb20-19"></a><span class="bu">print</span>(<span class="st">&quot;查询数据(col1 &gt; 1):</span><span class="ch">\n</span><span class="st">&quot;</span>, df[df[<span class="st">&#39;col1&#39;</span>] <span class="op">&gt;</span> <span class="dv">1</span>])</span></code></pre></div>
+</div>
+</section></section>
+<section>
+<section id="基于pandas的index对象的访问操作" class="title-slide slide level2">
+<h2>基于Pandas的Index对象的访问操作 🔍</h2>
+
+</section>
+<section id="pandas的index对象" class="slide level3">
+<h3>Pandas的Index对象</h3>
+<ul>
+<li><code>Series</code> 中的 <code>index</code> 属性。</li>
+<li><code>DataFrame</code> 中的 <code>index</code> 属性和 <code>columns</code> 属性。</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p><code>Series</code> 和 <code>DataFrame</code> 的索引都是 <code>Index</code> 对象，用于标识和访问数据。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="index对象的特征" class="slide level3">
+<h3>Index对象的特征</h3>
+<ul>
+<li><strong>不可修改</strong> (Immutable)：Index 对象一旦创建，就不能修改，保证了数据的安全性。
+<ul>
+<li><strong>不可修改性</strong>：这是为了防止意外修改索引导致数据混乱或错误。</li>
+</ul></li>
+<li><strong>有序</strong>：Index 对象中的元素是有序的，可以按照顺序访问。</li>
+<li><strong>可切片</strong>：可以像列表或数组一样对 Index 对象进行切片操作，方便获取部分数据。
+<ul>
+<li><strong>切片 (Slicing)</strong>：从序列中提取一部分的操作，例如 <code>index[1:3]</code>。</li>
+</ul></li>
+</ul>
+</section>
+<section id="index对象的类型" class="slide level3">
+<h3>Index对象的类型</h3>
+<ul>
+<li><strong>Index</strong>：最泛化的 Index 类型，将轴标签表示为一个由 Python 对象组成的 NumPy 数组。</li>
+<li><strong>Int64Index</strong>：针对整数的 Index 类型，用于整数索引。</li>
+<li><strong>MultiIndex</strong>：针对多层索引的 Index 类型，用于创建复杂的层次化索引。
+<ul>
+<li><strong>层次化索引 (Hierarchical Indexing)</strong>：在一个轴上有多个层级的索引。</li>
+</ul></li>
+<li><strong>DatetimeIndex</strong>：存储时间戳的 Index 类型，用于时间序列数据。
+<ul>
+<li><strong>时间戳 (Timestamp)</strong>：表示一个特定时间点的数据，例如 “2023-10-27 10:00:00”。</li>
+</ul></li>
+<li><strong>PeriodIndex</strong>：针对时间间隔数据的 Index 类型，用于表示一段时间。
+<ul>
+<li><strong>时间间隔 (Period)</strong>：表示一段持续时间的数据，例如 “2023年10月”、“2023年第3季度”。</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="index对象的基本操作" class="title-slide slide level2">
+<h2>Index对象的基本操作 🧮</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>delete</code></td>
+<td>删除索引 <code>i</code> 处的元素，返回新的 Index 对象（可以传入索引的数组）</td>
+</tr>
+<tr class="even">
+<td><code>drop</code></td>
+<td>删除传入的元素 <code>e</code>，返回新的 Index 对象（可以传入元素的数组）</td>
+</tr>
+<tr class="odd">
+<td><code>insert</code></td>
+<td>将元素插入索引 <code>i</code> 处，返回新的 Index 对象</td>
+</tr>
+<tr class="even">
+<td><code>append</code></td>
+<td>连接另一个 Index 对象，返回新的 Index 对象</td>
+</tr>
+<tr class="odd">
+<td><code>union</code></td>
+<td>与另一个 Index 对象进行并操作，返回两者的并集</td>
+</tr>
+<tr class="even">
+<td><code>difference</code></td>
+<td>与另一个 Index 对象进行差操作，返回两者的差集</td>
+</tr>
+<tr class="odd">
+<td><code>intersection</code></td>
+<td>与另一个 Index 对象进行交操作，返回两者的交集</td>
+</tr>
+<tr class="even">
+<td><code>isin</code></td>
+<td>判断 Index 对象中每个元素是否在参数所给的数组类型对象中，返回一个与 Index 对象长度相同的 Bool 数组</td>
+</tr>
+<tr class="odd">
+<td><code>is_monotonic</code></td>
+<td>当每个元素都大于前一个元素时，返回 <code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>is_unique</code></td>
+<td>当 Index 对象中没有重复值时，返回 <code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>unique</code></td>
+<td>返回没有重复数据的 Index 对象</td>
+</tr>
+</tbody>
+</table>
+<div id="b9ade1cf" class="cell" data-execution_count="18">
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a>index <span class="op">=</span> pd.Index([<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>])</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co"># 删除索引为 1 的元素</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>new_index <span class="op">=</span> index.delete(<span class="dv">1</span>)</span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="bu">print</span>(<span class="st">&quot;删除索引为 1 的元素:&quot;</span>, new_index)  <span class="co"># new_index: Index([&#39;a&#39;, &#39;c&#39;, &#39;d&#39;], dtype=&#39;object&#39;)</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="co"># 删除元素 &#39;c&#39;</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>new_index <span class="op">=</span> index.drop(<span class="st">&#39;c&#39;</span>)</span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="bu">print</span>(<span class="st">&quot;删除元素 &#39;c&#39;:&quot;</span>, new_index)  <span class="co"># new_index: Index([&#39;a&#39;, &#39;b&#39;, &#39;d&#39;], dtype=&#39;object&#39;)</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a></span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="co"># 插入元素 &#39;e&#39; 到索引 2</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a>new_index <span class="op">=</span> index.insert(<span class="dv">2</span>, <span class="st">&#39;e&#39;</span>)</span>
+<span id="cb21-15"><a href="#cb21-15"></a><span class="bu">print</span>(<span class="st">&quot;插入元素 &#39;e&#39; 到索引 2:&quot;</span>, new_index)  <span class="co"># new_index: Index([&#39;a&#39;, &#39;b&#39;, &#39;e&#39;, &#39;c&#39;, &#39;d&#39;], dtype=&#39;object&#39;)</span></span>
+<span id="cb21-16"><a href="#cb21-16"></a></span>
+<span id="cb21-17"><a href="#cb21-17"></a><span class="co"># 连接另一个 Index 对象</span></span>
+<span id="cb21-18"><a href="#cb21-18"></a>other_index <span class="op">=</span> pd.Index([<span class="st">&#39;e&#39;</span>, <span class="st">&#39;f&#39;</span>])</span>
+<span id="cb21-19"><a href="#cb21-19"></a>new_index <span class="op">=</span> index.append(other_index)</span>
+<span id="cb21-20"><a href="#cb21-20"></a><span class="bu">print</span>(<span class="st">&quot;连接另一个 Index 对象:&quot;</span>, new_index)  <span class="co"># new_index: Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;], dtype=&#39;object&#39;)</span></span></code></pre></div>
+</div>
+</section>
+
+<section>
+<section id="索引的不同访问方式" class="title-slide slide level2">
+<h2>索引的不同访问方式</h2>
+
+</section>
+<section id="loc-方式" class="slide level3">
+<h3>loc 方式</h3>
+<ul>
+<li>关注 <code>index</code> 的 <strong>label</strong>，筛选条件与 <code>label</code> 相关。</li>
+<li>接收 <code>index</code> 的 <code>label</code> 作为参数输入。</li>
+<li>可以接收：
+<ul>
+<li>单个 <code>label</code>。</li>
+<li><code>label</code> 的数组。</li>
+<li><code>label</code> 的分片 (<code>slice</code>)。</li>
+<li>布尔数组。</li>
+<li>回调函数（参数为调用 <code>loc</code> 函数的对象，即 <code>Series</code> 或 <code>DataFrame</code>）。</li>
+</ul></li>
+</ul>
+<div id="ed545ad4" class="cell" data-execution_count="19">
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
+<span id="cb22-4"><a href="#cb22-4"></a>df <span class="op">=</span> pd.DataFrame(data, index<span class="op">=</span>[<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>])</span>
+<span id="cb22-5"><a href="#cb22-5"></a></span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="co"># 单个 label</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="bu">print</span>(<span class="st">&quot;单个 label:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.loc[<span class="st">&#39;A&#39;</span>])</span>
+<span id="cb22-8"><a href="#cb22-8"></a></span>
+<span id="cb22-9"><a href="#cb22-9"></a><span class="co"># label 数组</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a><span class="bu">print</span>(<span class="st">&quot;label 数组:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.loc[[<span class="st">&#39;A&#39;</span>, <span class="st">&#39;C&#39;</span>]])</span>
+<span id="cb22-11"><a href="#cb22-11"></a></span>
+<span id="cb22-12"><a href="#cb22-12"></a><span class="co"># label 分片</span></span>
+<span id="cb22-13"><a href="#cb22-13"></a><span class="bu">print</span>(<span class="st">&quot;label 分片:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.loc[<span class="st">&#39;A&#39;</span>:<span class="st">&#39;B&#39;</span>])</span>
+<span id="cb22-14"><a href="#cb22-14"></a></span>
+<span id="cb22-15"><a href="#cb22-15"></a><span class="co"># 布尔数组</span></span>
+<span id="cb22-16"><a href="#cb22-16"></a><span class="bu">print</span>(<span class="st">&quot;布尔数组:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.loc[df[<span class="st">&#39;col1&#39;</span>] <span class="op">&gt;</span> <span class="dv">1</span>])</span>
+<span id="cb22-17"><a href="#cb22-17"></a></span>
+<span id="cb22-18"><a href="#cb22-18"></a><span class="co"># 回调函数</span></span>
+<span id="cb22-19"><a href="#cb22-19"></a><span class="bu">print</span>(<span class="st">&quot;回调函数:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.loc[<span class="kw">lambda</span> df: df[<span class="st">&#39;col2&#39;</span>] <span class="op">&gt;</span> <span class="dv">4</span>])</span></code></pre></div>
+</div>
+</section>
+<section id="iloc-方式" class="slide level3">
+<h3>iloc 方式</h3>
+<ul>
+<li>关注 <code>index</code> 的 <strong>position</strong>。</li>
+<li>接收 <code>index</code> 的 <code>position</code> 作为参数输入。</li>
+<li>可以接收：
+<ul>
+<li>单个整数（表示 <code>position</code>）。</li>
+<li><code>position</code> 的数组。</li>
+<li><code>position</code> 的分片 (<code>slice</code>)。</li>
+<li>布尔数组。</li>
+<li>回调函数（参数为调用 <code>iloc</code> 函数的对象，即 <code>Series</code> 或 <code>DataFrame</code>）。</li>
+</ul></li>
+</ul>
+<div id="b150a0ac" class="cell" data-execution_count="20">
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-2"><a href="#cb23-2"></a></span>
+<span id="cb23-3"><a href="#cb23-3"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
+<span id="cb23-4"><a href="#cb23-4"></a>df <span class="op">=</span> pd.DataFrame(data, index<span class="op">=</span>[<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>])</span>
+<span id="cb23-5"><a href="#cb23-5"></a></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="co"># 单个整数</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="bu">print</span>(<span class="st">&quot;单个整数:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.iloc[<span class="dv">0</span>])</span>
+<span id="cb23-8"><a href="#cb23-8"></a></span>
+<span id="cb23-9"><a href="#cb23-9"></a><span class="co"># position 数组</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="bu">print</span>(<span class="st">&quot;position 数组:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.iloc[[<span class="dv">0</span>, <span class="dv">2</span>]])</span>
+<span id="cb23-11"><a href="#cb23-11"></a></span>
+<span id="cb23-12"><a href="#cb23-12"></a><span class="co"># position 分片</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a><span class="bu">print</span>(<span class="st">&quot;position 分片:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.iloc[<span class="dv">0</span>:<span class="dv">2</span>])</span>
+<span id="cb23-14"><a href="#cb23-14"></a></span>
+<span id="cb23-15"><a href="#cb23-15"></a><span class="co"># 布尔数组</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a><span class="bu">print</span>(<span class="st">&quot;布尔数组:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.iloc[(df[<span class="st">&#39;col1&#39;</span>] <span class="op">&gt;</span> <span class="dv">1</span>).values])</span>
+<span id="cb23-17"><a href="#cb23-17"></a></span>
+<span id="cb23-18"><a href="#cb23-18"></a><span class="co"># 回调函数</span></span>
+<span id="cb23-19"><a href="#cb23-19"></a><span class="bu">print</span>(<span class="st">&quot;回调函数:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.iloc[<span class="kw">lambda</span> df: [<span class="dv">0</span>, <span class="dv">2</span>]])  <span class="co"># 注意：这里的回调函数返回的是位置列表</span></span></code></pre></div>
+</div>
+</section>
+<section id="类似dict方式的访问" class="slide level3">
+<h3>类似dict方式的访问</h3>
+<ul>
+<li>可以将 <code>Series</code> 和 <code>DataFrame</code> 看作 <code>dict</code>。</li>
+<li><code>DataFrame</code> 相当于每个元素是 <code>Series</code> 的 <code>dict</code>。</li>
+<li>可以用类似 <code>dict</code> 访问的方式来访问 <code>Series</code> 和 <code>DataFrame</code>。</li>
+</ul>
+<div id="e6150ef0" class="cell" data-execution_count="21">
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-2"><a href="#cb24-2"></a></span>
+<span id="cb24-3"><a href="#cb24-3"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
+<span id="cb24-4"><a href="#cb24-4"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb24-5"><a href="#cb24-5"></a></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="co"># 访问 &#39;col1&#39; 列</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="bu">print</span>(<span class="st">&quot;访问 &#39;col1&#39; 列:</span><span class="ch">\n</span><span class="st">&quot;</span>, df[<span class="st">&#39;col1&#39;</span>])  <span class="co"># 类似于访问字典的键</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="co"># 对于 Series，可以直接通过索引访问</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a>s <span class="op">=</span> pd.Series([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>], index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>])</span>
+<span id="cb24-11"><a href="#cb24-11"></a><span class="bu">print</span>(<span class="st">&quot;Series 通过索引访问:</span><span class="ch">\n</span><span class="st">&quot;</span>, s[<span class="st">&#39;b&#39;</span>])</span></code></pre></div>
+</div>
+</section>
+<section id="类似属性方式的访问" class="slide level3">
+<h3>类似属性方式的访问</h3>
+<ul>
+<li>接受参数类型包括：
+<ul>
+<li>单个变量</li>
+<li>数组形式（<code>list</code> 或者 <code>NumPy</code> 的 <code>ndarray</code>）</li>
+<li>布尔数组</li>
+<li>回调函数。</li>
+</ul></li>
+</ul>
+<div id="50e4c70e" class="cell" data-execution_count="22">
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb25-2"><a href="#cb25-2"></a></span>
+<span id="cb25-3"><a href="#cb25-3"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]}</span>
+<span id="cb25-4"><a href="#cb25-4"></a>df <span class="op">=</span> pd.DataFrame(data, index<span class="op">=</span>[<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>])</span>
+<span id="cb25-5"><a href="#cb25-5"></a></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="co"># 单个变量</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="bu">print</span>(<span class="st">&quot;单个变量:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.col1)  <span class="co"># 访问 &#39;col1&#39; 列，类似于访问对象的属性</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="co"># 数组形式</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="bu">print</span>(<span class="st">&quot;数组形式:</span><span class="ch">\n</span><span class="st">&quot;</span>, df[[<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>]])</span>
+<span id="cb25-11"><a href="#cb25-11"></a></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="co"># 布尔数组</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="bu">print</span>(<span class="st">&quot;布尔数组:</span><span class="ch">\n</span><span class="st">&quot;</span>, df[df.col1 <span class="op">&gt;</span> <span class="dv">1</span>])  <span class="co"># 使用布尔数组筛选数据</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a></span>
+<span id="cb25-15"><a href="#cb25-15"></a><span class="co"># 回调函数</span></span>
+<span id="cb25-16"><a href="#cb25-16"></a><span class="bu">print</span>(<span class="st">&quot;回调函数:</span><span class="ch">\n</span><span class="st">&quot;</span>, df[<span class="kw">lambda</span> df: df.col2 <span class="op">&gt;</span> <span class="dv">4</span>])</span></code></pre></div>
+</div>
+</section></section>
+<section>
+<section id="调用方式间的区别" class="title-slide slide level2">
+<h2>调用方式间的区别</h2>
+
+</section>
+<section id="loc函数和iloc函数的区别" class="slide level3">
+<h3>loc函数和iloc函数的区别</h3>
+<ul>
+<li><code>loc</code> 函数和 <code>iloc</code> 函数都是对 <code>index</code> 的访问。</li>
+<li>对于 <code>DataFrame</code>，也可以实现对某个 <code>index</code> 下的某个 <code>column</code> 的访问。</li>
+<li>接收的数据类型相同，但含义不同：
+<ul>
+<li><code>loc</code> 函数接收 <code>Index</code> 对象（<code>index</code> 和 <code>columns</code>）的 <code>label</code>。</li>
+<li><code>iloc</code> 函数接收 <code>Index</code> 对象（<code>index</code> 和 <code>columns</code>）的 <code>position</code>。</li>
+</ul></li>
+</ul>
+</section>
+<section id="通过loc访问和通过访问的区别" class="slide level3">
+<h3>通过loc访问和通过[]访问的区别</h3>
+<ul>
+<li><code>loc</code> 函数和 <code>[]</code> 都接收 <code>Index</code> 对象（<code>index</code> 和 <code>columns</code>）的 <code>label</code> 作为参数。</li>
+<li><code>loc</code> 函数是对 <code>index</code> 的访问。</li>
+<li><code>[]</code> 在 <code>DataFrame</code> 中是对 <code>columns</code> 的访问，在 <code>Series</code> 中无差别。</li>
+</ul>
+</section></section>
+<section>
+<section id="特殊的输入类型" class="title-slide slide level2">
+<h2>特殊的输入类型</h2>
+
+</section>
+<section id="输入为布尔类型数组" class="slide level3">
+<h3>输入为布尔类型数组</h3>
+<ul>
+<li>使用布尔类型数组作为输入参数也是常见的操作之一。</li>
+<li>可用的运算符包括：
+<ul>
+<li><code>|</code> (或运算)</li>
+<li><code>&amp;</code> (与运算)</li>
+<li><code>~</code> (非运算)</li>
+</ul></li>
+<li><strong>注意</strong>：要使用圆括号 <code>()</code> 来组合条件。</li>
+</ul>
+<div id="591c956d" class="cell" data-execution_count="23">
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-2"><a href="#cb26-2"></a></span>
+<span id="cb26-3"><a href="#cb26-3"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="co"># 选取 col1 大于 1 且 col2 小于 6 的行</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="bu">print</span>(<span class="st">&quot;选取 col1 大于 1 且 col2 小于 6 的行:</span><span class="ch">\n</span><span class="st">&quot;</span>, df[(df[<span class="st">&#39;col1&#39;</span>] <span class="op">&gt;</span> <span class="dv">1</span>) <span class="op">&amp;</span> (df[<span class="st">&#39;col2&#39;</span>] <span class="op">&lt;</span> <span class="dv">6</span>)])</span>
+<span id="cb26-7"><a href="#cb26-7"></a></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="co"># 选取 col1 等于 1 或 col2 大于 5 的行</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a><span class="bu">print</span>(<span class="st">&quot;选取 col1 等于 1 或 col2 大于 5 的行:</span><span class="ch">\n</span><span class="st">&quot;</span>, df[(df[<span class="st">&#39;col1&#39;</span>] <span class="op">==</span> <span class="dv">1</span>) <span class="op">|</span> (df[<span class="st">&#39;col2&#39;</span>] <span class="op">&gt;</span> <span class="dv">5</span>)])</span></code></pre></div>
+</div>
+</section>
+<section id="输入为回调函数" class="slide level3">
+<h3>输入为回调函数</h3>
+<ul>
+<li><code>loc</code>、<code>iloc</code> 和 <code>[]</code> 都接收回调函数作为输入来进行访问。</li>
+<li>回调函数必须以被访问的 <code>Series</code> 或者 <code>DataFrame</code> 作为参数。</li>
+</ul>
+<div id="98b0ddd7" class="cell" data-execution_count="24">
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb27-2"><a href="#cb27-2"></a></span>
+<span id="cb27-3"><a href="#cb27-3"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
+<span id="cb27-4"><a href="#cb27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="co"># 使用回调函数选取 col2 大于 4 的行</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="bu">print</span>(<span class="st">&quot;使用回调函数选取 col2 大于 4 的行:</span><span class="ch">\n</span><span class="st">&quot;</span>, df[<span class="kw">lambda</span> df: df[<span class="st">&#39;col2&#39;</span>] <span class="op">&gt;</span> <span class="dv">4</span>])</span>
+<span id="cb27-7"><a href="#cb27-7"></a></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="co"># 使用 loc 和回调函数选取 col1 大于 1 的行</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="bu">print</span>(<span class="st">&quot;使用 loc 和回调函数选取 col1 大于 1 的行:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.loc[<span class="kw">lambda</span> df: df[<span class="st">&#39;col1&#39;</span>] <span class="op">&gt;</span> <span class="dv">1</span>])</span>
+<span id="cb27-10"><a href="#cb27-10"></a></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="co"># 使用 iloc 和回调函数选取第 0 行和第 2 行</span></span>
+<span id="cb27-12"><a href="#cb27-12"></a><span class="bu">print</span>(<span class="st">&quot;使用 iloc 和回调函数选取第 0 行和第 2 行:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.iloc[<span class="kw">lambda</span> df: [<span class="dv">0</span>, <span class="dv">2</span>]])</span></code></pre></div>
+</div>
+</section></section>
+<section>
+<section id="数学统计和计算工具" class="title-slide slide level2">
+<h2>数学统计和计算工具 🧮</h2>
+
+</section>
+<section id="统计函数" class="slide level3">
+<h3>统计函数</h3>
+<ul>
+<li>Pandas 提供了一系列统计函数接口，方便用户直接进行统计运算。</li>
+<li>包括：
+<ul>
+<li><strong>协方差:</strong> 用于衡量两个变量的总体误差。当两个变量的变化趋势一致时，协方差为正；当变化趋势相反时，协方差为负；如果两个变量相互独立，则协方差为0。
+<ul>
+<li><strong>协方差 (Covariance)</strong>:
+<ul>
+<li>公式： <span class="math display">\[
+Cov(X, Y) = \frac{\sum_{i=1}^{n}(X_i - \bar{X})(Y_i - \bar{Y})}{n-1}
+\]</span> 其中，<span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 是两个变量，<span class="math inline">\(\bar{X}\)</span> 和 <span class="math inline">\(\bar{Y}\)</span> 分别是它们的平均值，<span class="math inline">\(n\)</span> 是样本数量。</li>
+</ul></li>
+</ul></li>
+<li><strong>相关系数:</strong> 用于研究变量之间线性相关程度的量。相关系数的取值范围在-1到1之间，绝对值越大，说明变量之间的线性相关性越强。
+<ul>
+<li><strong>相关系数 (Correlation Coefficient)</strong>:
+<ul>
+<li>公式： <span class="math display">\[
+Corr(X, Y) = \frac{Cov(X, Y)}{\sigma_X \sigma_Y}
+\]</span> 其中，<span class="math inline">\(Cov(X, Y)\)</span> 是 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 的协方差，<span class="math inline">\(\sigma_X\)</span> 和 <span class="math inline">\(\sigma_Y\)</span> 分别是 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 的标准差。</li>
+</ul></li>
+</ul></li>
+<li><strong>排序:</strong> 对数据进行排序。</li>
+</ul></li>
+<li>Pandas 提供了：
+<ul>
+<li>两个 <code>Series</code> 对象之间的协方差计算接口。</li>
+<li>一个 <code>DataFrame</code> 的协方差矩阵的计算接口。</li>
+</ul></li>
+</ul>
+<div id="652d9304" class="cell" data-execution_count="25">
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a>s1 <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb28-4"><a href="#cb28-4"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">4</span>])</span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="co"># 计算 s1 和 s2 的协方差</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>covariance <span class="op">=</span> s1.cov(s2)</span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="bu">print</span>(<span class="ss">f&quot;协方差: </span><span class="sc">{</span>covariance<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb28-9"><a href="#cb28-9"></a></span>
+<span id="cb28-10"><a href="#cb28-10"></a><span class="co"># 计算 s1 和 s2 的相关系数</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a>correlation <span class="op">=</span> s1.corr(s2)</span>
+<span id="cb28-12"><a href="#cb28-12"></a><span class="bu">print</span>(<span class="ss">f&quot;相关系数: </span><span class="sc">{</span>correlation<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb28-13"><a href="#cb28-13"></a></span>
+<span id="cb28-14"><a href="#cb28-14"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
+<span id="cb28-15"><a href="#cb28-15"></a></span>
+<span id="cb28-16"><a href="#cb28-16"></a><span class="co"># 计算 DataFrame 的协方差矩阵</span></span>
+<span id="cb28-17"><a href="#cb28-17"></a>cov_matrix <span class="op">=</span> df.cov()</span>
+<span id="cb28-18"><a href="#cb28-18"></a><span class="bu">print</span>(<span class="ss">f&quot;协方差矩阵:</span><span class="ch">\n</span><span class="sc">{</span>cov_matrix<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb28-19"><a href="#cb28-19"></a></span>
+<span id="cb28-20"><a href="#cb28-20"></a><span class="co"># 计算 DataFrame 的相关系数矩阵</span></span>
+<span id="cb28-21"><a href="#cb28-21"></a>corr_matrix <span class="op">=</span> df.corr()</span>
+<span id="cb28-22"><a href="#cb28-22"></a><span class="bu">print</span>(<span class="ss">f&quot;相关系数矩阵:</span><span class="ch">\n</span><span class="sc">{</span>corr_matrix<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</div>
+</section></section>
+<section id="窗口函数" class="title-slide slide level2">
+<h2>窗口函数</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>在移动窗口上计算统计函数对于处理<strong>时序数据</strong> 📈 非常常见。</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Pandas 提供了一系列窗口函数，包括：
+<ul>
+<li>计数</li>
+<li>求和</li>
+<li>求平均</li>
+<li>中位数</li>
+<li>相关系数</li>
+<li>方差</li>
+<li>协方差</li>
+<li>标准差</li>
+<li>偏斜度</li>
+<li>峰度</li>
+</ul></li>
+<li>窗口对象：
+<ul>
+<li><strong>Rolling</strong>:
+<ul>
+<li>定长的窗口。</li>
+<li>需要通过参数 <code>window</code> 指定窗口大小。</li>
+</ul></li>
+<li><strong>Expanding</strong>:
+<ul>
+<li>扩展窗口。</li>
+<li>第 <code>i</code> 个窗口的大小为 <code>i</code>。</li>
+<li>可以将其看作特殊的 <code>windows</code> 为数据长度、<code>min_periods</code> 为 1 的 <code>Rolling</code> 对象。</li>
+</ul></li>
+<li><strong>EWM (Exponentially Weighted Moving)</strong>:
+<ul>
+<li>指数加权窗口。</li>
+<li>需要定义衰减因子 α。</li>
+<li>定义方式：
+<ul>
+<li>时间间隔 <code>span</code>。</li>
+<li>质心 <code>center of mass</code>。</li>
+<li>半衰期 <code>half-life</code>（指数权重减少到一半需要的时间）。</li>
+<li>直接定义 <code>alpha</code>。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="025aa5cd" class="cell" data-execution_count="26">
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb29-2"><a href="#cb29-2"></a></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="co"># 创建一个时间序列</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>],</span>
+<span id="cb29-5"><a href="#cb29-5"></a>              index<span class="op">=</span>pd.date_range(<span class="st">&#39;2023-01-01&#39;</span>, periods<span class="op">=</span><span class="dv">10</span>, freq<span class="op">=</span><span class="st">&#39;D&#39;</span>))</span>
+<span id="cb29-6"><a href="#cb29-6"></a></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="co"># Rolling 窗口</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a>rolling_mean <span class="op">=</span> s.rolling(window<span class="op">=</span><span class="dv">3</span>).mean()  <span class="co"># 计算 3 天的滚动平均值</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="bu">print</span>(<span class="ss">f&quot;滚动平均:</span><span class="ch">\n</span><span class="sc">{</span>rolling_mean<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb29-10"><a href="#cb29-10"></a></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="co"># Expanding 窗口</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>expanding_sum <span class="op">=</span> s.expanding().<span class="bu">sum</span>()  <span class="co"># 计算累计和</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="bu">print</span>(<span class="ss">f&quot;累计和:</span><span class="ch">\n</span><span class="sc">{</span>expanding_sum<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb29-14"><a href="#cb29-14"></a></span>
+<span id="cb29-15"><a href="#cb29-15"></a><span class="co"># EWM 窗口</span></span>
+<span id="cb29-16"><a href="#cb29-16"></a>ewm_mean <span class="op">=</span> s.ewm(span<span class="op">=</span><span class="dv">3</span>).mean()  <span class="co"># 计算指数加权移动平均值</span></span>
+<span id="cb29-17"><a href="#cb29-17"></a><span class="bu">print</span>(<span class="ss">f&quot;指数加权移动平均:</span><span class="ch">\n</span><span class="sc">{</span>ewm_mean<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</div>
+</section>
+
+<section id="窗口对象的统计函数" class="title-slide slide level2">
+<h2>窗口对象的统计函数 📊</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>count()</code></td>
+<td>移动窗口内非 <code>NaN</code> 值的计数</td>
+</tr>
+<tr class="even">
+<td><code>sum()</code></td>
+<td>移动窗口内的和</td>
+</tr>
+<tr class="odd">
+<td><code>mean()</code></td>
+<td>移动窗口内的平均值</td>
+</tr>
+<tr class="even">
+<td><code>median()</code></td>
+<td>移动窗口内的中位数</td>
+</tr>
+<tr class="odd">
+<td><code>min()</code></td>
+<td>移动窗口内的最小值</td>
+</tr>
+<tr class="even">
+<td><code>max()</code></td>
+<td>移动窗口内的最大值</td>
+</tr>
+<tr class="odd">
+<td><code>std()</code></td>
+<td>移动窗口内的无偏估计标准差（分母为 <code>n-1</code>）</td>
+</tr>
+<tr class="even">
+<td><code>var()</code></td>
+<td>移动窗口内的无偏估计方差（分母为 <code>n-1</code>）</td>
+</tr>
+<tr class="odd">
+<td><code>skew()</code></td>
+<td>移动窗口内的偏度 (样本的三阶标准化矩)</td>
+</tr>
+<tr class="even">
+<td><code>kurt()</code></td>
+<td>移动窗口内的峰度 (样本的四阶标准化矩)</td>
+</tr>
+<tr class="odd">
+<td><code>quantile()</code></td>
+<td>移动窗口内的指定分位数位置的值（传入的应该是 <code>[0,1]</code> 的值）</td>
+</tr>
+<tr class="even">
+<td><code>apply()</code></td>
+<td>在移动窗口内使用普通的（可以自定义的）数组函数</td>
+</tr>
+<tr class="odd">
+<td><code>cov()</code></td>
+<td>移动窗口内的协方差</td>
+</tr>
+<tr class="even">
+<td><code>corr()</code></td>
+<td>移动窗口内的相关系数</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="数学聚合和分组运算" class="title-slide slide level2">
+<h2>数学聚合和分组运算 ➕➖</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<p><strong>注记</strong></p>
+</div>
+<div class="callout-content">
+<p>类似于 SQL 操作中的分组和聚合，Pandas 提供了 <code>groupby</code> 功能。</p>
+</div>
+</div>
+</div>
+<ul>
+<li><code>groupby</code> 包括三个阶段：
+<ol type="1">
+<li><strong>split</strong>：根据一定原则将数据分组。
+<ul>
+<li><strong>分组 (Grouping)</strong>：将数据按照某个或某些特征划分为不同的组。</li>
+</ul></li>
+<li><strong>apply</strong>：每个组分别执行一个函数，产生一个新值。
+<ul>
+<li><strong>应用函数 (Apply Function)</strong>：对每个分组应用一个函数，例如求和、平均值等。</li>
+</ul></li>
+<li><strong>combine</strong>：将各组的结果合并到最终对象中。
+<ul>
+<li><strong>合并 (Combine)</strong>：将每个分组的结果合并成一个最终的结果。</li>
+</ul></li>
+</ol></li>
+<li><strong>拆分操作</strong>：
+<ul>
+<li>Pandas 对象（<code>Series</code> 或 <code>DataFrame</code>）根据提供的键在特定的轴上进行拆分。</li>
+<li><code>DataFrame</code> 可以指定是在 <code>index</code> 轴还是 <code>columns</code> 轴。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="拆分键的形式" class="title-slide slide level2">
+<h2>拆分键的形式</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">拆分键的形式说明</th>
+<th style="text-align: left;">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">和所选轴长度相同的数组（<code>list</code> 或 NumPy 的 <code>array</code>，甚至是一个 <code>Series</code> 对象）</td>
+<td style="text-align: left;"><code>df.groupby(group_list).count()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>DataFrame</code> 某个列名的值或列名的 <code>list</code></td>
+<td style="text-align: left;"><code>df.groupby('a')</code> <code>df.groupby(df['a'])</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code># 上述两个表述等价</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>group_series = pd.Series(group_list)</code> <code>df.groupby(group_series)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">参数为 <code>axis</code> 的标签的函数</td>
+<td style="text-align: left;"><code>df.groupby(df.loc['one'],axis=1)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>def get_index_number(index):</code><br> <code>if index in ['one','two']:</code> <br> <code>return 'small'</code> <br> <code>else:</code> <br> <code>return 'big'</code> <br> <code>df.groupby(get_index_number)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">字典或者 <code>Series</code>，给出 <code>axis</code> 上的值与分组名之间的对应关系</td>
+<td style="text-align: left;"><code>#该示例与Demo1的效果相同</code><br> <code>group_list = ['one','two','one','two','two']</code> <br> <code>group_series = pd.Series(group_list,index = df.index)</code> <br> <code>df.groupby(group_series)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">组1、2、3、4的 <code>list</code> 或者</td>
+<td style="text-align: left;"><code>df.groupby(['a','b'])</code></td>
+</tr>
+</tbody>
+</table>
+<div id="c9876448" class="cell" data-execution_count="27">
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a>data <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;A&#39;</span>],</span>
+<span id="cb30-4"><a href="#cb30-4"></a>        <span class="st">&#39;col2&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb30-5"><a href="#cb30-5"></a>        <span class="st">&#39;col3&#39;</span>: [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]}</span>
+<span id="cb30-6"><a href="#cb30-6"></a></span>
+<span id="cb30-7"><a href="#cb30-7"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb30-8"><a href="#cb30-8"></a></span>
+<span id="cb30-9"><a href="#cb30-9"></a><span class="co"># 按 &#39;col1&#39; 分组，计算每组的平均值</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a>grouped <span class="op">=</span> df.groupby(<span class="st">&#39;col1&#39;</span>)</span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="bu">print</span>(<span class="st">&quot;按 &#39;col1&#39; 分组，计算每组的平均值:</span><span class="ch">\n</span><span class="st">&quot;</span>, grouped.mean())</span>
+<span id="cb30-12"><a href="#cb30-12"></a></span>
+<span id="cb30-13"><a href="#cb30-13"></a><span class="co"># 按 &#39;col1&#39; 和 &#39;col2&#39; 分组，计算每组的总和</span></span>
+<span id="cb30-14"><a href="#cb30-14"></a>grouped <span class="op">=</span> df.groupby([<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>])</span>
+<span id="cb30-15"><a href="#cb30-15"></a><span class="bu">print</span>(<span class="st">&quot;按 &#39;col1&#39; 和 &#39;col2&#39; 分组，计算每组的总和:</span><span class="ch">\n</span><span class="st">&quot;</span>, grouped.<span class="bu">sum</span>())</span>
+<span id="cb30-16"><a href="#cb30-16"></a></span>
+<span id="cb30-17"><a href="#cb30-17"></a><span class="co"># 使用自定义函数分组</span></span>
+<span id="cb30-18"><a href="#cb30-18"></a><span class="kw">def</span> custom_group(index):</span>
+<span id="cb30-19"><a href="#cb30-19"></a>  <span class="cf">if</span> index <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb30-20"><a href="#cb30-20"></a>    <span class="cf">return</span> <span class="st">&#39;group1&#39;</span></span>
+<span id="cb30-21"><a href="#cb30-21"></a>  <span class="cf">else</span>:</span>
+<span id="cb30-22"><a href="#cb30-22"></a>    <span class="cf">return</span> <span class="st">&#39;group2&#39;</span></span>
+<span id="cb30-23"><a href="#cb30-23"></a></span>
+<span id="cb30-24"><a href="#cb30-24"></a>grouped <span class="op">=</span> df.groupby(custom_group)</span>
+<span id="cb30-25"><a href="#cb30-25"></a><span class="bu">print</span>(<span class="st">&quot;使用自定义函数分组:</span><span class="ch">\n</span><span class="st">&quot;</span>, grouped.mean())</span></code></pre></div>
+</div>
+</section>
+
+<section id="应用部分" class="title-slide slide level2">
+<h2>应用部分</h2>
+<ul>
+<li>主要实现以下三类操作：
+<ol type="1">
+<li><strong>聚合操作</strong>：对于每个组经过计算得到一个概要性质的统计值，例如求和、求平均等。
+<ul>
+<li><strong>聚合 (Aggregation)</strong>：将多个数据值合并为一个值。</li>
+</ul></li>
+<li><strong>转换操作</strong>：对于每个组经过计算得到和组的长度相同的一系列的值，例如对数据的标准化、填充 <code>NA</code> 值等。
+<ul>
+<li><strong>转换 (Transformation)</strong>：对数据进行某种形式的修改。</li>
+</ul></li>
+<li><strong>过滤操作</strong>：通过对每个组的计算得到一个布尔类型的值完成对组的筛选，例如通过求得组的平均值来筛选组，或者每个组内通过一定的条件进行筛选。
+<ul>
+<li><strong>过滤 (Filtering)</strong>：根据某些条件筛选数据。</li>
+</ul></li>
+</ol></li>
+</ul>
+<div id="318451ad" class="cell" data-execution_count="28">
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a>data <span class="op">=</span> {<span class="st">&#39;group&#39;</span>: [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;A&#39;</span>],</span>
+<span id="cb31-4"><a href="#cb31-4"></a>        <span class="st">&#39;value&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]}</span>
+<span id="cb31-5"><a href="#cb31-5"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb31-6"><a href="#cb31-6"></a></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="co"># 聚合：计算每组的总和</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a>grouped_sum <span class="op">=</span> df.groupby(<span class="st">&#39;group&#39;</span>).<span class="bu">sum</span>()</span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="bu">print</span>(<span class="ss">f&quot;聚合 - 每组总和:</span><span class="ch">\n</span><span class="sc">{</span>grouped_sum<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb31-10"><a href="#cb31-10"></a></span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="co"># 转换：对每组进行标准化</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a>normalized <span class="op">=</span> df.groupby(<span class="st">&#39;group&#39;</span>)[<span class="st">&#39;value&#39;</span>].transform(<span class="kw">lambda</span> x: (x <span class="op">-</span> x.mean()) <span class="op">/</span> x.std())</span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="bu">print</span>(<span class="ss">f&quot;转换 - 标准化:</span><span class="ch">\n</span><span class="sc">{</span>normalized<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb31-14"><a href="#cb31-14"></a></span>
+<span id="cb31-15"><a href="#cb31-15"></a><span class="co"># 过滤：筛选出 value 平均值大于 2 的组</span></span>
+<span id="cb31-16"><a href="#cb31-16"></a>filtered <span class="op">=</span> df.groupby(<span class="st">&#39;group&#39;</span>).<span class="bu">filter</span>(<span class="kw">lambda</span> x: x[<span class="st">&#39;value&#39;</span>].mean() <span class="op">&gt;</span> <span class="dv">2</span>)</span>
+<span id="cb31-17"><a href="#cb31-17"></a><span class="bu">print</span>(<span class="ss">f&quot;过滤 - 平均值大于 2 的组:</span><span class="ch">\n</span><span class="sc">{</span>filtered<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</div>
+</section>
+
+<section id="总结" class="title-slide slide level2">
+<h2>总结 📝</h2>
+<ul>
+<li>Pandas 是 Python 数据分析的重要工具，提供了 <code>Series</code> 和 <code>DataFrame</code> 两种核心数据结构。
+<ul>
+<li><strong>Series</strong>: 类似于带标签的一维数组。</li>
+<li><strong>DataFrame</strong>: 类似于带标签的二维数组，或多个 Series 共享同一索引。</li>
+</ul></li>
+<li>Pandas 具有强大的数据访问、操作、统计和分组功能。</li>
+<li>理解 <code>loc</code>、<code>iloc</code> 和 <code>[]</code> 的区别对于高效使用 Pandas 至关重要。
+<ul>
+<li><strong>loc</strong>: 通过标签访问数据。</li>
+<li><strong>iloc</strong>: 通过位置访问数据。</li>
+<li><strong>[]</strong>: <code>DataFrame</code> 中用于访问列，<code>Series</code> 中类似于 <code>loc</code>。</li>
+</ul></li>
+<li>窗口函数是处理时序数据的有力工具。</li>
+<li><code>groupby</code> 功能可以实现类似于 SQL 的分组聚合操作。
+<ul>
+<li><strong>split</strong>: 按规则分组。</li>
+<li><strong>apply</strong>: 应用函数。</li>
+<li><strong>combine</strong>: 合并结果。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="思考与讨论" class="title-slide slide level2">
+<h2>思考与讨论 🤔</h2>
+<ul>
+<li>在实际应用中，如何选择合适的数据结构（<code>Series</code> 或 <code>DataFrame</code>）？
+<ul>
+<li>当只需要处理一维数据，或者需要一个带标签的数组时，选择 <code>Series</code>。</li>
+<li>当需要处理二维数据，或者需要一个表格结构时，选择 <code>DataFrame</code>。</li>
+</ul></li>
+<li><code>loc</code> 和 <code>iloc</code> 在使用场景上有哪些区别？
+<ul>
+<li>当需要通过标签访问数据时，使用 <code>loc</code>。</li>
+<li>当需要通过位置访问数据时，使用 <code>iloc</code>。</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="思考与讨论-续" class="title-slide slide level2">
+<h2>思考与讨论 🤔 (续)</h2>
+<ul>
+<li>如何利用 Pandas 的窗口函数分析股票数据？ (续)
+<ul>
+<li>可以使用 <code>ewm</code> 函数计算指数加权移动平均线。
+<ul>
+<li><strong>指数加权移动平均线 (Exponentially Weighted Moving Average, EWMA)</strong>：对近期数据赋予更高的权重，更能反映最近的价格变化。</li>
+</ul></li>
+</ul></li>
+<li><code>groupby</code> 功能在实际数据分析中有哪些应用？
+<ul>
+<li>可以按类别分组，计算每个类别的统计量。</li>
+<li>可以按时间分组，计算每个时间段的统计量。</li>
+<li>可以自定义分组规则，进行更灵活的数据分析。</li>
+</ul></li>
+<li>结合一个具体案例，如分析某个商场不同部门的销售数据，来设计到到目前课件为止的pandas操作？</li>
+</ul>
+</section>
+
+<section>
+<section id="案例分析商场销售数据分析" class="title-slide slide level2">
+<h2>案例分析：商场销售数据分析 🛒</h2>
+<p>我们将使用 Pandas 分析某个商场不同部门的销售数据。</p>
+</section>
+<section id="数据读取" class="slide level3">
+<h3>1. 数据读取 📂</h3>
+<div id="f4c6e150" class="cell" data-execution_count="29">
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb32-2"><a href="#cb32-2"></a></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="co"># 假设数据文件名为 &#39;商场销售数据.csv&#39;</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>sales_data <span class="op">=</span> pd.read_csv(<span class="st">&#39;商场销售数据.csv&#39;</span>)</span></code></pre></div>
+</div>
+<ul>
+<li><strong><code>pd.read_csv()</code></strong>: Pandas 函数，用于从 CSV 文件读取数据，返回一个 DataFrame。</li>
+<li><strong><code>sales_data</code></strong>: DataFrame 变量，用于存储读取的数据。</li>
+</ul>
+</section>
+<section id="数据概览" class="slide level3">
+<h3>2. 数据概览 👀</h3>
+<div id="755b145b" class="cell" data-execution_count="30">
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="bu">print</span>(sales_data.head())  <span class="co"># 查看前几行数据</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="bu">print</span>(sales_data.info())  <span class="co"># 查看数据类型和缺失值</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="bu">print</span>(sales_data.describe())  <span class="co"># 查看数据的统计信息</span></span></code></pre></div>
+</div>
+<ul>
+<li><strong><code>sales_data.head()</code></strong>: 查看 DataFrame 的前几行（默认为 5 行），用于快速了解数据的结构。</li>
+<li><strong><code>sales_data.info()</code></strong>: 查看 DataFrame 的详细信息，包括：
+<ul>
+<li>每列的名称和数据类型。</li>
+<li>非空值的数量。</li>
+<li>内存使用情况。</li>
+</ul></li>
+<li><strong><code>sales_data.describe()</code></strong>: 查看 DataFrame 的统计摘要，包括：
+<ul>
+<li>计数 (count)</li>
+<li>平均值 (mean)</li>
+<li>标准差 (std)</li>
+<li>最小值 (min)</li>
+<li>25% 分位数</li>
+<li>中位数 (50% 分位数)</li>
+<li>75% 分位数</li>
+<li>最大值 (max)</li>
+</ul></li>
+</ul>
+</section>
+<section id="数据清洗" class="slide level3">
+<h3>3. 数据清洗 🧹</h3>
+<div id="79795ff5" class="cell" data-execution_count="31">
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># 处理缺失值（假设用平均值填充）</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>sales_data.fillna(sales_data.mean(), inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb34-3"><a href="#cb34-3"></a></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># 重命名列名</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>sales_data <span class="op">=</span> sales_data.rename(columns<span class="op">=</span>{<span class="st">&#39;部门&#39;</span>: <span class="st">&#39;department&#39;</span>, <span class="st">&#39;销售额&#39;</span>: <span class="st">&#39;sales&#39;</span>})</span></code></pre></div>
+</div>
+<ul>
+<li><strong><code>sales_data.fillna()</code></strong>: 填充 DataFrame 中的缺失值 (NaN)。
+<ul>
+<li><code>sales_data.mean()</code>: 计算每列的平均值。</li>
+<li><code>inplace=True</code>: 直接修改原 DataFrame，不返回新的 DataFrame。</li>
+</ul></li>
+<li><strong><code>sales_data.rename()</code></strong>: 重命名 DataFrame 的列名。
+<ul>
+<li><code>columns={'部门': 'department', '销售额': 'sales'}</code>: 将 “部门” 列重命名为 “department”，将 “销售额” 列重命名为 “sales”。</li>
+</ul></li>
+</ul>
+</section>
+<section id="数据访问和筛选" class="slide level3">
+<h3>4. 数据访问和筛选 🎯</h3>
+<div id="62608e17" class="cell" data-execution_count="32">
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># 访问特定列</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>departments <span class="op">=</span> sales_data[<span class="st">&#39;department&#39;</span>]</span>
+<span id="cb35-3"><a href="#cb35-3"></a></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co"># 访问特定行</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a>first_row <span class="op">=</span> sales_data.loc[<span class="dv">0</span>]</span>
+<span id="cb35-6"><a href="#cb35-6"></a></span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="co"># 条件筛选 筛选出销售额大于10000的记录</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a>high_sales <span class="op">=</span> sales_data[sales_data[<span class="st">&#39;sales&#39;</span>] <span class="op">&gt;</span> <span class="dv">10000</span>]</span>
+<span id="cb35-9"><a href="#cb35-9"></a></span>
+<span id="cb35-10"><a href="#cb35-10"></a><span class="co"># 使用 loc 筛选出特定部门和销售额的记录</span></span>
+<span id="cb35-11"><a href="#cb35-11"></a>clothing_sales <span class="op">=</span> sales_data.loc[(sales_data[<span class="st">&#39;department&#39;</span>] <span class="op">==</span> <span class="st">&#39;服装&#39;</span>) <span class="op">&amp;</span> (sales_data[<span class="st">&#39;sales&#39;</span>] <span class="op">&gt;</span> <span class="dv">5000</span>)]</span></code></pre></div>
+</div>
+<ul>
+<li><strong><code>sales_data['department']</code></strong>: 访问 “department” 列，返回一个 Series。</li>
+<li><strong><code>sales_data.loc[0]</code></strong>: 使用 <code>loc</code> 访问第一行（标签为 0 的行），返回一个 Series。</li>
+<li><strong><code>sales_data[sales_data['sales'] &gt; 10000]</code></strong>: 使用布尔索引筛选出 “sales” 列大于 10000 的行。</li>
+<li><strong><code>sales_data.loc[(sales_data['department'] == '服装') &amp; (sales_data['sales'] &gt; 5000)]</code></strong>: 使用 <code>loc</code> 和布尔索引筛选出 “department” 列为 “服装” 且 “sales” 列大于 5000 的行。</li>
+</ul>
+</section>
+<section id="数据统计" class="slide level3">
+<h3>5. 数据统计 📈</h3>
+<div id="e86f4e96" class="cell" data-execution_count="33">
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># 计算总销售额</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>total_sales <span class="op">=</span> sales_data[<span class="st">&#39;sales&#39;</span>].<span class="bu">sum</span>()</span>
+<span id="cb36-3"><a href="#cb36-3"></a></span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="co"># 计算每个部门的平均销售额</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>avg_sales_by_department <span class="op">=</span> sales_data.groupby(<span class="st">&#39;department&#39;</span>)[<span class="st">&#39;sales&#39;</span>].mean()</span>
+<span id="cb36-6"><a href="#cb36-6"></a></span>
+<span id="cb36-7"><a href="#cb36-7"></a><span class="co"># 计算每个部门的销售额标准差</span></span>
+<span id="cb36-8"><a href="#cb36-8"></a>std_sales_by_department <span class="op">=</span> sales_data.groupby(<span class="st">&#39;department&#39;</span>)[<span class="st">&#39;sales&#39;</span>].std()</span></code></pre></div>
+</div>
+<ul>
+<li><strong><code>sales_data['sales'].sum()</code></strong>: 计算 “sales” 列的总和。</li>
+<li><strong><code>sales_data.groupby('department')['sales'].mean()</code></strong>:
+<ul>
+<li><code>sales_data.groupby('department')</code>: 按 “department” 列分组。</li>
+<li><code>['sales']</code>: 选择分组后的 “sales” 列。</li>
+<li><code>.mean()</code>: 计算每组的平均值。</li>
+</ul></li>
+<li><strong><code>sales_data.groupby('department')['sales'].std()</code></strong>: 计算每个部门销售额的标准差。</li>
+</ul>
+</section>
+<section id="数据排序" class="slide level3">
+<h3>6. 数据排序 ⬇️⬆️</h3>
+<div id="ac755ef6" class="cell" data-execution_count="34">
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># 按销售额降序排列</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>sales_data_sorted <span class="op">=</span> sales_data.sort_values(by<span class="op">=</span><span class="st">&#39;sales&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+</div>
+<ul>
+<li><strong><code>sales_data.sort_values()</code></strong>: 对 DataFrame 进行排序。
+<ul>
+<li><code>by='sales'</code>: 按 “sales” 列排序。</li>
+<li><code>ascending=False</code>: 降序排列 (从大到小)。</li>
+</ul></li>
+</ul>
+</section>
+<section id="窗口函数应用-假设有日期数据" class="slide level3">
+<h3>7. 窗口函数应用 (假设有日期数据) ⏱️</h3>
+<div id="6e34226d" class="cell" data-execution_count="35">
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># 假设数据中有 &#39;date&#39; 列，表示销售日期</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>sales_data[<span class="st">&#39;date&#39;</span>] <span class="op">=</span> pd.to_datetime(sales_data[<span class="st">&#39;date&#39;</span>])</span>
+<span id="cb38-3"><a href="#cb38-3"></a>sales_data.set_index(<span class="st">&#39;date&#39;</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb38-4"><a href="#cb38-4"></a></span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="co"># 计算 7 天滚动平均销售额</span></span>
+<span id="cb38-6"><a href="#cb38-6"></a>rolling_avg_sales <span class="op">=</span> sales_data[<span class="st">&#39;sales&#39;</span>].rolling(window<span class="op">=</span><span class="dv">7</span>).mean()</span>
+<span id="cb38-7"><a href="#cb38-7"></a></span>
+<span id="cb38-8"><a href="#cb38-8"></a><span class="co"># 计算每月销售总额</span></span>
+<span id="cb38-9"><a href="#cb38-9"></a>monthly_sales <span class="op">=</span> sales_data[<span class="st">&#39;sales&#39;</span>].resample(<span class="st">&#39;M&#39;</span>).<span class="bu">sum</span>()</span></code></pre></div>
+</div>
+<ul>
+<li><strong><code>sales_data['date'] = pd.to_datetime(sales_data['date'])</code></strong>: 将 “date” 列转换为日期时间类型。</li>
+<li><strong><code>sales_data.set_index('date', inplace=True)</code></strong>: 将 “date” 列设置为 DataFrame 的索引。</li>
+<li><strong><code>sales_data['sales'].rolling(window=7).mean()</code></strong>: 计算 “sales” 列的 7 天滚动平均值。</li>
+<li><strong><code>sales_data['sales'].resample('M').sum()</code></strong>:
+<ul>
+<li><code>.resample('M')</code>: 按月对数据进行重采样。</li>
+<li><code>.sum()</code>: 计算每个月的销售总额。</li>
+</ul></li>
+</ul>
+</section>
+<section id="分组聚合" class="slide level3">
+<h3>8. 分组聚合 ➕➖</h3>
+<div id="8a877d2e" class="cell" data-execution_count="36">
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python cell-code number-lines"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># 计算每个部门的销售总额、平均销售额、最大销售额</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>department_stats <span class="op">=</span> sales_data.groupby(<span class="st">&#39;department&#39;</span>)[<span class="st">&#39;sales&#39;</span>].agg([<span class="st">&#39;sum&#39;</span>, <span class="st">&#39;mean&#39;</span>, <span class="st">&#39;max&#39;</span>])</span>
+<span id="cb39-3"><a href="#cb39-3"></a></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="co"># 筛选出销售总额大于 50000 的部门</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a>high_performing_departments <span class="op">=</span> department_stats[department_stats[<span class="st">&#39;sum&#39;</span>] <span class="op">&gt;</span> <span class="dv">50000</span>]</span></code></pre></div>
+</div>
+<ul>
+<li><strong><code>sales_data.groupby('department')['sales'].agg(['sum', 'mean', 'max'])</code></strong>:
+<ul>
+<li><code>sales_data.groupby('department')</code>: 按 “department” 列分组。</li>
+<li><code>['sales']</code>: 选择分组后的 “sales” 列。</li>
+<li><code>.agg(['sum', 'mean', 'max'])</code>: 对每组应用多个聚合函数 (求和、平均值、最大值)。</li>
+</ul></li>
+<li><strong><code>department_stats[department_stats['sum'] &gt; 50000]</code></strong>: 筛选出 “sum” 列大于 50000 的行。</li>
+</ul>
+<p>以上就是 Pandas 数据分析的基本流程和常用操作。通过这些操作，我们可以从原始数据中提取有用的信息，为业务决策提供支持。</p>
+<div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="zwu_logo.png" class="slide-logo" /></p>
+<div class="footer footer-default">
+<p>邱飞 💌 qiufei@zwu.edu.cn</p>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="chapter5_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="chapter5_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="chapter5_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="chapter5_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="chapter5_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="chapter5_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="chapter5_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="chapter5_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="chapter5_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="chapter5_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: c/t,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id = "quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "已复制");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "已复制");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    </body>
+</html>
