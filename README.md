@@ -1,4 +1,5 @@
-# web-slide-r
+# web-slide-python-visual
+
 
 在克隆仓库时，要选择clone所有的分支，及main和 gh-pages分支，否则会出现错误
 

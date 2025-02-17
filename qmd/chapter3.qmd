@@ -1,5 +1,5 @@
 ---
-title: "数据分析理论与Python实战"
+title: "信息技术基础"
 subtitle: "第三章 数据预处理"
 ---
 
