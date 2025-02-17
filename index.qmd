@@ -1,5 +1,5 @@
 ---
-title: "统计学习导论"
+title: "信息技术基础"
 # image: https://assets.qiufei.site/personal/profile.jpg
 # about:
 #   template: broadside
